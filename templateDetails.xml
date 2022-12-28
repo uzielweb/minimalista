@@ -20,11 +20,7 @@
     <media destination="templates/site/minimalista" folder="media">
         <folder>js</folder>
         <folder>css</folder>
-        <folder>scss</folder>
         <folder>images</folder>
-        <folder>fonts</folder>
-        <folder>webfonts</folder>
-        <folder>svgs</folder>
     </media>
     <positions>
         <position>topbar</position>
@@ -44,6 +40,30 @@
         <position>footer</position>
         <position>debug</position>
     </positions>
+    <!-- configs -->
+    <!-- container-fluid, default-bootstrap-desktop. sidebar-width -->
+    <config>
+        <fields name="params">
+            <fieldset name="options">
+                <field name="container-fluid" type="radio" label="TPL_MINIMALISTA_CONTAINER_FLUID" description="TPL_MINIMALISTA_CONTAINER_FLUID_DESC" default="0" class="btn-group btn-group-yesno">
+                    <option value="1">JYES</option>
+                    <option value="0">JNO</option>
+                </field>
+              <field name="default-bootstrap-desktop" type="radio" label="TPL_MINIMALISTA_DEFAULT_BOOTSTRAP_DESKTOP" description="TPL_MINIMALISTA_DEFAULT_BOOTSTRAP_DESKTOP_DESC" default="lg" class="btn-group">
+                    <option value="xxl">xxl</option>
+                    <option value="xl">xl</option>
+                    <option value="lg">lg</option>
+                    <option value="md">md</option>
+                    <option value="sm">sm</option>
+                </field>
+                <field name="sidebar-width" type="radio" default="3" label="TPL_MINIMALISTA_SIDEBAR_WIDTH" description="TPL_MINIMALISTA_SIDEBAR_WIDTH_DESC" class="btn-group">
+                    <option value="2">2</option>
+                    <option value="3">3</option>
+                    <option value="4">4</option>
+                </field>
+            </fieldset>
+        </fields>
+    </config>
     <languages folder="language">
         <language tag="en-GB">en-GB/tpl_minimalista.ini</language>
         <language tag="en-GB">en-GB/tpl_minimalista.sys.ini</language>

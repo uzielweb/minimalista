@@ -1,29 +1,23 @@
 <?php
 defined('_JEXEC') or die;
+include_once JPATH_THEMES . '/' . $this->template . '/logic.php';
+use Joomla\CMS\Language\Text;
 
-use Joomla\CMS\Factory;
 use Joomla\CMS\Helper\AuthenticationHelper;
 use Joomla\CMS\Uri\Uri;
 
 /** @var Joomla\CMS\Document\HtmlDocument $this */
 
 $extraButtons = AuthenticationHelper::getLoginButtons('form-login');
-$app = Factory::getApplication();
-$wa = $this->getWebAssetManager();
 
-$wa->getAsset('style', 'fontawesome')->setAttribute('rel', 'lazy-stylesheet');
 ?>
-<!DOCTYPE html>
-<html lang="<?php echo $this->language; ?>" dir="<?php echo $this->direction; ?>">
-
-<head>
-    <jdoc:include type="metas" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <jdoc:include type="styles" />
-    <jdoc:include type="scripts" />
-</head>
-
-<body class="<?php echo $this->direction === 'rtl' ? 'rtl' : ''; ?>">
+<!doctype html>
+<html lang="<?php echo $doc->getLanguage(); ?>" dir="<?php echo $doc->getDirection(); ?>">
+    <head>
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <jdoc:include type="head" />
+    </head>
+    <body class="<?php echo implode(' ', $bodyClasses); ?>">
     <jdoc:include type="message" />
     <div class="container">
         <div class="row">

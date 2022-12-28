@@ -1,36 +1,21 @@
 <?php
 defined('_JEXEC') or die;
-
-use Joomla\CMS\Factory;
-use Joomla\CMS\Uri\Uri;
-
-/** @var Joomla\CMS\Document\ErrorDocument $this */
-
-$app = Factory::getApplication();
-$wa = $this->getWebAssetManager();
-
-$wa->getAsset('style', 'fontawesome')->setAttribute('rel', 'lazy-stylesheet');
+include_once JPATH_THEMES . '/' . $this->template . '/logic.php';
+use Joomla\CMS\Language\Text;
 
 ?>
-<!DOCTYPE html>
-<html lang="<?php echo $this->language; ?>" dir="<?php echo $this->direction; ?>">
+<!doctype html>
+<html lang="<?php echo $doc->getLanguage(); ?>" dir="<?php echo $doc->getDirection(); ?>">
+    <head>
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <jdoc:include type="head" />
+    </head>
+    <body class="<?php echo implode(' ', $bodyClasses); ?>">
+  
 
-<head>
-    <jdoc:include type="metas" />
-    <jdoc:include type="styles" />
-    <jdoc:include type="scripts" />
-</head>
 
-<body class="site error_site <?php echo $option
-    . ' ' . $wrapper
-    . ' view-' . $view
-    . ($layout ? ' layout-' . $layout : ' no-layout')
-    . ($task ? ' task-' . $task : ' no-task')
-    . ($itemid ? ' itemid-' . $itemid : '')
-    . ' ' . $pageclass;
-    echo ($this->direction == 'rtl' ? ' rtl' : '');
-?>">
-    <div class="container">
+        <div class="container<?php echo $containerFluid; ?>">
+          <div class="p-5 my-5 bg-warning rounded-3">
         <div class="row">
             <div class="col-md-12">
                 <div class="error">
@@ -43,37 +28,29 @@ $wa->getAsset('style', 'fontawesome')->setAttribute('rel', 'lazy-stylesheet');
                         <li><?php echo Text::_('JERROR_LAYOUT_YOU_HAVE_NO_ACCESS_TO_THIS_PAGE'); ?></li>
                     </ul>
                     <p><?php echo Text::_('JERROR_LAYOUT_GO_TO_THE_HOME_PAGE'); ?></p>
-                    <p><a href="<?php echo $this->baseurl; ?>/index.php" class="btn btn-secondary"><span class="icon-home" aria-hidden="true"></span> <?php echo Text::_('JERROR_LAYOUT_HOME_PAGE'); ?></a></p>
-                    <hr>
+                    <p><a href="<?php echo $this->baseurl; ?>/index.php" class="btn btn-primary"><span class="icon-home" aria-hidden="true"></span> <?php echo Text::_('JERROR_LAYOUT_HOME_PAGE'); ?></a></p>
                     <p><?php echo Text::_('JERROR_LAYOUT_PLEASE_CONTACT_THE_SYSTEM_ADMINISTRATOR'); ?></p>
                     <blockquote>
-                        <span class="badge bg-secondary"><?php echo $this->error->getCode(); ?></span> <?php echo htmlspecialchars($this->error->getMessage(), ENT_QUOTES, 'UTF-8'); ?>
+                        <span class="error-tag h5"><?php echo $this->error->getCode(); ?></span> <?php echo htmlspecialchars($this->error->getMessage(), ENT_QUOTES, 'UTF-8'); ?>
                     </blockquote>
                     <?php if ($this->debug) : ?>
-                    <div>
-                        <?php echo $this->renderBacktrace(); ?>
-                        <?php // Check if there are more Exceptions and render their data as well ?>
-                        <?php if ($this->error->getPrevious()) : ?>
-                        <?php $loop = true; ?>
-                        <?php // Reference $this->_error here and in the loop as setError() assigns errors to this property and we need this for the backtrace to work correctly ?>
-                        <?php // Make the first assignment to setError() outside the loop so the loop does not skip Exceptions ?>
-                        <?php $this->setError($this->_error->getPrevious()); ?>
-                        <?php while ($loop === true) : ?>
-                        <p><strong><?php echo Text::_('JERROR_LAYOUT_PREVIOUS_ERROR'); ?></strong></p>
-                        <p><?php echo htmlspecialchars($this->_error->getMessage(), ENT_QUOTES, 'UTF-8'); ?></p>
-                        <?php echo $this->renderBacktrace(); ?>
-                        <?php $loop = $this->setError($this->_error->getPrevious()); ?>
-                        <?php endwhile; ?>
-                        <?php // Reset the main error object to the base error ?>
-                        <?php $this->setError($this->error); ?>
-                        <?php endif; ?>
-                    </div>
+                        <div>
+                            <?php echo $this->renderBacktrace(); ?>
+                            <?php // Check if there are more Exceptions and render their data as well ?>
+                            <?php if ($this->error->getPrevious()) : ?>
+                                <p><strong><?php echo Text::_('JERROR_LAYOUT_PREVIOUS_ERROR'); ?></strong></p>
+                                <p><?php echo htmlspecialchars($this->error->getPrevious()->getMessage(), ENT_QUOTES, 'UTF-8'); ?></p>
+                                <?php echo $this->renderBacktrace($this->error->getPrevious()); ?>
+                            <?php endif; ?>
+                        </div>
                     <?php endif; ?>
+
+
+                   
                 </div>
             </div>
         </div>
     </div>
-
-</body>
-
+        </div>
+    </body>
 </html>
