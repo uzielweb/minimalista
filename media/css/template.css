@@ -1,0 +1,11 @@
+.float-start.item-image {
+    margin: 0 1rem 1rem 0;
+}
+
+.float-end.item-image {
+    margin: 0 0 1rem 1rem;
+}
+
+.nav-link {
+    cursor: pointer;
+}
