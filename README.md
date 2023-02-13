@@ -1,4 +1,4 @@
-# minimalista Joomla 4 Template
+# Minimalista Joomla 4 Template
 ## Português (Brasil)
 <!-- definição  e descrição do template -->
 Este é um template {Joomla!} 4, com o objetivo de ser o mais simples possível, sem quaisquer recursos adicionais, apenas o básico para um template funcional.
