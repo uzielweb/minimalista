@@ -22,7 +22,7 @@ if ($module->content === null || $module->content === '') {
 
 $moduleTag     = $params->get('module_tag', 'div');
 $bootstrapSize = (int) $params->get('bootstrap_size', 0);
-$moduleClass   = $bootstrapSize !== 0 ? ' col-' . $params->get('default-bootstrap-desktop') : '';
+$moduleClass   = $bootstrapSize !== 0 ? ' col-' . $params->get('default-bootstrap-desktop') : ' col-12';
 $headerTag     = $params->get('header_tag', 'h3');
 $headerClass   = $params->get('header_class', 'module-title');
 $moduleClassSfx = $params->get('moduleclass_sfx');

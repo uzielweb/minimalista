@@ -31,7 +31,7 @@ include_once JPATH_THEMES . '/' . $this->template . '/logic.php';
     <main class="main">
         <div class="container<?php echo $containerFluid; ?>">
         <?php if ($this->countModules('main-top')): ?>
-                <div class="main-top col-12">
+                <div class="main-top row">
                     <jdoc:include type="modules" name="main-top" style="<?php echo $this->template . '-default'; ?>" />
                 </div>
                 <?php endif; ?>
@@ -53,12 +53,13 @@ include_once JPATH_THEMES . '/' . $this->template . '/logic.php';
                     <jdoc:include type="modules" name="sidebar-right" style="<?php echo $this->template.'-default';?>" />
                 </div>
                 <?php endif; ?>
-                <?php if ($this->countModules('main-bottom')) : ?>
-                <div class="main-bottom col-12">
-                    <jdoc:include type="modules" name="main-bottom" style="<?php echo $this->template.'-default';?>" />
+               
+            </div>
+             <?php if ($this->countModules('main-bottom')): ?>
+                <div class="main-bottom row">
+                    <jdoc:include type="modules" name="main-bottom" style="<?php echo $this->template . '-default'; ?>" />
                 </div>
                 <?php endif; ?>
-            </div>
         </div>
     </main>
     <footer class="footer">
