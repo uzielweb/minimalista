@@ -12,6 +12,7 @@ As seguintes configurações são possíveis em seu administrador:
 - [x] 1. Largura padrão das colunas laterais (esquerda e direita) em bootstrap
 - [x] 2. Definição de qual é o dispositivo padrão para a largura das colunas em geral (desktop, tablet ou mobile => xxl, xl, lg, md, sm, xs)
 - [x] 3. Escolher a largura padrão do container em bootstrap (container, container-fluid)
+- [x] 4. Permite criar templates filhos
 
 Por padrão, o template vem com Bootstrap e Font Awesome do Joomla 4, mas você pode escolher usar o Bootstrap e o Font Awesome do template, ou nenhum deles.
 Para isso basta adicionar o seguinte código no seu arquivo logic.php (lembrando de desativar o Bootstrap e o Font Awesome do Joomla 4 nas linhas do logic.php)
@@ -52,6 +53,7 @@ The following settings are possible in your administrator:
 - [x] 1. Default width of the side columns (left and right) in bootstrap
 - [x] 2. Definition of which is the default device for the width of the columns in general (desktop, tablet or mobile => xxl, xl, lg, md, sm, xs)
 - [x] 3. Choose the default width of the container in bootstrap (container, container-fluid)
+- [x] 4. It's possible to create child templates
 
 By default, the template comes with Bootstrap and Font Awesome from Joomla 4, but you can choose to use the Bootstrap and Font Awesome from the template, or none of them.
 To do this, just add the following code to your logic.php file (remembering to disable Bootstrap and Font Awesome from Joomla 4 in the lines of logic.php)
