@@ -35,7 +35,7 @@ if ($moduleClassSfx){
 
 $moduleAttribs = [];
 $moduleAttribs['class'] = 'module module-default' . ' module-position-' . $module->position . ' module-id-' . $module->id . $moduleClassSfx . $moduleClass;
-$headerAttribs['class'] = 'module-title ' . $headerClass;
+$headerAttribs['class'] = 'module-title' . $headerClass;
 
 
 
