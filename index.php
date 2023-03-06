@@ -10,7 +10,7 @@ include_once JPATH_THEMES . '/' . $this->template . '/logic.php';
     <jdoc:include type="styles" />
     <jdoc:include type="scripts" />
 </head>
-<body class="<?php echo implode(' ', $bodyClasses); ?>">
+<body class="<?php echo $bodyClasses; ?>">
     <!-- head with menu, main, sidebars, footer -->
     <header class="header">
         <div class="container<?php echo $containerFluid; ?>">

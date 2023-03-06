@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
-<extension type="template" client="site" version="2.0.3" method="upgrade">
+<extension type="template" client="site" version="2.0.4" method="upgrade">
     <name>minimalista</name>
-    <version>2.0.3</version>
+    <version>2.0.4</version>
     <creationDate>2023-01</creationDate>
     <author>Uziel - Via Ponto Mega</author>
     <authorEmail>contato@pontomega.com.br</authorEmail>
@@ -12,6 +12,7 @@
         <filename>component.php</filename>
         <filename>error.php</filename>
         <filename>index.php</filename>
+        <filename>logic.php</filename>
         <filename>offline.php</filename>
         <filename>templateDetails.xml</filename>
         <folder>html</folder>
