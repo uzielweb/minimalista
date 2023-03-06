@@ -33,7 +33,7 @@ include_once JPATH_THEMES . '/' . $this->template . '/logic.php';
             <?php endif; ?>
             <div class="row">
                 <?php if ($this->countModules('sidebar-left')) : ?>
-                <div class="sidebar-left col-12 col<?php echo $defaultBoostrapDesktop; ?><?php echo $sidebarWidth; ?>">
+                <div class="sidebar-left col-12 col<?php echo $sidebarWidth; ?>">
                     <div class="row">
                         <jdoc:include type="modules" name="sidebar-left" style="<?php echo $this->template.'-default';?>" />
                     </div>
@@ -54,7 +54,7 @@ include_once JPATH_THEMES . '/' . $this->template . '/logic.php';
                     <?php endif;?>
                 </div>
                 <?php if ($this->countModules('sidebar-right')) : ?>
-                <div class="sidebar-right col-12 col<?php echo $defaultBoostrapDesktop; ?><?php echo $sidebarWidth; ?>">
+                <div class="sidebar-right col-12 col<?php echo $sidebarWidth; ?>">
                     <div class="row">
                         <jdoc:include type="modules" name="sidebar-right" style="<?php echo $this->template.'-default';?>" />
                     </div>
