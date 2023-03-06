@@ -24,7 +24,7 @@ $moduleTag     = $params->get('module_tag', 'div');
 $bootstrapSize = (int) $params->get('bootstrap_size', 0);
 $moduleClass   = $bootstrapSize !== 0 ? ' col-' . $params->get('default-bootstrap-desktop').'-' . $bootstrapSize :' col-12'; 
 $headerTag     = $params->get('header_tag', 'h3');
-$headerClass   = $params->get('header_class', 'module-title');
+$headerClass   = $params->get('header_class', '');
 $moduleClassSfx = $params->get('moduleclass_sfx');
 // check if have space in the start of the string
 if ($moduleClassSfx){
