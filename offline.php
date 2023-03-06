@@ -12,7 +12,7 @@ $extraButtons = AuthenticationHelper::getLoginButtons('form-login');
 
 ?>
 <!doctype html>
-<html lang="<?php echo $doc->getLanguage(); ?>" dir="<?php echo $doc->getDirection(); ?>">
+<html lang="<?php echo $this->language; ?>" dir="<?php echo $this->direction; ?>">
     <head>
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <jdoc:include type="head" />
