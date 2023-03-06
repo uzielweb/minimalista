@@ -42,7 +42,7 @@ $bodyClasses = $option ? 'option-' . str_replace('com_', '', $option) : 'no-opti
     . ' ' . ($user->guest ? 'guest' : 'logged-in');
 $containerFluid = $templateParams->get('container-fluid', 0) ? '-fluid' : '';
 $defaultBoostrapDesktop = '-' . $templateParams->get('default-bootstrap-desktop', 'lg');
-$sidebarWidth = '-' . $defaultBoostrapDesktop . '-' . $templateParams->get('sidebar-width', '3');
+$sidebarWidth = $defaultBoostrapDesktop . '-' . $templateParams->get('sidebar-width', '3');
 // load jquery
 HTMLHelper::_('jquery.framework', true, true);
 // load bootstrap
