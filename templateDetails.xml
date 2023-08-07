@@ -61,6 +61,15 @@
                     <option value="3">3</option>
                     <option value="4">4</option>
                 </field>
+                <!-- bootstrap_from_template, load_fontawesome_from_template -->
+                <field name="bootstrap_from_template" type="radio" label="TPL_MINIMALISTA_BOOTSTRAP_FROM_TEMPLATE" description="TPL_MINIMALISTA_BOOTSTRAP_FROM_TEMPLATE_DESC" default="0" class="btn-group btn-group-yesno">
+                    <option value="1">JYES</option>
+                    <option value="0">JNO</option>
+                </field>
+                <field name="load_fontawesome_from_template" type="radio" label="TPL_MINIMALISTA_LOAD_FONTAWESOME_FROM_TEMPLATE" description="TPL_MINIMALISTA_LOAD_FONTAWESOME_FROM_TEMPLATE_DESC" default="0" class="btn-group btn-group-yesno">
+                    <option value="1">JYES</option>
+                    <option value="0">JNO</option>
+                </field>
             </fieldset>
         </fields>
     </config>
