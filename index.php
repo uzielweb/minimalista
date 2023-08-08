@@ -20,14 +20,15 @@ include_once JPATH_THEMES . '/' . $this->template . '/logic.php';
         </div>
         <div class="container<?php echo $containerFluid; ?>">
         <!-- navbar offcanvas bootstrap 5 -->
-            <nav class="navbar navbar-expand-lg navbar-light bg-light">
+            <nav class="navbar navbar-expand<?php echo $defaultBoostrapDesktop; ?>">
                 <div class="container-fluid">
                     <button class="navbar-toggler" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasNavbar" aria-controls="offcanvasNavbar">
                         <span class="navbar-toggler-icon"></span>
                     </button>
-                    <div class="offcanvas offcanvas-start" tabindex="-1" id="offcanvasNavbar" aria-labelledby="offcanvasNavbarLabel">
+                   
+                    <div class="offcanvas offcanvas-<?php echo $offcanvasDirection;?>" tabindex="-1" id="offcanvasNavbar" aria-labelledby="offcanvasNavbarLabel">
                         <div class="offcanvas-header">                        
-                            <button type="button" class="btn-close text-reset ms-auto" data-bs-dismiss="offcanvas" aria-label="Close"></button>
+                            <button type="button" class="btn-close text-reset" data-bs-dismiss="offcanvas" aria-label="Close"></button>
                         </div>
                         <div class="offcanvas-body">
                             <jdoc:include type="modules" name="menu" style="<?php echo $this->template.'-default';?>" />

@@ -27,6 +27,7 @@ $parentAlias = $parent ? $parent->alias : '';
 $parentPageclass = $parentParams ? $parentParams->get('pageclass_sfx', '') : '';
 $tpath = Uri::root(true) . '/templates/' . $this->template;
 $templateParams = $app->getTemplate(true)->params;
+$offcanvasDirection = $templateParams->get('offcanvas_direction', 'start');
 $wa = $doc->getWebAssetManager();
 $war = $wa->getRegistry();
 $bodyClasses = ($option ? 'option-' . str_replace('com_', '', $option) : 'no-option')
@@ -43,8 +44,17 @@ $bodyClasses = ($option ? 'option-' . str_replace('com_', '', $option) : 'no-opt
 $containerFluid = $templateParams->get('container-fluid', 0) ? '-fluid' : '';
 $defaultBoostrapDesktop = '-' . $templateParams->get('default-bootstrap-desktop', 'lg');
 $sidebarWidth = $defaultBoostrapDesktop . '-' . $templateParams->get('sidebar-width', '3');
-// load jquery
+// jquery from template or from joomla
+
+if ($templateParams->get('load_jquery_from_template') == 1){
+    $wa->registerAndUseScript('jquery_from_template', Uri::root(true) . 'media/templates/site/' . $this->template . '/js/jquery-3.7.0.min.js', array('version' => 'auto'));
+    $wa->registerAndUseScript('jquery-noconflict', Uri::root(true) . 'media/templates/site/' . $this->template . '/js/jquery-noconflict.js', array('version' => 'auto'));
+    $wa->registerAndUseScript('jquery_migrate_from_template', Uri::root(true) . 'media/templates/site/' . $this->template . '/js/jquery-migrate-3.4.0.min.js', array('version' => 'auto'));
+}
+else{
+    // load jquery
 HTMLHelper::_('jquery.framework', true, true);
+}
 //  if params is bootstrap from template
 if ($templateParams->get('bootstrap_from_template')){
     $wa->registerAndUseStyle('bootstrap_css', Uri::root(true) . 'media/templates/site/' . $this->template . '/css/bootstrap.min.css', array('version' => 'auto'));
@@ -73,6 +83,7 @@ elseif ($loadFontAwesome == 'css_from_joomla'){
 else{
     // nothing
 }
+
 // load Joomla 4 system icons
 $wa->registerAndUseStyle('icons', 'media/system/css/joomla-fontawesome.min.css', array('version' => 'auto'));
 $wa->registerAndUseStyle('template-css', Uri::root(true) . 'media/templates/site/' . $this->template . '/css/template.css', array('version' => 'auto'));
