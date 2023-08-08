@@ -29,17 +29,17 @@ $tpath = Uri::root(true) . '/templates/' . $this->template;
 $templateParams = $app->getTemplate(true)->params;
 $wa = $doc->getWebAssetManager();
 $war = $wa->getRegistry();
-$bodyClasses = $option ? 'option-' . str_replace('com_', '', $option) : 'no-option'
+$bodyClasses = ($option ? 'option-' . str_replace('com_', '', $option) : 'no-option')
     . ' ' . ($view ? 'view-' . $view : 'no-view')
     . ' ' . ($layout ? 'layout-' . $layout : 'no-layout')
     . ' ' . ($task ? 'task-' . $task : 'no-task')
     . ' ' . ($itemid ? 'itemid-' . $itemid : 'no-itemid')
     . ' ' . ($alias ? 'alias-' . $alias : 'no-alias')
-    . ' ' . ($pageclass ? $pageclass : '')
+    . ' ' . ($pageclass ? $pageclass : 'no-pageclass')
     . ' ' . ($parentAlias ? 'parent-' . $parentAlias : 'no-parent')
-    . ' ' . ($parentPageclass ? $parentPageclass : '')
-    . ' ' . ($doc->getDirection() === 'rtl' ? 'rtl' : 'ltr')
-    . ' ' . ($user->guest ? 'guest' : 'logged-in');
+    . ' ' . ($parentPageclass ? $parentPageclass : 'no-parent-pageclass')
+    . ' ' . ($doc->getDirection() === 'rtl' ? 'direction-rtl' : 'direction-ltr')
+    . ' ' . ($user->guest ? 'user-guest' : 'user-logged-in');
 $containerFluid = $templateParams->get('container-fluid', 0) ? '-fluid' : '';
 $defaultBoostrapDesktop = '-' . $templateParams->get('default-bootstrap-desktop', 'lg');
 $sidebarWidth = $defaultBoostrapDesktop . '-' . $templateParams->get('sidebar-width', '3');
