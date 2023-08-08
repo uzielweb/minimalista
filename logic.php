@@ -56,15 +56,22 @@ else{
     // load bootstrap js
     HTMLHelper::_('bootstrap.framework');
 }
+$loadFontAwesome = $templateParams->get('load_fontawesome', 'css_from_joomla');
 //  if params is load fontawesome from template
-if ($templateParams->get('load_fontawesome_from_template')){
-    $wa->registerAndUseStyle('fontawesome', Uri::root(true) . 'media/templates/site/' . $this->template . '/css/all.min.css', array('version' => 'auto'));
+if ($loadFontAwesome == 'css_from_template'){
+    $wa->registerAndUseStyle('fontawesome_css', Uri::root(true) . 'media/templates/site/' . $this->template . '/css/all.min.css', array('version' => 'auto'));
     
 }
-else{
+elseif ($loadFontAwesome == 'js_from_template'){
+      $wa->registerAndUseScript('fontawesome_js', Uri::root(true) . 'media/templates/site/' . $this->template . '/js/all.min.js', array('version' => 'auto'), array('defer' => true));
+}
+elseif ($loadFontAwesome == 'css_from_joomla'){
     // load fontawesome
     $wa->registerAndUseStyle('fontawesome', 'media/vendor/fontawesome-free/css/all.min.css', array('version' => 'auto'));
    
+}
+else{
+    // nothing
 }
 // load Joomla 4 system icons
 $wa->registerAndUseStyle('icons', 'media/system/css/joomla-fontawesome.min.css', array('version' => 'auto'));
