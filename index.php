@@ -35,7 +35,7 @@ include_once JPATH_THEMES . '/' . $this->template . '/logic.php';
                         </div>
                     </div>
                 </div>
-           
+           </nav>
         </div>
     </header>
     <main class="main">
