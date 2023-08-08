@@ -45,13 +45,28 @@ $defaultBoostrapDesktop = '-' . $templateParams->get('default-bootstrap-desktop'
 $sidebarWidth = $defaultBoostrapDesktop . '-' . $templateParams->get('sidebar-width', '3');
 // load jquery
 HTMLHelper::_('jquery.framework', true, true);
-// load bootstrap
-HTMLHelper::_('bootstrap.framework');
-// load bootstrap css
-HTMLHelper::_('bootstrap.loadCss', true, $this->direction);
-// load joomla 4 fontawesome
-$wa->registerAndUseStyle('fontawesome', 'media/vendor/fontawesome-free/css/fontawesome.min.css', array('version' => 'auto'));
-// load Joomal 4 system icons
+//  if params is bootstrap from template
+if ($templateParams->get('bootstrap_from_template')){
+    $wa->registerAndUseStyle('bootstrap_css', Uri::root(true) . 'media/templates/site/' . $this->template . '/css/bootstrap.min.css', array('version' => 'auto'));
+    $wa->registerAndUseScript('bootstrap_js', Uri::root(true) . 'media/templates/site/' . $this->template . '/js/bootstrap.min.js', array('version' => 'auto'), array('defer' => true));
+}
+else{
+    // load bootstrap css
+    HTMLHelper::_('bootstrap.loadCss', true, $this->direction);
+    // load bootstrap js
+    HTMLHelper::_('bootstrap.framework');
+}
+//  if params is load fontawesome from template
+if ($templateParams->get('load_fontawesome_from_template')){
+    $wa->registerAndUseStyle('fontawesome', Uri::root(true) . 'media/templates/site/' . $this->template . '/css/all.min.css', array('version' => 'auto'));
+    
+}
+else{
+    // load fontawesome
+    $wa->registerAndUseStyle('fontawesome', 'media/vendor/fontawesome-free/css/all.min.css', array('version' => 'auto'));
+   
+}
+// load Joomla 4 system icons
 $wa->registerAndUseStyle('icons', 'media/system/css/joomla-fontawesome.min.css', array('version' => 'auto'));
 $wa->registerAndUseStyle('template-css', Uri::root(true) . 'media/templates/site/' . $this->template . '/css/template.css', array('version' => 'auto'));
 
