@@ -42,27 +42,4 @@ The following configurations are possible within your administrator:
 
 By default, the template comes with Bootstrap and Font Awesome from Joomla 4, but you can choose to use the Bootstrap and Font Awesome from the template, or none of them.
 
-To do this, just add the following code to your logic.php file (remembering to disable Bootstrap and Font Awesome from Joomla 4 in the lines of logic.php)
-```php
-// load jquery
-# HTMLHelper::_('jquery.framework', true, true);
-// load bootstrap
-# HTMLHelper::_('bootstrap.framework');
-// load bootstrap css
-# HTMLHelper::_('bootstrap.loadCss', true, $this->direction);
-// load joomla 4 fontawesome
-# $wa->registerAndUseStyle('fontawesome', 'media/vendor/fontawesome-free/css/fontawesome.min.css', array('version' => 'auto'));
-// load Joomla 4 system icons
-$wa->registerAndUseStyle('icons', 'media/system/css/joomla-fontawesome.min.css', array('version' => 'auto'));
-$wa->registerAndUseStyle('template-css', Uri::root(true) . 'media/templates/site/' . $this->template . '/css/template.css', array('version' => 'auto'));
-
-// Use Bootstrap from template
-$wa->registerAndUseStyle('template.minimalista.bootstrap', 'templates/' . $this->template . '/css/bootstrap.min.css', [], ['version' => 'auto']);
-// Use Font Awesome from Template
-$wa->registerAndUseStyle('template.minimalista.fontawesome', 'templates/' . $this->template . '/css/fontawesome.min.css', [], ['version' => 'auto']);
-// bootstrap.bundle.min.js from template
-$wa->registerAndUseScript('template.minimalista.bootstrap.bundle', 'templates/' . $this->template . '/js/bootstrap.bundle.min.js', [], ['version' => 'auto']);
-// JQuery from template
-$wa->registerAndUseScript('template.minimalista.jquery', 'templates/' . $this->template . '/js/jquery-3.6.0.min.js', [], ['version' => 'auto']);
-```
 
