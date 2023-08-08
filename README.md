@@ -7,6 +7,7 @@ Nele você encontra os itens básicos para um bom template, como:
 - [x] 2. Override de arquivos de layout para os estilos de módulos (chromes)
 - [x] 3. Um arquivo com toda a lógica necessária para o tema dentro do arquivo logic.php
 - [x] 4. arquivos básicos para a página de erros, offline e o layout de component (chamado pela ?view=component)
+- [x] 5. Possui um menu offcanvas básico
 
 As seguintes configurações são possíveis em seu administrador:
 - [x] 1. Largura padrão das colunas laterais (esquerda e direita) em bootstrap
@@ -48,6 +49,7 @@ In it you find the basic items for a good template, such as:
 - [x] 2. Override of layout files for module styles (chromes)
 - [x] 3. A file with all the necessary logic for the theme within the logic.php file
 - [x] 4. basic files for the error, offline and component page layouts (called by ?view=component)
+- [x] 5. have a basic offcanvas menu
 
 The following settings are possible in your administrator:
 - [x] 1. Default width of the side columns (left and right) in bootstrap
