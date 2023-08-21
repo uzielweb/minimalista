@@ -5,7 +5,7 @@ include_once JPATH_THEMES . '/' . $this->template . '/logic.php';
 <!doctype html>
 <html lang="<?php echo $this->language; ?>" dir="<?php echo $this->direction; ?>">
 <head>
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
     <jdoc:include type="metas" />
     <jdoc:include type="styles" />
     <jdoc:include type="scripts" />
