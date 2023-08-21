@@ -60,7 +60,7 @@ HTMLHelper::_('jquery.framework', true, true);
 //  if params is bootstrap from template
 if ($templateParams->get('bootstrap_from_template')){
     $wa->registerAndUseStyle('bootstrap_css', Uri::root(true) . 'media/templates/site/' . $this->template . '/css/bootstrap.min.css', array('version' => 'auto'));
-    $wa->registerAndUseScript('bootstrap_js', Uri::root(true) . 'media/templates/site/' . $this->template . '/js/bootstrap.min.js', array('version' => 'auto'), array('defer' => true));
+    $wa->registerAndUseScript('bootstrapbundle_js', Uri::root(true) . 'media/templates/site/' . $this->template . '/js/bootstrap.bundle.min.js', array('version' => 'auto'), array('defer' => true));
 }
 else{
     // load bootstrap css
