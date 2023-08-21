@@ -30,6 +30,8 @@ $templateParams = $app->getTemplate(true)->params;
 $offcanvasDirection = $templateParams->get('offcanvas_direction', 'start');
 $wa = $doc->getWebAssetManager();
 $war = $wa->getRegistry();
+$logo = $templateParams->get('logo');
+$doc->setMetaData('viewport', 'width=device-width, initial-scale=1.0');
 $bodyClasses = ($option ? 'option-' . str_replace('com_', '', $option) : 'no-option')
     . ' ' . ($view ? 'view-' . $view : 'no-view')
     . ' ' . ($layout ? 'layout-' . $layout : 'no-layout')
