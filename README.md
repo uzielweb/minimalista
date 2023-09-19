@@ -1,7 +1,7 @@
 # Minimalista Joomla 4 Template
 ## Português (Brasil)
 <!-- definição  e descrição do template -->
-Este é um template para {Joomla!} 4 e {Joomla!} 5, com o objetivo de ser o mais simples possível, sem quaisquer recursos adicionais, apenas o básico para um template funcional.
+Este é um template para *Joomla!* 4 e *Joomla!* 5, com o objetivo de ser o mais simples possível, sem quaisquer recursos adicionais, apenas o básico para um template funcional.
 Nele você encontra os itens básicos para um bom template, como:
 - [x] 1. Override de arquivos de layout para o menu
 - [x] 2. Override de arquivos de layout para os estilos de módulos (chromes)
