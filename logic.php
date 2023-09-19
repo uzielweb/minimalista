@@ -3,7 +3,7 @@
 use Joomla\CMS\Factory;
 use Joomla\CMS\HTML\HTMLHelper;
 use Joomla\CMS\Uri\Uri;
-use Joomla\CMS\Folder\Folder;
+use Joomla\CMS\Filesystem\Folder;
 $app = Factory::getApplication();
 $doc = $app->getDocument();
 // minimize the output html
