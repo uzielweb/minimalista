@@ -93,3 +93,7 @@ foreach (Folder::files(JPATH_ROOT . '/media/templates/site/' . $this->template .
 foreach (Folder::files(JPATH_ROOT . '/media/templates/site/' . $this->template . '/css', 'custom', true, true) as $i => $file) {
     $wa->registerAndUseStyle(pathinfo($file, PATHINFO_FILENAME), Uri::root(true) . 'media/templates/site/' . $this->template . '/css' . '/' . basename($file), array('version' => 'auto'));
 }
+//  scan template css folder and load all css files with "custom" in the name
+foreach (Folder::files(JPATH_ROOT . '/media/templates/site/' . $this->template . '/js', 'custom', true, true) as $i => $file) {
+    $wa->registerAndUseScript(pathinfo($file, PATHINFO_FILENAME), Uri::root(true) . 'media/templates/site/' . $this->template . '/js' . '/' . basename($file), array('version' => 'auto'), array('defer' => true));
+}
