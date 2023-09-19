@@ -85,7 +85,10 @@ elseif ($loadFontAwesome == 'css_from_joomla'){
 else{
     // nothing
 }
-
+//  scan template css folder and load all css files with "custom" in the name
+foreach (Folder::files(JPATH_ROOT.'/media/templates/site/' . $this->template . '/css', 'custom', true, true) as $i => $file) {
+    $wa->registerAndUseStyle(pathinfo($file, PATHINFO_FILENAME),  Uri::root(true) . 'media/templates/site/' . $this->template . '/css' . '/' . basename($file), array('version' => 'auto'));
+}
 // load Joomla 4 system icons
 $wa->registerAndUseStyle('icons', 'media/system/css/joomla-fontawesome.min.css', array('version' => 'auto'));
 $wa->registerAndUseStyle('template-css', Uri::root(true) . 'media/templates/site/' . $this->template . '/css/template.css', array('version' => 'auto'));
