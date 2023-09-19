@@ -20,7 +20,7 @@ As seguintes configurações são possíveis em seu administrador:
 - [x] 7. Permite escolher o logo e favicon
 - [x] 8. Permite arquivos personalizados de css e js basta adicioná-los à pasta css com nome custom-qualquercoisa.css e customfont-qualquercoisa.csse e, na pasta js, custom-qualquercoisa.js
 
-Por padrão, o template vem com Bootstrap e Font Awesome do Joomla 4, mas você pode escolher usar o Bootstrap e o Font Awesome do template, ou nenhum deles.
+Por padrão, o template vem com Bootstrap e Font Awesome do Joomla, mas você pode escolher usar o Bootstrap e o Font Awesome do template, ou nenhum deles.
 
 
 
@@ -45,5 +45,5 @@ The following settings are possible in your admin:
 - [x] 7. Allows you to choose the logo and favicon
 - [x] 8. Allows custom css and js files, just add them to the css folder with the name custom-qualquercoisa.css and customfont-qualquercoisa.csse and, in the js folder, custom-qualquercoisa.js
 
-By default, the template comes with Joomla 4's Bootstrap and Font Awesome, but you can choose to use the template's Bootstrap and Font Awesome, or neither.
+By default, the template comes with Joomla's Bootstrap and Font Awesome, but you can choose to use the template's Bootstrap and Font Awesome, or neither.
 
