@@ -37,7 +37,8 @@ include_once JPATH_THEMES . '/minimalista/logic.php';
                                 aria-label="Close"></button>
                         </div>
                         <div class="offcanvas-body">
-                            <jdoc:include type="modules" name="menu" style="<?php echo $this->template . '-default'; ?>" />
+                            <jdoc:include type="modules" name="menu"
+                                style="<?php echo $this->template . '-default'; ?>" />
                         </div>
                     </div>
                 </div>
