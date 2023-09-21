@@ -1,5 +1,6 @@
 <?php
 defined('_JEXEC') or die;
+use Joomla\CMS\Language\Text;
 include_once JPATH_THEMES . '/minimalista/logic.php';
 ?>
 <!doctype html>
@@ -104,7 +105,7 @@ include_once JPATH_THEMES . '/minimalista/logic.php';
         </div>
     </footer>
     <?php echo $endBodyCode;?>
-    <?php if ($this->params->get('backTop') == 1) : ?>
+    <?php if ($backtotop) : ?>
         <button href="#top" id="back-top" class="back-to-top-link" aria-label="<?php echo Text::_('TPL_MINIMALISTA_BACKTOTOP'); ?>">
             <i class="fas fa-arrow-up" aria-hidden="true"></i>
         </button>

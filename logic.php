@@ -56,6 +56,7 @@ $custom_css_head = $templateParams->get('custom_css_head', '');
 $custom_script_head = $templateParams->get('custom_script_head', '');
 $startBodyCode  = $templateParams->get('custom_script_startbody', '');
 $endBodyCode  = $templateParams->get('custom_script_endbody', '');
+$backtotop = $templateParams->get('backtotop', '1');
 $doc->addStyleDeclaration($custom_css_head);
 $doc->addScriptDeclaration($custom_script_head);
 // Generate CSS classes for the <body> element

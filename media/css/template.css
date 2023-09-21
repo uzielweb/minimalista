@@ -9,3 +9,41 @@
 .nav-link {
     cursor: pointer;
 }
+/* Style the back-to-top button */
+.back-to-top-link {
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+    display: none;
+    background-color: #007bff;
+    color: #fff;
+    border: none;
+    border-radius: 50%;
+    width: 50px;
+    height: 50px;
+    font-size: 24px;
+    text-align: center;
+    cursor: pointer;
+    transition: background-color 0.3s, transform 0.3s;
+}
+
+.back-to-top-link i {
+    line-height: 50px;
+}
+
+/* Show the button when the user scrolls down 300px */
+@media (min-width: 768px) {
+    .back-to-top-link.show {
+        display: block;
+    }
+}
+
+/* Change button background color on hover */
+.back-to-top-link:hover {
+    background-color: #0056b3;
+}
+
+/* Button animation on hover */
+.back-to-top-link:hover {
+    transform: scale(1.1);
+}

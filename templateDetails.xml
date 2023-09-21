@@ -47,11 +47,17 @@
     <config>
         <fields name="params">
             <fieldset name="options">
-                <!-- logo, favicon -->
+                <!-- logo-->
                 <field name="logo" type="media" label="TPL_MINIMALISTA_LOGO" description="TPL_MINIMALISTA_LOGO_DESC" />
                 <!-- logo alt -->
                 <field name="logo_alt" type="text" label="TPL_MINIMALISTA_LOGO_ALT" description="TPL_MINIMALISTA_LOGO_ALT_DESC" />
+                   <!-- favicon-->
                 <field name="favicon" type="media" label="TPL_MINIMALISTA_FAVICON" description="TPL_MINIMALISTA_FAVICON_DESC" />
+              <!-- enable backTop -->
+            <field name="backtotop"  type="radio" label="TPL_MINIMALISTA_ENABLE_BACK_TO_TOP" description="TPL_MINIMALISTA_ENABLE_BACK_TO_TOP_DESC" default="1" class="btn-group btn-group-yesno">
+                    <option value="1">JYES</option>
+                    <option value="0">JNO</option>
+                </field>
                 <field name="container-fluid" type="radio" label="TPL_MINIMALISTA_CONTAINER_FLUID" description="TPL_MINIMALISTA_CONTAINER_FLUID_DESC" default="0" class="btn-group btn-group-yesno">
                     <option value="1">JYES</option>
                     <option value="0">JNO</option>
@@ -95,16 +101,12 @@
                 </field>
 <!-- custom CSS to head -->
 <field name="custom_css_head" type="editor" editor="codemirror" label="TPL_MINIMALISTA_CUSTOM_CSS_TO_HEAD" description="TPL_MINIMALISTA_CUSTOM_CSS_TO_HEAD_DESC" rows="5" />
-
 <!-- custom script to head -->
 <field name="custom_script_head" type="editor" editor="codemirror" label="TPL_MINIMALISTA_CUSTOM_SCRIPT_TO_HEAD" description="TPL_MINIMALISTA_CUSTOM_SCRIPT_TO_HEAD_DESC" rows="5" />
-
 <!-- custom script to startbody -->
 <field name="custom_script_startbody" type="editor" editor="codemirror" label="TPL_MINIMALISTA_CUSTOM_SCRIPT_TO_STARTBODY" description="TPL_MINIMALISTA_CUSTOM_SCRIPT_TO_STARTBODY_DESC" rows="5" />
-
 <!-- custom script to endbody -->
 <field name="custom_script_endbody" type="editor" editor="codemirror" label="TPL_MINIMALISTA_CUSTOM_SCRIPT_TO_ENDBODY" description="TPL_MINIMALISTA_CUSTOM_SCRIPT_TO_ENDBODY_DESC" rows="5" />
-
             </fieldset>
         </fields>
     </config>

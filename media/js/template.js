@@ -1,42 +1,47 @@
-//  jquery add class on scroll
-
+// jQuery function to add a class to the 'header' element when the page is scrolled
 jQuery(document).ready(function ($) {
     $(window).scroll(function () {
+        // Check if the user has scrolled more than 1 pixel from the top
         if ($(this).scrollTop() > 1) {
-            $('header').addClass("sticky");
+            $('header').addClass("sticky"); // Add the "sticky" class to the 'header' element
         }
         else {
-            $('header').removeClass("sticky");
+            $('header').removeClass("sticky"); // Remove the "sticky" class from the 'header' element
         }
     });
-    //
-    // add icon to deeeper parent
 
+    // Code for adding an icon to a deeper parent (comment missing)
 
-    // activate dropdown menu on hover for bootstrap
-
-
+    // Code to activate dropdown menu on hover for elements with class 'deeper.parent'
     $('.deeper.parent').hover(function () {
+        // Show the dropdown menu with a delay and animation
         $(this).children('.dropdown-menu').stop(true, true).delay(200).fadeIn(200);
     }, function () {
+        // Hide the dropdown menu with a delay and animation
         $(this).children('.dropdown-menu').stop(true, true).delay(200).fadeOut(200);
     });
-    document.addEventListener('DOMContentLoaded', function () {
-        const backToTopButton = document.getElementById('back-top');
-    
-        if (backToTopButton) {
-            backToTopButton.addEventListener('click', function (event) {
-                event.preventDefault();
-                scrollToTop();
-            });
+
+    // jQuery code that back to top 
+    // Hide the button initially
+    $("#back-top").hide();
+
+    // Show/hide the button on scroll
+    $(window).scroll(function () {
+        if ($(this).scrollTop() > 300) {
+            $("#back-top").fadeIn();
+        } else {
+            $("#back-top").fadeOut();
         }
-    
-        function scrollToTop() {
-            // Scroll to the top smoothly
-            window.scrollTo({
-                top: 0,
-                behavior: 'smooth'
-            });
-        }
+    });
+
+    // Scroll to top when the button is clicked
+    $("#back-top").click(function () {
+        $("html, body").animate(
+            {
+                scrollTop: 0
+            },
+            500 // Scroll duration in milliseconds
+        );
+        return false;
     });
 });
