@@ -92,8 +92,7 @@
                     <option value="0">JNO</option>
                  </field>
                 <!-- offcanvas_direction -->
-                <field type="spacer" name="offcanvas_direction_spacer" label="TPL_MINIMALISTA_OFFCANVAS_DIRECTION_SPACER" />
-                <field name="offcanvas_direction" type="radio" label="TPL_MINIMALISTA_OFFCANVAS_DIRECTION" description="TPL_MINIMALISTA_OFFCANVAS_DIRECTION_DESC" default="start" class="btn-group">
+                 <field name="offcanvas_direction" type="radio" label="TPL_MINIMALISTA_OFFCANVAS_DIRECTION" description="TPL_MINIMALISTA_OFFCANVAS_DIRECTION_DESC" default="start" class="btn-group">
                     <option value="start">TPL_MINIMALISTA_OFFCANVAS_DIRECTION_RIGHT</option>
                     <option value="end">TPL_MINIMALISTA_OFFCANVAS_DIRECTION_LEFT</option>
                     <option value="top">TPL_MINIMALISTA_OFFCANVAS_DIRECTION_TOP</option>
