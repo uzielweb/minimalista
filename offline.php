@@ -1,6 +1,6 @@
 <?php
 defined('_JEXEC') or die;
-include_once JPATH_THEMES . '/' . $this->template . '/logic.php';
+include_once JPATH_THEMES . 'minimalista/logic.php';
 use Joomla\CMS\Language\Text;
 
 use Joomla\CMS\Helper\AuthenticationHelper;
