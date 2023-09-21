@@ -10,6 +10,7 @@ include_once JPATH_THEMES . '/minimalista/logic.php';
     <jdoc:include type="scripts" />
 </head>
 <body class="<?php echo $bodyClasses; ?>">
+<?php echo $startBodyCode;?>
     <!-- head with menu, main, sidebars, footer -->
     <header class="header">
         <div class="container<?php echo $containerFluid; ?>">
@@ -102,5 +103,13 @@ include_once JPATH_THEMES . '/minimalista/logic.php';
             <?php endif;?>
         </div>
     </footer>
+    <?php echo $endBodyCode;?>
+    <?php if ($this->params->get('backTop') == 1) : ?>
+        <button href="#top" id="back-top" class="back-to-top-link" aria-label="<?php echo Text::_('TPL_MINIMALISTA_BACKTOTOP'); ?>">
+            <i class="fas fa-arrow-up" aria-hidden="true"></i>
+        </button>
+    <?php endif; ?>
+
+    <jdoc:include type="modules" name="debug" style="none" />
 </body>
 </html>

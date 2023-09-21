@@ -9,6 +9,7 @@ Nele você encontra os itens básicos para um bom template, como:
 - [x] 3. Um arquivo com toda a lógica necessária para o tema dentro do arquivo logic.php
 - [x] 4. arquivos básicos para a página de erros, offline e o layout de component (chamado pela ?view=component)
 - [x] 5. Possui um menu offcanvas básico
+- [x] 6. Custom code is possible
 
 As seguintes configurações são possíveis em seu administrador:
 - [x] 1. Largura padrão das colunas laterais (esquerda e direita) em bootstrap
@@ -19,6 +20,7 @@ As seguintes configurações são possíveis em seu administrador:
 - [x] 6. Permite escolher a posição do botão de fechamento e de abertura do offcanvas
 - [x] 7. Permite escolher o logo e favicon
 - [x] 8. Permite arquivos personalizados de css e js basta adicioná-los à pasta css com nome custom-qualquercoisa.css e customfont-qualquercoisa.csse e, na pasta js, custom-qualquercoisa.js
+- [x] 9. You can add custom code to head, css to head, custom code after <body> tag and before </body> tag
 
 Por padrão, o template vem com Bootstrap e Font Awesome do Joomla, mas você pode escolher usar o Bootstrap e o Font Awesome do template, ou nenhum deles.
 
@@ -34,6 +36,7 @@ There you will find the basic items for a good template, such as:
 - [x] 3. A file with all the logic needed for the theme inside the logic.php file
 - [x] 4. basic files for the error page, offline and the component layout (called by ?view=component)
 - [x] 5. It has a basic offcanvas menu
+- [x] 6. Custom code is possible
 
 The following settings are possible in your admin:
 - [x] 1. Default width of side columns (left and right) in bootstrap
@@ -44,6 +47,7 @@ The following settings are possible in your admin:
 - [x] 6. Allows you to choose the position of the offcanvas closing and opening button
 - [x] 7. Allows you to choose the logo and favicon
 - [x] 8. Allows custom css and js files, just add them to the css folder with the name custom-qualquercoisa.css and customfont-qualquercoisa.csse and, in the js folder, custom-qualquercoisa.js
+- [x] 9. You can add custom code to head, css to head, custom code after <body> tag and before </body> tag
 
 By default, the template comes with Joomla's Bootstrap and Font Awesome, but you can choose to use the template's Bootstrap and Font Awesome, or neither.
 

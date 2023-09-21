@@ -21,4 +21,22 @@ jQuery(document).ready(function ($) {
     }, function () {
         $(this).children('.dropdown-menu').stop(true, true).delay(200).fadeOut(200);
     });
+    document.addEventListener('DOMContentLoaded', function () {
+        const backToTopButton = document.getElementById('back-top');
+    
+        if (backToTopButton) {
+            backToTopButton.addEventListener('click', function (event) {
+                event.preventDefault();
+                scrollToTop();
+            });
+        }
+    
+        function scrollToTop() {
+            // Scroll to the top smoothly
+            window.scrollTo({
+                top: 0,
+                behavior: 'smooth'
+            });
+        }
+    });
 });
