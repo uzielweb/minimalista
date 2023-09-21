@@ -18,9 +18,11 @@
         <folder>html</folder>
     </files>
     <media destination="templates/site/minimalista" folder="media">
-        <folder>js</folder>
         <folder>css</folder>
         <folder>images</folder>
+        <folder>js</folder>
+        <folder>svgs</folder>
+        <folder>webfonts</folder>
     </media>
     <positions>
         <position>topbar</position>
@@ -47,6 +49,8 @@
             <fieldset name="options">
                 <!-- logo, favicon -->
                 <field name="logo" type="media" label="TPL_MINIMALISTA_LOGO" description="TPL_MINIMALISTA_LOGO_DESC" />
+                <!-- logo alt -->
+                <field name="logo_alt" type="text" label="TPL_MINIMALISTA_LOGO_ALT" description="TPL_MINIMALISTA_LOGO_ALT_DESC" />
                 <field name="favicon" type="media" label="TPL_MINIMALISTA_FAVICON" description="TPL_MINIMALISTA_FAVICON_DESC" />
                 <field name="container-fluid" type="radio" label="TPL_MINIMALISTA_CONTAINER_FLUID" description="TPL_MINIMALISTA_CONTAINER_FLUID_DESC" default="0" class="btn-group btn-group-yesno">
                     <option value="1">JYES</option>
