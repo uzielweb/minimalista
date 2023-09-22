@@ -1,7 +1,7 @@
 <?php
 /**
  * @package     Joomla.Site
- * @subpackage  Templates.minmalista
+ * @subpackage  Templates.minimalista
  *
  * @copyright   (C) 2017 Open Source Matters, Inc. <https://www.joomla.org>
  * @license     GNU General Public License version 2 or later; see LICENSE.txt
@@ -14,16 +14,7 @@ use Joomla\CMS\Factory;
 use Joomla\CMS\HTML\HTMLHelper;
 use Joomla\CMS\Uri\Uri;
 use Joomla\CMS\Language\Text;
-use Joomla\CMS\Uri\Uri;
-// Check Joomla version
-if (version_compare(JVERSION, '4.0', '>=') || version_compare(JVERSION, '5.0', '<=')) {
-    // Joomla 4
-    use Joomla\CMS\Filesystem\Folder;
-} elseif (version_compare(JVERSION, '5.0', '>=') {
-    // Joomla 5 or up
-    use Joomla\Filesystem\Folder;
-}
-
+use Joomla\Filesystem\Folder;
 
 /** @var Joomla\CMS\Document\HtmlDocument $this */
 

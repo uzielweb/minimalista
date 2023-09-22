@@ -6,27 +6,23 @@
  * @copyright   (C) 2017 Open Source Matters, Inc. <https://www.joomla.org>
  * @license     GNU General Public License version 2 or later; see LICENSE.txt
  */
-
 defined('_JEXEC') or die;
-
-use Joomla\CMS\Factory;
-use Joomla\CMS\HTML\HTMLHelper;
 use Joomla\CMS\Language\Text;
 use Joomla\CMS\Uri\Uri;
-
 /** @var Joomla\CMS\Document\HtmlDocument $this */
-
 include_once JPATH_THEMES . '/minimalista/logic.php';
 ?>
 <!doctype html>
 <html lang="<?php echo $this->language; ?>" dir="<?php echo $this->direction; ?>">
+
 <head>
     <jdoc:include type="metas" />
     <jdoc:include type="styles" />
     <jdoc:include type="scripts" />
 </head>
+
 <body class="<?php echo $bodyClasses; ?>">
-<?php echo $startBodyCode;?>
+    <?php echo $startBodyCode; ?>
     <!-- head with menu, main, sidebars, footer -->
     <header class="header">
         <div class="container<?php echo $containerFluid; ?>">
@@ -119,13 +115,14 @@ include_once JPATH_THEMES . '/minimalista/logic.php';
             <?php endif;?>
         </div>
     </footer>
-    <?php echo $endBodyCode;?>
-    <?php if ($backtotop) : ?>
-        <button href="#top" id="back-top" class="back-to-top-link" aria-label="<?php echo Text::_('TPL_MINIMALISTA_BACKTOTOP'); ?>">
-            <i class="fas fa-arrow-up" aria-hidden="true"></i>
-        </button>
-    <?php endif; ?>
-
+    <?php echo $endBodyCode; ?>
+    <?php if ($backtotop): ?>
+    <button href="#top" id="back-top" class="back-to-top-link"
+        aria-label="<?php echo Text::_('TPL_MINIMALISTA_BACKTOTOP'); ?>">
+        <i class="fas fa-arrow-up" aria-hidden="true"></i>
+    </button>
+    <?php endif;?>
     <jdoc:include type="modules" name="debug" style="none" />
 </body>
+
 </html>

@@ -14,7 +14,6 @@ use Joomla\CMS\HTML\HTMLHelper;
 use Joomla\CMS\Language\Text;
 use Joomla\CMS\Uri\Uri;
 use Joomla\CMS\Helper\AuthenticationHelper;
-use Joomla\CMS\Uri\Uri;
 
 /** @var Joomla\CMS\Document\HtmlDocument $this */
 
@@ -29,7 +28,7 @@ $extraButtons = AuthenticationHelper::getLoginButtons('form-login');
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <jdoc:include type="head" />
     </head>
-    <body class="<?php echo implode(' ', $bodyClasses); ?>">
+    <body class="<?php echo $bodyClasses ?>">
     <jdoc:include type="message" />
     <div class="container">
         <div class="row">
