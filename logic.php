@@ -13,9 +13,17 @@ defined('_JEXEC') or die;
 use Joomla\CMS\Factory;
 use Joomla\CMS\HTML\HTMLHelper;
 use Joomla\CMS\Uri\Uri;
-use Joomla\CMS\Filesystem\Folder;
 use Joomla\CMS\Language\Text;
 use Joomla\CMS\Uri\Uri;
+// Verifica a versão do Joomla
+if (version_compare(JVERSION, '4.0', '>=') || version_compare(JVERSION, '5.0', '<=')) {
+    // Joomla 4 ou superior
+    use Joomla\CMS\Filesystem\Folder;
+} elseif (version_compare(JVERSION, '5.0', '<=') {
+    // Joomla 3 ou anterior
+    use Joomla\Filesystem\Folder;
+}
+
 
 /** @var Joomla\CMS\Document\HtmlDocument $this */
 
