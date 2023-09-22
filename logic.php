@@ -15,12 +15,12 @@ use Joomla\CMS\HTML\HTMLHelper;
 use Joomla\CMS\Uri\Uri;
 use Joomla\CMS\Language\Text;
 use Joomla\CMS\Uri\Uri;
-// Verifica a versão do Joomla
+// Check Joomla version
 if (version_compare(JVERSION, '4.0', '>=') || version_compare(JVERSION, '5.0', '<=')) {
-    // Joomla 4 ou superior
+    // Joomla 4
     use Joomla\CMS\Filesystem\Folder;
-} elseif (version_compare(JVERSION, '5.0', '<=') {
-    // Joomla 3 ou anterior
+} elseif (version_compare(JVERSION, '5.0', '>=') {
+    // Joomla 5 or up
     use Joomla\Filesystem\Folder;
 }
 
