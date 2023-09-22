@@ -8,6 +8,7 @@
     <copyright>(C) 2023 Uziel - Via Ponto Mega</copyright>
     <description>TPL_MINIMALISTA_XML_DESCRIPTION</description>
     <inheritable>1</inheritable>
+    <license>GNU General Public License version 2 or later; see LICENSE.txt</license>
     <files>
         <filename>component.php</filename>
         <filename>error.php</filename>
