@@ -116,4 +116,9 @@
         <language tag="pt-BR">pt-BR/tpl_minimalista.ini</language>
         <language tag="pt-BR">pt-BR/tpl_minimalista.sys.ini</language>
     </languages>
+        <updateservers>
+        <server type="extension" 
+            priority="1" 
+            name="minimalista">https://raw.githubusercontent.com/uzielweb/minimalista/main/updates.xml</server>
+    </updateservers>
 </extension>
