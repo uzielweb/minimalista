@@ -1,4 +1,5 @@
 <?php
+@license     GNU General Public License version 2 or later; see LICENSE.txt
 defined('_JEXEC') or die;
 include_once JPATH_THEMES . '/minimalista/logic.php';
 use Joomla\CMS\Language\Text;
