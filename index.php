@@ -59,6 +59,12 @@ include_once JPATH_THEMES . '/minimalista/logic.php';
         </div>
     </header>
     <main class="main">
+<div class="container<?php echo $containerFluid; ?>">
+            <?php if ($this->countModules('slideshow')): ?>
+            <div class="slideshow row">
+                <jdoc:include type="modules" name="slideshow" style="<?php echo $this->template . '-default'; ?>" />
+            </div>
+            <?php endif;?>
         <div class="container<?php echo $containerFluid; ?>">
             <?php if ($this->countModules('main-top')): ?>
             <div class="main-top row">
