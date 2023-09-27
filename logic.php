@@ -205,3 +205,5 @@ if (is_dir($customJsDirectoryCurrentTemplate)) {
     // Handle the case where the directory does not exist
     // You can log an error or take appropriate action here
 }
+
+$wa->registerAndUseStyle($this->template . 'responsive-css', Uri::root(true) . 'media/templates/site/' . $this->template . '/css/responsive.css', array('version' => 'auto'));
