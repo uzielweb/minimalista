@@ -64,6 +64,44 @@ include_once JPATH_THEMES . '/minimalista/logic.php';
                 <jdoc:include type="modules" name="slideshow" style="<?php echo $this->template . '-default'; ?>" />
             </div>
             <?php endif;?>
+ <?php
+$sections = $templateParams->get('sections', '');
+
+foreach ($sections as $section) {
+    $positions = $section->positions;
+
+    // Flag to check if any module is assigned to any position within this section
+    $hasModules = false;
+
+    // Check each position for modules
+    foreach ($positions as $position) {
+        if ($this->countModules($position->position) > 0) {
+            $hasModules = true;
+            break; // Exit the loop if at least one module is found
+        }
+    }
+
+    // Check if there are modules assigned to any position within this section
+    if ($hasModules) {
+        ?>
+        <section id="<?php echo strtolower($section->section); ?>" class="<?php echo $section->section_class; ?>">
+            <div class="<?php echo $section->containerwidth; ?>">
+                <div class="row">
+                    <?php foreach ($positions as $position): ?>
+                    <div class="<?php echo strtolower($position->position); ?> col-<?php echo $position->width; ?>">
+                        <div class="row">
+                            <jdoc:include type="modules" name="<?php echo $position->position; ?>" style="="<?php echo $this->template . '-default'; ?>" />
+                        </div>
+                    </div>
+                    <?php endforeach; ?>
+                </div>
+            </div>
+        </section>
+        <?php
+    }
+}
+?>
+
         <div class="container<?php echo $containerFluid; ?>">
             <?php if ($this->countModules('main-top')): ?>
             <div class="main-top row">
