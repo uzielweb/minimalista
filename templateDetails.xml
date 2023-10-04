@@ -52,10 +52,10 @@
                 <field name="logo" type="media" label="TPL_MINIMALISTA_LOGO" description="TPL_MINIMALISTA_LOGO_DESC" />
                 <!-- logo alt -->
                 <field name="logo_alt" type="text" label="TPL_MINIMALISTA_LOGO_ALT" description="TPL_MINIMALISTA_LOGO_ALT_DESC" />
-                   <!-- favicon-->
+                <!-- favicon-->
                 <field name="favicon" type="media" label="TPL_MINIMALISTA_FAVICON" description="TPL_MINIMALISTA_FAVICON_DESC" />
-              <!-- enable backTop -->
-            <field name="backtotop"  type="radio" label="TPL_MINIMALISTA_ENABLE_BACK_TO_TOP" description="TPL_MINIMALISTA_ENABLE_BACK_TO_TOP_DESC" default="1" class="btn-group btn-group-yesno">
+                <!-- enable backTop -->
+                <field name="backtotop" type="radio" label="TPL_MINIMALISTA_ENABLE_BACK_TO_TOP" description="TPL_MINIMALISTA_ENABLE_BACK_TO_TOP_DESC" default="1" class="btn-group btn-group-yesno">
                     <option value="1">JYES</option>
                     <option value="0">JNO</option>
                 </field>
@@ -91,22 +91,55 @@
                 <field name="load_jquery_from_template" type="radio" label="TPL_MINIMALISTA_LOAD_JQUERY_FROM_TEMPLATE" description="TPL_MINIMALISTA_LOAD_JQUERY_FROM_TEMPLATE_DESC" default="0" class="btn-group btn-group-yesno">
                     <option value="1">JYES</option>
                     <option value="0">JNO</option>
-                 </field>
+                </field>
                 <!-- offcanvas_direction -->
-                 <field name="offcanvas_direction" type="radio" label="TPL_MINIMALISTA_OFFCANVAS_DIRECTION" description="TPL_MINIMALISTA_OFFCANVAS_DIRECTION_DESC" default="start" class="btn-group">
+                <field name="offcanvas_direction" type="radio" label="TPL_MINIMALISTA_OFFCANVAS_DIRECTION" description="TPL_MINIMALISTA_OFFCANVAS_DIRECTION_DESC" default="start" class="btn-group">
                     <option value="start">TPL_MINIMALISTA_OFFCANVAS_DIRECTION_RIGHT</option>
                     <option value="end">TPL_MINIMALISTA_OFFCANVAS_DIRECTION_LEFT</option>
                     <option value="top">TPL_MINIMALISTA_OFFCANVAS_DIRECTION_TOP</option>
                     <option value="bottom">TPL_MINIMALISTA_OFFCANVAS_DIRECTION_BOTTOM</option>
                 </field>
-<!-- custom CSS to head -->
-<field name="custom_css_head" type="editor" editor="codemirror" label="TPL_MINIMALISTA_CUSTOM_CSS_TO_HEAD" description="TPL_MINIMALISTA_CUSTOM_CSS_TO_HEAD_DESC" rows="5" />
-<!-- custom script to head -->
-<field name="custom_script_head" type="editor" editor="codemirror" label="TPL_MINIMALISTA_CUSTOM_SCRIPT_TO_HEAD" description="TPL_MINIMALISTA_CUSTOM_SCRIPT_TO_HEAD_DESC" rows="5" />
-<!-- custom script to startbody -->
-<field name="custom_script_startbody" type="editor" editor="codemirror" label="TPL_MINIMALISTA_CUSTOM_SCRIPT_TO_STARTBODY" description="TPL_MINIMALISTA_CUSTOM_SCRIPT_TO_STARTBODY_DESC" rows="5" />
-<!-- custom script to endbody -->
-<field name="custom_script_endbody" type="editor" editor="codemirror" label="TPL_MINIMALISTA_CUSTOM_SCRIPT_TO_ENDBODY" description="TPL_MINIMALISTA_CUSTOM_SCRIPT_TO_ENDBODY_DESC" rows="5" />
+                <!-- custom CSS to head -->
+                <field name="custom_css_head" type="editor" editor="codemirror" label="TPL_MINIMALISTA_CUSTOM_CSS_TO_HEAD" description="TPL_MINIMALISTA_CUSTOM_CSS_TO_HEAD_DESC" rows="5" />
+                <!-- custom script to head -->
+                <field name="custom_script_head" type="editor" editor="codemirror" label="TPL_MINIMALISTA_CUSTOM_SCRIPT_TO_HEAD" description="TPL_MINIMALISTA_CUSTOM_SCRIPT_TO_HEAD_DESC" rows="5" />
+                <!-- custom script to startbody -->
+                <field name="custom_script_startbody" type="editor" editor="codemirror" label="TPL_MINIMALISTA_CUSTOM_SCRIPT_TO_STARTBODY" description="TPL_MINIMALISTA_CUSTOM_SCRIPT_TO_STARTBODY_DESC" rows="5" />
+                <!-- custom script to endbody -->
+                <field name="custom_script_endbody" type="editor" editor="codemirror" label="TPL_MINIMALISTA_CUSTOM_SCRIPT_TO_ENDBODY" description="TPL_MINIMALISTA_CUSTOM_SCRIPT_TO_ENDBODY_DESC" rows="5" />
+            </fieldset>
+            <fieldset name="positions">
+                <field name="sections" type="subform" label="TPL_MINIMALISTA_SECTIONS" description="TPL_MINIMALISTA_SECTIONS_DESC" multiple="true">
+                    <form>
+                        <field name="section" type="text" label="TPL_MINIMALISTA_SECTION" description="TPL_MINIMALISTA_SECTION_DESC" />
+                        <field name="section_class" type="text" label="TPL_MINIMALISTA_SECTION_CLASS" description="TPL_MINIMALISTA_SECTION_CLASS_DESC" />
+                        <field name="containerwidth" type="list" default="container" label="TPL_MINIMALISTA_CONTAINERWIDTH" description="TPL_MINIMALISTA_CONTAINERWIDTH_DESC">
+                            <option value="container">TPL_MINIMALISTA_CONTAINER</option>
+                            <option value="container-fluid">TPL_MINIMALISTA_CONTAINER_FLUID</option>
+                        </field>
+                        <field name="positions" type="subform" label="TPL_MINIMALISTA_POSITIONS" description="TPL_MINIMALISTA_POSITIONS_DESC" multiple="true" layout="joomla.form.field.subform.repeatable-table">
+                            <form>
+                                <field name="position" type="text" label="TPL_MINIMALISTA_POSITION" description="TPL_MINIMALISTA_POSITION_DESC" />
+                                <field name="width" type="list" default="12" label="TPL_MINIMALISTA_WIDTH" description="TPL_MINIMALISTA_WIDTH_DESC">
+                                    <option value="">TPL_MINIMALISTA_WIDTH_EMPTY</option>
+                                    <option value="auto">TPL_MINIMALISTA_WIDTH_AUTO</option>
+                                    <option value="1">1</option>
+                                    <option value="2">2</option>
+                                    <option value="3">3</option>
+                                    <option value="4">4</option>
+                                    <option value="5">5</option>
+                                    <option value="6">6</option>
+                                    <option value="7">7</option>
+                                    <option value="8">8</option>
+                                    <option value="9">9</option>
+                                    <option value="10">10</option>
+                                    <option value="11">11</option>
+                                    <option value="12">12</option>
+                                </field>
+                            </form>
+                        </field>
+                    </form>
+                </field>
             </fieldset>
         </fields>
     </config>
@@ -116,9 +149,7 @@
         <language tag="pt-BR">pt-BR/tpl_minimalista.ini</language>
         <language tag="pt-BR">pt-BR/tpl_minimalista.sys.ini</language>
     </languages>
-        <updateservers>
-        <server type="extension" 
-            priority="1" 
-            name="minimalista">https://raw.githubusercontent.com/uzielweb/minimalista/main/updates.xml</server>
+    <updateservers>
+        <server type="extension" priority="1" name="minimalista">https://raw.githubusercontent.com/uzielweb/minimalista/main/updates.xml</server>
     </updateservers>
 </extension>
