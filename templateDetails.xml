@@ -143,7 +143,7 @@
                     </form>
                 </field>
                  <!-- Add a field to define custom sections after the component section -->
-                 <field name="sectionsaftercomponent" type="subform" label="Custom Sections After Component Section" multiple="true">
+                 <field name="sectionsaftercomponent" type="subform" label="TPL_MINIMALISTA_SECTIONS_AFTER_COMPONENT" description="TPL_MINIMALISTA_SECTIONS_AFTER_COMPONENT_DESC" multiple="true">
                     <form>
                         <field name="section" type="text" label="TPL_MINIMALISTA_SECTION" description="TPL_MINIMALISTA_SECTION_DESC" />
                         <field name="section_class" type="text" label="TPL_MINIMALISTA_SECTION_CLASS" description="TPL_MINIMALISTA_SECTION_CLASS_DESC" />
