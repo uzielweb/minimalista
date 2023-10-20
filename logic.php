@@ -91,7 +91,7 @@ $sidebarWidth = $defaultBoostrapDesktop . '-' . $templateParams->get('sidebar-wi
 
 // Load jQuery based on template or Joomla configuration
 if ($templateParams->get('load_jquery_from_template') == 1) {
-    $wa->registerAndUseScript('jquery_from_template', Uri::root(true) . 'media/templates/site/' . $templateOriginal . '/js/jquery-3.7.0.min.js', array('version' => 'auto'));
+    $wa->registerAndUseScript('jquery_from_template', Uri::root(true) . 'media/templates/site/' . $templateOriginal . '/js/jquery-3.7.1.min.js', array('version' => 'auto'));
     $wa->registerAndUseScript('jquery-noconflict', Uri::root(true) . 'media/templates/site/' . $templateOriginal . '/js/jquery-noconflict.js', array('version' => 'auto'));
     $wa->registerAndUseScript('jquery_migrate_from_template', Uri::root(true) . 'media/templates/site/' . $templateOriginal . '/js/jquery-migrate-3.4.0.min.js', array('version' => 'auto'));
 } else {

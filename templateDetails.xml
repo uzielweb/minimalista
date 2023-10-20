@@ -136,6 +136,42 @@
                                     <option value="11">11</option>
                                     <option value="12">12</option>
                                 </field>
+                                <!-- customclass -->
+                                <field name="customclass" type="text" label="TPL_MINIMALISTA_CUSTOMCLASS" description="TPL_MINIMALISTA_CUSTOMCLASS_DESC" />
+                            </form>
+                        </field>
+                    </form>
+                </field>
+                 <!-- Add a field to define custom sections after the component section -->
+                 <field name="sectionsaftercomponent" type="subform" label="Custom Sections After Component Section" multiple="true">
+                    <form>
+                        <field name="section" type="text" label="TPL_MINIMALISTA_SECTION" description="TPL_MINIMALISTA_SECTION_DESC" />
+                        <field name="section_class" type="text" label="TPL_MINIMALISTA_SECTION_CLASS" description="TPL_MINIMALISTA_SECTION_CLASS_DESC" />
+                        <field name="containerwidth" type="list" default="container" label="TPL_MINIMALISTA_CONTAINERWIDTH" description="TPL_MINIMALISTA_CONTAINERWIDTH_DESC">
+                            <option value="container">TPL_MINIMALISTA_CONTAINER</option>
+                            <option value="container-fluid">TPL_MINIMALISTA_CONTAINER_FLUID</option>
+                        </field>
+                        <field name="positions" type="subform" label="TPL_MINIMALISTA_POSITIONS" description="TPL_MINIMALISTA_POSITIONS_DESC" multiple="true" layout="joomla.form.field.subform.repeatable-table">
+                            <form>
+                                <field name="position" type="text" label="TPL_MINIMALISTA_POSITION" description="TPL_MINIMALISTA_POSITION_DESC" />
+                                <field name="width" type="list" default="12" label="TPL_MINIMALISTA_WIDTH" description="TPL_MINIMALISTA_WIDTH_DESC">
+                                    <option value="">TPL_MINIMALISTA_WIDTH_EMPTY</option>
+                                    <option value="auto">TPL_MINIMALISTA_WIDTH_AUTO</option>
+                                    <option value="1">1</option>
+                                    <option value="2">2</option>
+                                    <option value="3">3</option>
+                                    <option value="4">4</option>
+                                    <option value="5">5</option>
+                                    <option value="6">6</option>
+                                    <option value="7">7</option>
+                                    <option value="8">8</option>
+                                    <option value="9">9</option>
+                                    <option value="10">10</option>
+                                    <option value="11">11</option>
+                                    <option value="12">12</option>
+                                </field>
+                                <!-- customclass -->
+                                <field name="customclass" type="text" label="TPL_MINIMALISTA_CUSTOMCLASS" description="TPL_MINIMALISTA_CUSTOMCLASS_DESC" />
                             </form>
                         </field>
                     </form>

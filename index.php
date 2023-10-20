@@ -47,8 +47,7 @@ include_once JPATH_THEMES . '/minimalista/logic.php';
                                 aria-label="Close"></button>
                         </div>
                         <div class="offcanvas-body">
-                            <jdoc:include type="modules" name="menu"
-                                style="<?php echo $this->template . '-default'; ?>" />
+                            <jdoc:include type="modules" name="menu" style="<?php echo $this->template . '-default'; ?>" />
                         </div>
                     </div>
                 </div>
@@ -63,41 +62,44 @@ include_once JPATH_THEMES . '/minimalista/logic.php';
             </div>
             <?php endif;?>
             <?php
+<?php
+// Sections before the component section
 $sections = $templateParams->get('sections', '');
+
 if ($sections) {
     foreach ($sections as $section) {
         $positions = $section->positions;
-        // Flag to check if any module is assigned to any position within this section
         $hasModules = false;
-        // Check each position for modules
+
         foreach ($positions as $position) {
+            // Check if any module is assigned to the position within this section
             if ($this->countModules($position->position) > 0) {
                 $hasModules = true;
                 break; // Exit the loop if at least one module is found
             }
         }
-        // Check if there are modules assigned to any position within this section
+
         if ($hasModules) {
-            ?>
-            <section id="<?php echo strtolower($section->section); ?>" class="<?php echo $section->section_class; ?>">
-                <div class="<?php echo $section->containerwidth; ?>">
-                    <div class="row">
-                        <?php foreach ($positions as $position): ?>
-                        <div class="<?php echo strtolower($position->position); ?> col-<?php echo $position->width; ?>">
+?>
+        <section id="<?php echo strtolower($section->section); ?>" class="<?php echo $section->section_class; ?>">
+            <div class="<?php echo $section->containerwidth; ?>">
+                <div class="row">
+                    <?php foreach ($positions as $position): ?>
+                        <div class="<?php echo 'position-'.strtolower($position->position); ?> col-<?php echo $defaultBoostrapDesktop. ($position->width ? '-'$position->width.''); ?><?php echo $position->class ? ' '.$position->customclass : ''; ?>">
                             <div class="row">
-                                <jdoc:include type="modules" name="<?php echo $position->position; ?>" style="="
-                                    <?php echo $this->template . '-default'; ?>" />
+                                <jdoc:include type="modules" name="<?php echo $position->position; ?>" style="<?php echo $this->template . '-default'; ?>" />
                             </div>
                         </div>
-                        <?php endforeach;?>
-                    </div>
+                    <?php endforeach; ?>
                 </div>
-            </section>
-            <?php
-}
+            </div>
+        </section>
+<?php
+        }
     }
 }
 ?>
+            <section class="component-section">
             <div class="container<?php echo $containerFluid; ?>">
                 <?php if ($this->countModules('main-top')): ?>
                 <div class="main-top row">
@@ -108,32 +110,28 @@ if ($sections) {
                     <?php if ($this->countModules('sidebar-left')): ?>
                     <div class="sidebar-left col-12 col<?php echo $sidebarWidth; ?>">
                         <div class="row">
-                            <jdoc:include type="modules" name="sidebar-left"
-                                style="<?php echo $this->template . '-default'; ?>" />
+                            <jdoc:include type="modules" name="sidebar-left" style="<?php echo $this->template . '-default'; ?>" />
                         </div>
                     </div>
                     <?php endif;?>
                     <div class="component col-12 col<?php echo $defaultBoostrapDesktop; ?>">
                         <?php if ($this->countModules('content-top')): ?>
                         <div class="row">
-                            <jdoc:include type="modules" name="content-top"
-                                style="<?php echo $this->template . '-default'; ?>" />
+                            <jdoc:include type="modules" name="content-top" style="<?php echo $this->template . '-default'; ?>" />
                         </div>
                         <?php endif;?>
                         <jdoc:include type="message" />
                         <jdoc:include type="component" />
                         <?php if ($this->countModules('content-bottom')): ?>
                         <div class="row">
-                            <jdoc:include type="modules" name="content-bottom"
-                                style="<?php echo $this->template . '-default'; ?>" />
+                            <jdoc:include type="modules" name="content-bottom" style="<?php echo $this->template . '-default'; ?>" />
                         </div>
                         <?php endif;?>
                     </div>
                     <?php if ($this->countModules('sidebar-right')): ?>
                     <div class="sidebar-right col-12 col<?php echo $sidebarWidth; ?>">
                         <div class="row">
-                            <jdoc:include type="modules" name="sidebar-right"
-                                style="<?php echo $this->template . '-default'; ?>" />
+                            <jdoc:include type="modules" name="sidebar-right" style="<?php echo $this->template . '-default'; ?>" />
                         </div>
                     </div>
                     <?php endif;?>
@@ -145,6 +143,48 @@ if ($sections) {
                 </div>
                 <?php endif;?>
             </div>
+            </section>
+<?php
+  // Sections after the component section          
+$sectionsaftercomponent = $templateParams->get('sectionsaftercomponent', '');
+
+if ($sectionsaftercomponent) {
+    foreach ($sectionsaftercomponent as $section) {
+        $afterpositions = $section->positions;
+        $hasAfterModules = false;
+
+        foreach ($afterpositions as $position) {
+            // Check if any module is assigned to the position within this section
+            if ($this->countModules($position->position) > 0) {
+                $hasAfterModules = true;
+                break; // Exit the loop if at least one module is found
+            }
+        }
+
+        if ($hasAfterModules) {
+?>
+        <section id="<?php echo strtolower($section->section); ?>" class="<?php echo $section->section_class; ?>">
+            <div class="<?php echo $section->containerwidth; ?>">
+                <div class="row">
+                    <?php foreach ($afterpositions as $position): ?>
+                        <div class="<?php echo 'position-'.strtolower($position->position); ?> col-<?php echo $defaultBoostrapDesktop. ($position->width ? '-'$position->width.''); ?><?php echo $position->class ? ' '.$position->customclass : ''; ?>">
+                            <div class="row">
+                                <jdoc:include type="modules" name="<?php echo $position->position; ?>" style="<?php echo $this->template . '-default'; ?>" />
+                            </div>
+                        </div>
+                    <?php endforeach; ?>
+                </div>
+            </div>
+        </section>
+<?php
+        }
+    }
+}
+?>
+
+    
+
+
     </main>
     <footer class="footer">
         <div class="container<?php echo $containerFluid; ?>">
