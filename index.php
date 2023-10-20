@@ -61,31 +61,31 @@ include_once JPATH_THEMES . '/minimalista/logic.php';
                 <jdoc:include type="modules" name="slideshow" style="<?php echo $this->template . '-default'; ?>" />
             </div>
             <?php endif;?>
+
             <?php
-<?php
-// Sections before the component section
-$sections = $templateParams->get('sections', '');
+  // Sections before the component section          
+$sectionsbeforecomponent = $templateParams->get('sectionsbeforecomponent', '');
 
-if ($sections) {
-    foreach ($sections as $section) {
-        $positions = $section->positions;
-        $hasModules = false;
+if ($sectionsbeforecomponent) {
+    foreach ($sectionsbeforecomponent as $section) {
+        $beforepositions = $section->positions;
+        $hasBeforeModules = false;
 
-        foreach ($positions as $position) {
+        foreach ($beforepositions as $position) {
             // Check if any module is assigned to the position within this section
             if ($this->countModules($position->position) > 0) {
-                $hasModules = true;
+                $hasBeforeModules = true;
                 break; // Exit the loop if at least one module is found
             }
         }
 
-        if ($hasModules) {
+        if ($hasBeforeModules) {
 ?>
         <section id="<?php echo strtolower($section->section); ?>" class="<?php echo $section->section_class; ?>">
             <div class="<?php echo $section->containerwidth; ?>">
                 <div class="row">
-                    <?php foreach ($positions as $position): ?>
-                        <div class="<?php echo 'position-'.strtolower($position->position); ?> col-<?php echo $defaultBoostrapDesktop. ($position->width ? '-'$position->width.''); ?><?php echo $position->class ? ' '.$position->customclass : ''; ?>">
+                    <?php foreach ($beforepositions as $position): ?>
+                        <div class="<?php echo 'position-'.strtolower($position->position); ?> col-<?php echo $defaultBoostrapDesktop. ($position->width ? '-'.$position->width:''); ?><?php echo $position->class ? ' '.$position->customclass : ''; ?>">
                             <div class="row">
                                 <jdoc:include type="modules" name="<?php echo $position->position; ?>" style="<?php echo $this->template . '-default'; ?>" />
                             </div>
@@ -167,7 +167,7 @@ if ($sectionsaftercomponent) {
             <div class="<?php echo $section->containerwidth; ?>">
                 <div class="row">
                     <?php foreach ($afterpositions as $position): ?>
-                        <div class="<?php echo 'position-'.strtolower($position->position); ?> col-<?php echo $defaultBoostrapDesktop. ($position->width ? '-'$position->width.''); ?><?php echo $position->class ? ' '.$position->customclass : ''; ?>">
+                        <div class="<?php echo 'position-'.strtolower($position->position); ?> col-<?php echo $defaultBoostrapDesktop. ($position->width ? '-'.$position->width:''); ?><?php echo $position->class ? ' '.$position->customclass : ''; ?>">
                             <div class="row">
                                 <jdoc:include type="modules" name="<?php echo $position->position; ?>" style="<?php echo $this->template . '-default'; ?>" />
                             </div>
