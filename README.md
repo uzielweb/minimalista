@@ -20,7 +20,8 @@ As seguintes configurações são possíveis em seu administrador:
 - [x] 6. Permite escolher a posição do botão de fechamento e de abertura do offcanvas
 - [x] 7. Permite escolher o logo e favicon
 - [x] 8. Permite arquivos personalizados de css e js basta adicioná-los à pasta css com nome custom-qualquercoisa.css e customfont-qualquercoisa.csse e, na pasta js, custom-qualquercoisa.js
-- [x] 9. You can add custom code to head, css to head, custom code after <body> tag and before </body> tag
+- [x] 9. Você pode adicionar código personalizado ao cabeçalho, css ao cabeçalho, código personalizado após a tag <body> e antes da tag </body>
+- [x] 10. Permite adicionar infinitas posições acima da parte do componente e abaixo da parte do componente
 
 Por padrão, o template vem com Bootstrap e Font Awesome do Joomla, mas você pode escolher usar o Bootstrap e o Font Awesome do template, ou nenhum deles.
 
@@ -48,6 +49,7 @@ The following settings are possible in your admin:
 - [x] 7. Allows you to choose the logo and favicon
 - [x] 8. Allows custom css and js files, just add them to the css folder with the name custom-qualquercoisa.css and customfont-qualquercoisa.csse and, in the js folder, custom-qualquercoisa.js
 - [x] 9. You can add custom code to head, css to head, custom code after <body> tag and before </body> tag
+- [x] 10.Allows you to add infinite positions above the component part and below the component part
 
 By default, the template comes with Joomla's Bootstrap and Font Awesome, but you can choose to use the template's Bootstrap and Font Awesome, or neither.
 
