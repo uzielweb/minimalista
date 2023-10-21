@@ -23,7 +23,7 @@ As seguintes configurações são possíveis em seu administrador:
 - [x] 9. Você pode adicionar código personalizado ao cabeçalho, css ao cabeçalho, código personalizado após a tag <body> e antes da tag </body>
 - [x] 10. Permite adicionar infinitas posições acima da parte do componente e abaixo da parte do componente
 
-Por padrão, o template vem com Bootstrap e Font Awesome do Joomla, mas você pode escolher usar o Bootstrap e o Font Awesome do template, ou nenhum deles.
+Por padrão, o tema vem com Bootstrap e Font Awesome do Joomla, mas você pode escolher usar o Bootstrap e o Font Awesome do template, ou nenhum deles.
 
 
 
