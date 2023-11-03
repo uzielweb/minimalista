@@ -88,7 +88,13 @@ $bodyClasses = ($option ? 'option-' . str_replace('com_', '', $option) : 'no-opt
 $containerFluid = $templateParams->get('container-fluid', 0) ? '-fluid' : '';
 $defaultBoostrapDesktop = '-' . $templateParams->get('default-bootstrap-desktop', 'lg');
 $sidebarWidth = $defaultBoostrapDesktop . '-' . $templateParams->get('sidebar-width', '3');
-
+if($this->countModules('sidebar-left') && $this->countModules('sidebar-right')) {
+    $mainWidth = $defaultBoostrapDesktop . '-' . (12 - $templateParams->get('sidebar-width', '3') * 2);
+} elseif($this->countModules('sidebar-left') || $this->countModules('sidebar-right')) {
+    $mainWidth = $defaultBoostrapDesktop . '-' . (12 - $templateParams->get('sidebar-width', '3'));
+} else {
+    $mainWidth = $defaultBoostrapDesktop . '-' . '12';
+}
 // Load jQuery based on template or Joomla configuration
 if ($templateParams->get('load_jquery_from_template') == 1) {
     $wa->registerAndUseScript('jquery_from_template', Uri::root(true) . 'media/templates/site/' . $templateOriginal . '/js/jquery-3.7.1.min.js', array('version' => 'auto'));
