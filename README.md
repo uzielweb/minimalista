@@ -21,7 +21,9 @@ As seguintes configurações são possíveis em seu administrador:
 - [x] 7. Permite escolher o logo e favicon
 - [x] 8. Permite arquivos personalizados de css e js basta adicioná-los à pasta css com nome custom-qualquercoisa.css e customfont-qualquercoisa.csse e, na pasta js, custom-qualquercoisa.js
 - [x] 9. Você pode adicionar código personalizado ao cabeçalho, css ao cabeçalho, código personalizado após a tag <body> e antes da tag </body>
-- [x] 10.``` Novo recurso: ```Permite adicionar infinitas posições acima da parte do componente e abaixo da parte do componente
+- [x] 10.``` Novo recurso: ``` Permite adicionar infinitas posições acima da parte do componente e abaixo da parte do componente
+- [x] 11.``` Novo recurso: ``` Permite adicionar Meta Tags Open Graph para compartilhamento em redes sociais
+
 
 Por padrão, o tema vem com Bootstrap e Font Awesome do Joomla, mas você pode escolher usar o Bootstrap e o Font Awesome do template, ou nenhum deles.
 
@@ -50,6 +52,7 @@ The following settings are possible in your admin:
 - [x] 8. Allows custom css and js files, just add them to the css folder with the name custom-qualquercoisa.css and customfont-qualquercoisa.csse and, in the js folder, custom-qualquercoisa.js
 - [x] 9. You can add custom code to head, css to head, custom code after <body> tag and before </body> tag
 - [x] 10.``` New feature: ``` Allows you to add infinite positions above the component part and below the component part
+- [x] 11.``` New feature: ``` Allows you to add Open Graph Meta Tags for sharing on social networks
 
 By default, the template comes with Joomla's Bootstrap and Font Awesome, but you can choose to use the template's Bootstrap and Font Awesome, or neither.
 
