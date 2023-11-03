@@ -15,6 +15,7 @@ use Joomla\CMS\HTML\HTMLHelper;
 use Joomla\CMS\Uri\Uri;
 use Joomla\CMS\Language\Text;
 use Joomla\Filesystem\Folder;
+use Joomla\CMS\Table\Table;
 
 /** @var Joomla\CMS\Document\HtmlDocument $this */
 
@@ -213,3 +214,92 @@ if (is_dir($customJsDirectoryCurrentTemplate)) {
 }
 
 $wa->registerAndUseStyle($this->template . 'responsive-css', Uri::root(true) . 'media/templates/site/' . $this->template . '/css/responsive.css', array('version' => 'auto'));
+
+// load social meta tags OpenGraph for Faceboook, Twitter Cards and Schema.org
+
+
+if ($templateParams->get('enable_social_meta_tags', 1)) {
+    $disable_in = $templateParams->get('disable_in', '');
+
+    if (!is_array($disable_in)) {
+        // If 'disable_in' is a string, convert it to an array with a single element
+        $disable_in = array($disable_in);
+    }
+
+    if (!in_array($option, $disable_in)) {
+        $title = $doc->getTitle() ? $doc->getTitle() : $sitename;
+        $description = $doc->getDescription() ? $doc->getDescription() : Factory::getConfig()->get('MetaDesc');
+        $image = $templateParams->get('social_image', $logo);
+        $image_alt = $templateParams->get('social_image_alt', $logo_alt);
+        $arrobasite = $templateParams->get('arrobasite', '');
+        $arrobacreator = $templateParams->get('arrobaauthor', '');
+
+        // Set common metadata
+        setMetadata($doc, $title, $description, $image, $image_alt, $arrobasite, $arrobacreator);
+
+        // Additional metadata for specific conditions and is not homepage
+        if ($option == 'com_content' && $view == 'article' && Factory::getApplication()->input->getInt('id') && $active->home != 1) {
+            $content = Table::getInstance('content');
+            $content->load(Factory::getApplication()->input->getInt('id'));
+            $images = json_decode($content->images);
+            if ($images) {
+                $image = $images->image_intro ? $images->image_intro : $images->image_fulltext;
+                $image_alt = $images->image_intro_alt ? $images->image_intro_alt : $images->image_fulltext_alt;
+               
+              
+            }
+            $textlimit = $templateParams->get('textlimit', 300);
+            $text = $content->introtext . $content->fulltext;
+            $firstTextImageRegx = '/<img[^>]+src=[\'"](?P<src>[^\'"]+)[\'"][^>]*>/i';
+            preg_match($firstTextImageRegx, $text, $matches);
+            if (isset($matches['src']) && empty($image)) {
+                $image = $matches['src'];
+            }
+            $text = strip_tags($text);	
+            $text = preg_replace('/\s+/', ' ', $text);
+            $text = trim($text);
+            $text = substr($text, 0, $textlimit);
+            // get current site url examplo: https://www.example.com
+           
+            setMetadata($doc, $title, $text,  Uri::root() . $image, $image_alt);
+        }
+
+        if ($option == 'com_content' && $view == 'category' && Factory::getApplication()->input->getInt('id') && $active->home != 1) {
+            $category = Table::getInstance('category');
+            $category->load(Factory::getApplication()->input->getInt('id'));
+            $textlimit = $templateParams->get('textlimit', 300);           
+            $image = $category->image;
+            $image_alt = $category->image_alt;            
+            $image = $this->category->image;
+            $image_alt = $this->category->image_alt;
+            if ($image) {
+                setMetadata($doc, $title, substr(strip_tags($this->category->description), 0, $textlimit), Uri::root() . $image, $image_alt);
+            }
+        }
+    }
+}
+
+// Function to set common metadata
+function setMetadata($doc, $title, $description, $image, $image_alt, $arrobasite = '', $arrobacreator = '') {
+    $doc->setMetaData('og:title', $title);
+    $doc->setMetaData('og:description', $description);
+    $doc->setMetaData('og:image', Uri::root() . $image);
+    // fb:app_id
+    $doc->setMetaData('fb:app_id', '');
+    $doc->setMetaData('og:image:alt', $image_alt);
+    $doc->setMetaData('og:type', 'website');
+    $doc->setMetaData('og:url', Uri::root());
+    $doc->setMetaData('og:site_name', $sitename);
+    $doc->setMetaData('twitter:card', 'summary_large_image');
+    $doc->setMetaData('twitter:title', $title);
+    $doc->setMetaData('twitter:description', $description);
+    $doc->setMetaData('twitter:image', $image);
+    $doc->setMetaData('twitter:image:alt', $image_alt);
+    $doc->setMetaData('twitter:site', $arrobasite);
+    $doc->setMetaData('twitter:creator', $arrobacreator);
+    $doc->setMetaData('schema:name', $title);
+    $doc->setMetaData('schema:description', $description);
+    $doc->setMetaData('schema:image', $image);
+    $doc->setMetaData('schema:image:alt', $image_alt);
+    
+}
