@@ -55,12 +55,15 @@ include_once JPATH_THEMES . '/minimalista/logic.php';
         </div>
     </header>
     <main class="main">
-        <div class="container<?php echo $containerFluid; ?>">
-            <?php if ($this->countModules('slideshow')): ?>
-            <div class="slideshow row">
+    <?php if ($this->countModules('slideshow')): ?>
+           <div class="container-fluid">
+           <div class="slideshow row">
                 <jdoc:include type="modules" name="slideshow" style="<?php echo $this->template . '-default'; ?>" />
             </div>
+           </div>
             <?php endif;?>
+        <div class="container<?php echo $containerFluid; ?>">
+           
 
             <?php
   // Sections before the component section          
@@ -85,7 +88,7 @@ if ($sectionsbeforecomponent) {
             <div class="<?php echo $section->containerwidth; ?>">
                 <div class="row">
                     <?php foreach ($beforepositions as $position): ?>
-                        <div class="<?php echo 'position-'.strtolower($position->position); ?> col-<?php echo $defaultBoostrapDesktop. ($position->width ? '-'.$position->width:''); ?><?php echo $position->class ? ' '.$position->customclass : ''; ?>">
+                        <div class="<?php echo 'position-'.strtolower($position->position); ?> col<?php echo $defaultBoostrapDesktop. ($position->width ? '-'.$position->width:''); ?><?php echo $position->class ? ' '.$position->customclass : ''; ?>">
                             <div class="row">
                                 <jdoc:include type="modules" name="<?php echo $position->position; ?>" style="<?php echo $this->template . '-default'; ?>" />
                             </div>
@@ -114,7 +117,7 @@ if ($sectionsbeforecomponent) {
                         </div>
                     </div>
                     <?php endif;?>
-                    <div class="component col-12 col<?php echo $defaultBoostrapDesktop; ?>">
+                    <div class="component col-12 col<?php echo $mainWidth; ?>">
                         <?php if ($this->countModules('content-top')): ?>
                         <div class="row">
                             <jdoc:include type="modules" name="content-top" style="<?php echo $this->template . '-default'; ?>" />
@@ -144,6 +147,7 @@ if ($sectionsbeforecomponent) {
                 <?php endif;?>
             </div>
             </section>
+            </div>
 <?php
   // Sections after the component section          
 $sectionsaftercomponent = $templateParams->get('sectionsaftercomponent', '');
@@ -167,7 +171,7 @@ if ($sectionsaftercomponent) {
             <div class="<?php echo $section->containerwidth; ?>">
                 <div class="row">
                     <?php foreach ($afterpositions as $position): ?>
-                        <div class="<?php echo 'position-'.strtolower($position->position); ?> col-<?php echo $defaultBoostrapDesktop. ($position->width ? '-'.$position->width:''); ?><?php echo $position->class ? ' '.$position->customclass : ''; ?>">
+                        <div class="<?php echo 'position-'.strtolower($position->position); ?> col<?php echo $defaultBoostrapDesktop. ($position->width ? '-'.$position->width:''); ?><?php echo $position->class ? ' '.$position->customclass : ''; ?>">
                             <div class="row">
                                 <jdoc:include type="modules" name="<?php echo $position->position; ?>" style="<?php echo $this->template . '-default'; ?>" />
                             </div>
