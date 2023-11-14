@@ -98,7 +98,7 @@ $sectionName = preg_replace('/[^a-zA-Z0-9\-]/', '', $sectionName);
 
         if ($hasBeforeModules) {
 ?>
-        <section id="<?php echo $sectionname; ?>" class="<?php echo 'section-'.$sectionname.  $section->section_class ? ' '.$section->section_class : ''; ?>">
+        <section id="<?php echo $sectionName; ?>" class="<?php echo 'section-'.$sectionName.  $section->section_class ? ' '.$section->section_class : ''; ?>">
             <div class="<?php echo $section->containerwidth; ?>">
                 <div class="row">
                     <?php foreach ($beforepositions as $position): ?>
