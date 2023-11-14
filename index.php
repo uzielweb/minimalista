@@ -73,6 +73,20 @@ if ($sectionsbeforecomponent) {
     foreach ($sectionsbeforecomponent as $section) {
         $beforepositions = $section->positions;
         $hasBeforeModules = false;
+        $sectionName = $section->section; // Assuming $section->section contains the original string
+
+// Replace spaces with hyphens
+$sectionName = str_replace(' ', '-', $sectionName);
+
+// Convert to lowercase
+$sectionName = strtolower($sectionName);
+
+// Convert non-Latin characters to ASCII equivalents
+$sectionName = iconv('UTF-8', 'ASCII//TRANSLIT', $sectionName);
+
+// Remove any remaining non-alphanumeric characters (optional)
+$sectionName = preg_replace('/[^a-zA-Z0-9\-]/', '', $sectionName);
+
 
         foreach ($beforepositions as $position) {
             // Check if any module is assigned to the position within this section
@@ -84,7 +98,7 @@ if ($sectionsbeforecomponent) {
 
         if ($hasBeforeModules) {
 ?>
-        <section id="<?php echo strtolower($section->section); ?>" class="<?php echo $section->section_class; ?>">
+        <section id="<?php echo $sectionname; ?>" class="<?php echo 'section-'.$sectionname.  $section->section_class ? ' '.$section->section_class : ''; ?>">
             <div class="<?php echo $section->containerwidth; ?>">
                 <div class="row">
                     <?php foreach ($beforepositions as $position): ?>
@@ -156,6 +170,19 @@ if ($sectionsaftercomponent) {
     foreach ($sectionsaftercomponent as $section) {
         $afterpositions = $section->positions;
         $hasAfterModules = false;
+        $aftersectionName = $section->section; // Assuming $section->section contains the original string
+
+        // Replace spaces with hyphens
+        $aftersectionName = str_replace(' ', '-', $aftersectionName);
+        
+        // Convert to lowercase
+        $aftersectionName = strtolower($aftersectionName);
+        
+        // Convert non-Latin characters to ASCII equivalents
+        $aftersectionName = iconv('UTF-8', 'ASCII//TRANSLIT', $aftersectionName);
+        
+        // Remove any remaining non-alphanumeric characters (optional)
+        $aftersectionName = preg_replace('/[^a-zA-Z0-9\-]/', '', $aftersectionName);
 
         foreach ($afterpositions as $position) {
             // Check if any module is assigned to the position within this section
@@ -167,7 +194,7 @@ if ($sectionsaftercomponent) {
 
         if ($hasAfterModules) {
 ?>
-        <section id="<?php echo strtolower($section->section); ?>" class="<?php echo $section->section_class; ?>">
+        <section id="<?php echo $aftersectionName; ?>" class="<?php echo 'section-'.$aftersectionName.  $section->section_class ? ' '.$section->section_class : ''; ?>">
             <div class="<?php echo $section->containerwidth; ?>">
                 <div class="row">
                     <?php foreach ($afterpositions as $position): ?>
