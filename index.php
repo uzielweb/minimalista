@@ -179,6 +179,7 @@ if ($sectionsaftercomponent) {
             }
         }
         if ($hasAfterModules) {
+           
             ?>
         <section id="<?php echo $aftersectionName; ?>"
             class="<?php echo 'section-' . $aftersectionName . ($section->section_class ? ' ' . $section->section_class : ''); ?>">
@@ -188,8 +189,7 @@ if ($sectionsaftercomponent) {
                     <div
                         class="<?php echo 'position-' . strtolower($position->position); ?> col<?php echo $defaultBoostrapDesktop . ($position->width ? '-' . $position->width : ''); ?><?php echo $position->class ? ' ' . $position->customclass : ''; ?>">
                         <div class="row">
-                            <jdoc:include type="modules" name="<?php echo $position->position; ?>"
-                               style="<?php echo $this->template . '-default'; ?>" />
+                            <jdoc:include type="modules" name="<?php echo $position->position; ?>" style="<?php echo $this->template . '-default'; ?>" />
                         </div>
                     </div>
                     <?php endforeach;?>
