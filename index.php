@@ -65,49 +65,16 @@ include_once JPATH_THEMES . '/minimalista/logic.php';
         </div>
         <?php endif;?>
         <?php
+
 // Sections before the component section
-$sectionsbeforecomponent = $templateParams->get('sectionsbeforecomponent', '');
-if ($sectionsbeforecomponent) {
-    foreach ($sectionsbeforecomponent as $section) {
-        $beforepositions = $section->positions;
-        $hasBeforeModules = false;
-        $sectionName = $section->section; // Assuming $section->section contains the original string
-// Replace spaces with hyphens
-        $sectionName = str_replace(' ', '-', $sectionName);
-// Convert to lowercase
-        $sectionName = strtolower($sectionName);
-// Convert non-Latin characters to ASCII equivalents
-        $sectionName = iconv('UTF-8', 'ASCII//TRANSLIT', $sectionName);
-// Remove any remaining non-alphanumeric characters (optional)
-        $sectionName = preg_replace('/[^a-zA-Z0-9\-]/', '', $sectionName);
-        foreach ($beforepositions as $position) {
-            // Check if any module is assigned to the position within this section
-            if ($this->countModules($position->position) > 0) {
-                $hasBeforeModules = true;
-                break; // Exit the loop if at least one module is found
-            }
-        }
-        if ($hasBeforeModules) {
-            ?>
-        <section id="<?php echo $sectionName; ?>"
-            class="<?php echo 'section-' . $sectionName . ($section->section_class ? ' ' . $section->section_class : ''); ?>">
-            <div class="<?php echo $section->containerwidth; ?>">
-                <div class="row">
-                    <?php foreach ($beforepositions as $position): ?>
-                    <div
-                        class="<?php echo 'position-' . strtolower($position->position); ?> col<?php echo $defaultBoostrapDesktop . ($position->width ? '-' . $position->width : ''); ?><?php echo $position->class ? ' ' . $position->customclass : ''; ?>">
-                        <div class="row">
-                            <jdoc:include type="modules" name="<?php echo $position->position; ?>" style="<?php echo $this->template . '-default'; ?>" />
-                        </div>
-                    </div>
-                    <?php endforeach;?>
-                </div>
-            </div>
-        </section>
-        <?php
-}
+$sectionsBeforeComponent = $templateParams->get('sectionsbeforecomponent', '');
+
+if ($sectionsBeforeComponent) {
+    foreach ($sectionsBeforeComponent as $section) {
+        renderSection($section, $defaultBoostrapDesktop, $this);
     }
 }
+
 ?>
         <div class="container<?php echo $containerFluid; ?>">
             <section class="component-section">
@@ -157,49 +124,14 @@ if ($sectionsbeforecomponent) {
         </div>
         <?php
 // Sections after the component section
-$sectionsaftercomponent = $templateParams->get('sectionsaftercomponent', '');
-if ($sectionsaftercomponent) {
-    foreach ($sectionsaftercomponent as $section) {
-        $afterpositions = $section->positions;
-        $hasAfterModules = false;
-        $aftersectionName = $section->section; // Assuming $section->section contains the original string
-        // Replace spaces with hyphens
-        $aftersectionName = str_replace(' ', '-', $aftersectionName);
-        // Convert to lowercase
-        $aftersectionName = strtolower($aftersectionName);
-        // Convert non-Latin characters to ASCII equivalents
-        $aftersectionName = iconv('UTF-8', 'ASCII//TRANSLIT', $aftersectionName);
-        // Remove any remaining non-alphanumeric characters (optional)
-        $aftersectionName = preg_replace('/[^a-zA-Z0-9\-]/', '', $aftersectionName);
-        foreach ($afterpositions as $position) {
-            // Check if any module is assigned to the position within this section
-            if ($this->countModules($position->position) > 0) {
-                $hasAfterModules = true;
-                break; // Exit the loop if at least one module is found
-            }
-        }
-        if ($hasAfterModules) {
-           
-            ?>
-        <section id="<?php echo $aftersectionName; ?>"
-            class="<?php echo 'section-' . $aftersectionName . ($section->section_class ? ' ' . $section->section_class : ''); ?>">
-            <div class="<?php echo $section->containerwidth; ?>">
-                <div class="row">
-                    <?php foreach ($afterpositions as $position): ?>
-                    <div
-                        class="<?php echo 'position-' . strtolower($position->position); ?> col<?php echo $defaultBoostrapDesktop . ($position->width ? '-' . $position->width : ''); ?><?php echo $position->class ? ' ' . $position->customclass : ''; ?>">
-                        <div class="row">
-                            <jdoc:include type="modules" name="<?php echo $position->position; ?>" style="<?php echo $this->template . '-default'; ?>" />
-                        </div>
-                    </div>
-                    <?php endforeach;?>
-                </div>
-            </div>
-        </section>
-        <?php
-}
+$sectionsAfterComponent = $templateParams->get('sectionsaftercomponent', '');
+
+if ($sectionsAfterComponent) {
+    foreach ($sectionsAfterComponent as $section) {
+        renderSection($section, $defaultBoostrapDesktop, $this);
     }
 }
+
 ?>
     </main>
     <footer class="footer">
