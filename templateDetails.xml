@@ -109,7 +109,7 @@
                 <field name="custom_script_endbody" type="editor" editor="codemirror" label="TPL_MINIMALISTA_CUSTOM_SCRIPT_TO_ENDBODY" description="TPL_MINIMALISTA_CUSTOM_SCRIPT_TO_ENDBODY_DESC" rows="5" filter="raw" />
             </fieldset>
             <fieldset name="positions">
-                <field name="sections" type="subform" label="TPL_MINIMALISTA_SECTIONS" description="TPL_MINIMALISTA_SECTIONS_DESC" multiple="true">
+                <field name="sectionsbeforecomponent" type="subform" label="TPL_MINIMALISTA_SECTIONS" description="TPL_MINIMALISTA_SECTIONS_DESC" multiple="true">
                     <form>
                         <field name="section" type="text" label="TPL_MINIMALISTA_SECTION" description="TPL_MINIMALISTA_SECTION_DESC" />
                         <field name="section_class" type="text" label="TPL_MINIMALISTA_SECTION_CLASS" description="TPL_MINIMALISTA_SECTION_CLASS_DESC" />
