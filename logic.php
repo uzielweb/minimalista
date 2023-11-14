@@ -303,3 +303,50 @@ function setMetadata($doc, $title, $description, $image, $image_alt, $arrobasite
     $doc->setMetaData('schema:image:alt', $image_alt);
     
 }
+
+
+// functions.php
+
+function cleanSectionName($sectionName) {
+    $sectionName = str_replace(' ', '-', $sectionName);
+    $sectionName = strtolower($sectionName);
+    $sectionName = iconv('UTF-8', 'ASCII//TRANSLIT', $sectionName);
+    $sectionName = preg_replace('/[^a-zA-Z0-9\-]/', '', $sectionName);
+    return $sectionName;
+}
+
+function hasModules($positions, $template) {
+    foreach ($positions as $position) {
+        if ($template->countModules($position->position) > 0) {
+            return true;
+        }
+    }
+    return false;
+}
+
+function renderSection($section, $defaultBoostrapDesktop, $template) {
+    $sectionName = cleanSectionName($section->section);
+    $hasModules = hasModules($section->positions, $template);
+
+    if ($hasModules) {
+        ?>
+        <section id="<?php echo $sectionName; ?>"
+            class="<?php echo 'section-' . $sectionName . ($section->section_class ? ' ' . $section->section_class : ''); ?>">
+            <div class="<?php echo $section->containerwidth; ?>">
+                <div class="row">
+                    <?php foreach ($section->positions as $position): ?>
+                        <div class="<?php echo 'position-' . strtolower($position->position); ?> col<?php echo $defaultBoostrapDesktop . ($position->width ? '-' . $position->width : ''); ?><?php echo $position->class ? ' ' . $position->customclass : ''; ?>">
+                            <div class="row">
+                                <jdoc:include type="modules" name="<?php echo $position->position; ?>" style="<?php echo $template->template . '-default'; ?>" />
+                            </div>
+                        </div>
+                    <?php endforeach;?>
+                </div>
+            </div>
+        </section>
+        <?php
+    }
+}
+
+
+
