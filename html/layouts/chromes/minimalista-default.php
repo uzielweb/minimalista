@@ -25,7 +25,11 @@ if ($module->content === null || $module->content === '') {
 
 $moduleTag     = $params->get('module_tag', 'div');
 $bootstrapSize = (int) $params->get('bootstrap_size', 0);
-$moduleClass   = $bootstrapSize !== 0 ? ' col-' . $templateParams->get('default-bootstrap-desktop').'-' . $bootstrapSize :' col-12'; 
+// check if hav col or col-auto in the module class sfx
+if (strpos($params->get('moduleclass_sfx'), 'col') == false) {
+    $moduleClass   = $bootstrapSize !== 0 ? ' col-' . $templateParams->get('default-bootstrap-desktop').'-' . $bootstrapSize :' col-12'; 
+}
+
 $headerTag     = $params->get('header_tag', 'h3');
 $headerClass   = $params->get('header_class', '');
 $moduleClassSfx = $params->get('moduleclass_sfx');
