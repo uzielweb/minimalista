@@ -23,7 +23,8 @@ As seguintes configurações são possíveis em seu administrador:
 - [x] 9. Você pode adicionar código personalizado ao cabeçalho, css ao cabeçalho, código personalizado após a tag <body> e antes da tag </body>
 - [x] 10.``` Novo recurso: ``` Permite adicionar infinitas posições acima da parte do componente e abaixo da parte do componente
 - [x] 11.``` Novo recurso: ``` Permite adicionar Meta Tags Open Graph para compartilhamento em redes sociais
-- [x] 12.``` New feature: ``` classes bootstrap col personalizada para sufixo de classe de módulo torna possível substituir o tamanho de bootstrap do módulo
+- [x] 12.``` Novo recurso: ``` classes bootstrap col personalizada para sufixo de classe de módulo torna possível substituir o tamanho de bootstrap do módulo
+- [x] 13.``` Novo recurso: ``` um pequeno truque: você pode usar {year} no texto dos módulos para exibir o ano atual (isso pode ser útil em direitos de cópia)
 
 
 Por padrão, o tema vem com Bootstrap e Font Awesome do Joomla, mas você pode escolher usar o Bootstrap e o Font Awesome do template, ou nenhum deles.
@@ -55,6 +56,7 @@ The following settings are possible in your admin:
 - [x] 10.``` New feature: ``` Allows you to add infinite positions above the component part and below the component part
 - [x] 11.``` New feature: ``` Allows you to add Open Graph Meta Tags for sharing on social networks 
 - [x] 12.``` New feature: ```bootstrap custom col classes for module class suffix makes it possible to override module bootstrap size
+- [x] 13.``` New feature: ``` a little trick: you can use {year} in the text of modules to display the current year (this can be useful in copyrights)
 
 
 By default, the template comes with Joomla's Bootstrap and Font Awesome, but you can choose to use the template's Bootstrap and Font Awesome, or neither.
