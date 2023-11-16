@@ -9,7 +9,7 @@ Nele você encontra os itens básicos para um bom template, como:
 - [x] 3. Um arquivo com toda a lógica necessária para o tema dentro do arquivo logic.php
 - [x] 4. arquivos básicos para a página de erros, offline e o layout de component (chamado pela ?view=component)
 - [x] 5. Possui um menu offcanvas básico
-- [x] 6. Custom code is possible
+- [x] 6. Código personalizado é possível
 
 As seguintes configurações são possíveis em seu administrador:
 - [x] 1. Largura padrão das colunas laterais (esquerda e direita) em bootstrap
