@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <extension type="template" client="site" version="" method="upgrade">
     <name>minimalista</name>
-    <version>2.3.8</version>
+    <version>2.3.9</version>
     <creationDate>2023-01</creationDate>
     <author>Uziel - Via Ponto Mega</author>
     <authorEmail>contato@pontomega.com.br</authorEmail>
@@ -42,6 +42,7 @@
         <position>bottom-b</position>
         <position>footer</position>
         <position>debug</position>
+        <position>copyright</position>
     </positions>
     <!-- configs -->
     <!-- container-fluid, default-bootstrap-desktop. sidebar-width -->
