@@ -24,11 +24,13 @@ include_once JPATH_THEMES . '/minimalista/logic.php';
     <?php echo $startBodyCode; ?>
     <!-- head with menu, main, sidebars, footer -->
     <header class="header">
+        <?php if ($this->countModules('header')): ?>
         <div class="container<?php echo $containerFluid; ?>">
             <div class="row">
                 <jdoc:include type="modules" name="header" style="<?php echo $this->template . '-default'; ?>" />
             </div>
         </div>
+        <?php endif;?>
         <div class="container<?php echo $containerFluid; ?>">
             <!-- navbar offcanvas bootstrap 5 -->
             <nav class="navbar navbar-expand<?php echo $defaultBoostrapDesktop; ?>">
@@ -142,7 +144,18 @@ if ($sectionsAfterComponent) {
             </div>
             <?php endif;?>
         </div>
+       
+       
     </footer>
+    <?php if ($this->countModules('copyright')): ?>
+            <div class="copyright">
+            <div class="container<?php echo $containerFluid; ?>">
+            <div class="row">
+                <jdoc:include type="modules" name="copyright" style="<?php echo $this->template . '-default'; ?>" />
+            </div>
+        </div>
+            </div>
+        <?php endif;?>
     <?php echo $endBodyCode; ?>
     <?php if ($backtotop): ?>
     <button href="#top" id="back-top" class="btn back-to-top-link"
