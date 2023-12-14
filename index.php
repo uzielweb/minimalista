@@ -13,13 +13,11 @@ include_once JPATH_THEMES . '/minimalista/logic.php';
 ?>
 <!doctype html>
 <html lang="<?php echo $this->language; ?>" dir="<?php echo $this->direction; ?>">
-
 <head>
     <jdoc:include type="metas" />
     <jdoc:include type="styles" />
     <jdoc:include type="scripts" />
 </head>
-
 <body class="<?php echo $bodyClasses; ?>">
     <?php echo $startBodyCode; ?>
     <!-- head with menu, main, sidebars, footer -->
@@ -60,80 +58,73 @@ include_once JPATH_THEMES . '/minimalista/logic.php';
     </header>
     <main class="main">
         <?php if ($this->countModules('slideshow')): ?>
-        <div class="container-fluid">
+        <section class="container-fluid">
             <div class="slideshow row">
                 <jdoc:include type="modules" name="slideshow" style="<?php echo $this->template . '-default'; ?>" />
             </div>
-        </div>
+        </section>
         <?php endif;?>
         <?php
-
 // Sections before the component section
 $sectionsBeforeComponent = $templateParams->get('sectionsbeforecomponent', '');
-
 if ($sectionsBeforeComponent) {
     foreach ($sectionsBeforeComponent as $section) {
         renderSection($section, $defaultBoostrapDesktop, $this);
     }
 }
-
 ?>
-        <div class="container<?php echo $containerFluid; ?>">
-            <section class="component-section">
-                <div class="container<?php echo $containerFluid; ?>">
-                    <?php if ($this->countModules('main-top')): ?>
-                    <div class="main-top row">
-                        <jdoc:include type="modules" name="main-top" style="<?php echo $this->template . '-default'; ?>" />
+        <section class="component-section">
+            <div class="container<?php echo $containerFluid; ?>">
+                <?php if ($this->countModules('main-top')): ?>
+                <div class="main-top row">
+                    <jdoc:include type="modules" name="main-top" style="<?php echo $this->template . '-default'; ?>" />
+                </div>
+                <?php endif;?>
+                <div class="row">
+                    <?php if ($this->countModules('sidebar-left')): ?>
+                    <div class="sidebar-left col-12 col<?php echo $sidebarWidth; ?>">
+                        <div class="row">
+                            <jdoc:include type="modules" name="sidebar-left" style="<?php echo $this->template . '-default'; ?>" />
+                        </div>
                     </div>
                     <?php endif;?>
-                    <div class="row">
-                        <?php if ($this->countModules('sidebar-left')): ?>
-                        <div class="sidebar-left col-12 col<?php echo $sidebarWidth; ?>">
-                            <div class="row">
-                                <jdoc:include type="modules" name="sidebar-left" style="<?php echo $this->template . '-default'; ?>" />
-                            </div>
+                    <div class="component col-12 col<?php echo $mainWidth; ?>">
+                        <?php if ($this->countModules('content-top')): ?>
+                        <div class="row">
+                            <jdoc:include type="modules" name="content-top" style="<?php echo $this->template . '-default'; ?>" />
                         </div>
                         <?php endif;?>
-                        <div class="component col-12 col<?php echo $mainWidth; ?>">
-                            <?php if ($this->countModules('content-top')): ?>
-                            <div class="row">
-                                <jdoc:include type="modules" name="content-top" style="<?php echo $this->template . '-default'; ?>" />
-                            </div>
-                            <?php endif;?>
-                            <jdoc:include type="message" />
-                            <jdoc:include type="component" />
-                            <?php if ($this->countModules('content-bottom')): ?>
-                            <div class="row">
-                                <jdoc:include type="modules" name="content-bottom" style="<?php echo $this->template . '-default'; ?>" />
-                            </div>
-                            <?php endif;?>
-                        </div>
-                        <?php if ($this->countModules('sidebar-right')): ?>
-                        <div class="sidebar-right col-12 col<?php echo $sidebarWidth; ?>">
-                            <div class="row">
-                                <jdoc:include type="modules" name="sidebar-right" style="<?php echo $this->template . '-default'; ?>" />
-                            </div>
+                        <jdoc:include type="message" />
+                        <jdoc:include type="component" />
+                        <?php if ($this->countModules('content-bottom')): ?>
+                        <div class="row">
+                            <jdoc:include type="modules" name="content-bottom" style="<?php echo $this->template . '-default'; ?>" />
                         </div>
                         <?php endif;?>
                     </div>
-                    <?php if ($this->countModules('main-bottom')): ?>
-                    <div class="main-bottom row">
-                        <jdoc:include type="modules" name="main-bottom" style="<?php echo $this->template . '-default'; ?>" />
+                    <?php if ($this->countModules('sidebar-right')): ?>
+                    <div class="sidebar-right col-12 col<?php echo $sidebarWidth; ?>">
+                        <div class="row">
+                            <jdoc:include type="modules" name="sidebar-right" style="<?php echo $this->template . '-default'; ?>" />
+                        </div>
                     </div>
                     <?php endif;?>
                 </div>
-            </section>
-        </div>
+                <?php if ($this->countModules('main-bottom')): ?>
+                <div class="main-bottom row">
+                    <jdoc:include type="modules" name="main-bottom" style="<?php echo $this->template . '-default'; ?>" />
+                </div>
+                <?php endif;?>
+            </div>
+        </section>
         <?php
 // Sections after the component section
 $sectionsAfterComponent = $templateParams->get('sectionsaftercomponent', '');
-
 if ($sectionsAfterComponent) {
     foreach ($sectionsAfterComponent as $section) {
         renderSection($section, $defaultBoostrapDesktop, $this);
     }
 }
-
 ?>
     </main>
     <footer class="footer">
@@ -144,26 +135,22 @@ if ($sectionsAfterComponent) {
             </div>
             <?php endif;?>
         </div>
-       
-       
     </footer>
     <?php if ($this->countModules('copyright')): ?>
-            <div class="copyright">
-            <div class="container<?php echo $containerFluid; ?>">
+    <div class="copyright">
+        <div class="container<?php echo $containerFluid; ?>">
             <div class="row">
                 <jdoc:include type="modules" name="copyright" style="<?php echo $this->template . '-default'; ?>" />
             </div>
         </div>
-            </div>
-        <?php endif;?>
+    </div>
+    <?php endif;?>
     <?php echo $endBodyCode; ?>
     <?php if ($backtotop): ?>
-    <button href="#top" id="back-top" class="btn back-to-top-link"
-        aria-label="<?php echo Text::_('TPL_MINIMALISTA_BACKTOTOP'); ?>">
+    <button href="#top" id="back-top" class="btn back-to-top-link" aria-label="<?php echo Text::_('TPL_MINIMALISTA_BACKTOTOP'); ?>">
         <i class="fas fa-arrow-up" aria-hidden="true"></i>
     </button>
     <?php endif;?>
     <jdoc:include type="modules" name="debug" style="none" />
 </body>
-
 </html>
