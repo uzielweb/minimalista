@@ -289,7 +289,7 @@ function setMetadata($doc, $title, $description, $image, $image_alt, $arrobasite
     $doc->setMetaData('og:image:alt', $image_alt);
     $doc->setMetaData('og:type', 'website');
     $doc->setMetaData('og:url', Uri::root());
-    $doc->setMetaData('og:site_name', $sitename);
+    $doc->setMetaData('og:site_name',Factory::getApplication()->get('sitename'));
     $doc->setMetaData('twitter:card', 'summary_large_image');
     $doc->setMetaData('twitter:title', $title);
     $doc->setMetaData('twitter:description', $description);
