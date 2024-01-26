@@ -21,6 +21,7 @@ include_once JPATH_THEMES . '/minimalista/logic.php';
 <body class="<?php echo $bodyClasses; ?>">
     <?php echo $startBodyCode; ?>
     <!-- head with menu, main, sidebars, footer -->
+    <?php if ($this->countModules('header') || $this->countModules('menu')): ?>
     <header class="header">
         <?php if ($this->countModules('header')): ?>
         <div class="container<?php echo $containerFluid; ?>">
@@ -31,7 +32,7 @@ include_once JPATH_THEMES . '/minimalista/logic.php';
         <?php endif;?>
         <div class="container<?php echo $containerFluid; ?>">
             <!-- navbar offcanvas bootstrap 5 -->
-            <nav class="navbar navbar-expand<?php echo $defaultBoostrapDesktop; ?>">
+            <nav class="navbar navbar-expand<?php echo $defaultBoostrapDesktop; ?> row">
                 <div class="container-fluid">
                     <?php if ($logo): ?>
                     <a class="navbar-brand" href="<?php echo $this->baseurl; ?>">
@@ -56,6 +57,7 @@ include_once JPATH_THEMES . '/minimalista/logic.php';
             </nav>
         </div>
     </header>
+    <?php endif;?>
     <main class="main">
         <?php if ($this->countModules('slideshow')): ?>
         <section class="container-fluid">
@@ -75,6 +77,7 @@ if ($sectionsBeforeComponent) {
 ?>
         <section class="component-section">
             <div class="container<?php echo $containerFluid; ?>">
+            <div class="inner">
                 <?php if ($this->countModules('main-top')): ?>
                 <div class="main-top row">
                     <jdoc:include type="modules" name="main-top" style="<?php echo $this->template . '-default'; ?>" />
@@ -115,6 +118,7 @@ if ($sectionsBeforeComponent) {
                     <jdoc:include type="modules" name="main-bottom" style="<?php echo $this->template . '-default'; ?>" />
                 </div>
                 <?php endif;?>
+            </div>
             </div>
         </section>
         <?php
