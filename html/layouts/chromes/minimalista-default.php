@@ -21,9 +21,8 @@ $moduleTag = $params->get('module_tag', 'div');
 $bootstrapSize = (int) $params->get('bootstrap_size', 0);
 // check if hav col or col-auto in the module class sfx
 $moduleClass = '';  // Default value if 'col' is not found
-
+$moduleClass = $bootstrapSize !== 0 ? ' col-' . $templateParams->get('default-bootstrap-desktop') . '-' . $bootstrapSize : ' col-12';
 $moduleClassSfx = $params->get('moduleclass_sfx');
-
 if ($moduleClassSfx !== null && strpos($moduleClassSfx, 'col') === false) {
     $moduleClass = $bootstrapSize !== 0 ? ' col-' . $templateParams->get('default-bootstrap-desktop') . '-' . $bootstrapSize : ' col-12';
 }
@@ -52,6 +51,7 @@ if ($moduleTag !== 'div') {
 $header = '<' . $headerTag . ' ' . ArrayHelper::toString($headerAttribs) . '>' . $module->title . '</' . $headerTag . '>';
 ?>
 <<?php echo $moduleTag; ?> <?php echo ArrayHelper::toString($moduleAttribs); ?>>
+<div class="inner">
    <?php if ($module->showtitle): ?>
     <?php echo $header; ?>
 <?php endif;?>
@@ -60,4 +60,5 @@ $header = '<' . $headerTag . ' ' . ArrayHelper::toString($headerAttribs) . '>' .
         <?php echo str_replace("{year}", date("Y"), $module->content); ?>
     </div>
 <?php endif;?>
+</div>
 </<?php echo $moduleTag; ?>>
