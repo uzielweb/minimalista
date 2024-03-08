@@ -30,7 +30,7 @@ if ($sectionsBeforeHeader) {
 }
 ?>
     <!-- head with menu, main, sidebars, footer -->
-    <?php if ($this->countModules('header') || $this->countModules('menu')): ?>
+    <?php if ($this->countModules('header') || $this->countModules('menu')) || $this->countModules('header-top') || $this->countModules('header-bottom'): ?>
     <header class="header">
         <?php if ($this->countModules('header-top')): ?>
         <div class="container<?php echo $containerFluid; ?>">
@@ -121,32 +121,28 @@ if ($sectionsBeforeComponent) {
                         <?php if ($this->countModules('sidebar-left')): ?>
                         <div class="sidebar-left col-12 col<?php echo $sidebarWidth; ?>">
                             <div class="row">
-                                <jdoc:include type="modules" name="sidebar-left"
-                                    style="<?php echo $this->template . '-default'; ?>" />
+                                <jdoc:include type="modules" name="sidebar-left" style="<?php echo $this->template . '-default'; ?>" />
                             </div>
                         </div>
                         <?php endif;?>
                         <div class="component col-12 col<?php echo $mainWidth; ?>">
                             <?php if ($this->countModules('content-top')): ?>
                             <div class="row">
-                                <jdoc:include type="modules" name="content-top"
-                                    style="<?php echo $this->template . '-default'; ?>" />
+                                <jdoc:include type="modules" name="content-top" style="<?php echo $this->template . '-default'; ?>" />
                             </div>
                             <?php endif;?>
                             <jdoc:include type="message" />
                             <jdoc:include type="component" />
                             <?php if ($this->countModules('content-bottom')): ?>
                             <div class="row">
-                                <jdoc:include type="modules" name="content-bottom"
-                                    style="<?php echo $this->template . '-default'; ?>" />
+                                <jdoc:include type="modules" name="content-bottom" style="<?php echo $this->template . '-default'; ?>" />
                             </div>
                             <?php endif;?>
                         </div>
                         <?php if ($this->countModules('sidebar-right')): ?>
                         <div class="sidebar-right col-12 col<?php echo $sidebarWidth; ?>">
                             <div class="row">
-                                <jdoc:include type="modules" name="sidebar-right"
-                                    style="<?php echo $this->template . '-default'; ?>" />
+                                <jdoc:include type="modules" name="sidebar-right" style="<?php echo $this->template . '-default'; ?>" />
                             </div>
                         </div>
                         <?php endif;?>
