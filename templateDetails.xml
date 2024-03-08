@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <extension type="template" client="site" version="" method="upgrade">
     <name>minimalista</name>
-    <version>2.4.7</version>
+    <version>2.4.8</version>
     <creationDate>2023-01</creationDate>
     <author>Uziel - Via Ponto Mega</author>
     <authorEmail>contato@pontomega.com.br</authorEmail>
@@ -75,19 +75,19 @@
                     <option value="4">4</option>
                 </field>
                 <!-- bootstrap_from_template, load_fontawesome_from_template -->
-                <field name="bootstrap_from_template" type="radio" label="TPL_MINIMALISTA_BOOTSTRAP_FROM_TEMPLATE" description="TPL_MINIMALISTA_BOOTSTRAP_FROM_TEMPLATE_DESC" default="0" class="btn-group btn-group-yesno">
+                <field name="bootstrap_from_template" type="radio" label="TPL_MINIMALISTA_BOOTSTRAP_FROM_TEMPLATE" description="TPL_MINIMALISTA_BOOTSTRAP_FROM_TEMPLATE_DESC" default="1" class="btn-group btn-group-yesno">
                     <option value="1">JYES</option>
                     <option value="0">JNO</option>
                 </field>
                 <!-- load_fontawesome_js_from_template -->
-                <field name="load_fontawesome" type="radio" label="TPL_MINIMALISTA_LOAD_FONTAWESOME" description="TPL_MINIMALISTA_LOAD_FONTAWESOME_DESC" default="css_from_joomla" class="btn-group btn-group-yesno">
+                <field name="load_fontawesome" type="radio" label="TPL_MINIMALISTA_LOAD_FONTAWESOME" description="TPL_MINIMALISTA_LOAD_FONTAWESOME_DESC" default="css_from_template" class="btn-group btn-group-yesno">
                     <option value="js_from_template">TPL_MINIMALISTA_LOAD_FONTAWESOME_JS_FROM_TEMPLATE</option>
                     <option value="css_from_template">TPL_MINIMALISTA_LOAD_FONTAWESOME_CSS_FROM_TEMPLATE</option>
                     <option value="css_from_joomla">TPL_MINIMALISTA_LOAD_FONTAWESOME_CSS_FROM_JOOMLA</option>
                     <option value="0">JNONE</option>
                 </field>
                 <!-- load_jquery -->
-                <field name="load_jquery_from_template" type="radio" label="TPL_MINIMALISTA_LOAD_JQUERY_FROM_TEMPLATE" description="TPL_MINIMALISTA_LOAD_JQUERY_FROM_TEMPLATE_DESC" default="0" class="btn-group btn-group-yesno">
+                <field name="load_jquery_from_template" type="radio" label="TPL_MINIMALISTA_LOAD_JQUERY_FROM_TEMPLATE" description="TPL_MINIMALISTA_LOAD_JQUERY_FROM_TEMPLATE_DESC" default="1" class="btn-group btn-group-yesno">
                     <option value="1">JYES</option>
                     <option value="0">JNO</option>
                 </field>
