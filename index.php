@@ -73,7 +73,7 @@ include_once JPATH_THEMES . '/minimalista/logic.php';
 $sectionsBeforeComponent = $templateParams->get('sectionsbeforecomponent', '');
 if ($sectionsBeforeComponent) {
     foreach ($sectionsBeforeComponent as $section) {
-        renderSection($section, $defaultBoostrapDesktop, $this);
+        renderSection($section, $defaultBoostrapDesktop, $this->template);
     }
 }
 ?>
@@ -128,7 +128,7 @@ if ($sectionsBeforeComponent) {
 $sectionsAfterComponent = $templateParams->get('sectionsaftercomponent', '');
 if ($sectionsAfterComponent) {
     foreach ($sectionsAfterComponent as $section) {
-        renderSection($section, $defaultBoostrapDesktop, $this);
+        renderSection($section, $defaultBoostrapDesktop, $this->template);
     }
 }
 ?>
