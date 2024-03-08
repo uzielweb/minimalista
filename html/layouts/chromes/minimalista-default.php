@@ -57,7 +57,7 @@ $header = '<' . $headerTag . ' ' . ArrayHelper::toString($headerAttribs) . '>' .
 <?php endif;?>
    <?php if ($module->content): ?>
     <div class="module-content">
-        <?php echo str_replace("{year}", date("Y"), $module->content); ?>
+        <?php echo $module->content; ?>
     </div>
 <?php endif;?>
 </div>
