@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <extension type="template" client="site" version="" method="upgrade">
     <name>minimalista</name>
-    <version>2.4.5</version>
+    <version>2.4.6</version>
     <creationDate>2023-01</creationDate>
     <author>Uziel - Via Ponto Mega</author>
     <authorEmail>contato@pontomega.com.br</authorEmail>
@@ -26,25 +26,21 @@
         <folder>webfonts</folder>
     </media>
     <positions>
-        <position>topbar</position>
-        <position>below-top</position>
+        <position>header-top</position>
+        <position>header</position>
         <position>menu</position>
-        <position>search</position>
-        <position>banner</position>
-        <position>slidesho</position>
-        <position>top-a</position>
-        <position>top-b</position>
-        <position>main-top</position>
+        <position>header-bottom</position>
         <position>slideshow</position>
-        <position>main-bottom</position>
+        <position>main-top</position>
         <position>breadcrumbs</position>
+        <position>content-top</position>
+        <position>content-bottom</position>
         <position>sidebar-left</position>
         <position>sidebar-right</position>
-        <position>bottom-a</position>
-        <position>bottom-b</position>
-        <position>footer</position>
-        <position>debug</position>
+        <position>main-bottom</position>
+        <position>footer</position>        
         <position>copyright</position>
+        <position>debug</position>
     </positions>
     <!-- configs -->
     <!-- container-fluid, default-bootstrap-desktop. sidebar-width -->
@@ -112,6 +108,54 @@
                 <field name="custom_script_endbody" type="editor" editor="codemirror" label="TPL_MINIMALISTA_CUSTOM_SCRIPT_TO_ENDBODY" description="TPL_MINIMALISTA_CUSTOM_SCRIPT_TO_ENDBODY_DESC" rows="5" filter="raw" />
             </fieldset>
             <fieldset name="positions">
+                                <!-- before header -->
+                                <field name="beforeheader" type="subform" label="TPL_MINIMALISTA_BEFORE_HEADER" description="TPL_MINIMALISTA_BEFORE_HEADER_DESC" multiple="true">
+                                    <form>
+                                        <field name="position" type="text" label="TPL_MINIMALISTA_POSITION" description="TPL_MINIMALISTA_POSITION_DESC" />
+                                        <field name="width" type="list" default="12" label="TPL_MINIMALISTA_WIDTH" description="TPL_MINIMALISTA_WIDTH_DESC">
+                                            <option value="">TPL_MINIMALISTA_WIDTH_EMPTY</option>
+                                            <option value="auto">TPL_MINIMALISTA_WIDTH_AUTO</option>
+                                            <option value="1">1</option>
+                                            <option value="2">2</option>
+                                            <option value="3">3</option>
+                                            <option value="4">4</option>
+                                            <option value="5">5</option>
+                                            <option value="6">6</option>
+                                            <option value="7">7</option>
+                                            <option value="8">8</option>
+                                            <option value="9">9</option>
+                                            <option value="10">10</option>
+                                            <option value="11">11</option>
+                                            <option value="12">12</option>
+                                        </field>
+                                        <!-- customclass -->
+                                        <field name="customclass" type="text" label="TPL_MINIMALISTA_CUSTOMCLASS" description="TPL_MINIMALISTA_CUSTOMCLASS_DESC" />
+                                    </form>
+                                </field>
+                                <!-- after header -->
+                                <field name="afterheader" type="subform" label="TPL_MINIMALISTA_AFTER_HEADER" description="TPL_MINIMALISTA_AFTER_HEADER_DESC" multiple="true">
+                                    <form>
+                                        <field name="position" type="text" label="TPL_MINIMALISTA_POSITION" description="TPL_MINIMALISTA_POSITION_DESC" />
+                                        <field name="width" type="list" default="12" label="TPL_MINIMALISTA_WIDTH" description="TPL_MINIMALISTA_WIDTH_DESC">
+                                            <option value="">TPL_MINIMALISTA_WIDTH_EMPTY</option>
+                                            <option value="auto">TPL_MINIMALISTA_WIDTH_AUTO</option>
+                                            <option value="1">1</option>
+                                            <option value="2">2</option>
+                                            <option value="3">3</option>
+                                            <option value="4">4</option>
+                                            <option value="5">5</option>
+                                            <option value="6">6</option>
+                                            <option value="7">7</option>
+                                            <option value="8">8</option>
+                                            <option value="9">9</option>
+                                            <option value="10">10</option>
+                                            <option value="11">11</option>
+                                            <option value="12">12</option>
+                                        </field>
+                                        <!-- customclass -->
+                                        <field name="customclass" type="text" label="TPL_MINIMALISTA_CUSTOMCLASS" description="TPL_MINIMALISTA_CUSTOMCLASS_DESC" />
+                                    </form>
+                                </field>
                 <field name="sectionsbeforecomponent" type="subform" label="TPL_MINIMALISTA_SECTIONS" description="TPL_MINIMALISTA_SECTIONS_DESC" multiple="true">
                     <form>
                         <field name="section" type="text" label="TPL_MINIMALISTA_SECTION" description="TPL_MINIMALISTA_SECTION_DESC" />
@@ -179,6 +223,8 @@
                         </field>
                     </form>
                 </field>
+
+
             </fieldset>
         </fields>
     </config>
