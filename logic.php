@@ -97,7 +97,7 @@ if($this->countModules('sidebar-left') && $this->countModules('sidebar-right')) 
     $mainWidth = $defaultBoostrapDesktop . '-' . '12';
 }
 // Load jQuery based on template or Joomla configuration
-if ($templateParams->get('load_jquery_from_template') == 1) {
+if ($templateParams->get('load_jquery_from_template', 1) == 1) {
     $wa->registerAndUseScript('jquery_from_template', Uri::root(true) . 'media/templates/site/' . $templateOriginal . '/js/jquery-3.7.1.min.js', array('version' => 'auto'));
     $wa->registerAndUseScript('jquery-noconflict', Uri::root(true) . 'media/templates/site/' . $templateOriginal . '/js/jquery-noconflict.js', array('version' => 'auto'));
     $wa->registerAndUseScript('jquery_migrate_from_template', Uri::root(true) . 'media/templates/site/' . $templateOriginal . '/js/jquery-migrate-3.4.0.min.js', array('version' => 'auto'));
@@ -107,7 +107,7 @@ if ($templateParams->get('load_jquery_from_template') == 1) {
 }
 
 // Load Bootstrap CSS and JavaScript based on template or Joomla configuration
-if ($templateParams->get('bootstrap_from_template')) {
+if ($templateParams->get('bootstrap_from_template', 1) == 1) {
     $wa->registerAndUseStyle('bootstrap_css', Uri::root(true) . 'media/templates/site/' . $templateOriginal . '/css/bootstrap.min.css', array('version' => 'auto'));
     $wa->registerAndUseScript('bootstrapbundle_js', Uri::root(true) . 'media/templates/site/' . $templateOriginal . '/js/bootstrap.bundle.min.js', array('version' => 'auto'), array('defer' => true));
 } else {
@@ -117,7 +117,7 @@ if ($templateParams->get('bootstrap_from_template')) {
 }
 
 // Load FontAwesome based on template or Joomla configuration
-$loadFontAwesome = $templateParams->get('load_fontawesome', 'css_from_joomla');
+$loadFontAwesome = $templateParams->get('load_fontawesome', 'css_from_template');
 if ($loadFontAwesome == 'css_from_template') {
     $wa->registerAndUseStyle('fontawesome_css', Uri::root(true) . 'media/templates/site/' . $templateOriginal . '/css/all.min.css', array('version' => 'auto'));
 } elseif ($loadFontAwesome == 'js_from_template') {
