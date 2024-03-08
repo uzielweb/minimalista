@@ -24,7 +24,7 @@ As seguintes configurações são possíveis em seu administrador:
 - [x] 10.``` Novo recurso: ``` Permite adicionar infinitas posições acima da parte do componente e abaixo da parte do componente
 - [x] 11.``` Novo recurso: ``` Permite adicionar Meta Tags Open Graph para compartilhamento em redes sociais
 - [x] 12.``` Novo recurso: ``` classes bootstrap col personalizada para sufixo de classe de módulo torna possível substituir o tamanho de bootstrap do módulo
-- [x] 13.``` Novo recurso: ``` um pequeno truque: você pode usar {year} no texto dos módulos para exibir o ano atual (isso pode ser útil em direitos de cópia)
+- [x] 13.``` New feature: ``` Permite adicionar infinitas posições antes e depois do cabeçalho
 
 
 Por padrão, o tema vem com Bootstrap e Font Awesome do Joomla, mas você pode escolher usar o Bootstrap e o Font Awesome do template, ou nenhum deles.
@@ -53,10 +53,10 @@ The following settings are possible in your admin:
 - [x] 7. Allows you to choose the logo and favicon
 - [x] 8. Allows custom css and js files, just add them to the css folder with the name *custom-anyname.css*, *customfont-anyname.css* and *custom-anyname.js* in the js folder, in addition *responsive.css* (with this exact name)
 - [x] 9. You can add custom code to head, css to head, custom code after <body> tag and before </body> tag
-- [x] 10.``` New feature: ``` Allows you to add infinite positions above the component part and below the component part
+- [x] 10.``` New feature: ``` Allows you to add infinite positions before and after component
 - [x] 11.``` New feature: ``` Allows you to add Open Graph Meta Tags for sharing on social networks 
 - [x] 12.``` New feature: ```bootstrap custom col classes for module class suffix makes it possible to override module bootstrap size
-- [x] 13.``` New feature: ``` a little trick: you can use {year} in the text of modules to display the current year (this can be useful in copyrights)
+- [x] 13.``` New feature: ``` Allows you to add infinite positions before and after header
 
 
 By default, the template comes with Joomla's Bootstrap and Font Awesome, but you can choose to use the template's Bootstrap and Font Awesome, or neither.
