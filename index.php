@@ -66,8 +66,7 @@ if ($sectionsBeforeHeader) {
                                 aria-label="Close"></button>
                         </div>
                         <div class="offcanvas-body">
-                            <jdoc:include type="modules" name="menu"
-                                style="<?php echo $this->template . '-default'; ?>" />
+                            <jdoc:include type="modules" name="menu" style="<?php echo $this->template . '-default'; ?>" />
                         </div>
                     </div>
                 </div>
@@ -113,8 +112,7 @@ if ($sectionsBeforeComponent) {
                 <div class="inner">
                     <?php if ($this->countModules('main-top')): ?>
                     <div class="main-top row">
-                        <jdoc:include type="modules" name="main-top"
-                            style="<?php echo $this->template . '-default'; ?>" />
+                        <jdoc:include type="modules" name="main-top" style="<?php echo $this->template . '-default'; ?>" />
                     </div>
                     <?php endif;?>
                     <div class="row">
@@ -149,8 +147,7 @@ if ($sectionsBeforeComponent) {
                     </div>
                     <?php if ($this->countModules('main-bottom')): ?>
                     <div class="main-bottom row">
-                        <jdoc:include type="modules" name="main-bottom"
-                            style="<?php echo $this->template . '-default'; ?>" />
+                        <jdoc:include type="modules" name="main-bottom" style="<?php echo $this->template . '-default'; ?>" />
                     </div>
                     <?php endif;?>
                 </div>
