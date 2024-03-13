@@ -10,6 +10,7 @@ defined('_JEXEC') or die;
 // Include common libraries and dependencies
 use Joomla\CMS\Factory;
 use Joomla\CMS\HTML\HTMLHelper;
+use Joomla\CMS\Document\Document;
 use Joomla\CMS\Table\Table;
 use Joomla\CMS\Uri\Uri;
 use Joomla\Filesystem\Folder;
@@ -123,6 +124,26 @@ $wa->registerAndUseStyle('template-css', Uri::root(true) . 'media/templates/site
 $wa->registerAndUseScript('template-js', Uri::root(true) . 'media/templates/site/' . $templateOriginal . '/js/template.js', array('version' => 'auto'), array('defer' => true));
 $wa->registerAndUseStyle($this->template . 'template-css', Uri::root(true) . 'media/templates/site/' . $this->template . '/css/template.css', array('version' => 'auto'));
 $wa->registerAndUseScript($this->template . 'template-js', Uri::root(true) . 'media/templates/site/' . $this->template . '/js/template.js', array('version' => 'auto'), array('defer' => true));
+// Assuming $this is an instance of Document
+// media/templates/site/minimalista/css/adtitional/
+$cssDirectory = JPATH_ROOT . '/media/templates/site/' . $this->template . '/css/aditional';
+if (is_dir($cssDirectory)) {
+    $cssFiles = Folder::files($cssDirectory, '.css$', true, true);
+    if (is_array($cssDirectory) || is_object($cssDirectory)) {
+    foreach ($cssFiles as $cssFile) {
+        $wa->registerAndUseStyle($this->template . pathinfo($cssFile, PATHINFO_FILENAME), Uri::root(true) . 'media/templates/site/' . $this->template . '/css/aditional' . '/' . basename($cssFile), array('version' => 'auto'));
+    }  
+}
+}
+$jsDirectory = JPATH_ROOT . '/media/templates/site/' . $this->template . '/js/aditional';
+if (is_dir($jsDirectory)) {
+    $jsFiles = Folder::files($jsDirectory, '.js$', true, true);
+    if (is_array($jsDirectory) || is_object($jsDirectory)) {
+    foreach ($jsFiles as $jsFile) {
+        $wa->registerAndUseScript($this->template . pathinfo($jsFile, PATHINFO_FILENAME), Uri::root(true) . 'media/templates/site/' . $this->template . '/js/aditional' . '/' . basename($jsFile), array('version' => 'auto'), array('defer' => true));
+    }
+}
+}
 // Scan template CSS folder and load all CSS files with "custom" in the name for the original template
 $customCssDirectoryOriginalTemplate = JPATH_ROOT . '/media/templates/site/' . $templateOriginal . '/css';
 if (is_dir($customCssDirectoryOriginalTemplate)) {
