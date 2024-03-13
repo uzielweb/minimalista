@@ -24,10 +24,11 @@ As seguintes configurações são possíveis em seu administrador:
 - [x] 10.``` Novo recurso: ``` Permite adicionar infinitas posições acima da parte do componente e abaixo da parte do componente
 - [x] 11.``` Novo recurso: ``` Permite adicionar Meta Tags Open Graph para compartilhamento em redes sociais
 - [x] 12.``` Novo recurso: ``` classes bootstrap col personalizada para sufixo de classe de módulo torna possível substituir o tamanho de bootstrap do módulo
-- [x] 13.``` New feature: ``` Permite adicionar infinitas posições antes e depois do cabeçalho
+- [x] 13.``` Novo recurso: ``` Permite adicionar infinitas posições antes e depois do cabeçalho
+- [x] 14.``` Novo recurso: ``` Permite adicionar infinitos arquivos css e js adicionais nos respectivos diretórios css/addttional e js/addttional (importante: custom.js, custom.css e responsive.css ainda serão os últimos em oirdem de carregamento)
 
 
-Por padrão, o tema vem com Bootstrap e Font Awesome do Joomla, mas você pode escolher usar o Bootstrap e o Font Awesome do template, ou nenhum deles.
+Por padrão, o tema vem com Bootstrap e Font Awesome do tema, mas você pode escolher usar o Bootstrap e o Font Awesome do Joomla, ou nenhum deles. Classes CSS do fontawesome do Joomla podem continuar a ser usadas, sem problemas
 
 
 
@@ -57,7 +58,8 @@ The following settings are possible in your admin:
 - [x] 11.``` New feature: ``` Allows you to add Open Graph Meta Tags for sharing on social networks 
 - [x] 12.``` New feature: ```bootstrap custom col classes for module class suffix makes it possible to override module bootstrap size
 - [x] 13.``` New feature: ``` Allows you to add infinite positions before and after header
+- [x] 14.``` New feature: ``` Allows you to add infinite additional css and js files in the respective css/addttional and js/addttional directories (important: custom.js, custom.css and responsive.css will still be the last in loading order)
 
 
-By default, the template comes with Joomla's Bootstrap and Font Awesome, but you can choose to use the template's Bootstrap and Font Awesome, or neither.
+By default, the template comes with template's Bootstrap and Font Awesome, but you can choose to use the Joomla's Bootstrap and Font Awesome, or neither. Joomla fontawesome CSS classes can continue to be used without any problems.
 
