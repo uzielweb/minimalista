@@ -25,7 +25,7 @@ include_once JPATH_THEMES . '/minimalista/logic.php';
 $sectionsBeforeHeader = $templateParams->get('sectionsbeforeheader', '');
 if ($sectionsBeforeHeader) {
     foreach ($sectionsBeforeHeader as $section) {
-        renderSection($section, $defaultBoostrapDesktop, $this->template);
+        renderSection($section, $defaultBoostrapDesktop, $this);
     }
 }
 ?>
@@ -86,7 +86,7 @@ if ($sectionsBeforeHeader) {
 $sectionsAfterHeader = $templateParams->get('sectionsafterheader', '');
 if ($sectionsAfterHeader) {
     foreach ($sectionsAfterHeader as $section) {
-        renderSection($section, $defaultBoostrapDesktop, $this->template);
+        renderSection($section, $defaultBoostrapDesktop, $this);
     }
 }
 ?>
@@ -103,7 +103,7 @@ if ($sectionsAfterHeader) {
 $sectionsBeforeComponent = $templateParams->get('sectionsbeforecomponent', '');
 if ($sectionsBeforeComponent) {
     foreach ($sectionsBeforeComponent as $section) {
-        renderSection($section, $defaultBoostrapDesktop, $this->template);
+        renderSection($section, $defaultBoostrapDesktop, $this);
     }
 }
 ?>
@@ -158,7 +158,7 @@ if ($sectionsBeforeComponent) {
 $sectionsAfterComponent = $templateParams->get('sectionsaftercomponent', '');
 if ($sectionsAfterComponent) {
     foreach ($sectionsAfterComponent as $section) {
-        renderSection($section, $defaultBoostrapDesktop, $this->template);
+        renderSection($section, $defaultBoostrapDesktop, $this);
     }
 }
 ?>
