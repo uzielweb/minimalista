@@ -126,23 +126,29 @@ $wa->registerAndUseStyle($this->template . 'template-css', Uri::root(true) . 'me
 $wa->registerAndUseScript($this->template . 'template-js', Uri::root(true) . 'media/templates/site/' . $this->template . '/js/template.js', array('version' => 'auto'), array('defer' => true));
 // Assuming $this is an instance of Document
 // media/templates/site/minimalista/css/adtitional/
-$cssDirectory = JPATH_ROOT . '/media/templates/site/' . $this->template . '/css/aditional';
-if (is_dir($cssDirectory)) {
-    $cssFiles = Folder::files($cssDirectory, '.css$', true, true);
-    if (is_array($cssDirectory) || is_object($cssDirectory)) {
-    foreach ($cssFiles as $cssFile) {
-        $wa->registerAndUseStyle($this->template . pathinfo($cssFile, PATHINFO_FILENAME), Uri::root(true) . 'media/templates/site/' . $this->template . '/css/aditional' . '/' . basename($cssFile), array('version' => 'auto'));
-    }  
-}
-}
-$jsDirectory = JPATH_ROOT . '/media/templates/site/' . $this->template . '/js/aditional';
-if (is_dir($jsDirectory)) {
-    $jsFiles = Folder::files($jsDirectory, '.js$', true, true);
-    if (is_array($jsDirectory) || is_object($jsDirectory)) {
-    foreach ($jsFiles as $jsFile) {
-        $wa->registerAndUseScript($this->template . pathinfo($jsFile, PATHINFO_FILENAME), Uri::root(true) . 'media/templates/site/' . $this->template . '/js/aditional' . '/' . basename($jsFile), array('version' => 'auto'), array('defer' => true));
+$additionalcssDirectory = JPATH_ROOT . '/media/templates/site/' . $this->template . '/css/additional';
+if (is_dir($additionalcssDirectory)) {
+    $additionalcssFiles = Folder::files($additionalcssDirectory, 'css', true, true);
+    if (is_array($additionalcssFiles) || is_object($additionalcssFiles)) {
+        foreach ($additionalcssFiles as $index => $cssFile) {
+            $wa->registerAndUseStyle($this->template . pathinfo($cssFile, PATHINFO_FILENAME), Uri::root(true) . 'media/templates/site/' . $this->template . '/css/additional' . '/' . basename($cssFile), array('version' => 'auto'));
+        }
     }
+} else {
+    // Handle the case where the directory does not exist
+    // You can log an error or take appropriate action here
 }
+$additionaljsDirectory = JPATH_ROOT . '/media/templates/site/' . $this->template . '/js/additional';
+if (is_dir($additionaljsDirectory)) {
+    $additionaljsFiles = Folder::files($additionaljsDirectory, 'js', true, true);
+    if (is_array($additionaljsFiles) || is_object($additionaljsFiles)) {
+        foreach ($additionaljsFiles as $index => $jsFile) {
+            $wa->registerAndUseScript($this->template . pathinfo($jsFile, PATHINFO_FILENAME), Uri::root(true) . 'media/templates/site/' . $this->template . '/js/additional' . '/' . basename($jsFile), array('version' => 'auto'), array('defer' => true));
+        }
+    }
+} else {
+    // Handle the case where the directory does not exist
+    // You can log an error or take appropriate action here
 }
 // Scan template CSS folder and load all CSS files with "custom" in the name for the original template
 $customCssDirectoryOriginalTemplate = JPATH_ROOT . '/media/templates/site/' . $templateOriginal . '/css';
