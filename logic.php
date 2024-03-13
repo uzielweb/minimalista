@@ -6,20 +6,14 @@
  * @copyright   (C) 2017 Open Source Matters, Inc. <https://www.joomla.org>
  * @license     GNU General Public License version 2 or later; see LICENSE.txt
  */
-
 defined('_JEXEC') or die;
-
 // Include common libraries and dependencies
 use Joomla\CMS\Factory;
 use Joomla\CMS\HTML\HTMLHelper;
-use Joomla\CMS\Uri\Uri;
-use Joomla\CMS\Language\Text;
-use Joomla\Filesystem\Folder;
 use Joomla\CMS\Table\Table;
-
+use Joomla\CMS\Uri\Uri;
+use Joomla\Filesystem\Folder;
 /** @var Joomla\CMS\Document\HtmlDocument $this */
-
-
 // Database connection setup
 $db = Factory::getContainer()->get('DatabaseDriver');
 $query = $db->getQuery(true);
@@ -29,7 +23,6 @@ $query->select($db->quoteName('parent'))
 $db->setQuery($query);
 $templateParent = $db->loadResult();
 $templateOriginal = $templateParent ? $templateParent : $this->template;
-
 // Application and document setup
 $app = Factory::getApplication();
 $doc = $app->getDocument();
@@ -37,7 +30,6 @@ $doc->setHtml5(true);
 $doc->setGenerator('');
 $user = $app->getIdentity();
 $input = $app->input;
-
 // Get input parameters
 $option = $input->getCmd('option', '');
 $view = $input->getCmd('view', '');
@@ -45,7 +37,6 @@ $layout = $input->getCmd('layout', '');
 $task = $input->getCmd('task', '');
 $itemid = $input->getCmd('Itemid', '');
 $sitename = $app->get('sitename', '');
-
 // Get menu and active menu item information
 $menu = $app->getMenu();
 $active = $menu->getActive();
@@ -56,7 +47,6 @@ $parent = $menu->getItem($active->parent_id);
 $parentParams = $parent ? $parent->getParams() : '';
 $parentAlias = $parent ? $parent->alias : '';
 $parentPageclass = $parentParams ? $parentParams->get('pageclass_sfx', '') : '';
-
 // Template-related settings and parameters
 $tpath = Uri::root(true) . '/templates/' . $templateOriginal;
 $templateParams = $app->getTemplate(true)->params;
@@ -69,8 +59,8 @@ $doc->addFavicon(Uri::root(true) . '/' . $templateParams->get('favicon', ''));
 $doc->setMetaData('viewport', 'width=device-width, initial-scale=1.0');
 $custom_css_head = $templateParams->get('custom_css_head', '');
 $custom_script_head = $templateParams->get('custom_script_head', '');
-$startBodyCode  = $templateParams->get('custom_script_startbody', '');
-$endBodyCode  = $templateParams->get('custom_script_endbody', '');
+$startBodyCode = $templateParams->get('custom_script_startbody', '');
+$endBodyCode = $templateParams->get('custom_script_endbody', '');
 $backtotop = $templateParams->get('backtotop', '1');
 $doc->addStyleDeclaration($custom_css_head);
 $doc->addScriptDeclaration($custom_script_head);
@@ -89,9 +79,9 @@ $bodyClasses = ($option ? 'option-' . str_replace('com_', '', $option) : 'no-opt
 $containerFluid = $templateParams->get('container-fluid', 0) ? '-fluid' : '';
 $defaultBoostrapDesktop = '-' . $templateParams->get('default-bootstrap-desktop', 'lg');
 $sidebarWidth = $defaultBoostrapDesktop . '-' . $templateParams->get('sidebar-width', '3');
-if($this->countModules('sidebar-left') && $this->countModules('sidebar-right')) {
+if ($this->countModules('sidebar-left') && $this->countModules('sidebar-right')) {
     $mainWidth = $defaultBoostrapDesktop . '-' . (12 - $templateParams->get('sidebar-width', '3') * 2);
-} elseif($this->countModules('sidebar-left') || $this->countModules('sidebar-right')) {
+} elseif ($this->countModules('sidebar-left') || $this->countModules('sidebar-right')) {
     $mainWidth = $defaultBoostrapDesktop . '-' . (12 - $templateParams->get('sidebar-width', '3'));
 } else {
     $mainWidth = $defaultBoostrapDesktop . '-' . '12';
@@ -105,7 +95,6 @@ if ($templateParams->get('load_jquery_from_template', 1) == 1) {
     // Load jQuery from Joomla
     HTMLHelper::_('jquery.framework', true, true);
 }
-
 // Load Bootstrap CSS and JavaScript based on template or Joomla configuration
 if ($templateParams->get('bootstrap_from_template', 1) == 1) {
     $wa->registerAndUseStyle('bootstrap_css', Uri::root(true) . 'media/templates/site/' . $templateOriginal . '/css/bootstrap.min.css', array('version' => 'auto'));
@@ -115,7 +104,6 @@ if ($templateParams->get('bootstrap_from_template', 1) == 1) {
     HTMLHelper::_('bootstrap.loadCss', true, $this->direction);
     HTMLHelper::_('bootstrap.framework');
 }
-
 // Load FontAwesome based on template or Joomla configuration
 $loadFontAwesome = $templateParams->get('load_fontawesome', 'css_from_template');
 if ($loadFontAwesome == 'css_from_template') {
@@ -128,19 +116,15 @@ if ($loadFontAwesome == 'css_from_template') {
 } else {
     // Do nothing for FontAwesome
 }
-
 // Load Joomla 4 system icons
 $wa->registerAndUseStyle('icons', 'media/system/css/joomla-fontawesome.min.css', array('version' => 'auto'));
 $wa->registerAndUseStyle('template-css', Uri::root(true) . 'media/templates/site/' . $templateOriginal . '/css/template.css', array('version' => 'auto'));
-
 // Load template-specific JavaScript after jQuery and Bootstrap
 $wa->registerAndUseScript('template-js', Uri::root(true) . 'media/templates/site/' . $templateOriginal . '/js/template.js', array('version' => 'auto'), array('defer' => true));
 $wa->registerAndUseStyle($this->template . 'template-css', Uri::root(true) . 'media/templates/site/' . $this->template . '/css/template.css', array('version' => 'auto'));
 $wa->registerAndUseScript($this->template . 'template-js', Uri::root(true) . 'media/templates/site/' . $this->template . '/js/template.js', array('version' => 'auto'), array('defer' => true));
-
 // Scan template CSS folder and load all CSS files with "custom" in the name for the original template
 $customCssDirectoryOriginalTemplate = JPATH_ROOT . '/media/templates/site/' . $templateOriginal . '/css';
-
 if (is_dir($customCssDirectoryOriginalTemplate)) {
     $customCssFilesOriginalTemplate = Folder::files($customCssDirectoryOriginalTemplate, 'custom', true, true);
     if (is_array($customCssFilesOriginalTemplate) || is_object($customCssFilesOriginalTemplate)) {
@@ -152,10 +136,8 @@ if (is_dir($customCssDirectoryOriginalTemplate)) {
     // Handle the case where the directory does not exist
     // You can log an error or take appropriate action here
 }
-
 // Scan template CSS folder and load all CSS files with "customfont" in the name for the current template
 $customFontCssDirectoryCurrentTemplate = JPATH_ROOT . '/media/templates/site/' . $this->template . '/css';
-
 if (is_dir($customFontCssDirectoryCurrentTemplate)) {
     $customFontCssFilesCurrentTemplate = Folder::files($customFontCssDirectoryCurrentTemplate, 'customfont', true, true);
     if (is_array($customFontCssFilesCurrentTemplate) || is_object($customFontCssFilesCurrentTemplate)) {
@@ -167,10 +149,8 @@ if (is_dir($customFontCssDirectoryCurrentTemplate)) {
     // Handle the case where the directory does not exist
     // You can log an error or take appropriate action here
 }
-
 // Scan template CSS folder and load all CSS files with "custom" in the name for the current template
 $customCssDirectoryCurrentTemplate = JPATH_ROOT . '/media/templates/site/' . $this->template . '/css';
-
 if (is_dir($customCssDirectoryCurrentTemplate)) {
     $customCssFilesCurrentTemplate = Folder::files($customCssDirectoryCurrentTemplate, 'custom', true, true);
     if (is_array($customCssFilesCurrentTemplate) || is_object($customCssFilesCurrentTemplate)) {
@@ -182,10 +162,8 @@ if (is_dir($customCssDirectoryCurrentTemplate)) {
     // Handle the case where the directory does not exist
     // You can log an error or take appropriate action here
 }
-
 // Scan template JS folder and load all JS files with "custom" in the name for the original template
 $customJsDirectoryOriginalTemplate = JPATH_ROOT . '/media/templates/site/' . $templateOriginal . '/js';
-
 if (is_dir($customJsDirectoryOriginalTemplate)) {
     $customJsFilesOriginalTemplate = Folder::files($customJsDirectoryOriginalTemplate, 'custom', true, true);
     if (is_array($customJsFilesOriginalTemplate) || is_object($customJsFilesOriginalTemplate)) {
@@ -197,10 +175,8 @@ if (is_dir($customJsDirectoryOriginalTemplate)) {
     // Handle the case where the directory does not exist
     // You can log an error or take appropriate action here
 }
-
 // Scan template JS folder and load all JS files with "custom" in the name for the current template
 $customJsDirectoryCurrentTemplate = JPATH_ROOT . '/media/templates/site/' . $this->template . '/js';
-
 if (is_dir($customJsDirectoryCurrentTemplate)) {
     $customJsFilesCurrentTemplate = Folder::files($customJsDirectoryCurrentTemplate, 'custom', true, true);
     if (is_array($customJsFilesCurrentTemplate) || is_object($customJsFilesCurrentTemplate)) {
@@ -212,20 +188,14 @@ if (is_dir($customJsDirectoryCurrentTemplate)) {
     // Handle the case where the directory does not exist
     // You can log an error or take appropriate action here
 }
-
 $wa->registerAndUseStyle($this->template . 'responsive-css', Uri::root(true) . 'media/templates/site/' . $this->template . '/css/responsive.css', array('version' => 'auto'));
-
 // load social meta tags OpenGraph for Faceboook, Twitter Cards and Schema.org
-
-
 if ($templateParams->get('enable_social_meta_tags', 1)) {
     $disable_in = $templateParams->get('disable_in', '');
-
     if (!is_array($disable_in)) {
         // If 'disable_in' is a string, convert it to an array with a single element
         $disable_in = array($disable_in);
     }
-
     if (!in_array($option, $disable_in)) {
         $title = $doc->getTitle() ? $doc->getTitle() : $sitename;
         $description = $doc->getDescription() ? $doc->getDescription() : Factory::getConfig()->get('MetaDesc');
@@ -233,10 +203,8 @@ if ($templateParams->get('enable_social_meta_tags', 1)) {
         $image_alt = $templateParams->get('social_image_alt', $logo_alt);
         $arrobasite = $templateParams->get('arrobasite', '');
         $arrobacreator = $templateParams->get('arrobaauthor', '');
-
         // Set common metadata
         setMetadata($doc, $title, $description, $image, $image_alt, $arrobasite, $arrobacreator);
-
         // Additional metadata for specific conditions and is not homepage
         if ($option == 'com_content' && $view == 'article' && Factory::getApplication()->input->getInt('id') && $active->home != 1) {
             $content = Table::getInstance('content');
@@ -245,8 +213,6 @@ if ($templateParams->get('enable_social_meta_tags', 1)) {
             if ($images) {
                 $image = $images->image_intro ? $images->image_intro : $images->image_fulltext;
                 $image_alt = $images->image_intro_alt ? $images->image_intro_alt : $images->image_fulltext_alt;
-               
-              
             }
             $textlimit = $templateParams->get('textlimit', 300);
             $text = $content->introtext . $content->fulltext;
@@ -255,21 +221,19 @@ if ($templateParams->get('enable_social_meta_tags', 1)) {
             if (isset($matches['src']) && empty($image)) {
                 $image = $matches['src'];
             }
-            $text = strip_tags($text);	
+            $text = strip_tags($text);
             $text = preg_replace('/\s+/', ' ', $text);
             $text = trim($text);
             $text = substr($text, 0, $textlimit);
             // get current site url examplo: https://www.example.com
-           
-            setMetadata($doc, $title, $text,  Uri::root() . $image, $image_alt);
+            setMetadata($doc, $title, $text, Uri::root() . $image, $image_alt);
         }
-
         if ($option == 'com_content' && $view == 'category' && Factory::getApplication()->input->getInt('id') && $active->home != 1) {
             $category = Table::getInstance('category');
             $category->load(Factory::getApplication()->input->getInt('id'));
-            $textlimit = $templateParams->get('textlimit', 300);           
+            $textlimit = $templateParams->get('textlimit', 300);
             $image = $category->image;
-            $image_alt = $category->image_alt;            
+            $image_alt = $category->image_alt;
             $image = $this->category->image;
             $image_alt = $this->category->image_alt;
             if ($image) {
@@ -278,9 +242,9 @@ if ($templateParams->get('enable_social_meta_tags', 1)) {
         }
     }
 }
-
 // Function to set common metadata
-function setMetadata($doc, $title, $description, $image, $image_alt, $arrobasite = '', $arrobacreator = '') {
+function setMetadata($doc, $title, $description, $image, $image_alt, $arrobasite = '', $arrobacreator = '')
+{
     $doc->setMetaData('og:title', $title);
     $doc->setMetaData('og:description', $description);
     $doc->setMetaData('og:image', Uri::root() . $image);
@@ -289,7 +253,7 @@ function setMetadata($doc, $title, $description, $image, $image_alt, $arrobasite
     $doc->setMetaData('og:image:alt', $image_alt);
     $doc->setMetaData('og:type', 'website');
     $doc->setMetaData('og:url', Uri::root());
-    $doc->setMetaData('og:site_name',Factory::getApplication()->get('sitename'));
+    $doc->setMetaData('og:site_name', Factory::getApplication()->get('sitename'));
     $doc->setMetaData('twitter:card', 'summary_large_image');
     $doc->setMetaData('twitter:title', $title);
     $doc->setMetaData('twitter:description', $description);
@@ -301,21 +265,18 @@ function setMetadata($doc, $title, $description, $image, $image_alt, $arrobasite
     $doc->setMetaData('schema:description', $description);
     $doc->setMetaData('schema:image', $image);
     $doc->setMetaData('schema:image:alt', $image_alt);
-    
 }
-
-
 // functions.php
-
-function cleanSectionName($sectionName) {
+function cleanSectionName($sectionName)
+{
     $sectionName = str_replace(' ', '-', $sectionName);
     $sectionName = strtolower($sectionName);
     $sectionName = iconv('UTF-8', 'ASCII//TRANSLIT', $sectionName);
     $sectionName = preg_replace('/[^a-zA-Z0-9\-]/', '', $sectionName);
     return $sectionName;
 }
-
-function hasModules($positions, $template) {
+function hasModules($positions, $template)
+{
     foreach ($positions as $position) {
         if ($template->countModules($position->position) > 0) {
             return true;
@@ -323,11 +284,10 @@ function hasModules($positions, $template) {
     }
     return false;
 }
-
-function renderSection($section, $defaultBoostrapDesktop, $template) {
+function renderSection($section, $defaultBoostrapDesktop, $template)
+{
     $sectionName = cleanSectionName($section->section);
     $hasModules = hasModules($section->positions, $template);
-
     if ($hasModules) {
         ?>
         <section id="<?php echo $sectionName; ?>"
@@ -335,7 +295,7 @@ function renderSection($section, $defaultBoostrapDesktop, $template) {
             <div class="<?php echo $section->containerwidth; ?>">
                 <div class="row">
                     <?php foreach ($section->positions as $position): ?>
-                        <div class="<?php echo 'position-' . strtolower($position->position); ?> col<?php echo $defaultBoostrapDesktop . ($position->width ? '-' . $position->width : ''); ?><?php echo $position->class ? ' ' . $position->customclass : ''; ?>">
+                        <div class="<?php echo 'position-' . strtolower($position->position); ?> col<?php echo $defaultBoostrapDesktop . ($position->width ? '-' . $position->width : ''); ?><?php echo $position->customclass ? ' ' . $position->customclass : ''; ?>">
                             <div class="row">
                                 <jdoc:include type="modules" name="<?php echo $position->position; ?>" style="<?php echo $template->template . '-default'; ?>" />
                             </div>
@@ -345,8 +305,5 @@ function renderSection($section, $defaultBoostrapDesktop, $template) {
             </div>
         </section>
         <?php
-    }
 }
-
-
-
+}
