@@ -53,7 +53,7 @@ $header = '<' . $headerTag . ' ' . ArrayHelper::toString($headerAttribs) . '>' .
 <?php endif;?>
    <?php if ($module->content): ?>
     <div class="module-content">
-        <?php echo $module->content; ?>
+        <?php echo str_replace('{minimalista-year}', date('Y'), $module->content); ?>
     </div>
 <?php endif;?>
 </div>
