@@ -69,6 +69,11 @@ if ($sectionsBeforeHeader) {
                             <jdoc:include type="modules" name="menu" style="<?php echo $this->template . '-default'; ?>" />
                         </div>
                     </div>
+                    <?php if ($this->countModules('search')): ?>
+                    <div class="search">
+                        <jdoc:include type="modules" name="search" style="<?php echo $this->template . '-default'; ?>" />
+                    </div>
+                    <?php endif;?>
                 </div>
             </nav>
         </div>
