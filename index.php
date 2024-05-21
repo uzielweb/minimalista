@@ -103,6 +103,14 @@ if ($sectionsAfterHeader) {
             </div>
         </section>
         <?php endif;?>
+        <main class="main">
+        <?php if ($this->countModules('slideshow-container')): ?>
+        <section class="container">
+            <div class="slideshow slideshow-container row">
+                <jdoc:include type="modules" name="slideshow-container" style="<?php echo $templateOriginal . '-default'; ?>" />
+            </div>
+        </section>
+        <?php endif;?>
         <?php
 // Sections before the component section
 $sectionsBeforeComponent = $templateParams->get('sectionsbeforecomponent', '');
