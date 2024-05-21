@@ -60,6 +60,11 @@
                     <option value="1">JYES</option>
                     <option value="0">JNO</option>
                 </field>
+                <!-- enable_social_meta_tags -->
+                <field name="enable_social_meta_tags" type="radio" label="TPL_MINIMALISTA_ENABLE_SOCIAL_META_TAGS" description="TPL_MINIMALISTA_ENABLE_SOCIAL_META_TAGS_DESC" default="1" class="btn-group btn-group-yesno">
+                    <option value="1">JYES</option>
+                    <option value="0">JNO</option>
+                </field>
                 <field name="container-fluid" type="radio" label="TPL_MINIMALISTA_CONTAINER_FLUID" description="TPL_MINIMALISTA_CONTAINER_FLUID_DESC" default="0" class="btn-group btn-group-yesno">
                     <option value="1">JYES</option>
                     <option value="0">JNO</option>
