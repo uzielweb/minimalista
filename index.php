@@ -103,7 +103,7 @@ if ($sectionsAfterHeader) {
             </div>
         </section>
         <?php endif;?>
-        <main class="main">
+       
         <?php if ($this->countModules('slideshow-container')): ?>
         <section class="container">
             <div class="slideshow slideshow-container row">
