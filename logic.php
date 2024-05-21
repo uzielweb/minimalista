@@ -77,7 +77,7 @@ $bodyClasses = ($option ? 'option-' . str_replace('com_', '', $option) : 'no-opt
     . ' ' . ($parentPageclass ? $parentPageclass : 'no-parent-pageclass')
     . ' ' . ($doc->getDirection() === 'rtl' ? 'direction-rtl' : 'direction-ltr')
     . ' ' . ($user->guest ? 'user-guest' : 'user-logged-in');
-$containerFluid = $templateParams->get('container-fluid', 0) ? '-fluid' : '';
+$containerFluid = $templateParams->get('container-fluid', '0') == '1' ? '-fluid' : '';
 $defaultBoostrapDesktop = '-' . $templateParams->get('default-bootstrap-desktop', 'lg');
 $sidebarWidth = $defaultBoostrapDesktop . '-' . $templateParams->get('sidebar-width', '3');
 if ($this->countModules('sidebar-left') && $this->countModules('sidebar-right')) {
