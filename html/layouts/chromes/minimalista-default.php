@@ -19,7 +19,6 @@ if ($module->content === null || $module->content === '') {
 }
 $moduleTag = $params->get('module_tag', 'div');
 $bootstrapSize = (int) $params->get('bootstrap_size', 0);
-
 $headerTag = $params->get('header_tag', 'h3');
 $headerClass = $params->get('header_class', '');
 $moduleClassSfx = $params->get('moduleclass_sfx');
@@ -30,7 +29,8 @@ if ($moduleClassSfx) {
         $moduleClassSfx = ' ' . $moduleClassSfx;
     }
 }
-$moduleClass = $bootstrapSize > 0 && strpos($moduleClassSfx, 'col') === false ? ' col-' . $templateParams->get('default-bootstrap-desktop', 12) .'-'. $bootstrapSize : '';
+$moduleClass = $bootstrapSize > 0 && strpos($moduleClassSfx, 'col') === false ? ' col-' . $templateParams->get('default-bootstrap-desktop', 'lg') .'-'. $bootstrapSize : '';
+$moduleClass = $bootstrapSize === 0 ? ' col-'.$templateParams->get('default-bootstrap-desktop', 'lg') .'-'. '12' : $moduleClass;
 $moduleAttribs = [];
 $moduleLayout = str_replace("_:", "", $params->get('layout', 'default'));
 $moduleAttribs['class'] = 'module module-default' . ' module-position-' . $module->position . ' module-name-' . $module->name .' module-layout-' . $moduleLayout . $moduleClassSfx . $moduleClass;
