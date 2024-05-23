@@ -66,12 +66,16 @@ if ($sectionsBeforeHeader) {
                                 aria-label="Close"></button>
                         </div>
                         <div class="offcanvas-body">
+                            <div class="row">
                             <jdoc:include type="modules" name="menu" style="<?php echo $templateOriginal . '-default'; ?>" />
+                            </div>
                         </div>
                     </div>
                     <?php if ($this->countModules('search')): ?>
                     <div class="search">
-                        <jdoc:include type="modules" name="search" style="<?php echo $templateOriginal . '-default'; ?>" />
+                        <div class="row">
+                            <jdoc:include type="modules" name="search" style="<?php echo $templateOriginal . '-default'; ?>" />
+                        </div>                        
                     </div>
                     <?php endif;?>
                 </div>
