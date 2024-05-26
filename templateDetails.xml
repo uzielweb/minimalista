@@ -120,7 +120,7 @@
                                     <form>
                                         <field name="position" type="text" label="TPL_MINIMALISTA_POSITION" description="TPL_MINIMALISTA_POSITION_DESC" />
                                         <field name="width" type="list" default="12" label="TPL_MINIMALISTA_WIDTH" description="TPL_MINIMALISTA_WIDTH_DESC">
-                                            <option value="">TPL_MINIMALISTA_WIDTH_EMPTY</option>
+                                            <option value="0">TPL_MINIMALISTA_WIDTH_EMPTY</option>
                                             <option value="auto">TPL_MINIMALISTA_WIDTH_AUTO</option>
                                             <option value="1">1</option>
                                             <option value="2">2</option>
@@ -145,7 +145,6 @@
                                         <field name="position" type="text" label="TPL_MINIMALISTA_POSITION" description="TPL_MINIMALISTA_POSITION_DESC" />
                                         <field name="width" type="list" default="12" label="TPL_MINIMALISTA_WIDTH" description="TPL_MINIMALISTA_WIDTH_DESC">
                                             <option value="0">TPL_MINIMALISTA_WIDTH_EMPTY</option>
-                                            <option value="auto">TPL_MINIMALISTA_WIDTH_AUTO</option>
                                             <option value="auto">TPL_MINIMALISTA_WIDTH_AUTO</option>
                                             <option value="1">1</option>
                                             <option value="2">2</option>
@@ -176,7 +175,7 @@
                             <form>
                                 <field name="position" type="text" label="TPL_MINIMALISTA_POSITION" description="TPL_MINIMALISTA_POSITION_DESC" />
                                 <field name="width" type="list" default="12" label="TPL_MINIMALISTA_WIDTH" description="TPL_MINIMALISTA_WIDTH_DESC">
-                                    <option value="">TPL_MINIMALISTA_WIDTH_EMPTY</option>
+                                    <option value="0">TPL_MINIMALISTA_WIDTH_EMPTY</option>
                                     <option value="auto">TPL_MINIMALISTA_WIDTH_AUTO</option>
                                     <option value="1">1</option>
                                     <option value="2">2</option>
@@ -210,7 +209,7 @@
                             <form>
                                 <field name="position" type="text" label="TPL_MINIMALISTA_POSITION" description="TPL_MINIMALISTA_POSITION_DESC" />
                                 <field name="width" type="list" default="12" label="TPL_MINIMALISTA_WIDTH" description="TPL_MINIMALISTA_WIDTH_DESC">
-                                    <option value="">TPL_MINIMALISTA_WIDTH_EMPTY</option>
+                                   <option value="0">TPL_MINIMALISTA_WIDTH_EMPTY</option>
                                     <option value="auto">TPL_MINIMALISTA_WIDTH_AUTO</option>
                                     <option value="1">1</option>
                                     <option value="2">2</option>
