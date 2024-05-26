@@ -95,10 +95,10 @@ $bodyClasses = ($option ? 'option-' . str_replace('com_', '', $option) : 'no-opt
     . ' ' . ($parentPageclass ? $parentPageclass : 'no-parent-pageclass')
     . ' ' . ($doc->getDirection() === 'rtl' ? 'direction-rtl' : 'direction-ltr')
     . ' ' . ($user->guest ? 'user-guest' : 'user-logged-in');
-    // Output the user group names as CSS classes
-    foreach ($userGroupNames as $groupName) {
-        $bodyClasses .= ' user-group-' . strtolower($groupName);
-    }
+// Output the user group names as CSS classes
+foreach ($userGroupNames as $groupName) {
+    $bodyClasses .= ' user-group-' . strtolower($groupName);
+}
 $containerFluid = $templateParams->get('container-fluid', '0') == '1' ? '-fluid' : '';
 $defaultBoostrapDesktop = '-' . $templateParams->get('default-bootstrap-desktop', 'lg');
 $sidebarWidth = $defaultBoostrapDesktop . '-' . $templateParams->get('sidebar-width', '3');
@@ -364,20 +364,20 @@ function renderSection($section, $defaultBootstrapDesktop, $template)
                 <div class="<?php echo $section->containerwidth; ?>">
                     <div class="row">
                         <?php foreach ($activePositions as $position): ?>
-                            <?php 
-                            $width = isset($position->width) ? intval($position->width) : $defaultBootstrapDesktop;
-                            $proportionalWidth = round(($width / $totalSpecifiedWidth) * 12);
-                            ?>
+                            <?php
+$width = isset($position->width) ? intval($position->width) : $defaultBootstrapDesktop;
+            $proportionalWidth = round(($width / $totalSpecifiedWidth) * 12);
+            ?>
                             <div class="<?php echo 'position-' . strtolower($position->position); ?> col-<?php echo $proportionalWidth; ?><?php echo $position->customclass ? ' ' . $position->customclass : ''; ?>">
                                 <div class="row">
                                     <jdoc:include type="modules" name="<?php echo $position->position; ?>" style="<?php echo $template->template . '-default'; ?>" />
                                 </div>
                             </div>
-                        <?php endforeach; ?>
+                        <?php endforeach;?>
                     </div>
                 </div>
             </section>
             <?php
-        }
+}
     }
 }
