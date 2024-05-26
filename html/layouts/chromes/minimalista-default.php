@@ -40,7 +40,7 @@ if ($moduleClassSfx) {
 }
 
 $moduleClass = $bootstrapSize > 0 && strpos($moduleClassSfx, 'col') === false ? ' col-' . $templateParams->get('default-bootstrap-desktop', 'lg') . '-' . $bootstrapSize : '';
-$moduleClass = $bootstrapSize === 0 ? ' col-' . $templateParams->get('default-bootstrap-desktop', 'lg') . '-12' : $moduleClass;
+$moduleClass = $bootstrapSize === 0 && strpos($moduleClassSfx, 'col') === false ? ' col-' . $templateParams->get('default-bootstrap-desktop', 'lg') . '-12' : $moduleClass;
 
 $moduleAttribs = [];
 $moduleLayout = str_replace("_:", "", $params->get('layout', 'default'));
