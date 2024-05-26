@@ -8,9 +8,9 @@
  */
 defined('_JEXEC') or die;
 // Include common libraries and dependencies
+use Joomla\CMS\Document\Document;
 use Joomla\CMS\Factory;
 use Joomla\CMS\HTML\HTMLHelper;
-use Joomla\CMS\Document\Document;
 use Joomla\CMS\Table\Table;
 use Joomla\CMS\Uri\Uri;
 use Joomla\Filesystem\Folder;
@@ -236,7 +236,10 @@ if ($templateParams->get('enable_social_meta_tags', 1)) {
         if ($option == 'com_content' && $view == 'article' && Factory::getApplication()->input->getInt('id') && $active->home != 1) {
             $content = Table::getInstance('content');
             $content->load(Factory::getApplication()->input->getInt('id'));
-            $images = json_decode($content->images);
+            $images = null;
+            if (!empty($content->images) && is_string($content->images)) {
+                $images = json_decode($content->images);
+            }
             if ($images) {
                 $image = $images->image_intro ? $images->image_intro : $images->image_fulltext;
                 $image_alt = $images->image_intro_alt ? $images->image_intro_alt : $images->image_fulltext_alt;
@@ -252,19 +255,17 @@ if ($templateParams->get('enable_social_meta_tags', 1)) {
             $text = preg_replace('/\s+/', ' ', $text);
             $text = trim($text);
             $text = substr($text, 0, $textlimit);
-            // get current site url examplo: https://www.example.com
             setMetadata($doc, $title, $text, Uri::root() . $image, $image_alt);
         }
         if ($option == 'com_content' && $view == 'category' && Factory::getApplication()->input->getInt('id') && $active->home != 1) {
             $category = Table::getInstance('category');
             $category->load(Factory::getApplication()->input->getInt('id'));
             $textlimit = $templateParams->get('textlimit', 300);
-            $image = $category->image;
-            $image_alt = $category->image_alt;
-            $image = $this->category->image;
-            $image_alt = $this->category->image_alt;
-            if ($image) {
-                setMetadata($doc, $title, substr(strip_tags($this->category->description), 0, $textlimit), Uri::root() . $image, $image_alt);
+            // Check if the properties exist before accessing them
+            $image = property_exists($category, 'image') ? $category->image : '';
+            $image_alt = property_exists($category, 'image_alt') ? $category->image_alt : '';
+            if (!empty($image)) {
+                setMetadata($doc, $title, substr(strip_tags($category->description), 0, $textlimit), Uri::root() . $image, $image_alt);
             }
         }
     }
