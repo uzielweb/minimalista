@@ -40,7 +40,7 @@
         <position>sidebar-left</position>
         <position>sidebar-right</position>
         <position>main-bottom</position>
-        <position>footer</position>        
+        <position>footer</position>
         <position>copyright</position>
         <position>debug</position>
     </positions>
@@ -114,55 +114,75 @@
                 <!-- custom script to endbody -->
                 <field name="custom_script_endbody" type="editor" editor="codemirror" label="TPL_MINIMALISTA_CUSTOM_SCRIPT_TO_ENDBODY" description="TPL_MINIMALISTA_CUSTOM_SCRIPT_TO_ENDBODY_DESC" rows="5" filter="raw" />
             </fieldset>
-            <fieldset name="positions">
-                                <!-- before header -->
-                                <field name="beforeheader" type="subform" label="TPL_MINIMALISTA_BEFORE_HEADER" description="TPL_MINIMALISTA_BEFORE_HEADER_DESC" multiple="true">
-                                    <form>
-                                        <field name="position" type="text" label="TPL_MINIMALISTA_POSITION" description="TPL_MINIMALISTA_POSITION_DESC" />
-                                        <field name="width" type="list" default="12" label="TPL_MINIMALISTA_WIDTH" description="TPL_MINIMALISTA_WIDTH_DESC">
-                                            <option value="0">TPL_MINIMALISTA_WIDTH_EMPTY</option>
-                                            <option value="auto">TPL_MINIMALISTA_WIDTH_AUTO</option>
-                                            <option value="1">1</option>
-                                            <option value="2">2</option>
-                                            <option value="3">3</option>
-                                            <option value="4">4</option>
-                                            <option value="5">5</option>
-                                            <option value="6">6</option>
-                                            <option value="7">7</option>
-                                            <option value="8">8</option>
-                                            <option value="9">9</option>
-                                            <option value="10">10</option>
-                                            <option value="11">11</option>
-                                            <option value="12">12</option>
-                                        </field>
-                                        <!-- customclass -->
-                                        <field name="customclass" type="text" label="TPL_MINIMALISTA_CUSTOMCLASS" description="TPL_MINIMALISTA_CUSTOMCLASS_DESC" />
-                                    </form>
+            <fieldset name="positions" label="TPL_MINIMALISTA_SECTIONS_AND_POSITIONS">
+                <!-- before header -->
+                <field name="sectionsbeforeheader" type="subform" label="TPL_MINIMALISTA_BEFORE_HEADER" description="TPL_MINIMALISTA_BEFORE_HEADER_DESC" multiple="true">
+                    <form>
+                        <field name="section" type="text" label="TPL_MINIMALISTA_SECTION" description="TPL_MINIMALISTA_SECTION_DESC" />
+                        <field name="section_class" type="text" label="TPL_MINIMALISTA_SECTION_CLASS" description="TPL_MINIMALISTA_SECTION_CLASS_DESC" />
+                        <field name="containerwidth" type="list" default="container" label="TPL_MINIMALISTA_CONTAINERWIDTH" description="TPL_MINIMALISTA_CONTAINERWIDTH_DESC">
+                            <option value="container">TPL_MINIMALISTA_CONTAINER</option>
+                            <option value="container-fluid">TPL_MINIMALISTA_CONTAINER_FLUID</option>
+                        </field>
+                        <field name="positions" type="subform" label="TPL_MINIMALISTA_POSITIONS" description="TPL_MINIMALISTA_POSITIONS_DESC" multiple="true" layout="joomla.form.field.subform.repeatable-table">
+                            <form>
+                                <field name="position" type="text" label="TPL_MINIMALISTA_POSITION" description="TPL_MINIMALISTA_POSITION_DESC" />
+                                <field name="width" type="list" default="12" label="TPL_MINIMALISTA_WIDTH" description="TPL_MINIMALISTA_WIDTH_DESC">
+                                    <option value="0">TPL_MINIMALISTA_WIDTH_EMPTY</option>
+                                    <option value="auto">TPL_MINIMALISTA_WIDTH_AUTO</option>
+                                    <option value="1">1</option>
+                                    <option value="2">2</option>
+                                    <option value="3">3</option>
+                                    <option value="4">4</option>
+                                    <option value="5">5</option>
+                                    <option value="6">6</option>
+                                    <option value="7">7</option>
+                                    <option value="8">8</option>
+                                    <option value="9">9</option>
+                                    <option value="10">10</option>
+                                    <option value="11">11</option>
+                                    <option value="12">12</option>
                                 </field>
-                                <!-- after header -->
-                                <field name="afterheader" type="subform" label="TPL_MINIMALISTA_AFTER_HEADER" description="TPL_MINIMALISTA_AFTER_HEADER_DESC" multiple="true">
-                                    <form>
-                                        <field name="position" type="text" label="TPL_MINIMALISTA_POSITION" description="TPL_MINIMALISTA_POSITION_DESC" />
-                                        <field name="width" type="list" default="12" label="TPL_MINIMALISTA_WIDTH" description="TPL_MINIMALISTA_WIDTH_DESC">
-                                            <option value="0">TPL_MINIMALISTA_WIDTH_EMPTY</option>
-                                            <option value="auto">TPL_MINIMALISTA_WIDTH_AUTO</option>
-                                            <option value="1">1</option>
-                                            <option value="2">2</option>
-                                            <option value="3">3</option>
-                                            <option value="4">4</option>
-                                            <option value="5">5</option>
-                                            <option value="6">6</option>
-                                            <option value="7">7</option>
-                                            <option value="8">8</option>
-                                            <option value="9">9</option>
-                                            <option value="10">10</option>
-                                            <option value="11">11</option>
-                                            <option value="12">12</option>
-                                        </field>
-                                        <!-- customclass -->
-                                        <field name="customclass" type="text" label="TPL_MINIMALISTA_CUSTOMCLASS" description="TPL_MINIMALISTA_CUSTOMCLASS_DESC" />
-                                    </form>
+                                <!-- customclass -->
+                                <field name="customclass" type="text" label="TPL_MINIMALISTA_CUSTOMCLASS" description="TPL_MINIMALISTA_CUSTOMCLASS_DESC" />
+                            </form>
+                        </field>
+                    </form>
+                </field>
+                <!-- after header -->
+                <field name="sectionsafterheader" type="subform" label="TPL_MINIMALISTA_AFTER_HEADER" description="TPL_MINIMALISTA_AFTER_HEADER_DESC" multiple="true">
+                    <form>
+                        <field name="section" type="text" label="TPL_MINIMALISTA_SECTION" description="TPL_MINIMALISTA_SECTION_DESC" />
+                        <field name="section_class" type="text" label="TPL_MINIMALISTA_SECTION_CLASS" description="TPL_MINIMALISTA_SECTION_CLASS_DESC" />
+                        <field name="containerwidth" type="list" default="container" label="TPL_MINIMALISTA_CONTAINERWIDTH" description="TPL_MINIMALISTA_CONTAINERWIDTH_DESC">
+                            <option value="container">TPL_MINIMALISTA_CONTAINER</option>
+                            <option value="container-fluid">TPL_MINIMALISTA_CONTAINER_FLUID</option>
+                        </field>
+                        <field name="positions" type="subform" label="TPL_MINIMALISTA_POSITIONS" description="TPL_MINIMALISTA_POSITIONS_DESC" multiple="true" layout="joomla.form.field.subform.repeatable-table">
+                            <form>
+                                <field name="position" type="text" label="TPL_MINIMALISTA_POSITION" description="TPL_MINIMALISTA_POSITION_DESC" />
+                                <field name="width" type="list" default="12" label="TPL_MINIMALISTA_WIDTH" description="TPL_MINIMALISTA_WIDTH_DESC">
+                                    <option value="0">TPL_MINIMALISTA_WIDTH_EMPTY</option>
+                                    <option value="auto">TPL_MINIMALISTA_WIDTH_AUTO</option>
+                                    <option value="1">1</option>
+                                    <option value="2">2</option>
+                                    <option value="3">3</option>
+                                    <option value="4">4</option>
+                                    <option value="5">5</option>
+                                    <option value="6">6</option>
+                                    <option value="7">7</option>
+                                    <option value="8">8</option>
+                                    <option value="9">9</option>
+                                    <option value="10">10</option>
+                                    <option value="11">11</option>
+                                    <option value="12">12</option>
                                 </field>
+                                <!-- customclass -->
+                                <field name="customclass" type="text" label="TPL_MINIMALISTA_CUSTOMCLASS" description="TPL_MINIMALISTA_CUSTOMCLASS_DESC" />
+                            </form>
+                        </field>
+                    </form>
+                </field>
                 <field name="sectionsbeforecomponent" type="subform" label="TPL_MINIMALISTA_SECTIONS" description="TPL_MINIMALISTA_SECTIONS_DESC" multiple="true">
                     <form>
                         <field name="section" type="text" label="TPL_MINIMALISTA_SECTION" description="TPL_MINIMALISTA_SECTION_DESC" />
@@ -196,8 +216,8 @@
                         </field>
                     </form>
                 </field>
-                 <!-- Add a field to define custom sections after the component section -->
-                 <field name="sectionsaftercomponent" type="subform" label="TPL_MINIMALISTA_SECTIONS_AFTER_COMPONENT" description="TPL_MINIMALISTA_SECTIONS_AFTER_COMPONENT_DESC" multiple="true">
+                <!-- Add a field to define custom sections after the component section -->
+                <field name="sectionsaftercomponent" type="subform" label="TPL_MINIMALISTA_SECTIONS_AFTER_COMPONENT" description="TPL_MINIMALISTA_SECTIONS_AFTER_COMPONENT_DESC" multiple="true">
                     <form>
                         <field name="section" type="text" label="TPL_MINIMALISTA_SECTION" description="TPL_MINIMALISTA_SECTION_DESC" />
                         <field name="section_class" type="text" label="TPL_MINIMALISTA_SECTION_CLASS" description="TPL_MINIMALISTA_SECTION_CLASS_DESC" />
@@ -209,7 +229,7 @@
                             <form>
                                 <field name="position" type="text" label="TPL_MINIMALISTA_POSITION" description="TPL_MINIMALISTA_POSITION_DESC" />
                                 <field name="width" type="list" default="12" label="TPL_MINIMALISTA_WIDTH" description="TPL_MINIMALISTA_WIDTH_DESC">
-                                   <option value="0">TPL_MINIMALISTA_WIDTH_EMPTY</option>
+                                    <option value="0">TPL_MINIMALISTA_WIDTH_EMPTY</option>
                                     <option value="auto">TPL_MINIMALISTA_WIDTH_AUTO</option>
                                     <option value="1">1</option>
                                     <option value="2">2</option>

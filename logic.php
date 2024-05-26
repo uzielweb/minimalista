@@ -24,6 +24,24 @@ $query->select($db->quoteName('parent'))
 $db->setQuery($query);
 $templateParent = $db->loadResult();
 $templateOriginal = $templateParent ? $templateParent : $this->template;
+// Get the current user object
+$user = Factory::getUser();
+// Get the user group IDs
+$userGroupIds = $user->getAuthorisedGroups();
+// Initialize an array to hold the user group names
+$userGroupNames = [];
+// Loop through the user group IDs to get their names
+foreach ($userGroupIds as $groupId) {
+    $query = $db->getQuery(true)
+        ->select($db->quoteName('title'))
+        ->from($db->quoteName('#__usergroups'))
+        ->where($db->quoteName('id') . ' = ' . (int) $groupId);
+    $db->setQuery($query);
+    $groupName = $db->loadResult();
+    if ($groupName) {
+        $userGroupNames[] = $groupName;
+    }
+}
 // Application and document setup
 $app = Factory::getApplication();
 $doc = $app->getDocument();
@@ -77,6 +95,10 @@ $bodyClasses = ($option ? 'option-' . str_replace('com_', '', $option) : 'no-opt
     . ' ' . ($parentPageclass ? $parentPageclass : 'no-parent-pageclass')
     . ' ' . ($doc->getDirection() === 'rtl' ? 'direction-rtl' : 'direction-ltr')
     . ' ' . ($user->guest ? 'user-guest' : 'user-logged-in');
+    // Output the user group names as CSS classes
+    foreach ($userGroupNames as $groupName) {
+        $bodyClasses .= ' user-group-' . strtolower($groupName);
+    }
 $containerFluid = $templateParams->get('container-fluid', '0') == '1' ? '-fluid' : '';
 $defaultBoostrapDesktop = '-' . $templateParams->get('default-bootstrap-desktop', 'lg');
 $sidebarWidth = $defaultBoostrapDesktop . '-' . $templateParams->get('sidebar-width', '3');
@@ -294,7 +316,7 @@ function setMetadata($doc, $title, $description, $image, $image_alt, $arrobasite
     $doc->setMetaData('schema:image', $image);
     $doc->setMetaData('schema:image:alt', $image_alt);
 }
-// functions.php
+// Function to clean the section name
 function cleanSectionName($sectionName)
 {
     $sectionName = str_replace(' ', '-', $sectionName);
@@ -303,6 +325,7 @@ function cleanSectionName($sectionName)
     $sectionName = preg_replace('/[^a-zA-Z0-9\-]/', '', $sectionName);
     return $sectionName;
 }
+// Function to verify that there are modules in any position
 function hasModules($positions, $template)
 {
     foreach ($positions as $position) {
@@ -312,26 +335,49 @@ function hasModules($positions, $template)
     }
     return false;
 }
-function renderSection($section, $defaultBoostrapDesktop, $template)
+// Function to verify that a specific position has modules
+function ThisPositionHasModules($position, $template)
+{
+    return $template->countModules($position) > 0;
+}
+// Function to render the section with proportional redistribution of widths
+function renderSection($section, $defaultBootstrapDesktop, $template)
 {
     $sectionName = cleanSectionName($section->section);
     $hasModules = hasModules($section->positions, $template);
     if ($hasModules) {
-        ?>
-        <section id="<?php echo $sectionName; ?>"
-            class="<?php echo 'section-' . $sectionName . ($section->section_class ? ' ' . $section->section_class : ''); ?>">
-            <div class="<?php echo $section->containerwidth; ?>">
-                <div class="row">
-                    <?php foreach ($section->positions as $position): ?>
-                        <div class="<?php echo 'position-' . strtolower($position->position); ?> col<?php echo $defaultBoostrapDesktop . ($position->width ? '-' . $position->width : ''); ?><?php echo $position->customclass ? ' ' . $position->customclass : ''; ?>">
-                            <div class="row">
-                                <jdoc:include type="modules" name="<?php echo $position->position; ?>" style="<?php echo $template->template . '-default'; ?>" />
+        // calculate the specified total width and count the active positions
+        $totalSpecifiedWidth = 0;
+        $activePositions = [];
+        foreach ($section->positions as $position) {
+            if (ThisPositionHasModules($position->position, $template)) {
+                $width = isset($position->width) ? intval($position->width) : $defaultBootstrapDesktop;
+                $totalSpecifiedWidth += $width;
+                $activePositions[] = $position;
+            }
+        }
+        // render the positions with proportional width
+        if ($totalSpecifiedWidth > 0) {
+            ?>
+            <section id="<?php echo $sectionName; ?>"
+                class="<?php echo 'section-' . $sectionName . ($section->section_class ? ' ' . $section->section_class : ''); ?>">
+                <div class="<?php echo $section->containerwidth; ?>">
+                    <div class="row">
+                        <?php foreach ($activePositions as $position): ?>
+                            <?php 
+                            $width = isset($position->width) ? intval($position->width) : $defaultBootstrapDesktop;
+                            $proportionalWidth = round(($width / $totalSpecifiedWidth) * 12);
+                            ?>
+                            <div class="<?php echo 'position-' . strtolower($position->position); ?> col-<?php echo $proportionalWidth; ?><?php echo $position->customclass ? ' ' . $position->customclass : ''; ?>">
+                                <div class="row">
+                                    <jdoc:include type="modules" name="<?php echo $position->position; ?>" style="<?php echo $template->template . '-default'; ?>" />
+                                </div>
                             </div>
-                        </div>
-                    <?php endforeach;?>
+                        <?php endforeach; ?>
+                    </div>
                 </div>
-            </div>
-        </section>
-        <?php
-}
+            </section>
+            <?php
+        }
+    }
 }

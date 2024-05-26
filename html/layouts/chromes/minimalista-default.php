@@ -44,7 +44,7 @@ $moduleClass = $bootstrapSize === 0 && strpos($moduleClassSfx, 'col') === false 
 
 $moduleAttribs = [];
 $moduleLayout = str_replace("_:", "", $params->get('layout', 'default'));
-$moduleAttribs['class'] = 'module module-default' . ' module-position-' . $module->position . ' module-name-' . $module->name . ' module-layout-' . $moduleLayout . $moduleClassSfx . $moduleClass;
+$moduleAttribs['class'] = 'module module-default' . ' module-position-' . $module->position . ' module-name-' . (is_object($module) && isset($module->name) ? $module->name : "empty")  . ' module-layout-' . $moduleLayout . $moduleClassSfx . $moduleClass;
 $headerAttribs['class'] = 'module-title' . $headerClass;
 
 // Only add aria if the moduleTag is not a div
