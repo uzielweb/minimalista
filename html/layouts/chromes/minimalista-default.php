@@ -9,32 +9,44 @@
 defined('_JEXEC') or die;
 use Joomla\CMS\Factory;
 use Joomla\Utilities\ArrayHelper;
+
 $module = $displayData['module'];
 $params = $displayData['params'];
 $attribs = $displayData['attribs'];
-//  template params
+
+// Template params
 $templateParams = Factory::getApplication()->getTemplate(true)->params;
+
 if ($module->content === null || $module->content === '') {
     return;
 }
+
 $moduleTag = $params->get('module_tag', 'div');
 $bootstrapSize = (int) $params->get('bootstrap_size', 0);
 $headerTag = $params->get('header_tag', 'h3');
 $headerClass = $params->get('header_class', '');
-$moduleClassSfx = $params->get('moduleclass_sfx');
+$moduleClassSfx = $params->get('moduleclass_sfx', '');
 
-// check if have space in the start of the string
+// Ensure $moduleClassSfx is a string
+if (!is_string($moduleClassSfx)) {
+    $moduleClassSfx = '';
+}
+
+// Check if there is a space at the start of the string
 if ($moduleClassSfx) {
     if (substr($moduleClassSfx, 0, 1) !== ' ') {
         $moduleClassSfx = ' ' . $moduleClassSfx;
     }
 }
-$moduleClass = $bootstrapSize > 0 && strpos($moduleClassSfx, 'col') === false ? ' col-' . $templateParams->get('default-bootstrap-desktop', 'lg') .'-'. $bootstrapSize : '';
-$moduleClass = $bootstrapSize === 0 ? ' col-'.$templateParams->get('default-bootstrap-desktop', 'lg') .'-'. '12' : $moduleClass;
+
+$moduleClass = $bootstrapSize > 0 && strpos($moduleClassSfx, 'col') === false ? ' col-' . $templateParams->get('default-bootstrap-desktop', 'lg') . '-' . $bootstrapSize : '';
+$moduleClass = $bootstrapSize === 0 ? ' col-' . $templateParams->get('default-bootstrap-desktop', 'lg') . '-12' : $moduleClass;
+
 $moduleAttribs = [];
 $moduleLayout = str_replace("_:", "", $params->get('layout', 'default'));
-$moduleAttribs['class'] = 'module module-default' . ' module-position-' . $module->position . ' module-name-' . $module->name .' module-layout-' . $moduleLayout . $moduleClassSfx . $moduleClass;
+$moduleAttribs['class'] = 'module module-default' . ' module-position-' . $module->position . ' module-name-' . $module->name . ' module-layout-' . $moduleLayout . $moduleClassSfx . $moduleClass;
 $headerAttribs['class'] = 'module-title' . $headerClass;
+
 // Only add aria if the moduleTag is not a div
 if ($moduleTag !== 'div') {
     if ($module->showtitle):
@@ -44,17 +56,18 @@ if ($moduleTag !== 'div') {
         $moduleAttribs['aria-label'] = $module->title;
     endif;
 }
+
 $header = '<' . $headerTag . ' ' . ArrayHelper::toString($headerAttribs) . '>' . $module->title . '</' . $headerTag . '>';
 ?>
 <<?php echo $moduleTag; ?> <?php echo ArrayHelper::toString($moduleAttribs); ?>>
-<div class="inner">
-   <?php if ($module->showtitle): ?>
-    <?php echo $header; ?>
-<?php endif;?>
-   <?php if ($module->content): ?>
-    <div class="module-content">
-        <?php echo str_replace('{minimalista-year}', date('Y'), $module->content); ?>
+    <div class="inner">
+        <?php if ($module->showtitle): ?>
+            <?php echo $header; ?>
+        <?php endif; ?>
+        <?php if ($module->content): ?>
+            <div class="module-content">
+                <?php echo str_replace('{minimalista-year}', date('Y'), $module->content); ?>
+            </div>
+        <?php endif; ?>
     </div>
-<?php endif;?>
-</div>
 </<?php echo $moduleTag; ?>>
