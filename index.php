@@ -34,7 +34,7 @@ if ($sectionsBeforeHeader) {
     <header class="header">
         <?php if ($this->countModules('header-top')): ?>
         <div class="container<?php echo $containerFluid; ?>">
-            <div class="row w-100">
+            <div class="row">
                 <jdoc:include type="modules" name="header-top" style="<?php echo $templateOriginal . '-default'; ?>" />
             </div>
         </div>
@@ -66,7 +66,7 @@ if ($sectionsBeforeHeader) {
                                 aria-label="Close"></button>
                         </div>
                         <div class="offcanvas-body">
-                            <div class="row">
+                            <div class="row w-100">
                             <jdoc:include type="modules" name="menu" style="<?php echo $templateOriginal . '-default'; ?>" />
                             </div>
                         </div>
