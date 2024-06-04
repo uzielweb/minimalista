@@ -34,7 +34,7 @@ if ($sectionsBeforeHeader) {
     <header class="header">
         <?php if ($this->countModules('header-top')): ?>
         <div class="container<?php echo $containerFluid; ?>">
-            <div class="row">
+            <div class="row w-100">
                 <jdoc:include type="modules" name="header-top" style="<?php echo $templateOriginal . '-default'; ?>" />
             </div>
         </div>
