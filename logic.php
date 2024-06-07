@@ -341,7 +341,7 @@ function ThisPositionHasModules($position, $template)
     return $template->countModules($position) > 0;
 }
 // Function to render the section with proportional redistribution of widths
-function renderSection($section, $defaultBootstrapDesktop, $template)
+function renderSection($section, $defaultBootstrapDesktop, $template, $templateOriginal)
 {
     $sectionName = cleanSectionName($section->section);
     $hasModules = hasModules($section->positions, $template);
@@ -370,7 +370,7 @@ $width = isset($position->width) ? intval($position->width) : $defaultBootstrapD
             ?>
                             <div class="<?php echo 'position-' . strtolower($position->position); ?> col-<?php echo $proportionalWidth; ?><?php echo $position->customclass ? ' ' . $position->customclass : ''; ?>">
                                 <div class="row">
-                                    <jdoc:include type="modules" name="<?php echo $position->position; ?>" style="<?php echo $template->template . '-default'; ?>" />
+                                    <jdoc:include type="modules" name="<?php echo $position->position; ?>" style="<?php echo $templateOriginal . '-default'; ?>" />
                                 </div>
                             </div>
                         <?php endforeach;?>
