@@ -316,7 +316,7 @@ function setMetadata($doc, $title, $description, $image, $image_alt, $arrobasite
     $doc->setMetaData('schema:image', $image);
     $doc->setMetaData('schema:image:alt', $image_alt);
 }
-// Function to clean the section name
+// functions.php
 function cleanSectionName($sectionName)
 {
     $sectionName = str_replace(' ', '-', $sectionName);
@@ -325,7 +325,6 @@ function cleanSectionName($sectionName)
     $sectionName = preg_replace('/[^a-zA-Z0-9\-]/', '', $sectionName);
     return $sectionName;
 }
-// Function to verify that there are modules in any position
 function hasModules($positions, $template)
 {
     foreach ($positions as $position) {
@@ -335,60 +334,26 @@ function hasModules($positions, $template)
     }
     return false;
 }
-// Function to verify that a specific position has modules
-function ThisPositionHasModules($position, $template)
+function renderSection($section, $defaultBoostrapDesktop, $template)
 {
-    return $template->countModules($position) > 0;
-}
-// Function to render the section with proportional redistribution of widths
-function renderSection($section, $defaultBootstrapDesktop, $template, $templateOriginal)
-{
-    $defaultBootstrapDesktop = Factory::getApplication()->getTemplate(true)->params->get('default-bootstrap-desktop');
-  
     $sectionName = cleanSectionName($section->section);
     $hasModules = hasModules($section->positions, $template);
     if ($hasModules) {
-        // calculate the specified total width and count the active positions
-        $totalSpecifiedWidth = 0;
-        $activePositions = [];
-        foreach ($section->positions as $position) {
-            if (ThisPositionHasModules($position->position, $template)) {
-                $width = isset($position->width) ? intval($position->width) : $defaultBootstrapDesktop;
-                $totalSpecifiedWidth += $width;
-                $activePositions[] = $position;
-            }
-        }
-        // render the positions with proportional width
-        if ($totalSpecifiedWidth > 0) {
-            ?>
-            <section id="<?php echo $sectionName; ?>"
-                class="<?php echo 'section-' . $sectionName . ($section->section_class ? ' ' . $section->section_class : ''); ?>">
-                <div class="<?php echo $section->containerwidth; ?>">
-                    <div class="row">
-                        <?php foreach ($activePositions as $position): ?>
-                            <?php
-                            if($position->width == 0) {
-                                $proportionalWidth = $defaultBootstrapDesktop;
-                            } 
-                            elseif($position->width == 'auto') {
-                                $proportionalWidth = 'auto';
-                            }
-                            else {
-                                // $width = isset($position->width) ? intval($position->width) : $defaultBootstrapDesktop;
-                                // $proportionalWidth = $defaultBootstrapDesktop.'-'.round(($width / $totalSpecifiedWidth) * 12);
-                            $proportionalWidth = $defaultBootstrapDesktop.'-'.$position->width;
-                            }
-                            ?>
-                            <div class="<?php echo 'position-' . strtolower($position->position); ?> col-<?php echo $proportionalWidth; ?><?php echo $position->customclass ? ' ' . $position->customclass : ''; ?>">
-                                <div class="row">
-                                    <jdoc:include type="modules" name="<?php echo $position->position; ?>" style="<?php echo $templateOriginal . '-default'; ?>" />
-                                </div>
+        ?>
+        <section id="<?php echo $sectionName; ?>"
+            class="<?php echo 'section-' . $sectionName . ($section->section_class ? ' ' . $section->section_class : ''); ?>">
+            <div class="<?php echo $section->containerwidth; ?>">
+                <div class="row">
+                    <?php foreach ($section->positions as $position): ?>
+                        <div class="<?php echo 'position-' . strtolower($position->position); ?> col<?php echo $defaultBoostrapDesktop . ($position->width ? '-' . $position->width : ''); ?><?php echo $position->customclass ? ' ' . $position->customclass : ''; ?>">
+                            <div class="row">
+                                <jdoc:include type="modules" name="<?php echo $position->position; ?>" style="<?php echo $template->template . '-default'; ?>" />
                             </div>
-                        <?php endforeach;?>
-                    </div>
+                        </div>
+                    <?php endforeach;?>
                 </div>
-            </section>
-            <?php
+            </div>
+        </section>
+        <?php
 }
-    }
 }
