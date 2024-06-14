@@ -28,10 +28,15 @@ img {
     text-align: center;
     cursor: pointer;
     transition: background-color 0.3s, transform 0.3s;
-}
-
-.back-to-top-link i {
     line-height: 50px;
+}
+.back-to-top-link i {
+	line-height: 50px;
+	display: inline-flex;
+	height: 100%;
+	width: 100%;
+	justify-content: center;
+	align-items: center;
 }
 
 /* Show the button when the user scrolls down 300px */
