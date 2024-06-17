@@ -107,16 +107,16 @@ if ($sectionsAfterHeader) {
 ?>
     <main class="main">
         <?php if ($this->countModules('slideshow')): ?>
-        <section class="slideshow-section" id="slideshow-section">
+        <section id="slideshow" class="section-slideshow">
             <div class="container-fluid">
-                <div class="slideshow row">
+                <div class="row">
                     <jdoc:include type="modules" name="slideshow" style="<?php echo $templateOriginal . '-default'; ?>" />
                 </div>
             </div>
         </section>
         <?php endif;?>
         <?php if ($this->countModules('slideshow-container')): ?>
-        <section class="slideshow-section-container" id="slideshow-section-container">
+        <section id="slideshow-container" class="section-slideshow-container">
             <div class="container">
                 <div class="row">
                     <jdoc:include type="modules" name="slideshow-container" style="<?php echo $templateOriginal . '-default'; ?>" />
@@ -133,7 +133,7 @@ if ($sectionsBeforeComponent) {
     }
 }
 ?>
-        <section class="component-section" id="component-section">
+        <section id="section-component" class="section-component">
             <div class="container<?php echo $containerFluid; ?>">
                 <div class="inner">
                     <?php if ($this->countModules('main-top')): ?>
