@@ -45,3 +45,9 @@ jQuery(document).ready(function ($) {
         return false;
     });
 });
+
+document.querySelectorAll('div').forEach(function(div) {
+    if (div.innerHTML.trim() === '') {
+        div.classList.add('is-empty');
+    }
+});
