@@ -25,7 +25,7 @@ $db->setQuery($query);
 $templateParent = $db->loadResult();
 $templateOriginal = $templateParent ? $templateParent : $this->template;
 // Get the current user object
-$user = Factory::getUser();
+$user = Factory::getApplication()->getIdentity();
 // Get the user group IDs
 $userGroupIds = $user->getAuthorisedGroups();
 // Initialize an array to hold the user group names
@@ -43,8 +43,12 @@ foreach ($userGroupIds as $groupId) {
     }
 }
 // Application and document setup
-$app = Factory::getApplication();
+$app   = Factory::getApplication();
+$input = $app->getInput();
+$wa    = $this->getWebAssetManager();
 $doc = $app->getDocument();
+$wa = $doc->getWebAssetManager();
+$war = $wa->getRegistry();
 $doc->setHtml5(true);
 $doc->setGenerator('');
 $user = $app->getIdentity();
@@ -70,8 +74,6 @@ $parentPageclass = $parentParams ? $parentParams->get('pageclass_sfx', '') : '';
 $tpath = Uri::root(true) . '/templates/' . $templateOriginal;
 $templateParams = $app->getTemplate(true)->params;
 $offcanvasDirection = $templateParams->get('offcanvas_direction', 'start');
-$wa = $doc->getWebAssetManager();
-$war = $wa->getRegistry();
 $logo = $templateParams->get('logo', '');
 $logo_alt = $templateParams->get('logo_alt', '') ? $templateParams->get('logo_alt') : $sitename;
 $doc->addFavicon(Uri::root(true) . '/' . $templateParams->get('favicon', ''));
@@ -81,8 +83,13 @@ $custom_script_head = $templateParams->get('custom_script_head', '');
 $startBodyCode = $templateParams->get('custom_script_startbody', '');
 $endBodyCode = $templateParams->get('custom_script_endbody', '');
 $backtotop = $templateParams->get('backtotop', '1');
-$doc->addStyleDeclaration($custom_css_head);
-$doc->addScriptDeclaration($custom_script_head);
+// custom_css_head custom_script_head
+if ($custom_css_head) {
+    $wa->addInlineStyle($custom_css_head);
+}
+if ($custom_script_head) {
+    $wa->addInlineScript($custom_script_head);
+}
 // Generate CSS classes for the <body> element
 $bodyClasses = ($option ? 'option-' . str_replace('com_', '', $option) : 'no-option')
     . ' ' . ($view ? 'view-' . $view : 'no-view')
