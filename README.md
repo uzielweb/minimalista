@@ -21,12 +21,13 @@ As seguintes configurações são possíveis em seu administrador:
 - [x] 7. Permite escolher o logo e favicon
 - [x] 8. Permite arquivos personalizados de css e js basta adicioná-los à pasta css com nome *custom-anyname.css*, *customfont-anyname.css* e *custom-anyname.js* na pasta js, além do *responsive.css* (com este exato nome)
 - [x] 9. Você pode adicionar código personalizado ao cabeçalho, css ao cabeçalho, código personalizado após a tag <body> e antes da tag </body>
-- [x] 10.``` Novo recurso: ``` Permite adicionar infinitas posições acima da parte do componente e abaixo da parte do componente
-- [x] 11.``` Novo recurso: ``` Permite adicionar Meta Tags Open Graph para compartilhamento em redes sociais
-- [x] 12.``` Novo recurso: ``` classes bootstrap col personalizada para sufixo de classe de módulo torna possível substituir o tamanho de bootstrap do módulo
-- [x] 13.``` Novo recurso: ``` Permite adicionar infinitas posições antes e depois do cabeçalho
-- [x] 14.``` Novo recurso: ``` Permite adicionar infinitos arquivos css e js adicionais nos respectivos diretórios css/addttional e js/addttional (importante: custom.js, custom.css e responsive.css ainda serão os últimos em oirdem de carregamento)
-- [x] 15.``` Novo recurso: ``` Usando a {minimalista-year} dentro do conteúdo de um módulo agora é possível exibir o ano atual
+- [x] 10. Permite adicionar infinitas posições acima da parte do componente e abaixo da parte do componente
+- [x] 11. Permite adicionar Meta Tags Open Graph para compartilhamento em redes sociais
+- [x] 12. classes bootstrap col personalizada para sufixo de classe de módulo torna possível substituir o tamanho de bootstrap do módulo
+- [x] 13. Permite adicionar infinitas posições antes e depois do cabeçalho
+- [x] 14. Permite adicionar infinitos arquivos css e js adicionais nos respectivos diretórios css/addttional e js/addttional (importante: custom.js, custom.css e responsive.css ainda serão os últimos em oirdem de carregamento)
+- [x] 15. Usando a {minimalista-year} dentro do conteúdo de um módulo agora é possível exibir o ano atual
+- [x] 16.``` Novo recurso: ``` Agora o tempo de modificação do arquivo é adicionado à versão do arquivo css e js
 
 
 Por padrão, o tema vem com Bootstrap e Font Awesome do tema, mas você pode escolher usar o Bootstrap e o Font Awesome do Joomla, ou nenhum deles. Classes CSS do fontawesome do Joomla podem continuar a ser usadas, sem problemas
@@ -55,12 +56,13 @@ The following settings are possible in your admin:
 - [x] 7. Allows you to choose the logo and favicon
 - [x] 8. Allows custom css and js files, just add them to the css folder with the name *custom-anyname.css*, *customfont-anyname.css* and *custom-anyname.js* in the js folder, in addition *responsive.css* (with this exact name)
 - [x] 9. You can add custom code to head, css to head, custom code after <body> tag and before </body> tag
-- [x] 10.``` New feature: ``` Allows you to add infinite positions before and after component
-- [x] 11.``` New feature: ``` Allows you to add Open Graph Meta Tags for sharing on social networks 
-- [x] 12.``` New feature: ```bootstrap custom col classes for module class suffix makes it possible to override module bootstrap size
-- [x] 13.``` New feature: ``` Allows you to add infinite positions before and after header
-- [x] 14.``` New feature: ``` Allows you to add infinite additional css and js files in the respective css/addttional and js/addttional directories (important: custom.js, custom.css and responsive.css will still be the last in loading order)
-- [x] 15.``` New feature: ``` Using {minimalist-year} within the content of a module it is now possible to display the current year
+- [x] 10. Allows you to add infinite positions before and after component
+- [x] 11. Allows you to add Open Graph Meta Tags for sharing on social networks 
+- [x] 12. Bootstrap custom col classes for module class suffix makes it possible to override module bootstrap size
+- [x] 13. Allows you to add infinite positions before and after header
+- [x] 14. Allows you to add infinite additional css and js files in the respective css/addttional and js/addttional directories (important: custom.js, custom.css and responsive.css will still be the last in loading order)
+- [x] 15. Using {minimalist-year} within the content of a module it is now possible to display the current year
+- [x] 16. ```New feature:``` Now the file modification time is added to the CSS and JS file version
 
 
 By default, the template comes with template's Bootstrap and Font Awesome, but you can choose to use the Joomla's Bootstrap and Font Awesome, or neither. Joomla fontawesome CSS classes can continue to be used without any problems.
