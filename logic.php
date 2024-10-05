@@ -148,7 +148,10 @@ if ($loadFontAwesome == 'css_from_template') {
 }
 // Load Joomla 4 system icons
 $wa->registerAndUseStyle('icons', 'media/system/css/joomla-fontawesome.min.css', array('version' => 'auto'));
-$wa->registerAndUseStyle('template-css', Uri::root(true) . 'media/templates/site/' . $templateOriginal . '/css/template.css', array('version' => 'auto'));
+$cssFilePath = JPATH_ROOT . '/media/templates/site/' . $templateOriginal . '/css/template.css';
+if (file_exists($cssFilePath)) {
+    $wa->registerAndUseStyle('template-css', Uri::root(true) . 'media/templates/site/' . $templateOriginal . '/css/template.css', array('version' => filemtime($cssFilePath)));
+}
 // Load template-specific JavaScript after jQuery and Bootstrap
 $wa->registerAndUseScript('template-js', Uri::root(true) . 'media/templates/site/' . $templateOriginal . '/js/template.js', array('version' => 'auto'), array('defer' => true));
 $wa->registerAndUseStyle($this->template . 'template-css', Uri::root(true) . 'media/templates/site/' . $this->template . '/css/template.css', array('version' => 'auto'));
@@ -244,7 +247,11 @@ if (is_dir($customJsDirectoryCurrentTemplate)) {
     // Handle the case where the directory does not exist
     // You can log an error or take appropriate action here
 }
-$wa->registerAndUseStyle($this->template . 'responsive-css', Uri::root(true) . 'media/templates/site/' . $this->template . '/css/responsive.css', array('version' => 'auto'));
+$responsiveCssPath = JPATH_ROOT . '/media/templates/site/' . $this->template . '/css/responsive.css';
+if (file_exists($responsiveCssPath)) {
+    $wa->registerAndUseStyle($this->template . 'responsive-css', Uri::root(true) . 'media/templates/site/' . $this->template . '/css/responsive.css', array('version' => filemtime($responsiveCssPath)));
+}
+
 // load social meta tags OpenGraph for Faceboook, Twitter Cards and Schema.org
 if ($templateParams->get('enable_social_meta_tags', 1)) {
     $disable_in = $templateParams->get('disable_in', '');
