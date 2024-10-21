@@ -9,6 +9,7 @@
 defined('_JEXEC') or die;
 use Joomla\CMS\Language\Text;
 use Joomla\CMS\Uri\Uri;
+use JOomla\CMS\Router\Route;
 /** @var Joomla\CMS\Document\HtmlDocument $this */
 include_once JPATH_THEMES . '/minimalista/logic.php';
 ?>
