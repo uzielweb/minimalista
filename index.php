@@ -39,7 +39,7 @@ if ($sectionsBeforeHeader) {
                         <jdoc:include type="modules" name="header-top" style="<?php echo $templateOriginal . '-default'; ?>" />
                     </div>
                 </div>
-            </div>        
+            </div>
         <?php endif;?>
         <?php if ($this->countModules('header')): ?>
             <div class="main-header" id="main-header">
@@ -79,7 +79,7 @@ if ($sectionsBeforeHeader) {
                     <div class="search">
                         <div class="row">
                             <jdoc:include type="modules" name="search" style="<?php echo $templateOriginal . '-default'; ?>" />
-                        </div>                        
+                        </div>
                     </div>
                     <?php endif;?>
                 </div>
@@ -92,7 +92,7 @@ if ($sectionsBeforeHeader) {
                         <jdoc:include type="modules" name="header-bottom" style="<?php echo $templateOriginal . '-default'; ?>" />
                     </div>
                 </div>
-            </div>        
+            </div>
         <?php endif;?>
     </header>
     <?php endif;?>
@@ -136,6 +136,13 @@ if ($sectionsBeforeComponent) {
         <section id="section-component" class="section-component">
             <div class="container<?php echo $containerFluid; ?>">
                 <div class="inner">
+                <?php if ($this->countModules('breadcrumbs')): ?>
+                    <div class="component-breadcrumbs">
+                        <div class="row">
+                            <jdoc:include type="modules" name="breadcrumbs" style="<?php echo $templateOriginal . '-default'; ?>" />
+                        </div>
+                    </div>
+                    <?php endif;?>
                     <?php if ($this->countModules('main-top')): ?>
                     <div class="main-top">
                         <div class="row">
@@ -157,7 +164,7 @@ if ($sectionsBeforeComponent) {
                                     <div class="row">
                                         <jdoc:include type="modules" name="content-top" style="<?php echo $templateOriginal . '-default'; ?>" />
                                     </div>
-                                </div>                          
+                                </div>
                             <?php endif;?>
                             <jdoc:include type="message" />
                             <jdoc:include type="component" />
@@ -166,7 +173,7 @@ if ($sectionsBeforeComponent) {
                                     <div class="row">
                                         <jdoc:include type="modules" name="content-bottom" style="<?php echo $templateOriginal . '-default'; ?>" />
                                     </div>
-                                </div>                          
+                                </div>
                             <?php endif;?>
                         </div>
                         <?php if ($this->countModules('sidebar-right')): ?>
@@ -181,7 +188,7 @@ if ($sectionsBeforeComponent) {
                     <div class="main-bottom" id="main-bottom">
                         <div class="row">
                             <jdoc:include type="modules" name="main-bottom" style="<?php echo $templateOriginal . '-default'; ?>" />
-                        </div>                
+                        </div>
                     </div>
                     <?php endif;?>
                 </div>
