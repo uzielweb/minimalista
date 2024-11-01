@@ -27,7 +27,7 @@ if (file_exists($cssFilePath)) {
     <jdoc:include type="head" />
 </head>
 
-<body class="<?php echo $bodyClasses ?>">
+<body class="error-page <?php echo $bodyClasses ?>">
     <div class="container<?php echo $containerFluid; ?>">
         <div class="p-5 my-5 bg-warning rounded-3">
             <div class="row">
