@@ -13,6 +13,11 @@ use Joomla\CMS\Uri\Uri;
 use JOomla\CMS\Router\Route;
 /** @var Joomla\CMS\Document\HtmlDocument $this */
 include_once JPATH_THEMES . '/minimalista/logic.php';
+$cssFilePath = JPATH_ROOT . '/media/templates/site/' . $templateOriginal . '/css/error.css';
+if (file_exists($cssFilePath)) {
+    $wa->registerAndUseStyle('template-css', Uri::root(true) . 'media/templates/site/' . $templateOriginal . '/css/error.css', array('version' => filemtime($cssFilePath)));
+}
+
 ?>
 <!doctype html>
 <html lang="<?php echo $this->language; ?>" dir="<?php echo $this->direction; ?>">
