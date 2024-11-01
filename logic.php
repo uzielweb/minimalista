@@ -46,7 +46,6 @@ foreach ($userGroupIds as $groupId) {
 // Application and document setup
 $app   = Factory::getApplication();
 $input = $app->getInput();
-$wa    = $this->getWebAssetManager();
 $doc = $app->getDocument();
 $wa = $doc->getWebAssetManager();
 $war = $wa->getRegistry();
