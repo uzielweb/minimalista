@@ -11,3 +11,7 @@
 .mod-login__submit.form-group {
 	margin: var(--bs-gutter-x) auto;
 }
+.offline-card .header {
+	text-align: center;
+	display: block;
+}
