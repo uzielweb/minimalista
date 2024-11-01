@@ -21,6 +21,10 @@ use Joomla\CMS\Helper\AuthenticationHelper;
 include_once JPATH_THEMES . '/minimalista/logic.php';
 
 $extraButtons = AuthenticationHelper::getLoginButtons('form-login');
+$cssFilePath = JPATH_ROOT . '/media/templates/site/' . $templateOriginal . '/css/offline.css';
+if (file_exists($cssFilePath)) {
+    $wa->registerAndUseStyle('template-css', Uri::root(true) . 'media/templates/site/' . $templateOriginal . '/css/offline.css', array('version' => filemtime($cssFilePath)));
+}
 
 ?>
 <!doctype html>
@@ -29,7 +33,7 @@ $extraButtons = AuthenticationHelper::getLoginButtons('form-login');
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <jdoc:include type="head" />
     </head>
-    <body class="<?php echo $bodyClasses ?>">
+    <body class="offline-page <?php echo $bodyClasses ?>">
     <jdoc:include type="message" />
     <div class="container">
         <div class="row">
