@@ -1,4 +1,13 @@
 .logo-icon, #Passkey {
 	width: 32px;
+}
+.logo-icon{
+	display: block;
+	margin: auto;
+}
+#Passkey{
 	display: inline-block;
+}
+.mod-login__submit.form-group {
+	margin: var(--bs-gutter-x) auto;
 }
