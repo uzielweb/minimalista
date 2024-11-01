@@ -1,8 +1,14 @@
 <?php
 @license     GNU General Public License version 2 or later; see LICENSE.txt
 defined('_JEXEC') or die;
+use Joomla\CMS\Document\Document;
+use Joomla\CMS\Factory;
+use Joomla\CMS\HTML\HTMLHelper;
+use Joomla\CMS\Table\Table;
+use Joomla\CMS\Uri\Uri;
+use Joomla\Filesystem\Folder;
+use Joomla\CMS\Router\Route;
 include_once JPATH_THEMES . '/minimalista/logic.php';
-use Joomla\CMS\Language\Text;
 
 ?>
 <!doctype html>
