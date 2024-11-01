@@ -14,6 +14,7 @@ use Joomla\CMS\HTML\HTMLHelper;
 use Joomla\CMS\Table\Table;
 use Joomla\CMS\Uri\Uri;
 use Joomla\Filesystem\Folder;
+use Joomla\CMS\Router\Route;
 /** @var Joomla\CMS\Document\HtmlDocument $this */
 // Database connection setup
 $db = Factory::getContainer()->get('DatabaseDriver');
