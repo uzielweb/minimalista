@@ -28,7 +28,7 @@ img {
     text-align: center;
     cursor: pointer;
     transition: background-color 0.3s, transform 0.3s;
-    line-height: 50px;
+    line-height: 1em;
 }
 .back-to-top-link i {
 	line-height: 50px;
