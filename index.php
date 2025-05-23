@@ -158,9 +158,11 @@ if ($sectionsBeforeComponent) {
                                 </a>
                             </div>
                             <?php endif; ?>
+                              <?php if ($this->countModules('sidebar-left')): ?>
                             <div class="row">
                                 <jdoc:include type="modules" name="sidebar-left" style="<?php echo $templateOriginal . '-default'; ?>" />
                             </div>
+                            <?php endif; ?>
                         </div>
                         <?php endif;?>
                         <div class="component col-12 col<?php echo $mainWidth; ?>">
@@ -189,9 +191,11 @@ if ($sectionsBeforeComponent) {
                                 </a>
                             </div>
                             <?php endif; ?>
+                              <?php if ($this->countModules('sidebar-right')): ?>
                             <div class="row">
                                 <jdoc:include type="modules" name="sidebar-right" style="<?php echo $templateOriginal . '-default'; ?>" />
                             </div>
+                            <?php endif; ?>
                         </div>
                         <?php endif;?>
                     </div>
