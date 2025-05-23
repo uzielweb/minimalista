@@ -53,6 +53,12 @@
                 <field name="logo" type="media" label="TPL_MINIMALISTA_LOGO" description="TPL_MINIMALISTA_LOGO_DESC" />
                 <!-- logo alt -->
                 <field name="logo_alt" type="text" label="TPL_MINIMALISTA_LOGO_ALT" description="TPL_MINIMALISTA_LOGO_ALT_DESC" />
+                <!-- logo position -->
+                <field name="logo_position" type="list" label="TPL_MINIMALISTA_LOGO_POSITION" description="TPL_MINIMALISTA_LOGO_POSITION_DESC" default="header-navbar">
+                    <option value="header-navbar">TPL_MINIMALISTA_LOGO_POSITION_HEADER_NAVBAR</option>
+                    <option value="sidebar-left">TPL_MINIMALISTA_LOGO_POSITION_SIDEBAR_LEFT</option>
+                    <option value="sidebar-right">TPL_MINIMALISTA_LOGO_POSITION_SIDEBAR_RIGHT</option>
+                </field>
                 <!-- favicon-->
                 <field name="favicon" type="media" label="TPL_MINIMALISTA_FAVICON" description="TPL_MINIMALISTA_FAVICON_DESC" />
                 <!-- enable backTop -->
