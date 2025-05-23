@@ -76,6 +76,7 @@ $templateParams = $app->getTemplate(true)->params;
 $offcanvasDirection = $templateParams->get('offcanvas_direction', 'start');
 $logo = $templateParams->get('logo', '');
 $logo_alt = $templateParams->get('logo_alt', '') ? $templateParams->get('logo_alt') : $sitename;
+$logo_position = $templateParams->get('logo_position', 'header-navbar');
 $doc->addFavicon(Uri::root(true) . '/' . $templateParams->get('favicon', ''));
 $doc->setMetaData('viewport', 'width=device-width, initial-scale=1.0');
 $custom_css_head = $templateParams->get('custom_css_head', '');
