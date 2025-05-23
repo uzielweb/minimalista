@@ -30,7 +30,7 @@ if ($sectionsBeforeHeader) {
 }
 ?>
     <!-- head with menu, main, sidebars, footer -->
-    <?php if ($logo || $this->countModules('header') || $this->countModules('menu') || $this->countModules('header-top') || $this->countModules('header-bottom')): ?>
+    <?php if (($logo && $logo_position == 'header-navbar') || $this->countModules('header') || $this->countModules('menu') || $this->countModules('header-top') || $this->countModules('header-bottom')): ?>
     <header class="header" id="header">
         <?php if ($this->countModules('header-top')): ?>
             <div class="header-top" id="header-top">
