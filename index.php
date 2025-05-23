@@ -51,10 +51,9 @@ if ($sectionsBeforeHeader) {
             </div>
         <?php endif;?>
         <div class="container<?php echo $containerFluid; ?>">
-            <!-- navbar offcanvas bootstrap 5 -->
-            <nav class="navbar navbar-expand<?php echo $defaultBoostrapDesktop; ?> row">
+            <!-- navbar offcanvas bootstrap 5 -->            <nav class="navbar navbar-expand<?php echo $defaultBoostrapDesktop; ?> row">
                 <div class="container-fluid">
-                    <?php if ($logo): ?>
+                    <?php if ($logo && $logo_position == 'header-navbar'): ?>
                     <a class="navbar-brand" href="<?php echo $this->baseurl; ?>">
                         <img src="<?php echo $logo; ?>" alt="<?php echo $logo_alt; ?>" class="logo" />
                     </a>
@@ -150,9 +149,15 @@ if ($sectionsBeforeComponent) {
                         </div>
                     </div>
                     <?php endif;?>
-                    <div class="row">
-                        <?php if ($this->countModules('sidebar-left')): ?>
+                    <div class="row">                        <?php if ($this->countModules('sidebar-left') || ($logo && $logo_position == 'sidebar-left')): ?>
                         <div class="sidebar-left col-12 col<?php echo $sidebarWidth; ?>" id="sidebar-left">
+                            <?php if ($logo && $logo_position == 'sidebar-left'): ?>
+                            <div class="sidebar-logo mb-4">
+                                <a href="<?php echo $this->baseurl; ?>">
+                                    <img src="<?php echo $logo; ?>" alt="<?php echo $logo_alt; ?>" class="logo img-fluid" />
+                                </a>
+                            </div>
+                            <?php endif; ?>
                             <div class="row">
                                 <jdoc:include type="modules" name="sidebar-left" style="<?php echo $templateOriginal . '-default'; ?>" />
                             </div>
@@ -175,9 +180,15 @@ if ($sectionsBeforeComponent) {
                                     </div>
                                 </div>
                             <?php endif;?>
-                        </div>
-                        <?php if ($this->countModules('sidebar-right')): ?>
+                        </div>                        <?php if ($this->countModules('sidebar-right') || ($logo && $logo_position == 'sidebar-right')): ?>
                         <div class="sidebar-right col-12 col<?php echo $sidebarWidth; ?>" id="sidebar-right">
+                            <?php if ($logo && $logo_position == 'sidebar-right'): ?>
+                            <div class="sidebar-logo mb-4">
+                                <a href="<?php echo $this->baseurl; ?>">
+                                    <img src="<?php echo $logo; ?>" alt="<?php echo $logo_alt; ?>" class="logo img-fluid" />
+                                </a>
+                            </div>
+                            <?php endif; ?>
                             <div class="row">
                                 <jdoc:include type="modules" name="sidebar-right" style="<?php echo $templateOriginal . '-default'; ?>" />
                             </div>
