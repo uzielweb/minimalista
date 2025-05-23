@@ -152,7 +152,7 @@ if ($sectionsBeforeComponent) {
                     <div class="row">                        <?php if ($this->countModules('sidebar-left') || ($logo && $logo_position == 'sidebar-left')): ?>
                         <div class="sidebar-left col-12 col<?php echo $sidebarWidth; ?>" id="sidebar-left">
                             <?php if ($logo && $logo_position == 'sidebar-left'): ?>
-                            <div class="sidebar-logo mb-4">
+                            <div class="sidebar-logo">
                                 <a href="<?php echo $this->baseurl; ?>">
                                     <img src="<?php echo $logo; ?>" alt="<?php echo $logo_alt; ?>" class="logo img-fluid" />
                                 </a>
@@ -185,7 +185,7 @@ if ($sectionsBeforeComponent) {
                         </div>                        <?php if ($this->countModules('sidebar-right') || ($logo && $logo_position == 'sidebar-right')): ?>
                         <div class="sidebar-right col-12 col<?php echo $sidebarWidth; ?>" id="sidebar-right">
                             <?php if ($logo && $logo_position == 'sidebar-right'): ?>
-                            <div class="sidebar-logo mb-4">
+                            <div class="sidebar-logo">
                                 <a href="<?php echo $this->baseurl; ?>">
                                     <img src="<?php echo $logo; ?>" alt="<?php echo $logo_alt; ?>" class="logo img-fluid" />
                                 </a>
