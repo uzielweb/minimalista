@@ -28,7 +28,7 @@ As seguintes configurações são possíveis em seu administrador:
 - [x] 14. Permite adicionar infinitos arquivos css e js adicionais nos respectivos diretórios css/addttional e js/addttional (importante: custom.js, custom.css e responsive.css ainda serão os últimos em oirdem de carregamento)
 - [x] 15. Usando a {minimalista-year} dentro do conteúdo de um módulo agora é possível exibir o ano atual
 - [x] 16.``` Novo recurso: ``` Agora o tempo de modificação do arquivo é adicionado à versão do arquivo css e js
-
+- [x] 17.``` Novo recurso: ``` Agora é possível escolher onde você quer que seu logo seja exibido, se no cabeçalho, na barra lateral esquerda ou barra lateral direita
 
 Por padrão, o tema vem com Bootstrap e Font Awesome do tema, mas você pode escolher usar o Bootstrap e o Font Awesome do Joomla, ou nenhum deles. Classes CSS do fontawesome do Joomla podem continuar a ser usadas, sem problemas
 
@@ -63,6 +63,7 @@ The following settings are possible in your admin:
 - [x] 14. Allows you to add infinite additional css and js files in the respective css/addttional and js/addttional directories (important: custom.js, custom.css and responsive.css will still be the last in loading order)
 - [x] 15. Using {minimalist-year} within the content of a module it is now possible to display the current year
 - [x] 16. ```New feature:``` Now the file modification time is added to the CSS and JS file version
+- [x] 17.``` New feature: ``` You can now choose where you want your logo to be displayed, whether in the header, left sidebar or right sidebar
 
 
 By default, the template comes with template's Bootstrap and Font Awesome, but you can choose to use the Joomla's Bootstrap and Font Awesome, or neither. Joomla fontawesome CSS classes can continue to be used without any problems.
