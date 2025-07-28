@@ -1,6 +1,15 @@
 <?xml version="1.0" encoding="utf-8"?>
 <extension type="template" client="site" version="" method="upgrade">
     <name>minimalista</name>
+    <version>2.9.0</version>
+    <creationDate>2025-07</creationDate>
+    <author>Uziel - Via Ponto Mega</author>ion="1.0" encoding="utf-8"?>
+<extension type="template" client="site" version="" method="upgrade">
+    <n>minimalista</n>
+    <version>2.9.0</version>
+    <creationDate>2025-07</creationDate> version="1.0" encoding="utf-8"?>
+<extension type="template" client="site" version="" method="upgrade">
+    <name>minimalista</name>
     <version>2.8.9</version>
     <creationDate>2023-01</creationDate>
     <author>Uziel - Via Ponto Mega</author>
