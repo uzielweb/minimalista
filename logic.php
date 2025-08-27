@@ -71,7 +71,7 @@ $parentParams = $parent ? $parent->getParams() : '';
 $parentAlias = $parent ? $parent->alias : '';
 $parentPageclass = $parentParams ? $parentParams->get('pageclass_sfx', '') : '';
 // Template-related settings and parameters
-$tpath = Uri::root(true) . '/templates/' . $templateOriginal;
+$tpath ='templates/' . $templateOriginal;
 $templateParams = $app->getTemplate(true)->params;
 $offcanvasDirection = $templateParams->get('offcanvas_direction', 'start');
 $logo = $templateParams->get('logo', '');
@@ -119,17 +119,17 @@ if ($this->countModules('sidebar-left') && $this->countModules('sidebar-right'))
 }
 // Load jQuery based on template or Joomla configuration
 if ($templateParams->get('load_jquery_from_template', 1) == 1) {
-    $wa->registerAndUseScript('jquery_from_template', Uri::root(true) . 'media/templates/site/' . $templateOriginal . '/js/jquery-3.7.1.min.js', array('version' => 'auto'));
-    $wa->registerAndUseScript('jquery-noconflict', Uri::root(true) . 'media/templates/site/' . $templateOriginal . '/js/jquery-noconflict.js', array('version' => 'auto'));
-    $wa->registerAndUseScript('jquery_migrate_from_template', Uri::root(true) . 'media/templates/site/' . $templateOriginal . '/js/jquery-migrate-3.4.0.min.js', array('version' => 'auto'));
+    $wa->registerAndUseScript('jquery_from_template','media/templates/site/' . $templateOriginal . '/js/jquery-3.7.1.min.js', array('version' => 'auto'));
+    $wa->registerAndUseScript('jquery-noconflict','media/templates/site/' . $templateOriginal . '/js/jquery-noconflict.js', array('version' => 'auto'));
+    $wa->registerAndUseScript('jquery_migrate_from_template','media/templates/site/' . $templateOriginal . '/js/jquery-migrate-3.4.0.min.js', array('version' => 'auto'));
 } else {
     // Load jQuery from Joomla
     HTMLHelper::_('jquery.framework', true, true);
 }
 // Load Bootstrap CSS and JavaScript based on template or Joomla configuration
 if ($templateParams->get('bootstrap_from_template', 1) == 1) {
-    $wa->registerAndUseStyle('bootstrap_css', Uri::root(true) . 'media/templates/site/' . $templateOriginal . '/css/bootstrap.min.css', array('version' => 'auto'));
-    $wa->registerAndUseScript('bootstrapbundle_js', Uri::root(true) . 'media/templates/site/' . $templateOriginal . '/js/bootstrap.bundle.min.js', array('version' => 'auto'), array('defer' => true));
+    $wa->registerAndUseStyle('bootstrap_css','media/templates/site/' . $templateOriginal . '/css/bootstrap.min.css', array('version' => 'auto'));
+    $wa->registerAndUseScript('bootstrapbundle_js','media/templates/site/' . $templateOriginal . '/js/bootstrap.bundle.min.js', array('version' => 'auto'), array('defer' => true));
 } else {
     // Load Bootstrap CSS and JavaScript from Joomla
     HTMLHelper::_('bootstrap.loadCss', true, $this->direction);
@@ -138,9 +138,9 @@ if ($templateParams->get('bootstrap_from_template', 1) == 1) {
 // Load FontAwesome based on template or Joomla configuration
 $loadFontAwesome = $templateParams->get('load_fontawesome', 'css_from_template');
 if ($loadFontAwesome == 'css_from_template') {
-    $wa->registerAndUseStyle('fontawesome_css', Uri::root(true) . 'media/templates/site/' . $templateOriginal . '/css/all.min.css', array('version' => 'auto'));
+    $wa->registerAndUseStyle('fontawesome_css','media/templates/site/' . $templateOriginal . '/css/all.min.css', array('version' => 'auto'));
 } elseif ($loadFontAwesome == 'js_from_template') {
-    $wa->registerAndUseScript('fontawesome_js', Uri::root(true) . 'media/templates/site/' . $templateOriginal . '/js/all.min.js', array('version' => 'auto'), array('defer' => true));
+    $wa->registerAndUseScript('fontawesome_js','media/templates/site/' . $templateOriginal . '/js/all.min.js', array('version' => 'auto'), array('defer' => true));
 } elseif ($loadFontAwesome == 'css_from_joomla') {
     // Load FontAwesome from Joomla
     $wa->registerAndUseStyle('fontawesome', 'media/vendor/fontawesome-free/css/all.min.css', array('version' => 'auto'));
@@ -151,12 +151,12 @@ if ($loadFontAwesome == 'css_from_template') {
 $wa->registerAndUseStyle('icons', 'media/system/css/joomla-fontawesome.min.css', array('version' => 'auto'));
 $cssFilePath = JPATH_ROOT . '/media/templates/site/' . $templateOriginal . '/css/template.css';
 if (file_exists($cssFilePath)) {
-    $wa->registerAndUseStyle('template-css', Uri::root(true) . 'media/templates/site/' . $templateOriginal . '/css/template.css', array('version' => filemtime($cssFilePath)));
+    $wa->registerAndUseStyle('template-css','media/templates/site/' . $templateOriginal . '/css/template.css', array('version' => filemtime($cssFilePath)));
 }
 // Load template-specific JavaScript after jQuery and Bootstrap
-$wa->registerAndUseScript('template-js', Uri::root(true) . 'media/templates/site/' . $templateOriginal . '/js/template.js', array('version' => 'auto'), array('defer' => true));
-$wa->registerAndUseStyle($this->template . 'template-css', Uri::root(true) . 'media/templates/site/' . $this->template . '/css/template.css', array('version' => 'auto'));
-$wa->registerAndUseScript($this->template . 'template-js', Uri::root(true) . 'media/templates/site/' . $this->template . '/js/template.js', array('version' => 'auto'), array('defer' => true));
+$wa->registerAndUseScript('template-js','media/templates/site/' . $templateOriginal . '/js/template.js', array('version' => 'auto'), array('defer' => true));
+$wa->registerAndUseStyle($this->template . 'template-css','media/templates/site/' . $this->template . '/css/template.css', array('version' => 'auto'));
+$wa->registerAndUseScript($this->template . 'template-js','media/templates/site/' . $this->template . '/js/template.js', array('version' => 'auto'), array('defer' => true));
 // Assuming $this is an instance of Document
 // media/templates/site/minimalista/css/adtitional/
 $additionalcssDirectory = JPATH_ROOT . '/media/templates/site/' . $this->template . '/css/additional';
@@ -164,7 +164,7 @@ if (is_dir($additionalcssDirectory)) {
     $additionalcssFiles = Folder::files($additionalcssDirectory, 'css', true, true);
     if (is_array($additionalcssFiles) || is_object($additionalcssFiles)) {
         foreach ($additionalcssFiles as $index => $cssFile) {
-            $wa->registerAndUseStyle($this->template . pathinfo($cssFile, PATHINFO_FILENAME), Uri::root(true) . 'media/templates/site/' . $this->template . '/css/additional' . '/' . basename($cssFile), array('version' => 'auto'));
+            $wa->registerAndUseStyle($this->template . pathinfo($cssFile, PATHINFO_FILENAME),'media/templates/site/' . $this->template . '/css/additional' . '/' . basename($cssFile), array('version' => 'auto'));
         }
     }
 } else {
@@ -176,7 +176,7 @@ if (is_dir($additionaljsDirectory)) {
     $additionaljsFiles = Folder::files($additionaljsDirectory, 'js', true, true);
     if (is_array($additionaljsFiles) || is_object($additionaljsFiles)) {
         foreach ($additionaljsFiles as $index => $jsFile) {
-            $wa->registerAndUseScript($this->template . pathinfo($jsFile, PATHINFO_FILENAME), Uri::root(true) . 'media/templates/site/' . $this->template . '/js/additional' . '/' . basename($jsFile), array('version' => 'auto'), array('defer' => true));
+            $wa->registerAndUseScript($this->template . pathinfo($jsFile, PATHINFO_FILENAME),'media/templates/site/' . $this->template . '/js/additional' . '/' . basename($jsFile), array('version' => 'auto'), array('defer' => true));
         }
     }
 } else {
@@ -189,7 +189,7 @@ if (is_dir($customCssDirectoryOriginalTemplate)) {
     $customCssFilesOriginalTemplate = Folder::files($customCssDirectoryOriginalTemplate, 'custom', true, true);
     if (is_array($customCssFilesOriginalTemplate) || is_object($customCssFilesOriginalTemplate)) {
         foreach ($customCssFilesOriginalTemplate as $index => $cssFile) {
-            $wa->registerAndUseStyle(pathinfo($cssFile, PATHINFO_FILENAME), Uri::root(true) . 'media/templates/site/' . $templateOriginal . '/css' . '/' . basename($cssFile), array('version' => 'auto'));
+            $wa->registerAndUseStyle(pathinfo($cssFile, PATHINFO_FILENAME),'media/templates/site/' . $templateOriginal . '/css' . '/' . basename($cssFile), array('version' => 'auto'));
         }
     }
 } else {
@@ -202,7 +202,7 @@ if (is_dir($customFontCssDirectoryCurrentTemplate)) {
     $customFontCssFilesCurrentTemplate = Folder::files($customFontCssDirectoryCurrentTemplate, 'customfont', true, true);
     if (is_array($customFontCssFilesCurrentTemplate) || is_object($customFontCssFilesCurrentTemplate)) {
         foreach ($customFontCssFilesCurrentTemplate as $index => $cssFile) {
-            $wa->registerAndUseStyle($this->template . pathinfo($cssFile, PATHINFO_FILENAME), Uri::root(true) . 'media/templates/site/' . $this->template . '/css' . '/' . basename($cssFile), array('version' => 'auto'));
+            $wa->registerAndUseStyle($this->template . pathinfo($cssFile, PATHINFO_FILENAME),'media/templates/site/' . $this->template . '/css' . '/' . basename($cssFile), array('version' => 'auto'));
         }
     }
 } else {
@@ -215,7 +215,7 @@ if (is_dir($customCssDirectoryCurrentTemplate)) {
     $customCssFilesCurrentTemplate = Folder::files($customCssDirectoryCurrentTemplate, 'custom', true, true);
     if (is_array($customCssFilesCurrentTemplate) || is_object($customCssFilesCurrentTemplate)) {
         foreach ($customCssFilesCurrentTemplate as $index => $cssFile) {
-            $wa->registerAndUseStyle($this->template . pathinfo($cssFile, PATHINFO_FILENAME), Uri::root(true) . 'media/templates/site/' . $this->template . '/css' . '/' . basename($cssFile), array('version' => 'auto'));
+            $wa->registerAndUseStyle($this->template . pathinfo($cssFile, PATHINFO_FILENAME),'media/templates/site/' . $this->template . '/css' . '/' . basename($cssFile), array('version' => 'auto'));
         }
     }
 } else {
@@ -228,7 +228,7 @@ if (is_dir($customJsDirectoryOriginalTemplate)) {
     $customJsFilesOriginalTemplate = Folder::files($customJsDirectoryOriginalTemplate, 'custom', true, true);
     if (is_array($customJsFilesOriginalTemplate) || is_object($customJsFilesOriginalTemplate)) {
         foreach ($customJsFilesOriginalTemplate as $index => $jsFile) {
-            $wa->registerAndUseScript(pathinfo($jsFile, PATHINFO_FILENAME), Uri::root(true) . 'media/templates/site/' . $templateOriginal . '/js' . '/' . basename($jsFile), array('version' => 'auto'), array('defer' => true));
+            $wa->registerAndUseScript(pathinfo($jsFile, PATHINFO_FILENAME),'media/templates/site/' . $templateOriginal . '/js' . '/' . basename($jsFile), array('version' => 'auto'), array('defer' => true));
         }
     }
 } else {
@@ -241,7 +241,7 @@ if (is_dir($customJsDirectoryCurrentTemplate)) {
     $customJsFilesCurrentTemplate = Folder::files($customJsDirectoryCurrentTemplate, 'custom', true, true);
     if (is_array($customJsFilesCurrentTemplate) || is_object($customJsFilesCurrentTemplate)) {
         foreach ($customJsFilesCurrentTemplate as $index => $jsFile) {
-            $wa->registerAndUseScript($this->template . pathinfo($jsFile, PATHINFO_FILENAME), Uri::root(true) . 'media/templates/site/' . $this->template . '/js' . '/' . basename($jsFile), array('version' => 'auto'), array('defer' => true));
+            $wa->registerAndUseScript($this->template . pathinfo($jsFile, PATHINFO_FILENAME),'media/templates/site/' . $this->template . '/js' . '/' . basename($jsFile), array('version' => 'auto'), array('defer' => true));
         }
     }
 } else {
@@ -250,7 +250,7 @@ if (is_dir($customJsDirectoryCurrentTemplate)) {
 }
 $responsiveCssPath = JPATH_ROOT . '/media/templates/site/' . $this->template . '/css/responsive.css';
 if (file_exists($responsiveCssPath)) {
-    $wa->registerAndUseStyle($this->template . 'responsive-css', Uri::root(true) . 'media/templates/site/' . $this->template . '/css/responsive.css', array('version' => filemtime($responsiveCssPath)));
+    $wa->registerAndUseStyle($this->template . 'responsive-css','media/templates/site/' . $this->template . '/css/responsive.css', array('version' => filemtime($responsiveCssPath)));
 }
 
 // load social meta tags OpenGraph for Faceboook, Twitter Cards and Schema.org
