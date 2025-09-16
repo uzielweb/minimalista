@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
 <extension type="template" client="site" version="" method="upgrade">
     <name>minimalista</name>
-    <version>2.9.3</version>
-    <creationDate>2025-07</creationDate>
+    <version>2.9.4</version>
+    <creationDate>2025-09</creationDate>
     <author>Uziel - Via Ponto Mega</author>
     <authorEmail>contato@pontomega.com.br</authorEmail>
     <copyright>(C) 2024 Uziel - Via Ponto Mega</copyright>
@@ -17,7 +17,6 @@
         <filename>offline.php</filename>
         <filename>templateDetails.xml</filename>
         <folder>html</folder>
-        <folder>language</folder>
     </files>
     <media destination="templates/site/minimalista" folder="media">
         <folder>css</folder>
