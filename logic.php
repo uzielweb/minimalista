@@ -19,12 +19,15 @@ use Joomla\CMS\Router\Route;
 // Database connection setup
 $db = Factory::getContainer()->get('DatabaseDriver');
 $query = $db->getQuery(true);
+
+// Ensure we have access to the template object
+$template = isset($this) ? $this->template : Factory::getApplication()->getTemplate();
 $query->select($db->quoteName('parent'))
     ->from($db->quoteName('#__template_styles'))
-    ->where($db->quoteName('template') . ' = ' . $db->quote($this->template));
+    ->where($db->quoteName('template') . ' = ' . $db->quote($template));
 $db->setQuery($query);
 $templateParent = $db->loadResult();
-$templateOriginal = $templateParent ? $templateParent : $this->template;
+$templateOriginal = $templateParent ? $templateParent : $template;
 // Get the current user object
 $user = Factory::getApplication()->getIdentity();
 // Get the user group IDs
@@ -63,11 +66,11 @@ $sitename = $app->get('sitename', '');
 // Get menu and active menu item information
 $menu = $app->getMenu();
 $active = $menu->getActive();
-$activeParams = $active->getParams();
-$alias = $active->alias;
-$pageclass = $activeParams->get('pageclass_sfx', '');
-$parent = $menu->getItem($active->parent_id);
-$parentParams = $parent ? $parent->getParams() : '';
+$activeParams = $active ? $active->getParams() : null;
+$alias = $active ? $active->alias : '';
+$pageclass = $activeParams ? $activeParams->get('pageclass_sfx', '') : '';
+$parent = $active ? $menu->getItem($active->parent_id) : null;
+$parentParams = $parent ? $parent->getParams() : null;
 $parentAlias = $parent ? $parent->alias : '';
 $parentPageclass = $parentParams ? $parentParams->get('pageclass_sfx', '') : '';
 // Template-related settings and parameters
@@ -270,7 +273,7 @@ if ($templateParams->get('enable_social_meta_tags', 1)) {
         // Set common metadata
         setMetadata($doc, $title, $description, $image, $image_alt, $arrobasite, $arrobacreator);
         // Additional metadata for specific conditions and is not homepage
-        if ($option == 'com_content' && $view == 'article' && Factory::getApplication()->input->getInt('id') && $active->home != 1) {
+        if ($option == 'com_content' && $view == 'article' && Factory::getApplication()->input->getInt('id') && $active && $active->home != 1) {
             $content = Table::getInstance('content');
             $content->load(Factory::getApplication()->input->getInt('id'));
             $images = null;
@@ -294,7 +297,7 @@ if ($templateParams->get('enable_social_meta_tags', 1)) {
             $text = substr($text, 0, $textlimit);
             setMetadata($doc, $title, $text, Uri::root() . $image, $image_alt);
         }
-        if ($option == 'com_content' && $view == 'category' && Factory::getApplication()->input->getInt('id') && $active->home != 1) {
+        if ($option == 'com_content' && $view == 'category' && Factory::getApplication()->input->getInt('id') && $active && $active->home != 1) {
             $category = Table::getInstance('category');
             $category->load(Factory::getApplication()->input->getInt('id'));
             $textlimit = $templateParams->get('textlimit', 300);
