@@ -317,7 +317,10 @@ function setMetadata($doc, $title, $description, $image, $image_alt, $arrobasite
     $doc->setMetaData('og:description', $description);
     $doc->setMetaData('og:image', Uri::root() . $image);
     // fb:app_id
-    $doc->setMetaData('fb:app_id', '');
+    $fb_app_id = Factory::getApplication()->getTemplate(true)->params->get('fb_app_id', '');
+    if ($fb_app_id) {
+        $doc->setMetaData('fb:app_id', $fb_app_id);
+    }
     $doc->setMetaData('og:image:alt', $image_alt);
     $doc->setMetaData('og:type', 'website');
     $doc->setMetaData('og:url', Uri::root());

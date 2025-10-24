@@ -1,0 +1,35 @@
+{
+  "project": {
+    "name": "Minimalista Joomla Template",
+    "author": "Uziel - Via Ponto Mega",
+    "repository": "uzielweb/minimalista",
+    "type": "joomla-template"
+  },
+  "version_update_protocol": {
+    "files_to_update": [
+      "templateDetails.xml",
+      "updates.xml"
+    ],
+    "steps": [
+      "Update version in templateDetails.xml and updates.xml",
+      "git add . && git commit -m 'Bump version to X.X.X'",
+      "git tag -a minimalista-vX.X.X -m 'Minimalista Template vX.X.X'",
+      "git push origin minimalista-vX.X.X",
+      "gh release create minimalista-vX.X.X --title 'Minimalista Template vX.X.X' --notes 'INLINE_NOTES'"
+    ],
+    "tag_pattern": "minimalista-vX.X.X",
+    "release_notes_template": "## Minimalista Template vX.X.X\n### New Features & Improvements\n• [improvements]\n### Target Compatibility\n• Joomla 3.8+: Full backward compatibility maintained\n• Joomla 4.x: Enhanced compatibility and performance\n• Joomla 5.x: Improved robustness and error handling\nFull Changelog: https://github.com/uzielweb/minimalista/compare/minimalista-vPREV...minimalista-vX.X.X"
+  },
+  "rules": [
+    "ALWAYS use gh CLI for releases",
+    "NEVER create temporary files for release notes",
+    "ALWAYS commit before creating tags",
+    "ALWAYS update both templateDetails.xml AND updates.xml"
+  ],
+  "template_structure": {
+    "main_logic": "logic.php",
+    "configuration": "templateDetails.xml",
+    "inheritance": "Child template inheritance supported",
+    "assets": "Custom CSS/JS via Web Asset Manager"
+  }
+}

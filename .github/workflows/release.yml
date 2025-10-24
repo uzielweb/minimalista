@@ -1,0 +1,41 @@
+name: Create Release
+
+on:
+  push:
+    tags:
+      - 'minimalista-v*'
+
+jobs:
+  release:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+        
+      - name: Extract version from tag
+        id: version
+        run: |
+          VERSION=${GITHUB_REF#refs/tags/minimalista-v}
+          echo "version=$VERSION" >> $GITHUB_OUTPUT
+          
+      - name: Create Release
+        uses: gh-actions/create-release@v1
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        with:
+          tag_name: ${{ github.ref }}
+          release_name: Minimalista Template v${{ steps.version.outputs.version }}
+          body: |
+            ## Minimalista Template v${{ steps.version.outputs.version }}
+            
+            ### New Features & Improvements
+            • Template improvements and optimizations
+            
+            ### Target Compatibility
+            • Joomla 3.8+: Full backward compatibility maintained
+            • Joomla 4.x: Enhanced compatibility and performance
+            • Joomla 5.x: Improved robustness and error handling
+            
+            Full Changelog: https://github.com/uzielweb/minimalista/compare/minimalista-v${{ steps.version.outputs.version }}...minimalista-v${{ steps.version.outputs.version }}
+          draft: false
+          prerelease: false
