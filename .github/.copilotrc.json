@@ -13,6 +13,7 @@
     "steps": [
       "Update version in templateDetails.xml and updates.xml",
       "git add . && git commit -m 'Bump version to X.X.X'",
+      "git push origin main",
       "git tag -a minimalista-vX.X.X -m 'Minimalista Template vX.X.X'",
       "git push origin minimalista-vX.X.X",
       "gh release create minimalista-vX.X.X --title 'Minimalista Template vX.X.X' --notes 'INLINE_NOTES'"
@@ -24,6 +25,7 @@
     "ALWAYS use gh CLI for releases",
     "NEVER create temporary files for release notes",
     "ALWAYS commit before creating tags",
+    "ALWAYS push commits before creating tags",
     "ALWAYS update both templateDetails.xml AND updates.xml"
   ],
   "template_structure": {
