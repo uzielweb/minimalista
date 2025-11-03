@@ -276,37 +276,43 @@ if ($templateParams->get('enable_social_meta_tags', 1)) {
         if ($option == 'com_content' && $view == 'article' && Factory::getApplication()->input->getInt('id') && $active && $active->home != 1) {
             $content = Table::getInstance('content');
             $content->load(Factory::getApplication()->input->getInt('id'));
+            $articleImage = '';
+            $articleImageAlt = '';
             $images = null;
             if (!empty($content->images) && is_string($content->images)) {
                 $images = json_decode($content->images);
             }
             if ($images) {
-                $image = $images->image_intro ? $images->image_intro : $images->image_fulltext;
-                $image_alt = $images->image_intro_alt ? $images->image_intro_alt : $images->image_fulltext_alt;
+                $articleImage = $images->image_intro ? $images->image_intro : $images->image_fulltext;
+                $articleImageAlt = $images->image_intro_alt ? $images->image_intro_alt : $images->image_fulltext_alt;
             }
             $textlimit = $templateParams->get('textlimit', 300);
             $text = $content->introtext . $content->fulltext;
             $firstTextImageRegx = '/<img[^>]+src=[\'"](?P<src>[^\'"]+)[\'"][^>]*>/i';
             preg_match($firstTextImageRegx, $text, $matches);
-            if (isset($matches['src']) && empty($image)) {
-                $image = $matches['src'];
+            if (isset($matches['src']) && empty($articleImage)) {
+                $articleImage = $matches['src'];
             }
+            // Use article image if available, otherwise use default
+            $finalImage = !empty($articleImage) ? $articleImage : $image;
+            $finalImageAlt = !empty($articleImageAlt) ? $articleImageAlt : $image_alt;
             $text = strip_tags($text);
             $text = preg_replace('/\s+/', ' ', $text);
             $text = trim($text);
             $text = substr($text, 0, $textlimit);
-            setMetadata($doc, $title, $text, Uri::root() . $image, $image_alt);
+            setMetadata($doc, $title, $text, $finalImage, $finalImageAlt);
         }
         if ($option == 'com_content' && $view == 'category' && Factory::getApplication()->input->getInt('id') && $active && $active->home != 1) {
             $category = Table::getInstance('category');
             $category->load(Factory::getApplication()->input->getInt('id'));
             $textlimit = $templateParams->get('textlimit', 300);
             // Check if the properties exist before accessing them
-            $image = property_exists($category, 'image') ? $category->image : '';
-            $image_alt = property_exists($category, 'image_alt') ? $category->image_alt : '';
-            if (!empty($image)) {
-                setMetadata($doc, $title, substr(strip_tags($category->description), 0, $textlimit), Uri::root() . $image, $image_alt);
-            }
+            $categoryImage = property_exists($category, 'image') ? $category->image : '';
+            $categoryImageAlt = property_exists($category, 'image_alt') ? $category->image_alt : '';
+            // Use category image if available, otherwise use default
+            $finalImage = !empty($categoryImage) ? $categoryImage : $image;
+            $finalImageAlt = !empty($categoryImageAlt) ? $categoryImageAlt : $image_alt;
+            setMetadata($doc, $title, substr(strip_tags($category->description), 0, $textlimit), $finalImage, $finalImageAlt);
         }
     }
 }
@@ -315,7 +321,11 @@ function setMetadata($doc, $title, $description, $image, $image_alt, $arrobasite
 {
     $doc->setMetaData('og:title', $title);
     $doc->setMetaData('og:description', $description);
-    $doc->setMetaData('og:image', Uri::root() . $image);
+    // Clean image URL - remove #joomlaImage: and everything after it
+    $image = preg_replace('/#joomlaImage:.*$/', '', $image);
+    // Check if image URL is already absolute
+    $imageUrl = (strpos($image, 'http://') === 0 || strpos($image, 'https://') === 0) ? $image : Uri::root() . $image;
+    $doc->setMetaData('og:image', $imageUrl);
     // fb:app_id
     $fb_app_id = Factory::getApplication()->getTemplate(true)->params->get('fb_app_id', '');
     if ($fb_app_id) {
@@ -328,13 +338,13 @@ function setMetadata($doc, $title, $description, $image, $image_alt, $arrobasite
     $doc->setMetaData('twitter:card', 'summary_large_image');
     $doc->setMetaData('twitter:title', $title);
     $doc->setMetaData('twitter:description', $description);
-    $doc->setMetaData('twitter:image', $image);
+    $doc->setMetaData('twitter:image', $imageUrl);
     $doc->setMetaData('twitter:image:alt', $image_alt);
     $doc->setMetaData('twitter:site', $arrobasite);
     $doc->setMetaData('twitter:creator', $arrobacreator);
     $doc->setMetaData('schema:name', $title);
     $doc->setMetaData('schema:description', $description);
-    $doc->setMetaData('schema:image', $image);
+    $doc->setMetaData('schema:image', $imageUrl);
     $doc->setMetaData('schema:image:alt', $image_alt);
 }
 // functions.php
