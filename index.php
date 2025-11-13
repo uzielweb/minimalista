@@ -54,7 +54,7 @@ if ($sectionsBeforeHeader) {
         <?php endif;?>
         <div class="container<?php echo $containerFluid; ?>">
             <!-- navbar offcanvas bootstrap 5 -->
-            <nav class="navbar navbar-expand<?php echo $defaultBoostrapDesktop; ?> row">
+            <nav class="navbar navbar-expand<?php echo $defaultBoostrapDesktop; ?>">
                 <div class="container-fluid">
                     <?php if ($logo && $logo_position == 'header-navbar'): ?>
                     <a class="navbar-brand" href="<?php echo $this->baseurl; ?>">

@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
 <extension type="template" client="site" version="" method="upgrade">
     <name>minimalista</name>
-    <version>2.9.7</version>
-    <creationDate>2025-10</creationDate>
+    <version>2.9.8</version>
+    <creationDate>2025-11</creationDate>
     <author>Uziel - Via Ponto Mega</author>
     <authorEmail>contato@pontomega.com.br</authorEmail>
     <copyright>(C) 2024 Uziel - Via Ponto Mega</copyright>
