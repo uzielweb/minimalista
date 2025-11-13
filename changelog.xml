@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+<changelogs>
+    <changelog>
+        <element>minimalista</element>
+        <type>template</type>
+        <version>2.9.8</version>
+        <note>
+            <item>Remove classe 'row' inválida da tag nav navbar</item>
+        </note>
+    </changelog>
+</changelogs>
