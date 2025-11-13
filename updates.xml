@@ -8,6 +8,7 @@
     <downloads>
   <downloadurl type="full" format="zip">https://github.com/uzielweb/minimalista/archive/refs/tags/minimalista-v2.9.8.zip</downloadurl>
     </downloads>
+    <changelogurl>https://github.com/uzielweb/minimalista/releases/tag/minimalista-v2.9.8</changelogurl>
     <type>template</type>
     <maintainer>Uziel via Ponto Mega</maintainer>
     <maintainerurl>https://www.pontomega.com.br</maintainerurl>
