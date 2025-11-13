@@ -8,10 +8,12 @@
   "version_update_protocol": {
     "files_to_update": [
       "templateDetails.xml",
-      "updates.xml"
+      "updates.xml",
+      "changelog.xml"
     ],
     "steps": [
       "Update version in templateDetails.xml and updates.xml",
+      "Update changelog.xml with new changes",
       "git add . && git commit -m 'Bump version to X.X.X'",
       "git push origin main",
       "git tag -a minimalista-vX.X.X -m 'Minimalista Template vX.X.X'",
@@ -26,12 +28,23 @@
     "NEVER create temporary files for release notes",
     "ALWAYS commit before creating tags",
     "ALWAYS push commits before creating tags",
-    "ALWAYS update both templateDetails.xml AND updates.xml"
+    "ALWAYS update both templateDetails.xml AND updates.xml",
+    "ALWAYS update changelog.xml with new changes"
   ],
   "template_structure": {
     "main_logic": "logic.php",
     "configuration": "templateDetails.xml",
     "inheritance": "Child template inheritance supported",
     "assets": "Custom CSS/JS via Web Asset Manager"
+  },
+  "changelog": {
+    "format": "XML",
+    "location": "changelog.xml",
+    "structure": {
+      "root": "changelogs",
+      "entry": "changelog",
+      "fields": ["element", "type", "version", "note"]
+    },
+    "url": "https://raw.githubusercontent.com/uzielweb/minimalista/main/changelog.xml"
   }
 }
