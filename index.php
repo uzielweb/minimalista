@@ -54,8 +54,7 @@ if ($sectionsBeforeHeader) {
         <?php endif;?>
         <div class="container<?php echo $containerFluid; ?>">
             <!-- navbar offcanvas bootstrap 5 -->
-            <nav class="navbar navbar-expand<?php echo $defaultBoostrapDesktop; ?>">
-                <div class="container-fluid">
+            <nav class="navbar navbar-expand<?php echo $defaultBoostrapDesktop; ?>">                
                     <?php if ($logo && $logo_position == 'header-navbar'): ?>
                     <a class="navbar-brand" href="<?php echo $this->baseurl; ?>">
                         <img src="<?php echo $logo; ?>" alt="<?php echo $logo_alt; ?>" class="logo" />
@@ -83,8 +82,7 @@ if ($sectionsBeforeHeader) {
                             <jdoc:include type="modules" name="search" style="<?php echo $templateOriginal . '-default'; ?>" />
                         </div>
                     </div>
-                    <?php endif;?>
-                </div>
+                    <?php endif;?>              
             </nav>
         </div>
         <?php if ($this->countModules('header-bottom')): ?>
