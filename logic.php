@@ -319,22 +319,22 @@ if ($templateParams->get('enable_social_meta_tags', 1)) {
 // Function to set common metadata
 function setMetadata($doc, $title, $description, $image, $image_alt, $arrobasite = '', $arrobacreator = '')
 {
-    $doc->setMetaData('og:title', $title);
-    $doc->setMetaData('og:description', $description);
+    $doc->setMetaData('og:title', $title, 'property');
+    $doc->setMetaData('og:description', $description, 'property');
     // Clean image URL - remove #joomlaImage: and everything after it
     $image = preg_replace('/#joomlaImage:.*$/', '', $image);
     // Check if image URL is already absolute
     $imageUrl = (strpos($image, 'http://') === 0 || strpos($image, 'https://') === 0) ? $image : Uri::root() . $image;
-    $doc->setMetaData('og:image', $imageUrl);
+    $doc->setMetaData('og:image', $imageUrl, 'property');
     // fb:app_id
     $fb_app_id = Factory::getApplication()->getTemplate(true)->params->get('fb_app_id', '');
     if ($fb_app_id) {
-        $doc->setMetaData('fb:app_id', $fb_app_id);
+        $doc->setMetaData('fb:app_id', $fb_app_id, 'property');
     }
-    $doc->setMetaData('og:image:alt', $image_alt);
-    $doc->setMetaData('og:type', 'website');
-    $doc->setMetaData('og:url', Uri::root());
-    $doc->setMetaData('og:site_name', Factory::getApplication()->get('sitename'));
+    $doc->setMetaData('og:image:alt', $image_alt, 'property');
+    $doc->setMetaData('og:type', 'website', 'property');
+    $doc->setMetaData('og:url', Uri::root(), 'property');
+    $doc->setMetaData('og:site_name', Factory::getApplication()->get('sitename'), 'property');
     $doc->setMetaData('twitter:card', 'summary_large_image');
     $doc->setMetaData('twitter:title', $title);
     $doc->setMetaData('twitter:description', $description);
