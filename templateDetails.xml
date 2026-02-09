@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
-<extension type="template" client="site" version="" method="upgrade">
+<extension type="template" client="site" version="5.0" method="upgrade">
     <name>minimalista</name>
-    <version>2.10.0</version>
+    <version>2.12.0</version>
     <creationDate>2025-11</creationDate>
     <author>Uziel - Via Ponto Mega</author>
     <authorEmail>contato@pontomega.com.br</authorEmail>
@@ -83,6 +83,12 @@
                 <field name="arrobaauthor" type="text" label="TPL_MINIMALISTA_ARROBAAUTHOR" description="TPL_MINIMALISTA_ARROBAAUTHOR_DESC" showon="enable_social_meta_tags:1" />
                 <!-- fb_app_id -->
                 <field name="fb_app_id" type="text" label="TPL_MINIMALISTA_FB_APP_ID" description="TPL_MINIMALISTA_FB_APP_ID_DESC" showon="enable_social_meta_tags:1" />
+                <!-- Category as Author settings -->
+                <field name="enable_category_author" type="radio" label="TPL_MINIMALISTA_ENABLE_CATEGORY_AUTHOR" description="TPL_MINIMALISTA_ENABLE_CATEGORY_AUTHOR_DESC" default="0" class="btn-group btn-group-yesno" showon="enable_social_meta_tags:1">
+                    <option value="1">JYES</option>
+                    <option value="0">JNO</option>
+                </field>
+                <field name="category_author_parent" type="category" extension="com_content" label="TPL_MINIMALISTA_CATEGORY_AUTHOR_PARENT" description="TPL_MINIMALISTA_CATEGORY_AUTHOR_PARENT_DESC" showon="enable_category_author:1" />
                 <field name="container-fluid" type="radio" label="TPL_MINIMALISTA_CONTAINER_FLUID" description="TPL_MINIMALISTA_CONTAINER_FLUID_DESC" default="0" class="btn-group btn-group-yesno">
                     <option value="1">JYES</option>
                     <option value="0">JNO</option>
@@ -131,6 +137,8 @@
                 <field name="custom_script_startbody" type="editor" editor="codemirror" label="TPL_MINIMALISTA_CUSTOM_SCRIPT_TO_STARTBODY" description="TPL_MINIMALISTA_CUSTOM_SCRIPT_TO_STARTBODY_DESC" rows="5" filter="raw" />
                 <!-- custom script to endbody -->
                 <field name="custom_script_endbody" type="editor" editor="codemirror" label="TPL_MINIMALISTA_CUSTOM_SCRIPT_TO_ENDBODY" description="TPL_MINIMALISTA_CUSTOM_SCRIPT_TO_ENDBODY_DESC" rows="5" filter="raw" />
+                <!-- custom head code -->
+                <field name="custom_head_code" type="editor" editor="codemirror" label="TPL_MINIMALISTA_CUSTOM_HEAD_CODE" description="TPL_MINIMALISTA_CUSTOM_HEAD_CODE_DESC" rows="5" filter="raw" />
             </fieldset>
             <fieldset name="positions" label="TPL_MINIMALISTA_SECTIONS_AND_POSITIONS">
                 <!-- before header -->

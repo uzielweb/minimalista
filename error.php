@@ -1,22 +1,20 @@
 <?php
-/**
+    /**
  * @package     Joomla.Site
  * @subpackage  Templates.minmalista
  *
  * @copyright   (C) 2017 Open Source Matters, Inc. <https://www.joomla.org>
  * @license     GNU General Public License version 2 or later; see LICENSE.txt
  */
-defined('_JEXEC') or die;
-use Joomla\CMS\Factory;
-use Joomla\CMS\Language\Text;
-use Joomla\CMS\Uri\Uri;
-use JOomla\CMS\Router\Route;
-/** @var Joomla\CMS\Document\HtmlDocument $this */
-include_once JPATH_THEMES . '/minimalista/logic.php';
-$cssFilePath = JPATH_ROOT . '/media/templates/site/' . $templateOriginal . '/css/error.css';
-if (file_exists($cssFilePath)) {
-    $wa->registerAndUseStyle('template-css', Uri::root(true) . 'media/templates/site/' . $templateOriginal . '/css/error.css', array('version' => filemtime($cssFilePath)));
-}
+    defined('_JEXEC') or die;
+    use Joomla\CMS\Language\Text;
+    use Joomla\CMS\Uri\Uri;
+    /** @var Joomla\CMS\Document\HtmlDocument $this */
+    include_once JPATH_THEMES . '/minimalista/logic.php';
+    $cssFilePath = JPATH_ROOT . '/media/templates/site/' . $templateOriginal . '/css/error.css';
+    if (file_exists($cssFilePath)) {
+    $wa->registerAndUseStyle('template-css', Uri::root(true) . 'media/templates/site/' . $templateOriginal . '/css/error.css', ['version' => filemtime($cssFilePath)]);
+    }
 
 ?>
 <!doctype html>
@@ -60,9 +58,9 @@ if (file_exists($cssFilePath)) {
                             <p><?php echo htmlspecialchars($this->error->getPrevious()->getMessage(), ENT_QUOTES, 'UTF-8'); ?>
                             </p>
                             <?php echo $this->renderBacktrace($this->error->getPrevious()); ?>
-                            <?php endif;?>
+                            <?php endif; ?>
                         </div>
-                        <?php endif;?>
+                        <?php endif; ?>
                     </div>
                 </div>
             </div>

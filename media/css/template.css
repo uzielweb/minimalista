@@ -5,21 +5,25 @@
 .float-end.item-image {
     margin: 0 0 1rem 1rem;
 }
+
+/* Image hover effect */
 img {
-	max-width: 100%;
-	height: auto;
+    max-width: 100%;
+    height: auto;
 }
+
 .nav-link {
     cursor: pointer;
 }
+
 /* Style the back-to-top button */
 .back-to-top-link {
     position: fixed;
     bottom: 20px;
     right: 20px;
     display: none;
-    background-color: #007bff;
-    color: #fff;
+    background-color: var(--bs-primary);
+    color: var(--bs-white);
     border: none;
     border-radius: 50%;
     width: 50px;
@@ -27,16 +31,17 @@ img {
     font-size: 24px;
     text-align: center;
     cursor: pointer;
-    transition: background-color 0.3s, transform 0.3s;
+    transition: background-color 0.3s, transform 0.3s, filter 0.3s;
     line-height: 1em;
 }
+
 .back-to-top-link i {
-	line-height: 50px;
-	display: inline-flex;
-	height: 100%;
-	width: 100%;
-	justify-content: center;
-	align-items: center;
+    line-height: 50px;
+    display: inline-flex;
+    height: 100%;
+    width: 100%;
+    justify-content: center;
+    align-items: center;
 }
 
 /* Show the button when the user scrolls down 300px */
@@ -48,7 +53,8 @@ img {
 
 /* Change button background color on hover */
 .back-to-top-link:hover {
-    background-color: #0056b3;
+    filter: brightness(0.85);
+    color: var(--bs-white);
 }
 
 /* Button animation on hover */

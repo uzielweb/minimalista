@@ -3,6 +3,38 @@
     <changelog>
         <element>minimalista</element>
         <type>template</type>
+        <version>2.12.0</version>
+        <note>
+            <item>Joomla 6 compatibility audit and improvements</item>
+            <item>Added "Custom Head Code" field to allow raw HTML/Tags in the head</item>
+            <item>Fixed legacy Factory::getDbo() calls</item>
+            <item>Fixed typo in error.php namespace</item>
+            <item>Improved offline.php logo rendering and asset management</item>
+        </note>
+    </changelog>
+    <changelog>
+        <element>minimalista</element>
+        <type>template</type>
+        <version>2.11.0</version>
+        <note>
+            <item>Melhoria completa no sistema de Open Graph (Facebook, LinkedIn, Twitter)</item>
+            <item>Implementação de JSON-LD (Schema.org) para SEO dinâmico</item>
+            <item>Nova funcionalidade: "Categoria como Autor" (Suporte para Colunistas) via configuração</item>
+            <item>Fallback inteligente de imagens (Artigo > Categoria > Social Image > Logo)</item>
+            <item>Detecção automática de locale e tags de tempo para artigos</item>
+        </note>
+    </changelog>
+    <changelog>
+        <element>minimalista</element>
+        <type>template</type>
+        <version>2.10.0</version>
+        <note>
+            <item>Melhorias gerais e correções no sistema de metadados</item>
+        </note>
+    </changelog>
+    <changelog>
+        <element>minimalista</element>
+        <type>template</type>
         <version>2.9.8</version>
         <note>
             <item>Remove classe 'row' inválida da tag nav navbar</item>

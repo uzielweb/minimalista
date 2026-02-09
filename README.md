@@ -1,70 +1,93 @@
-# Minimalista  Joomla Template for Joomla 4 and Joomla 5
+# Minimalista - Joomla Template for Joomla 4, 5 and 6
 
-## Português (Brasil)
-<!-- definição  e descrição do template -->
-Este é um template para **Joomla! 4** e **Joomla! 5**, com o objetivo de ser o mais simples possível, sem quaisquer recursos adicionais, apenas o básico para um template funcional.
-Nele você encontra os itens básicos para um bom template, como:
-- [x] 1. Override de arquivos de layout para o menu
-- [x] 2. Override de arquivos de layout para os estilos de módulos (chromes)
-- [x] 3. Um arquivo com toda a lógica necessária para o tema dentro do arquivo logic.php
-- [x] 4. arquivos básicos para a página de erros, offline e o layout de component (chamado pela ?view=component)
-- [x] 5. Possui um menu offcanvas básico
-- [x] 6. Código personalizado é possível
+🇺🇸 [English Description](#english-description) | 🇧🇷 [Descrição em Português](#descrição-em-português)
 
-As seguintes configurações são possíveis em seu administrador:
-- [x] 1. Largura padrão das colunas laterais (esquerda e direita) em bootstrap
-- [x] 2. Definição de qual é o dispositivo padrão para a largura das colunas em geral (desktop, tablet ou mobile => xxl, xl, lg, md, sm, xs)
-- [x] 3. Escolher a largura padrão do container em bootstrap (container, container-fluid)
-- [x] 4. Permite criar templates filhos
-- [x] 5. Permite escolher o modo de carregamento do offcanvas (esquerda, direita, acima, abaixo)
-- [x] 6. Permite escolher a posição do botão de fechamento e de abertura do offcanvas
-- [x] 7. Permite escolher o logo e favicon
-- [x] 8. Permite arquivos personalizados de css e js basta adicioná-los à pasta css com nome *custom-anyname.css*, *customfont-anyname.css* e *custom-anyname.js* na pasta js, além do *responsive.css* (com este exato nome)
-- [x] 9. Você pode adicionar código personalizado ao cabeçalho, css ao cabeçalho, código personalizado após a tag <body> e antes da tag </body>
-- [x] 10. Permite adicionar infinitas posições acima da parte do componente e abaixo da parte do componente
-- [x] 11. Permite adicionar Meta Tags Open Graph para compartilhamento em redes sociais
-- [x] 12. classes bootstrap col personalizada para sufixo de classe de módulo torna possível substituir o tamanho de bootstrap do módulo
-- [x] 13. Permite adicionar infinitas posições antes e depois do cabeçalho
-- [x] 14. Permite adicionar infinitos arquivos css e js adicionais nos respectivos diretórios css/addttional e js/addttional (importante: custom.js, custom.css e responsive.css ainda serão os últimos em oirdem de carregamento)
-- [x] 15. Usando a {minimalista-year} dentro do conteúdo de um módulo agora é possível exibir o ano atual
-- [x] 16.``` Novo recurso: ``` Agora o tempo de modificação do arquivo é adicionado à versão do arquivo css e js
-- [x] 17.``` Novo recurso: ``` Agora é possível escolher onde você quer que seu logo seja exibido, se no cabeçalho, na barra lateral esquerda ou barra lateral direita
+## English Description
 
-Por padrão, o tema vem com Bootstrap e Font Awesome do tema, mas você pode escolher usar o Bootstrap e o Font Awesome do Joomla, ou nenhum deles. Classes CSS do fontawesome do Joomla podem continuar a ser usadas, sem problemas
+This is a **Joomla! 4**, **Joomla! 5** and **Joomla! 6** template that emphasizes absolute simplicity, providing only the essentials for a functional and fast website.
 
+### Included Highlights:
+- [x] 1. Layout file overrides for the menu.
+- [x] 2. Layout file overrides for module styles (Chromes).
+- [x] 3. Central logic concentrated in the `logic.php` file.
+- [x] 4. Essential files included: error page (`error.php`), offline (`offline.php`), and component layout (`component.php`).
+- [x] 5. Integrated basic offcanvas menu.
+- [x] 6. Full support for custom code.
 
+### Available Admin Settings:
+- [x] 1. Custom width for side columns (left and right) via Bootstrap.
+- [x] 2. Default device definition for column widths (xxl, xl, lg, md, sm, xs).
+- [x] 3. Choice of Bootstrap container width (container or container-fluid).
+- [x] 4. Native support for creating Child Templates.
+- [x] 5. Offcanvas loading direction (left, right, top, or bottom).
+- [x] 6. Custom positioning for offcanvas open and close buttons.
+- [x] 7. Simplified logo and favicon configuration.
+- [x] 8. Auto-detection of custom CSS/JS files: use `custom-`, `customfont-` prefixes and the `responsive.css` file in their respective folders.
+- [x] 9. Custom code insertion in `<head>`, start of `<body>`, and before the closing `</body>` tag.
+- [x] 10. Creation of dynamic custom sections with configurable Bootstrap widths and addition of infinite module positions.
+- [x] 11. **Sophisticated Open Graph Meta Tags** (Facebook, LinkedIn, Twitter, and Schema.org).
+- [x] 12. Module class suffix for Bootstrap size override.
+- [x] 13. Infinite positions before and after the header.
+- [x] 14. Dynamic inclusion of CSS and JS files via `css/additional` and `js/additional` directories.
+- [x] 15. `{minimalist-year}` tag to automatically display the current year in modules.
+- [x] 16. Automatic cache control: file modification date is added to CSS and JS file versions.
+- [x] 17. Choose logo display location (header, left sidebar, or right sidebar).
+- [x] 18. ```New feature:``` **Professional Columnist Mode**: configure a parent category to automatically use its name as the author on social networks.
+- [x] 19. ```New feature:``` **Integrated JSON-LD**: automatic structured data for better Google indexing.
+- [x] 20. ```New feature:``` **Smart Image Fallback**: ensures there is always an image when sharing (Article > Category > Global Social > Logo).
+- [x] 21. ```New feature:``` Advanced time and author metadata for single articles.
+- [x] 22. Dynamic CSS classes in `<body>` based on page context (view, layout, alias).
+- [x] 23. Automatic user group injection as classes in `<body>` for CSS control.
+- [x] 24. Full control over frameworks: choose between theme Bootstrap/jQuery or Joomla's native versions.
+- [x] 25. Full compliance with Joomla 4/5 Web Asset Manager for optimized loading.
+- [x] 26. Native support for RTL (Right-to-Left) languages.
 
-## English (United States)
-<!-- definition and description of the template -->
-<!-- template definition and description -->
-This is a **Joomla! 4** e **Joomla! 5** template, aiming to be as simple as possible, without any additional features, just the basics for a functional template.
-There you will find the basic items for a good template, such as:
-- [x] 1. Layout files override for menu
-- [x] 2. Override of layout files for module styles (chromes)
-- [x] 3. A file with all the logic needed for the theme inside the logic.php file
-- [x] 4. basic files for the error page, offline and the component layout (called by ?view=component)
-- [x] 5. It has a basic offcanvas menu
-- [x] 6. Custom code is possible
+By default, the theme includes its own Bootstrap and Font Awesome but allows switching to Joomla's native versions or disabling them entirely.
 
-The following settings are possible in your admin:
-- [x] 1. Default width of side columns (left and right) in bootstrap
-- [x] 2. Definition of the default device for column widths in general (desktop, tablet or mobile => xxl, xl, lg, md, sm, xs)
-- [x] 3. Choose the default container width in bootstrap (container, container-fluid)
-- [x] 4. Allows you to create child templates
-- [x] 5. Allows you to choose the offcanvas loading mode (left, right, up, down)
-- [x] 6. Allows you to choose the position of the offcanvas closing and opening button
-- [x] 7. Allows you to choose the logo and favicon
-- [x] 8. Allows custom css and js files, just add them to the css folder with the name *custom-anyname.css*, *customfont-anyname.css* and *custom-anyname.js* in the js folder, in addition *responsive.css* (with this exact name)
-- [x] 9. You can add custom code to head, css to head, custom code after <body> tag and before </body> tag
-- [x] 10. Allows you to add infinite positions before and after component
-- [x] 11. Allows you to add Open Graph Meta Tags for sharing on social networks 
-- [x] 12. Bootstrap custom col classes for module class suffix makes it possible to override module bootstrap size
-- [x] 13. Allows you to add infinite positions before and after header
-- [x] 14. Allows you to add infinite additional css and js files in the respective css/addttional and js/addttional directories (important: custom.js, custom.css and responsive.css will still be the last in loading order)
-- [x] 15. Using {minimalist-year} within the content of a module it is now possible to display the current year
-- [x] 16. ```New feature:``` Now the file modification time is added to the CSS and JS file version
-- [x] 17.``` New feature: ``` You can now choose where you want your logo to be displayed, whether in the header, left sidebar or right sidebar
+---
 
+# Minimalista - Template para Joomla 4, 5 e 6
 
-By default, the template comes with template's Bootstrap and Font Awesome, but you can choose to use the Joomla's Bootstrap and Font Awesome, or neither. Joomla fontawesome CSS classes can continue to be used without any problems.
+🇺🇸 [English Description](#english-description) | 🇧🇷 [Descrição em Português](#descrição-em-português)
 
+## Descrição em Português
+
+Este é um template para **Joomla! 4**, **Joomla! 5** e **Joomla! 6** que preza pela simplicidade absoluta, fornecendo apenas o essencial para um site funcional e rápido.
+
+### Itens de destaque incluídos:
+- [x] 1. Substituição de arquivos de layout (Overrides) para o menu.
+- [x] 2. Substituição de arquivos de layout para estilos de módulos (Chromes).
+- [x] 3. Lógica central concentrada no arquivo `logic.php`.
+- [x] 4. Arquivos essenciais inclusos: página de erro (`error.php`), offline (`offline.php`) e layout de componente (`component.php`).
+- [x] 5. Menu offcanvas básico integrado.
+- [x] 6. Suporte total a códigos personalizados.
+
+### Configurações disponíveis no administrador:
+- [x] 1. Largura personalizada das colunas laterais (esquerda e direita) via Bootstrap.
+- [x] 2. Definição do dispositivo padrão para largura das colunas (xxl, xl, lg, md, sm, xs).
+- [x] 3. Escolha da largura do container Bootstrap (container ou container-fluid).
+- [x] 4. Suporte nativo para a criação de templates filhos (Child Templates).
+- [x] 5. Direção do carregamento do offcanvas (esquerda, direita, acima ou abaixo).
+- [x] 6. Posicionamento personalizado dos botões de abertura e fechamento do offcanvas.
+- [x] 7. Configuração simplificada de logo e favicon.
+- [x] 8. Auto-detecção de arquivos CSS/JS personalizados: utilize os prefixos `custom-`, `customfont-` e o arquivo `responsive.css` nas respectivas pastas.
+- [x] 9. Inserção de código personalizado no `<head>`, início do `<body>` e antes do fechamento do `</body>`.
+- [x] 10. Criação de seções dinâmicas personalizadas com larguras Bootstrap configuráveis e adição de infinitas posições de módulos.
+- [x] 11. **Metadados Open Graph sofisticados** (Facebook, LinkedIn, Twitter e Schema.org).
+- [x] 12. Sufixo de classe de módulo para substituição de tamanho Bootstrap.
+- [x] 13. Posições infinitas antes e depois do cabeçalho.
+- [x] 14. Inclusão dinâmica de arquivos CSS e JS através dos diretórios `css/additional` e `js/additional`.
+- [x] 15. Tag `{minimalista-year}` para exibir o ano atual automaticamente em módulos.
+- [x] 16. Controle de cache automático: a data de modificação dos arquivos é adicionada à versão dos arquivos CSS e JS.
+- [x] 17. Escolha do local de exibição do logo (cabeçalho, barra lateral esquerda ou direita).
+- [x] 18. ```Novo recurso:``` **Modo Colunista Profissional**: permite configurar uma categoria pai para que seu nome seja usado automaticamente como autor nas redes sociais.
+- [x] 19. ```Novo recurso:``` **JSON-LD Integrado**: dados estruturados automáticos para melhor indexação no Google.
+- [x] 20. ```Novo recurso:``` **Fallback de Imagem Inteligente**: garante que sempre haja uma imagem no compartilhamento (Artigo > Categoria > Social Global > Logo).
+- [x] 21. ```Novo recurso:``` Metadados avançados de tempo e autor para artigos únicos.
+- [x] 22. Classes CSS dinâmicas no `<body>` baseadas no contexto da página (view, layout, alias).
+- [x] 23. Injeção automática de grupos de usuários como classes no `<body>` para controle via CSS.
+- [x] 24. Controle total sobre frameworks: escolha entre o Bootstrap/jQuery do tema ou o nativo do Joomla.
+- [x] 25. Conformidade com o Web Asset Manager do Joomla 4/5 para carregamento otimizado.
+- [x] 26. Suporte nativo para idiomas RTL (Right-to-Left).
+
+Por padrão, o tema inclui Bootstrap e Font Awesome próprios, mas permite alternar para as versões nativas do Joomla ou desativá-los completamente.
