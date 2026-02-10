@@ -3,6 +3,14 @@
     <changelog>
         <element>minimalista</element>
         <type>template</type>
+        <version>2.12.1</version>
+        <note>
+            <item>Small fix and adjustment in logic.php for author user fetching</item>
+        </note>
+    </changelog>
+    <changelog>
+        <element>minimalista</element>
+        <type>template</type>
         <version>2.12.0</version>
         <note>
             <item>Joomla 6 compatibility audit and improvements</item>

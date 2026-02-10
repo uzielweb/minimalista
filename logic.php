@@ -313,7 +313,7 @@
             } else {
                 $authorName = ! empty($content->created_by_alias) ? $content->created_by_alias : '';
                 if (empty($authorName)) {
-                    $authorUser = Factory::getContainer()->get('Joomla\CMS\User\UserFactory')->loadUser($content->created_by);
+                    $authorUser = Factory::getUser($content->created_by);
                     $authorName = $authorUser->name;
                 }
             }
