@@ -4,9 +4,9 @@
     <name>minimalista</name>
     <description>Minimalista</description>
     <element>minimalista</element>
-    <version>2.12.9</version>
+    <version>2.12.10</version>
     <downloads>
-      <downloadurl type="full" format="zip">https://github.com/uzielweb/minimalista/archive/refs/tags/minimalista-v2.12.9.zip</downloadurl>
+      <downloadurl type="full" format="zip">https://github.com/uzielweb/minimalista/archive/refs/tags/minimalista-v2.12.10.zip</downloadurl>
     </downloads>
     <changelogurl>https://raw.githubusercontent.com/uzielweb/minimalista/main/changelog.xml</changelogurl>
     <type>template</type>

@@ -243,6 +243,50 @@
     $wa->registerAndUseStyle($this->template . 'responsive-css', 'media/templates/site/' . $this->template . '/css/responsive.css', ['version' => filemtime($responsiveCssPath)]);
     }
 
+    /**
+ * Helper function to clean text for metadata.
+ * Handles cleaning, double decoding, and word/sentence-safe truncation.
+ */
+    function cleanMetaText($txt, $len = 0)
+    {
+    if (empty($txt)) {
+        return '';
+    }
+
+    // Decode twice to handle double encoding (e.g. &amp;amp;)
+    $txt = html_entity_decode(html_entity_decode($txt, ENT_QUOTES, 'UTF-8'), ENT_QUOTES, 'UTF-8');
+    // Remove Joomla plugin placeholders
+    $txt = preg_replace('/\{[a-zA-Z0-9\s\-_]+\}/', '', $txt);
+    // Strip tags
+    $txt = strip_tags($txt);
+    // Normalise spaces
+    $txt = trim(preg_replace('/\s+/', ' ', $txt));
+
+    // Truncate if needed
+    if ($len > 0 && mb_strlen($txt) > $len) {
+        $txt = mb_substr($txt, 0, $len);
+
+        // Try to find the last sentence end (., !, ?) within the limit
+        $lastDot   = mb_strrpos($txt, '.');
+        $lastExcl  = mb_strrpos($txt, '!');
+        $lastQuest = mb_strrpos($txt, '?');
+
+        $lastSentenceEnd = max($lastDot, $lastExcl, $lastQuest);
+
+        if ($lastSentenceEnd !== false && $lastSentenceEnd > ($len * 0.5)) {
+            $txt = mb_substr($txt, 0, $lastSentenceEnd + 1);
+        } else {
+            // Fallback: Word-safe truncation
+            $lastSpace = mb_strrpos($txt, ' ');
+            if ($lastSpace !== false) {
+                $txt = mb_substr($txt, 0, $lastSpace);
+            }
+        }
+    }
+
+    return $txt;
+    }
+
     // load social meta tags OpenGraph for Faceboook, Twitter Cards and Schema.org
     if ($templateParams->get('enable_social_meta_tags', 1)) {
     $disable_in = $templateParams->get('disable_in', '');
@@ -370,27 +414,8 @@
     // Function to set common metadata
     function setMetadata($doc, $title, $description, $image, $image_alt, $arrobasite = '', $arrobacreator = '', $type = 'website', $locale = 'pt_BR', $author = '')
     {
-    // Clean inputs: Decode entities, Remove plugin tags, Strip HTML, Normalise spaces
-    // Clean inputs: Decode entities, Remove plugin tags, Strip HTML, Normalise spaces, Word-safe truncation
-    $cleaner = function ($txt) {
-        if (empty($txt)) {
-            return '';
-        }
-
-        // Decode twice to handle double encoding (e.g. &amp;amp;)
-        $txt = html_entity_decode(html_entity_decode($txt, ENT_QUOTES, 'UTF-8'), ENT_QUOTES, 'UTF-8');
-        // Remove Joomla plugin placeholders
-        $txt = preg_replace('/\{[a-zA-Z0-9\s\-_]+\}/', '', $txt);
-        // Strip tags
-        $txt = strip_tags($txt);
-        // Normalise spaces
-        $txt = trim(preg_replace('/\s+/', ' ', $txt));
-
-        return $txt;
-    };
-
-    $cleanTitle = $cleaner($title);
-    $cleanDesc  = $cleaner($description);
+    $cleanTitle = cleanMetaText($title);
+    $cleanDesc  = cleanMetaText($description);
 
     // Remove redundant title from the start of the description
     if (! empty($cleanTitle) && ! empty($cleanDesc)) {
@@ -399,34 +424,10 @@
         }
     }
 
-    // Now apply truncation to the cleaned description
-    $limit = 300;
-    if (mb_strlen($cleanDesc) > $limit) {
-        $cleanDesc = mb_substr($cleanDesc, 0, $limit);
-
-        // Try to find the last sentence end (., !, ?) within the limit
-        $lastDot   = mb_strrpos($cleanDesc, '.');
-        $lastExcl  = mb_strrpos($cleanDesc, '!');
-        $lastQuest = mb_strrpos($cleanDesc, '?');
-
-        $lastSentenceEnd = max($lastDot, $lastExcl, $lastQuest);
-
-        if ($lastSentenceEnd !== false && $lastSentenceEnd > ($limit * 0.5)) {
-            // If we found a sentence end and it's not too early (at least 50% of the limit)
-            // we cut there for a much cleaner look.
-            $cleanDesc = mb_substr($cleanDesc, 0, $lastSentenceEnd + 1);
-        } else {
-            // Fallback: Word-safe truncation
-            $lastSpace = mb_strrpos($cleanDesc, ' ');
-            if ($lastSpace !== false) {
-                $cleanDesc = mb_substr($cleanDesc, 0, $lastSpace);
-            }
-        }
-    }
-
+    // Apply truncation to description (limit 300)
+    $description = cleanMetaText($cleanDesc, 300);
     $title       = $cleanTitle;
-    $description = $cleanDesc;
-    $author      = $cleaner($author);
+    $author      = cleanMetaText($author);
 
     $doc->setMetaData('og:title', $title, 'property');
     $doc->setMetaData('og:description', $description, 'property');

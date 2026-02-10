@@ -3,6 +3,15 @@
     <changelog>
         <element>minimalista</element>
         <type>template</type>
+        <version>2.12.10</version>
+        <note>
+            <item>Fixed fatal error: restored the missing cleanMetaText function and ensured correct global scoping</item>
+            <item>Improved code stability: moved helper functions to safer locations to prevent undefined function errors</item>
+        </note>
+    </changelog>
+    <changelog>
+        <element>minimalista</element>
+        <type>template</type>
         <version>2.12.9</version>
         <note>
             <item>Fixed HTML entities globally in metadata: ensured &amp; and other characters are correctly decoded in author, section, and title tags</item>
