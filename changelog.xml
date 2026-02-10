@@ -3,6 +3,16 @@
     <changelog>
         <element>minimalista</element>
         <type>template</type>
+        <version>2.12.14</version>
+        <note>
+            <item>Full Code Restoration: Reverted to the exact original template structure to ensure full Child Template compatibility</item>
+            <item>Fixed HTML Entities: Integrated the cleanMetaText helper into the original flow to fix &amp; issues in metadata</item>
+            <item>Structural Integrity: Preserved all original SQL queries, user group detection, and grid logic</item>
+        </note>
+    </changelog>
+    <changelog>
+        <element>minimalista</element>
+        <type>template</type>
         <version>2.12.13</version>
         <note>
             <item>Critical Fix: Restored the exact original SQL-based template parent detection logic to fix broken Child Template positions</item>
