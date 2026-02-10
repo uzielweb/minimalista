@@ -3,6 +3,15 @@
     <changelog>
         <element>minimalista</element>
         <type>template</type>
+        <version>2.12.20</version>
+        <note>
+            <item>Structural: Replaced manual SQL queries for template inheritance with native Joomla 4/5/6 methods</item>
+            <item>Legacy: Removed direct $db calls for user group detection in favor of native Joomla helpers</item>
+        </note>
+    </changelog>
+    <changelog>
+        <element>minimalista</element>
+        <type>template</type>
         <version>2.12.19</version>
         <note>
             <item>Formatting: Fixed jdoc:include line breaks to prevent issues with auto-formatters</item>

@@ -504,8 +504,7 @@
             <div
                 class="<?php echo 'position-' . strtolower($position->position); ?> col<?php echo $defaultBoostrapDesktop . ($position->width ? '-' . $position->width : ''); ?><?php echo $position->customclass ? ' ' . $position->customclass : ''; ?>">
                 <div class="row">
-                    <jdoc:include type="modules" name="<?php echo $position->position; ?>"
-                        style="<?php echo $templateOriginal . '-default'; ?>" />
+                    <jdoc:include type="modules" name="<?php echo $position->position; ?>" style="<?php echo $templateOriginal . '-default'; ?>" />
                 </div>
             </div>
             <?php endforeach; ?>
