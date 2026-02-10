@@ -3,6 +3,16 @@
     <changelog>
         <element>minimalista</element>
         <type>template</type>
+        <version>2.12.4</version>
+        <note>
+            <item>Improved metadata logic: implemented word-safe truncation to avoid cutting words in half</item>
+            <item>Fixed double-escaped entities in meta tags</item>
+            <item>Optimized text cleaning for better SEO descriptions</item>
+        </note>
+    </changelog>
+    <changelog>
+        <element>minimalista</element>
+        <type>template</type>
         <version>2.12.3</version>
         <note>
             <item>Improved metadata text cleaning: removed HTML tags, Joomla plugin placeholders, and fixed entity escaping (&amp;)</item>

@@ -305,17 +305,6 @@
                 }
             }
 
-            // Get Author name - Priority changes if it's a columnist category
-            if ($isColumnistCategory) {
-                $authorName = $categoryTitle;
-            } else {
-                $authorName = ! empty($content->created_by_alias) ? $content->created_by_alias : '';
-                if (empty($authorName)) {
-                    $authorUser = Factory::getUser($content->created_by);
-                    $authorName = $authorUser->name;
-                }
-            }
-
             // Image Fallback: Article Image > Category Image > Template Social Image
             if (empty($articleImage) && ! empty($articleCategory->params)) {
                 $katParams = json_decode($articleCategory->params);
@@ -327,6 +316,9 @@
             // Define final image variables
             $finalImage    = ! empty($articleImage) ? $articleImage : $image;
             $finalImageAlt = ! empty($articleImageAlt) ? $articleImageAlt : $image_alt;
+
+            // Clean author name if it's not a columnist (category title already clean usually but let's be safe)
+            $authorName = html_entity_decode(strip_tags($authorName), ENT_QUOTES, 'UTF-8');
 
             setMetadata($doc, $title, $text, $finalImage, $finalImageAlt, $arrobasite, $arrobacreator, 'article', $locale, $authorName);
 
@@ -366,6 +358,32 @@
     // Function to set common metadata
     function setMetadata($doc, $title, $description, $image, $image_alt, $arrobasite = '', $arrobacreator = '', $type = 'website', $locale = 'pt_BR', $author = '')
     {
+    // Clean inputs: Decode entities, Remove plugin tags, Strip HTML, Normalise spaces
+    $cleaner = function ($txt, $len = 0) {
+        if (empty($txt)) {
+            return '';
+        }
+
+        // Decode twice to handle double encoding (e.g. &amp;amp;)
+        $txt = html_entity_decode(html_entity_decode($txt, ENT_QUOTES, 'UTF-8'), ENT_QUOTES, 'UTF-8');
+        // Remove Joomla plugin placeholders
+        $txt = preg_replace('/\{[a-zA-Z0-9\s\-_]+\}/', '', $txt);
+        // Strip tags
+        $txt = strip_tags($txt);
+        // Normalise spaces
+        $txt = trim(preg_replace('/\s+/', ' ', $txt));
+        // Truncate if needed
+        if ($len > 0) {
+            $txt = mb_substr($txt, 0, $len);
+        }
+
+        return $txt;
+    };
+
+    $title       = $cleaner($title);
+    $description = $cleaner($description, 300);
+    $author      = $cleaner($author);
+
     $doc->setMetaData('og:title', $title, 'property');
     $doc->setMetaData('og:description', $description, 'property');
     // Clean image URL - remove #joomlaImage: and everything after it
