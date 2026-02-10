@@ -3,6 +3,16 @@
     <changelog>
         <element>minimalista</element>
         <type>template</type>
+        <version>2.12.12</version>
+        <note>
+            <item>Fixed child template positions: restored the exact SQL query and logic for template parent detection</item>
+            <item>Fixed grid layout: re-added missing 'continue' in renderSection for empty module positions</item>
+            <item>Metadata: maintained advanced HTML entity cleaning and truncation improvements</item>
+        </note>
+    </changelog>
+    <changelog>
+        <element>minimalista</element>
+        <type>template</type>
         <version>2.12.11</version>
         <note>
             <item>Restored Child Template support: returned to SQL-based detection to ensure compatibility with overrides</item>
