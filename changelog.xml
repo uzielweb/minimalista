@@ -3,6 +3,15 @@
     <changelog>
         <element>minimalista</element>
         <type>template</type>
+        <version>2.12.15</version>
+        <note>
+            <item>Structural Fix: Reverted to the exact historical code for template identification to restore broken positions</item>
+            <item>Metadata: Retained advanced HTML entity cleaning by integrating it safely into the original code flow</item>
+        </note>
+    </changelog>
+    <changelog>
+        <element>minimalista</element>
+        <type>template</type>
         <version>2.12.14</version>
         <note>
             <item>Full Code Restoration: Reverted to the exact original template structure to ensure full Child Template compatibility</item>
