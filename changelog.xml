@@ -3,6 +3,14 @@
     <changelog>
         <element>minimalista</element>
         <type>template</type>
+        <version>2.12.3</version>
+        <note>
+            <item>Improved metadata text cleaning: removed HTML tags, Joomla plugin placeholders, and fixed entity escaping (&amp;)</item>
+        </note>
+    </changelog>
+    <changelog>
+        <element>minimalista</element>
+        <type>template</type>
         <version>2.12.2</version>
         <note>
             <item>Improved Columnist author detection to support deep subcategory levels using Nested Set Model (lft/rgt)</item>
