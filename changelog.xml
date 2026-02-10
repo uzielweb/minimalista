@@ -3,6 +3,16 @@
     <changelog>
         <element>minimalista</element>
         <type>template</type>
+        <version>2.12.11</version>
+        <note>
+            <item>Restored Child Template support: returned to SQL-based detection to ensure compatibility with overrides</item>
+            <item>Fixed layout issue: restored module count check in renderSection to correctly hide empty columns</item>
+            <item>Refined Metadata: kept the improved HTML entity cleaning globally for better SEO</item>
+        </note>
+    </changelog>
+    <changelog>
+        <element>minimalista</element>
+        <type>template</type>
         <version>2.12.10</version>
         <note>
             <item>Fixed fatal error: restored the missing cleanMetaText function and ensured correct global scoping</item>
