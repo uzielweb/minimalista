@@ -295,8 +295,17 @@
         $disable_in = [$disable_in];
     }
     if (! in_array($option, $disable_in)) {
-        $title         = $doc->getTitle() ? $doc->getTitle() : $sitename;
-        $description   = $doc->getDescription() ? $doc->getDescription() : Factory::getConfig()->get('MetaDesc');
+        $title = $doc->getTitle() ? $doc->getTitle() : $sitename;
+
+        // Description Fallback: Document Desc > Site Config MetaDesc > Site Name
+        $description = $doc->getDescription();
+        if (empty($description)) {
+            $description = Factory::getConfig()->get('MetaDesc', '');
+        }
+        if (empty($description)) {
+            $description = $sitename;
+        }
+
         $image         = $templateParams->get('social_image', $logo);
         $image_alt     = $templateParams->get('social_image_alt', $logo_alt);
         $arrobasite    = $templateParams->get('arrobasite', '');
@@ -396,8 +405,20 @@
             $category->load(Factory::getApplication()->input->getInt('id'));
             $textlimit = $templateParams->get('textlimit', 300);
 
-            // Description Fallback: Category Desc > Document Desc > Site Config MetaDesc
-            $categoryDesc = ! empty($category->description) ? substr(strip_tags($category->description), 0, $textlimit) : $description;
+            // Description Fallback: Category Desc > Document Desc > Site Config MetaDesc > Site Name
+            $categoryDesc = '';
+            if (! empty($category->description)) {
+                $categoryDesc = cleanMetaText($category->description, $textlimit);
+            }
+            if (empty($categoryDesc) && ! empty($description)) {
+                $categoryDesc = $description;
+            }
+            if (empty($categoryDesc)) {
+                $categoryDesc = Factory::getConfig()->get('MetaDesc', '');
+            }
+            if (empty($categoryDesc)) {
+                $categoryDesc = $sitename;
+            }
 
             // Check if the properties exist before accessing them
             $categoryImage    = property_exists($category, 'image') ? $category->image : '';
@@ -428,6 +449,14 @@
     $description = cleanMetaText($cleanDesc, 300);
     $title       = $cleanTitle;
     $author      = cleanMetaText($author);
+
+    // Final fallback: if description is still empty, use the title
+    if (empty($description)) {
+        $description = $title;
+    }
+
+    // Set standard HTML meta description (essential for SEO)
+    $doc->setDescription($description);
 
     $doc->setMetaData('og:title', $title, 'property');
     $doc->setMetaData('og:description', $description, 'property');

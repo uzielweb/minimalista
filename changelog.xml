@@ -3,6 +3,15 @@
     <changelog>
         <element>minimalista</element>
         <type>template</type>
+        <version>2.12.21</version>
+        <note>
+            <item>SEO Fix: Ensured standard HTML meta description tag is always set via $doc->setDescription() for all page types</item>
+            <item>Metadata: Fixed missing meta description on category pages and other non-article pages</item>
+        </note>
+    </changelog>
+    <changelog>
+        <element>minimalista</element>
+        <type>template</type>
         <version>2.12.20</version>
         <note>
             <item>Structural: Replaced manual SQL queries for template inheritance with native Joomla 4/5/6 methods</item>
