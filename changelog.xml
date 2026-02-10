@@ -3,6 +3,14 @@
     <changelog>
         <element>minimalista</element>
         <type>template</type>
+        <version>2.12.2</version>
+        <note>
+            <item>Improved Columnist author detection to support deep subcategory levels using Nested Set Model (lft/rgt)</item>
+        </note>
+    </changelog>
+    <changelog>
+        <element>minimalista</element>
+        <type>template</type>
         <version>2.12.1</version>
         <note>
             <item>Small fix and adjustment in logic.php for author user fetching</item>

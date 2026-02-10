@@ -295,15 +295,13 @@
             $targetParentId       = $templateParams->get('category_author_parent', 0);
 
             if ($enableCategoryAuthor && $targetParentId) {
-                if ($content->catid == $targetParentId) {
+                // Load the target parent category to get its lft/rgt values
+                $parentCat = Table::getInstance('category');
+                $parentCat->load($targetParentId);
+
+                // Check if current article category is the target or a descendant (using Nested Set Model)
+                if ($articleCategory->lft >= $parentCat->lft && $articleCategory->rgt <= $parentCat->rgt) {
                     $isColumnistCategory = true;
-                } else {
-                    // Check if it's a descendant using lft/rgt (Efficient Joomla way)
-                    $parentCat = Table::getInstance('category');
-                    $parentCat->load($targetParentId);
-                    if ($articleCategory->lft > $parentCat->lft && $articleCategory->rgt < $parentCat->rgt) {
-                        $isColumnistCategory = true;
-                    }
                 }
             }
 
