@@ -3,6 +3,16 @@
     <changelog>
         <element>minimalista</element>
         <type>template</type>
+        <version>2.12.5</version>
+        <note>
+            <item>Fixed word-safe truncation to ensure words are never cut in half at the end of descriptions</item>
+            <item>Added logic to remove redundant article titles from the beginning of SEO descriptions</item>
+            <item>Standardized spacing and text cleaning for better social media previews</item>
+        </note>
+    </changelog>
+    <changelog>
+        <element>minimalista</element>
+        <type>template</type>
         <version>2.12.4</version>
         <note>
             <item>Improved metadata logic: implemented word-safe truncation to avoid cutting words in half</item>

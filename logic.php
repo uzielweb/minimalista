@@ -359,7 +359,8 @@
     function setMetadata($doc, $title, $description, $image, $image_alt, $arrobasite = '', $arrobacreator = '', $type = 'website', $locale = 'pt_BR', $author = '')
     {
     // Clean inputs: Decode entities, Remove plugin tags, Strip HTML, Normalise spaces
-    $cleaner = function ($txt, $len = 0) {
+    // Clean inputs: Decode entities, Remove plugin tags, Strip HTML, Normalise spaces, Word-safe truncation
+    $cleaner = function ($txt) {
         if (empty($txt)) {
             return '';
         }
@@ -372,16 +373,33 @@
         $txt = strip_tags($txt);
         // Normalise spaces
         $txt = trim(preg_replace('/\s+/', ' ', $txt));
-        // Truncate if needed
-        if ($len > 0) {
-            $txt = mb_substr($txt, 0, $len);
-        }
 
         return $txt;
     };
 
-    $title       = $cleaner($title);
-    $description = $cleaner($description, 300);
+    $cleanTitle = $cleaner($title);
+    $cleanDesc  = $cleaner($description);
+
+    // Remove redundant title from the start of the description
+    if (! empty($cleanTitle) && ! empty($cleanDesc)) {
+        if (mb_strpos($cleanDesc, $cleanTitle) === 0) {
+            $cleanDesc = trim(mb_substr($cleanDesc, mb_strlen($cleanTitle)));
+        }
+    }
+
+    // Now apply truncation to the cleaned description
+    $limit = 300;
+    if (mb_strlen($cleanDesc) > $limit) {
+        $cleanDesc = mb_substr($cleanDesc, 0, $limit);
+        // Find last space to avoid cutting word
+        $lastSpace = mb_strrpos($cleanDesc, ' ');
+        if ($lastSpace !== false) {
+            $cleanDesc = mb_substr($cleanDesc, 0, $lastSpace);
+        }
+    }
+
+    $title       = $cleanTitle;
+    $description = $cleanDesc;
     $author      = $cleaner($author);
 
     $doc->setMetaData('og:title', $title, 'property');
