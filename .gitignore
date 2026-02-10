@@ -3,3 +3,4 @@
 *.7z
 *.tar
 *.tar.gz
+.vscode/
