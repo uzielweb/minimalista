@@ -317,7 +317,19 @@
             $finalImage    = ! empty($articleImage) ? $articleImage : $image;
             $finalImageAlt = ! empty($articleImageAlt) ? $articleImageAlt : $image_alt;
 
-            // Clean author name if it's not a columnist (category title already clean usually but let's be safe)
+            // Get Author name - Priority changes if it's a columnist category
+            $authorName = '';
+            if ($isColumnistCategory) {
+                $authorName = $categoryTitle;
+            } else {
+                $authorName = ! empty($content->created_by_alias) ? $content->created_by_alias : '';
+                if (empty($authorName)) {
+                    $authorUser = Factory::getUser($content->created_by);
+                    $authorName = $authorUser->name;
+                }
+            }
+
+            // Clean author name
             $authorName = html_entity_decode(strip_tags($authorName), ENT_QUOTES, 'UTF-8');
 
             setMetadata($doc, $content->title, $text, $finalImage, $finalImageAlt, $arrobasite, $arrobacreator, 'article', $locale, $authorName);
@@ -391,10 +403,24 @@
     $limit = 300;
     if (mb_strlen($cleanDesc) > $limit) {
         $cleanDesc = mb_substr($cleanDesc, 0, $limit);
-        // Find last space to avoid cutting word
-        $lastSpace = mb_strrpos($cleanDesc, ' ');
-        if ($lastSpace !== false) {
-            $cleanDesc = mb_substr($cleanDesc, 0, $lastSpace);
+
+        // Try to find the last sentence end (., !, ?) within the limit
+        $lastDot   = mb_strrpos($cleanDesc, '.');
+        $lastExcl  = mb_strrpos($cleanDesc, '!');
+        $lastQuest = mb_strrpos($cleanDesc, '?');
+
+        $lastSentenceEnd = max($lastDot, $lastExcl, $lastQuest);
+
+        if ($lastSentenceEnd !== false && $lastSentenceEnd > ($limit * 0.5)) {
+            // If we found a sentence end and it's not too early (at least 50% of the limit)
+            // we cut there for a much cleaner look.
+            $cleanDesc = mb_substr($cleanDesc, 0, $lastSentenceEnd + 1);
+        } else {
+            // Fallback: Word-safe truncation
+            $lastSpace = mb_strrpos($cleanDesc, ' ');
+            if ($lastSpace !== false) {
+                $cleanDesc = mb_substr($cleanDesc, 0, $lastSpace);
+            }
         }
     }
 

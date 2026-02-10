@@ -3,6 +3,24 @@
     <changelog>
         <element>minimalista</element>
         <type>template</type>
+        <version>2.12.8</version>
+        <note>
+            <item>Fixed columnist author name: ensured the category title is used as author when 'category as author' feature is active</item>
+            <item>Improved description truncation: prioritized complete sentences for a cleaner look while maintaining word-safe fallback</item>
+        </note>
+    </changelog>
+    <changelog>
+        <element>minimalista</element>
+        <type>template</type>
+        <version>2.12.7</version>
+        <note>
+            <item>Improved description truncation: now prioritizes ending descriptions at the last full sentence (., !, ?) within the limit for a more professional look</item>
+            <item>Fallback maintained: if no sentence end is found, word-safe truncation is applied</item>
+        </note>
+    </changelog>
+    <changelog>
+        <element>minimalista</element>
+        <type>template</type>
         <version>2.12.6</version>
         <note>
             <item>Improved redundancy check: now uses the actual article title to identify and remove duplicate text from the beginning of SEO descriptions</item>
