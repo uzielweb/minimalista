@@ -3,6 +3,16 @@
     <changelog>
         <element>minimalista</element>
         <type>template</type>
+        <version>2.12.16</version>
+        <note>
+            <item>Fixed broken grid: re-implemented the module count check and 'continue' in renderSection to skip empty positions</item>
+            <item>Structural integrity: Restored original SQL-based parent template detection and user group queries</item>
+            <item>Social: Maintained improved metadata cleaning for HTML entities</item>
+        </note>
+    </changelog>
+    <changelog>
+        <element>minimalista</element>
+        <type>template</type>
         <version>2.12.15</version>
         <note>
             <item>Structural Fix: Reverted to the exact historical code for template identification to restore broken positions</item>
