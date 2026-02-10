@@ -496,6 +496,11 @@
     <div class="<?php echo $section->containerwidth; ?>">
         <div class="row">
             <?php foreach ($section->positions as $position): ?>
+            <?php
+                if ($template->countModules($position->position) == 0) {
+                            continue;
+                        }
+                    ?>
             <div
                 class="<?php echo 'position-' . strtolower($position->position); ?> col<?php echo $defaultBoostrapDesktop . ($position->width ? '-' . $position->width : ''); ?><?php echo $position->customclass ? ' ' . $position->customclass : ''; ?>">
                 <div class="row">
