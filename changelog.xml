@@ -3,6 +3,16 @@
     <changelog>
         <element>minimalista</element>
         <type>template</type>
+        <version>2.12.13</version>
+        <note>
+            <item>Critical Fix: Restored the exact original SQL-based template parent detection logic to fix broken Child Template positions</item>
+            <item>Structural integrity: Ensured $template and $templateOriginal variables match the original implementation precisely</item>
+            <item>Metadata: Retained advanced cleaning for HTML entities while respecting original template flow</item>
+        </note>
+    </changelog>
+    <changelog>
+        <element>minimalista</element>
+        <type>template</type>
         <version>2.12.12</version>
         <note>
             <item>Fixed child template positions: restored the exact SQL query and logic for template parent detection</item>
