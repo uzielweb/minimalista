@@ -320,7 +320,7 @@
             // Clean author name if it's not a columnist (category title already clean usually but let's be safe)
             $authorName = html_entity_decode(strip_tags($authorName), ENT_QUOTES, 'UTF-8');
 
-            setMetadata($doc, $title, $text, $finalImage, $finalImageAlt, $arrobasite, $arrobacreator, 'article', $locale, $authorName);
+            setMetadata($doc, $content->title, $text, $finalImage, $finalImageAlt, $arrobasite, $arrobacreator, 'article', $locale, $authorName);
 
             // Add article specific tags
             if (! empty($content->publish_up)) {

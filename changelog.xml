@@ -3,6 +3,15 @@
     <changelog>
         <element>minimalista</element>
         <type>template</type>
+        <version>2.12.6</version>
+        <note>
+            <item>Improved redundancy check: now uses the actual article title to identify and remove duplicate text from the beginning of SEO descriptions</item>
+            <item>Refined metadata generation for articles to ensure cleaner transitions between title and description</item>
+        </note>
+    </changelog>
+    <changelog>
+        <element>minimalista</element>
+        <type>template</type>
         <version>2.12.5</version>
         <note>
             <item>Fixed word-safe truncation to ensure words are never cut in half at the end of descriptions</item>
