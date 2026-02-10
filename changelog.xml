@@ -3,6 +3,15 @@
     <changelog>
         <element>minimalista</element>
         <type>template</type>
+        <version>2.12.9</version>
+        <note>
+            <item>Fixed HTML entities globally in metadata: ensured &amp; and other characters are correctly decoded in author, section, and title tags</item>
+            <item>Consolidated metadata cleaning: refactored text processing into a reusable helper for better consistency and performance</item>
+        </note>
+    </changelog>
+    <changelog>
+        <element>minimalista</element>
+        <type>template</type>
         <version>2.12.8</version>
         <note>
             <item>Fixed columnist author name: ensured the category title is used as author when 'category as author' feature is active</item>

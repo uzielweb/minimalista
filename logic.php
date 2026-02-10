@@ -287,7 +287,7 @@
             // Load Category of the Article
             $articleCategory = Table::getInstance('category');
             $articleCategory->load($content->catid);
-            $categoryTitle = $articleCategory->title;
+            $categoryTitle = cleanMetaText($articleCategory->title);
 
             // Check if "Category as Author" is enabled and if this category is under the target parent
             $isColumnistCategory  = false;
@@ -330,7 +330,7 @@
             }
 
             // Clean author name
-            $authorName = html_entity_decode(strip_tags($authorName), ENT_QUOTES, 'UTF-8');
+            $authorName = cleanMetaText($authorName);
 
             setMetadata($doc, $content->title, $text, $finalImage, $finalImageAlt, $arrobasite, $arrobacreator, 'article', $locale, $authorName);
 
