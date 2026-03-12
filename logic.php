@@ -109,9 +109,9 @@
     }
     // Load jQuery based on template or Joomla configuration
     if ($templateParams->get('load_jquery_from_template', 1) == 1) {
-    $wa->registerAndUseScript('jquery_from_template', 'media/templates/site/' . $templateOriginal . '/js/jquery-3.7.1.min.js', ['version' => 'auto']);
+    $wa->registerAndUseScript('jquery_from_template', 'media/templates/site/' . $templateOriginal . '/js/jquery-4.0.0.min.js', ['version' => 'auto']);
     $wa->registerAndUseScript('jquery-noconflict', 'media/templates/site/' . $templateOriginal . '/js/jquery-noconflict.js', ['version' => 'auto']);
-    $wa->registerAndUseScript('jquery_migrate_from_template', 'media/templates/site/' . $templateOriginal . '/js/jquery-migrate-3.4.0.min.js', ['version' => 'auto']);
+    $wa->registerAndUseScript('jquery_migrate_from_template', 'media/templates/site/' . $templateOriginal . '/js/jquery-migrate-3.6.0.min.js', ['version' => 'auto']);
     } else {
     // Load jQuery from Joomla
     HTMLHelper::_('jquery.framework', true, true);
