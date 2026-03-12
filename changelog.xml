@@ -7,10 +7,6 @@
         <note>
             <item>Dependencies: Updated Bootstrap and Font Awesome to latest versions</item>
             <item>Dependencies: Updated jQuery to 4.0.0 and jQuery Migrate to 3.6.0</item>
-            <item>Visual: Improved Training section with premium card designs and animations</item>
-            <item>Visual: Changed "Nova Plataforma de Exames" text color to red</item>
-            <item>Refactoring: Replaced verbose Tailwind classes in header with semantic component classes</item>
-            <item>Bugfix: Fixed Hero block responsiveness, aspect ratios, and mobile padding</item>
         </note>
     </changelog>
     <changelog>
