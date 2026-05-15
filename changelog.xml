@@ -3,6 +3,14 @@
     <changelog>
         <element>minimalista</element>
         <type>template</type>
+        <version>2.12.23</version>
+        <note>
+            <item>Dependencies: Maintenance release for Font Awesome 7 assets</item>
+        </note>
+    </changelog>
+    <changelog>
+        <element>minimalista</element>
+        <type>template</type>
         <version>2.12.22</version>
         <note>
             <item>Dependencies: Updated Bootstrap and Font Awesome to latest versions</item>
