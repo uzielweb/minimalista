@@ -1,14 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
 <changelogs>
-    <changelog>
-        <element>minimalista</element>
-        <type>template</type>
-        <version>2.12.26</version>
-        <note>
-            <item>Features: Full PWA support (manifest.json and Service Worker integration)</item>
-            <item>Features: Added theme-color support for mobile browsers</item>
-        </note>
-    </changelog>
 
     <changelog>
         <element>minimalista</element>

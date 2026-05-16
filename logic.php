@@ -67,7 +67,6 @@
     $logo_position      = $templateParams->get('logo_position', 'header-navbar');
     $doc->addFavicon(Uri::root(true) . '/' . $templateParams->get('favicon', ''));
     $doc->setMetaData('viewport', 'width=device-width, initial-scale=1.0');
-    $doc->addCustomTag('<link rel="manifest" href="' . Uri::root(true) . '/manifest.json">');
 
     $custom_css_head    = $templateParams->get('custom_css_head', '');
     $custom_script_head = $templateParams->get('custom_script_head', '');
