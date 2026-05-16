@@ -3,11 +3,13 @@
     <changelog>
         <element>minimalista</element>
         <type>template</type>
-        <version>2.12.26</version>
+        <version>2.12.27</version>
         <note>
-            <item>Accessibility: Added 'Skip to Content' link for keyboard navigation</item>
-            <item>Accessibility: Improved ARIA labels and focus visibility for all components</item>
-            <item>Accessibility: Added multilingual support for accessibility strings</item>
+            <item>System: Redesigned Error 404 and Offline pages using Bootstrap 5 utility classes</item>
+            <item>Features: Integrated Smart Search (com_finder) bar in error page</item>
+            <item>Features: Dynamic countdown timer and social links for offline page</item>
+            <item>Accessibility: Added 'Skip to Content' and improved ARIA labels</item>
+            <item>Docs: Updated README with latest premium features</item>
         </note>
     </changelog>
 

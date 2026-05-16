@@ -46,6 +46,10 @@ This is a **Joomla! 4**, **Joomla! 5** and **Joomla! 6** template that emphasize
 - [x] 29. **Custom Font Manager**: Easy integration for external fonts (Google Fonts, etc.) via admin.
 - [x] 30. **Native Lazy Loading**: Automatic `loading="lazy"` on structural images for better performance.
 - [x] 31. **Scroll Animations**: Integrated Animate.css with smart scroll triggers (`animate__on-scroll`).
+- [x] 32. **Redesigned System Pages**: Error 404 and Offline pages with modern design and Bootstrap 5 utility classes.
+- [x] 33. **Smart Search Integration**: 404 page features a search bar pointing directly to Joomla's Smart Search (`com_finder`).
+- [x] 34. **Maintenance Countdown**: Offline page includes a dynamic countdown timer configurable via template settings.
+- [x] 35. **Accessibility (A11y) Plus**: Enhanced keyboard navigation, ARIA support, and "Skip to Content" functionality.
 
 By default, the theme includes its own Bootstrap and Font Awesome but allows switching to Joomla's native versions or disabling them entirely.
 
@@ -99,5 +103,9 @@ Este é um template para **Joomla! 4**, **Joomla! 5** e **Joomla! 6** que preza 
 - [x] 29. **Gerenciador de Fontes Personalizadas**: Integração fácil para fontes externas (Google Fonts, etc) via painel.
 - [x] 30. **Lazy Loading Nativo**: Atributo `loading="lazy"` automático em imagens estruturais para melhor performance.
 - [x] 31. **Animações de Scroll**: Integração com Animate.css e gatilhos inteligentes de rolagem (`animate__on-scroll`).
+- [x] 32. **Redesign de Páginas de Sistema**: Páginas de Erro 404 e Offline com design moderno usando apenas classes Bootstrap 5.
+- [x] 33. **Busca Inteligente (Smart Search)**: Página 404 com barra de busca integrada ao `com_finder` do Joomla.
+- [x] 34. **Contagem Regressiva de Manutenção**: Página offline com timer dinâmico configurável pelo painel.
+- [x] 35. **Acessibilidade (A11y) Plus**: Navegação por teclado aprimorada, suporte ARIA e link "Pular para o Conteúdo".
 
 Por padrão, o tema inclui Bootstrap e Font Awesome próprios, mas permite alternar para as versões nativas do Joomla ou desativá-los completamente.
