@@ -95,3 +95,37 @@ document.addEventListener('DOMContentLoaded', function () {
         observer.observe(el);
     });
 });
+// Dark Mode Logic (Bootstrap 5 native)
+document.addEventListener('DOMContentLoaded', function () {
+    const themeToggle = document.getElementById('theme-toggle');
+    const currentTheme = localStorage.getItem('theme') || 'light';
+
+    // Apply saved theme on load
+    document.documentElement.setAttribute('data-bs-theme', currentTheme);
+    updateToggleIcon(currentTheme);
+
+    if (themeToggle) {
+        themeToggle.addEventListener('click', function () {
+            let theme = document.documentElement.getAttribute('data-bs-theme');
+            let newTheme = theme === 'dark' ? 'light' : 'dark';
+            
+            document.documentElement.setAttribute('data-bs-theme', newTheme);
+            localStorage.setItem('theme', newTheme);
+            updateToggleIcon(newTheme);
+        });
+    }
+
+    function updateToggleIcon(theme) {
+        if (!themeToggle) return;
+        const icon = themeToggle.querySelector('i');
+        if (icon) {
+            if (theme === 'dark') {
+                icon.classList.remove('fa-moon');
+                icon.classList.add('fa-sun');
+            } else {
+                icon.classList.remove('fa-sun');
+                icon.classList.add('fa-moon');
+            }
+        }
+    }
+});

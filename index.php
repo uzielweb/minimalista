@@ -57,7 +57,7 @@ if ($sectionsBeforeHeader) {
             <nav class="navbar navbar-expand<?php echo $defaultBoostrapDesktop; ?>">                
                     <?php if ($logo && $logo_position == 'header-navbar'): ?>
                     <a class="navbar-brand" href="<?php echo $this->baseurl; ?>">
-                        <img src="<?php echo $logo; ?>" alt="<?php echo $logo_alt; ?>" class="logo" />
+                        <img src="<?php echo $logo; ?>" alt="<?php echo $logo_alt; ?>" class="logo" loading="lazy" />
                     </a>
                     <?php endif;?>
                     <button class="navbar-toggler" type="button" data-bs-toggle="offcanvas"
@@ -83,6 +83,11 @@ if ($sectionsBeforeHeader) {
                         </div>
                     </div>
                     <?php endif;?>              
+                    <?php if ($enableDarkMode): ?>
+                    <button id="theme-toggle" class="btn btn-link theme-toggle-btn" aria-label="Toggle Theme">
+                        <i class="fas fa-moon"></i>
+                    </button>
+                    <?php endif; ?>
             </nav>
         </div>
         <?php if ($this->countModules('header-bottom')): ?>
@@ -155,7 +160,7 @@ if ($sectionsBeforeComponent) {
                             <?php if ($logo && $logo_position == 'sidebar-left' && $this->countModules('sidebar-left')): ?>
                             <div class="sidebar-logo">
                                 <a href="<?php echo $this->baseurl; ?>">
-                                    <img src="<?php echo $logo; ?>" alt="<?php echo $logo_alt; ?>" class="logo img-fluid" />
+                                    <img src="<?php echo $logo; ?>" alt="<?php echo $logo_alt; ?>" class="logo img-fluid" loading="lazy" />
                                 </a>
                             </div>
                             <?php endif; ?>
@@ -188,7 +193,7 @@ if ($sectionsBeforeComponent) {
                             <?php if ($logo && $logo_position == 'sidebar-right' && $this->countModules('sidebar-right')): ?>
                             <div class="sidebar-logo">
                                 <a href="<?php echo $this->baseurl; ?>">
-                                    <img src="<?php echo $logo; ?>" alt="<?php echo $logo_alt; ?>" class="logo img-fluid" />
+                                    <img src="<?php echo $logo; ?>" alt="<?php echo $logo_alt; ?>" class="logo img-fluid" loading="lazy" />
                                 </a>
                             </div>
                             <?php endif; ?>

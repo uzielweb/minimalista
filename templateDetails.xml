@@ -137,9 +137,17 @@
                 <field name="custom_script_startbody" type="editor" editor="codemirror" label="TPL_MINIMALISTA_CUSTOM_SCRIPT_TO_STARTBODY" description="TPL_MINIMALISTA_CUSTOM_SCRIPT_TO_STARTBODY_DESC" rows="5" filter="raw" />
                 <!-- custom script to endbody -->
                 <field name="custom_script_endbody" type="editor" editor="codemirror" label="TPL_MINIMALISTA_CUSTOM_SCRIPT_TO_ENDBODY" description="TPL_MINIMALISTA_CUSTOM_SCRIPT_TO_ENDBODY_DESC" rows="5" filter="raw" />
+                <!-- enable_dark_mode -->
+                <field name="enable_dark_mode" type="radio" label="TPL_MINIMALISTA_ENABLE_DARK_MODE" description="TPL_MINIMALISTA_ENABLE_DARK_MODE_DESC" default="1" class="btn-group btn-group-yesno">
+                    <option value="1">JYES</option>
+                    <option value="0">JNO</option>
+                </field>
+                <!-- custom_fonts -->
+                <field name="custom_fonts" type="textarea" label="TPL_MINIMALISTA_CUSTOM_FONTS" description="TPL_MINIMALISTA_CUSTOM_FONTS_DESC" default="" rows="3" filter="raw" />
                 <!-- custom head code -->
                 <field name="custom_head_code" type="editor" editor="codemirror" label="TPL_MINIMALISTA_CUSTOM_HEAD_CODE" description="TPL_MINIMALISTA_CUSTOM_HEAD_CODE_DESC" rows="5" filter="raw" />
             </fieldset>
+
             <fieldset name="positions" label="TPL_MINIMALISTA_SECTIONS_AND_POSITIONS">
                 <!-- before header -->
                 <field name="sectionsbeforeheader" type="subform" label="TPL_MINIMALISTA_BEFORE_HEADER" description="TPL_MINIMALISTA_BEFORE_HEADER_DESC" multiple="true">

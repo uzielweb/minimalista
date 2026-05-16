@@ -60,6 +60,8 @@
     $tpath              = 'templates/' . $templateOriginal;
     $templateParams     = $activeStyle->params;
     $offcanvasDirection = $templateParams->get('offcanvas_direction', 'start');
+    $enableDarkMode = $templateParams->get('enable_dark_mode', 1);
+    $customFonts = $templateParams->get('custom_fonts', '');
     $logo               = $templateParams->get('logo', '');
     $logo_alt           = $templateParams->get('logo_alt', '') ? $templateParams->get('logo_alt') : $sitename;
     $logo_position      = $templateParams->get('logo_position', 'header-navbar');
@@ -80,6 +82,9 @@
     }
     if ($custom_head_code) {
     $doc->addCustomTag($custom_head_code);
+    }
+    if ($customFonts) {
+    $doc->addCustomTag($customFonts);
     }
     // Generate CSS classes for the <body> element
     $bodyClasses = ($option ? 'option-' . str_replace('com_', '', $option) : 'no-option')
