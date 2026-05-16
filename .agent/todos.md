@@ -16,7 +16,6 @@ Este documento contém uma análise técnica da aplicação e sugestões de melh
 ## 🚀 Próximos Passos (TODOs)
 
 ### 1. Performance e Otimização
-- [ ] **Suporte PWA**: Criar um arquivo `manifest.json` básico e ícones para que o site possa ser "instalado" como um App mobile.
 
 ### 2. Novas Funcionalidades Premium
 - [ ] **Parallax Backgrounds**: Adicionar opção nos parâmetros de seção para definir uma imagem de fundo com efeito parallax (fixo ou movimento suave).
