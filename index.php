@@ -21,6 +21,7 @@ include_once JPATH_THEMES . '/minimalista/logic.php';
 </head>
 
 <body class="<?php echo $bodyClasses; ?>">
+    <a class="skip-link" href="#main-content"><?php echo Text::_('TPL_MINIMALISTA_SKIP_TO_CONTENT'); ?></a>
     <?php echo $startBodyCode; ?>
     <?php
 // Sections before the header section
@@ -61,7 +62,8 @@ if ($sectionsBeforeHeader) {
                     </a>
                     <?php endif;?>
                     <button class="navbar-toggler" type="button" data-bs-toggle="offcanvas"
-                            data-bs-target="#offcanvasNavbar" aria-controls="offcanvasNavbar">
+                            data-bs-target="#offcanvasNavbar" aria-controls="offcanvasNavbar" 
+                            aria-expanded="false" aria-label="<?php echo Text::_('TPL_MINIMALISTA_TOGGLE_MENU'); ?>">
                         <span class="navbar-toggler-icon"></span>
                     </button>
                     <div class="offcanvas offcanvas-<?php echo $offcanvasDirection; ?>" tabindex="-1"
@@ -110,7 +112,7 @@ if ($sectionsAfterHeader) {
     }
 }
 ?>
-    <main class="main">
+    <main class="main" id="main-content">
         <?php if ($this->countModules('slideshow')): ?>
         <section id="slideshow" class="section-slideshow">
             <div class="container-fluid">

@@ -2,7 +2,8 @@
 
 Este documento contém uma análise técnica da aplicação e sugestões de melhorias para elevar a qualidade do template para um nível "Premium" e garantir compatibilidade total com Joomla 5/6.
 
-## ✅ Concluído na Versão Atual (v2.12.25)
+## ✅ Concluído na Versão Atual (v2.12.26)
+- **Acessibilidade (A11y)**: Adicionado link 'Skip to Content', ARIA labels e estilos de foco visíveis.
 - **Remoção de jQuery**: O template agora é 100% independente de jQuery no seu núcleo (Vanilla JS).
 - **Sistema de Animações**: Integração com Animate.css e gatilho de scroll inteligente (`animate__on-scroll`).
 - **Lazy Loading Nativo**: Adicionado suporte nativo `loading="lazy"` para todos os logos e imagens estruturais.
@@ -16,17 +17,14 @@ Este documento contém uma análise técnica da aplicação e sugestões de melh
 ## 🚀 Próximos Passos (TODOs)
 
 ### 1. Performance e Otimização
+- [ ] **Otimização de Assets**: Revisar se todos os arquivos JS/CSS carregados são estritamente necessários em todas as visualizações.
 
-### 3. SEO e Metadados Avançados
+### 2. SEO e Metadados Avançados
 - [ ] **Theme Color**: Suporte à tag meta `theme-color` baseada nos parâmetros do template.
 
-### 4. Experiência do Usuário (UX)
+### 3. Experiência do Usuário (UX)
 - [ ] **Overrides de Conteúdo**: Criar layouts minimalistas para `com_content` (Artigo e Categoria).
 - [ ] **Redesign de Páginas de Sistema**: Novos designs para `error.php` e `offline.php`.
-
-### 5. Acessibilidade (A11y)
-- [ ] **ARIA Landmarks**: Revisar os papéis ARIA (roles) nas seções dinâmicas.
-- [ ] **Foco Visual**: Garantir que todos os elementos interativos tenham estados de `:focus` visíveis e elegantes.
 
 ---
 

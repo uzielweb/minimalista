@@ -1,5 +1,16 @@
 <?xml version="1.0" encoding="utf-8"?>
 <changelogs>
+    <changelog>
+        <element>minimalista</element>
+        <type>template</type>
+        <version>2.12.26</version>
+        <note>
+            <item>Accessibility: Added 'Skip to Content' link for keyboard navigation</item>
+            <item>Accessibility: Improved ARIA labels and focus visibility for all components</item>
+            <item>Accessibility: Added multilingual support for accessibility strings</item>
+        </note>
+    </changelog>
+
 
     <changelog>
         <element>minimalista</element>
