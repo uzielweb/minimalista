@@ -41,6 +41,11 @@ This is a **Joomla! 4**, **Joomla! 5** and **Joomla! 6** template that emphasize
 - [x] 24. Full control over frameworks: choose between theme Bootstrap/jQuery or Joomla's native versions.
 - [x] 25. Full compliance with Joomla 4/5 Web Asset Manager for optimized loading.
 - [x] 26. Native support for RTL (Right-to-Left) languages.
+- [x] 27. **100% Vanilla JS**: Completely independent of jQuery for core template functions.
+- [x] 28. **Native Dark Mode**: Built-in Bootstrap 5 color scheme toggle with persistence.
+- [x] 29. **Custom Font Manager**: Easy integration for external fonts (Google Fonts, etc.) via admin.
+- [x] 30. **Native Lazy Loading**: Automatic `loading="lazy"` on structural images for better performance.
+- [x] 31. **Scroll Animations**: Integrated Animate.css with smart scroll triggers (`animate__on-scroll`).
 
 By default, the theme includes its own Bootstrap and Font Awesome but allows switching to Joomla's native versions or disabling them entirely.
 
@@ -89,5 +94,10 @@ Este é um template para **Joomla! 4**, **Joomla! 5** e **Joomla! 6** que preza 
 - [x] 24. Controle total sobre frameworks: escolha entre o Bootstrap/jQuery do tema ou o nativo do Joomla.
 - [x] 25. Conformidade com o Web Asset Manager do Joomla 4/5 para carregamento otimizado.
 - [x] 26. Suporte nativo para idiomas RTL (Right-to-Left).
+- [x] 27. **100% Vanilla JS**: Completamente independente de jQuery para as funções principais do template.
+- [x] 28. **Modo Escuro Nativo (Dark Mode)**: Alternador de cores Bootstrap 5 integrado com persistência.
+- [x] 29. **Gerenciador de Fontes Personalizadas**: Integração fácil para fontes externas (Google Fonts, etc) via painel.
+- [x] 30. **Lazy Loading Nativo**: Atributo `loading="lazy"` automático em imagens estruturais para melhor performance.
+- [x] 31. **Animações de Scroll**: Integração com Animate.css e gatilhos inteligentes de rolagem (`animate__on-scroll`).
 
 Por padrão, o tema inclui Bootstrap e Font Awesome próprios, mas permite alternar para as versões nativas do Joomla ou desativá-los completamente.
