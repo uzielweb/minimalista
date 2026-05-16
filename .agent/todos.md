@@ -16,10 +16,7 @@ Este documento contém uma análise técnica da aplicação e sugestões de melh
 
 ## 🚀 Próximos Passos (TODOs)
 
-### 1. Performance e Otimização
-- [ ] **Otimização de Assets**: Revisar se todos os arquivos JS/CSS carregados são estritamente necessários em todas as visualizações.
-
-### 2. SEO e Metadados Avançados
+### 1. SEO e Metadados Avançados
 - [ ] **Theme Color**: Suporte à tag meta `theme-color` baseada nos parâmetros do template.
 
 ### 3. Experiência do Usuário (UX)
