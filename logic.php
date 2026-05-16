@@ -498,11 +498,6 @@
     $doc->setMetaData('twitter:creator', $arrobacreator);
     $doc->setMetaData('twitter:url', Uri::getInstance()->toString());
 
-    // Schema.org mapping (Legacy Meta support)
-    $doc->setMetaData('schema:name', $title);
-    $doc->setMetaData('schema:description', $description);
-    $doc->setMetaData('schema:image', $imageUrl);
-    $doc->setMetaData('schema:image:alt', $image_alt);
 
     }
     // functions.php
