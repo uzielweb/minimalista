@@ -3,6 +3,17 @@
     <changelog>
         <element>minimalista</element>
         <type>template</type>
+        <version>2.12.25</version>
+        <note>
+            <item>Features: Native Bootstrap 5 Dark Mode support with persistence and navbar toggle</item>
+            <item>Features: Custom Font Manager added to template parameters</item>
+            <item>Performance: Added native loading="lazy" support to all template logos</item>
+        </note>
+    </changelog>
+
+    <changelog>
+        <element>minimalista</element>
+        <type>template</type>
         <version>2.12.24</version>
         <note>
             <item>Performance: Refactored all template scripts to Vanilla JS (no more jQuery dependency)</item>
