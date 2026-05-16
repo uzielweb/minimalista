@@ -17,9 +17,6 @@ Este documento contém uma análise técnica da aplicação e sugestões de melh
 
 ### 1. Performance e Otimização
 
-### 2. Novas Funcionalidades Premium
-- [ ] **Parallax Backgrounds**: Adicionar opção nos parâmetros de seção para definir uma imagem de fundo com efeito parallax (fixo ou movimento suave).
-
 ### 3. SEO e Metadados Avançados
 - [ ] **Integração com API Schema.org (Joomla 5/6)**: Auditar tags meta legadas e integrar com a nova API de Schema do Joomla para evitar duplicação de JSON-LD.
 - [ ] **Theme Color**: Suporte à tag meta `theme-color` baseada nos parâmetros do template.
