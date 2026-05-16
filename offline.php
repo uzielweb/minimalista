@@ -1,34 +1,28 @@
 <?php
-    /**
+/**
  * @package     Joomla.Site
- * @subpackage  Templates.minmalista
+ * @subpackage  Templates.minimalista
  *
  * @copyright   (C) 2017 Open Source Matters, Inc. <https://www.joomla.org>
  * @license     GNU General Public License version 2 or later; see LICENSE.txt
  */
 
-    defined('_JEXEC') or die;
+defined('_JEXEC') or die;
 
-    use Joomla\CMS\Factory;
-    use Joomla\CMS\Helper\AuthenticationHelper;
-    use Joomla\CMS\HTML\HTMLHelper;
-    use Joomla\CMS\Language\Text;
-    use Joomla\CMS\Router\Route;
-    use Joomla\CMS\Uri\Uri;
-    use Joomla\CMS\WebAsset\WebAssetManager;
+use Joomla\CMS\Factory;
+use Joomla\CMS\Helper\AuthenticationHelper;
+use Joomla\CMS\HTML\HTMLHelper;
+use Joomla\CMS\Language\Text;
+use Joomla\CMS\Router\Route;
+use Joomla\CMS\Uri\Uri;
 
-    /** @var Joomla\CMS\Document\HtmlDocument $this */
+/** @var Joomla\CMS\Document\HtmlDocument $this */
 
-    include_once JPATH_THEMES . '/minimalista/logic.php';
+include_once JPATH_THEMES . '/minimalista/logic.php';
 
-    $wa  = $this->getWebAssetManager();
-    $app = Factory::getApplication();
-
-    $extraButtons = AuthenticationHelper::getLoginButtons('form-login');
-    $cssFilePath  = JPATH_ROOT . '/media/templates/site/' . $templateOriginal . '/css/offline.css';
-    if (file_exists($cssFilePath)) {
-    $wa->registerAndUseStyle('template-css', Uri::root(true) . 'media/templates/site/' . $templateOriginal . '/css/offline.css', ['version' => filemtime($cssFilePath)]);
-    }
+$app = Factory::getApplication();
+$offlineDate = $templateParams->get('offline_countdown', '');
+$socialLinks = $templateParams->get('offline_social_links', '');
 
 ?>
 <!doctype html>
@@ -39,91 +33,105 @@
     <jdoc:include type="head" />
 </head>
 
-<body class="offline-page <?php echo $bodyClasses ?>">
-    <jdoc:include type="message" />
-    <div class="container">
-        <div class="row">
-            <div class="outer">
-                <div class="offline-card">
-                    <div class="header">
-                        <?php if (! empty($logo)): ?>
-                        <div class="logo">
-                            <img src="<?php echo $logo; ?>" alt="<?php echo $sitename; ?>">
+<body class="offline-page bg-light">
+    <div class="vh-100 d-flex align-items-center justify-content-center">
+        <div class="container d-flex justify-content-center">
+            <div class="card shadow border-0 p-4 p-md-5 text-center animate__animated animate__zoomIn" style="max-width: 600px; width: 100%;">
+                <div class="card-body">
+                    <?php if ($logo): ?>
+                        <img src="<?php echo $logo; ?>" alt="<?php echo $sitename; ?>" class="mb-4 img-fluid" style="max-height: 80px;">
+                    <?php else: ?>
+                        <h1 class="mb-4"><?php echo $sitename; ?></h1>
+                    <?php endif; ?>
+
+                    <h2 class="mb-3 h3 fw-bold"><?php echo Text::_('TPL_MINIMALISTA_OFFLINE_TITLE'); ?></h2>
+                    <p class="text-muted mb-4"><?php echo $app->get('offline_message'); ?></p>
+
+                    <?php if ($offlineDate): ?>
+                    <div id="countdown" class="d-flex justify-content-center gap-3 gap-md-4 my-5" data-date="<?php echo $offlineDate; ?>">
+                        <div class="text-center">
+                            <span class="d-block fs-1 fw-bold text-primary" id="days">00</span>
+                            <span class="text-uppercase small text-muted"><?php echo Text::_('TPL_MINIMALISTA_DAYS'); ?></span>
                         </div>
-                        <?php else: ?>
-                        <h1><?php echo $sitename; ?></h1>
-                        <?php endif; ?>
-                        <?php if ($app->get('offline_image')): ?>
-                        <?php echo HTMLHelper::_('image', $app->get('offline_image'), $sitename, [], false, 0); ?>
-                        <?php endif; ?>
-                        <?php if ($app->get('display_offline_message', 1) == 1 && str_replace(' ', '', $app->get('offline_message')) != ''): ?>
-                        <p><?php echo $app->get('offline_message'); ?></p>
-                        <?php elseif ($app->get('display_offline_message', 1) == 2): ?>
-                        <p><?php echo Text::_('JOFFLINE_MESSAGE'); ?></p>
-                        <?php endif; ?>
-                        <div class="logo-icon">
-                            <svg version="1.1" xmlns="https://www.w3.org/2000/svg" x="0px" y="0px"
-                                viewBox="0 0 74.8 74.8" enable-background="new 0 0 74.8 74.8" xml:space="preserve">
-                                <g id="brandmark">
-                                    <path id="j-green" fill="currentColor"
-                                        d="M13.5,37.7L12,36.3c-4.5-4.5-5.8-10.8-4.2-16.5c-4.5-1-7.8-5-7.8-9.8c0-5.5,4.5-10,10-10 c5,0,9.1,3.6,9.9,8.4c5.4-1.3,11.3,0.2,15.5,4.4l0.6,0.6l-7.4,7.4l-0.6-0.6c-2.4-2.4-6.3-2.4-8.7,0c-2.4,2.4-2.4,6.3,0,8.7l1.4,1.4 l7.4,7.4l7.8,7.8l-7.4,7.4l-7.8-7.8L13.5,37.7L13.5,37.7z" />
-                                    <path id="j-orange" fill="currentColor"
-                                        d="M21.8,29.5l7.8-7.8l7.4-7.4l1.4-1.4C42.9,8.4,49.2,7,54.8,8.6C55.5,3.8,59.7,0,64.8,0 c5.5,0,10,4.5,10,10c0,5.1-3.8,9.3-8.7,9.9c1.6,5.6,0.2,11.9-4.2,16.3l-0.6,0.6l-7.4-7.4l0.6-0.6c2.4-2.4,2.4-6.3,0-8.7 c-2.4-2.4-6.3-2.4-8.7,0l-1.4,1.4L37,29l-7.8,7.8L21.8,29.5L21.8,29.5z" />
-                                    <path id="j-red" fill="currentColor"
-                                        d="M55,66.8c-5.7,1.7-12.1,0.4-16.6-4.1l-0.6-0.6l7.4-7.4l0.6,0.6c2.4,2.4,6.3,2.4,8.7,0 c2.4-2.4,2.4-6.3,0-8.7L53,45.1l-7.4-7.4l-7.8-7.8l7.4-7.4l7.8,7.8l7.4,7.4l1.5,1.5c4.2,4.2,5.7,10.2,4.4,15.7 c4.9,0.7,8.6,4.9,8.6,9.9c0,5.5-4.5,10-10,10C60,74.8,56,71.3,55,66.8L55,66.8z" />
-                                    <path id="j-blue" fill="currentColor"
-                                        d="M52.2,46l-7.8,7.8L37,61.2l-1.4,1.4c-4.3,4.3-10.3,5.7-15.7,4.4c-1,4.5-5,7.8-9.8,7.8 c-5.5,0-10-4.5-10-10C0,60,3.3,56.1,7.7,55C6.3,49.5,7.8,43.5,12,39.2l0.6-0.6L20,46l-0.6,0.6c-2.4,2.4-2.4,6.3,0,8.7 c2.4,2.4,6.3,2.4,8.7,0l1.4-1.4l7.4-7.4l7.8-7.8L52.2,46L52.2,46z" />
-                                </g>
-                            </svg>
+                        <div class="text-center">
+                            <span class="d-block fs-1 fw-bold text-primary" id="hours">00</span>
+                            <span class="text-uppercase small text-muted"><?php echo Text::_('TPL_MINIMALISTA_HOURS'); ?></span>
+                        </div>
+                        <div class="text-center">
+                            <span class="d-block fs-1 fw-bold text-primary" id="minutes">00</span>
+                            <span class="text-uppercase small text-muted"><?php echo Text::_('TPL_MINIMALISTA_MINUTES'); ?></span>
+                        </div>
+                        <div class="text-center">
+                            <span class="d-block fs-1 fw-bold text-primary" id="seconds">00</span>
+                            <span class="text-uppercase small text-muted"><?php echo Text::_('TPL_MINIMALISTA_SECONDS'); ?></span>
                         </div>
                     </div>
-                    <div class="login">
-                        <jdoc:include type="message" />
-                        <form action="<?php echo Route::_('index.php', true); ?>" method="post" id="form-login">
-                            <fieldset>
-                                <label for="username"><?php echo Text::_('JGLOBAL_USERNAME'); ?></label>
-                                <input name="username" class="form-control" id="username" type="text">
+                    <?php endif; ?>
 
-                                <label for="password"><?php echo Text::_('JGLOBAL_PASSWORD'); ?></label>
-                                <input name="password" class="form-control" id="password" type="password">
+                    <?php if ($socialLinks): ?>
+                    <div class="d-flex justify-content-center gap-3 mb-5">
+                        <?php foreach ($socialLinks as $social): ?>
+                            <a href="<?php echo $social->link; ?>" target="_blank" class="text-secondary fs-4 text-decoration-none">
+                                <i class="<?php echo $social->icon; ?>"></i>
+                            </a>
+                        <?php endforeach; ?>
+                    </div>
+                    <?php endif; ?>
 
-                                <?php foreach ($extraButtons as $button):
-                                        $dataAttributeKeys = array_filter(array_keys($button), function ($key) {
-                                            return substr($key, 0, 5) == 'data-';
-                                        });
-                                ?>
-                                <div class="mod-login__submit form-group">
-                                    <button type="button"
-                                        class="btn btn-secondary w-100 mt-4 <?php echo $button['class'] ?? '' ?>"
-                                        <?php foreach ($dataAttributeKeys as $key): ?>
-                                        <?php echo $key ?>="<?php echo $button[$key] ?>" <?php endforeach; ?>
-                                        <?php if ($button['onclick']): ?> onclick="<?php echo $button['onclick'] ?>"
-                                        <?php endif; ?> title="<?php echo Text::_($button['label']) ?>"
-                                        id="<?php echo $button['id'] ?>">
-                                        <?php if (! empty($button['icon'])): ?>
-                                        <span class="<?php echo $button['icon'] ?>"></span>
-                                        <?php elseif (! empty($button['image'])): ?>
-                                        <?php echo $button['image']; ?>
-                                        <?php elseif (! empty($button['svg'])): ?>
-                                        <?php echo $button['svg']; ?>
-                                        <?php endif; ?>
-                                        <?php echo Text::_($button['label']) ?>
-                                    </button>
-                                </div>
-                                <?php endforeach; ?>
+                    <hr class="my-4 opacity-25">
 
-                                <button type="submit" name="Submit"
-                                    class="btn btn-primary"><?php echo Text::_('JLOGIN'); ?></button>
+                    <button class="btn btn-link text-decoration-none text-muted btn-sm" type="button" data-bs-toggle="collapse" data-bs-target="#loginForm">
+                        <i class="fas fa-lock me-2"></i> <?php echo Text::_('JLOGIN'); ?>
+                    </button>
 
-                                <input type="hidden" name="option" value="com_users">
-                                <input type="hidden" name="task" value="user.login">
-                                <input type="hidden" name="return" value="<?php echo base64_encode(Uri::base()); ?>">
-                                <?php echo HTMLHelper::_('form.token'); ?>
-                            </fieldset>
+                    <div class="collapse mt-4 text-start" id="loginForm">
+                        <form action="<?php echo Route::_('index.php', true); ?>" method="post">
+                            <div class="mb-3">
+                                <label for="username" class="form-label small"><?php echo Text::_('JGLOBAL_USERNAME'); ?></label>
+                                <input name="username" class="form-control" id="username" type="text" required>
+                            </div>
+                            <div class="mb-3">
+                                <label for="password" class="form-label small"><?php echo Text::_('JGLOBAL_PASSWORD'); ?></label>
+                                <input name="password" class="form-control" id="password" type="password" required>
+                            </div>
+                            <button type="submit" class="btn btn-primary w-100 shadow-sm"><?php echo Text::_('JLOGIN'); ?></button>
+                            <input type="hidden" name="option" value="com_users">
+                            <input type="hidden" name="task" value="user.login">
+                            <input type="hidden" name="return" value="<?php echo base64_encode(Uri::base()); ?>">
+                            <?php echo HTMLHelper::_('form.token'); ?>
                         </form>
                     </div>
                 </div>
             </div>
+        </div>
+    </div>
+
+    <?php if ($offlineDate): ?>
+    <script>
+        function updateCountdown() {
+            const targetDate = new Date(document.getElementById('countdown').dataset.date).getTime();
+            const now = new Date().getTime();
+            const distance = targetDate - now;
+
+            if (distance < 0) {
+                document.getElementById('countdown').innerHTML = "<h3 class='text-primary fw-bold'><?php echo Text::_('TPL_MINIMALISTA_OFFLINE_FINISHED'); ?></h3>";
+                return;
+            }
+
+            const days = Math.floor(distance / (1000 * 60 * 60 * 24));
+            const hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+            const minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
+            const seconds = Math.floor((distance % (1000 * 60)) / 1000);
+
+            document.getElementById('days').innerText = String(days).padStart(2, '0');
+            document.getElementById('hours').innerText = String(hours).padStart(2, '0');
+            document.getElementById('minutes').innerText = String(minutes).padStart(2, '0');
+            document.getElementById('seconds').innerText = String(seconds).padStart(2, '0');
+        }
+        setInterval(updateCountdown, 1000);
+        updateCountdown();
+    </script>
+    <?php endif; ?>
 </body>
 
 </html>

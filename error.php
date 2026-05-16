@@ -1,20 +1,26 @@
 <?php
-    /**
+/**
  * @package     Joomla.Site
- * @subpackage  Templates.minmalista
+ * @subpackage  Templates.minimalista
  *
  * @copyright   (C) 2017 Open Source Matters, Inc. <https://www.joomla.org>
  * @license     GNU General Public License version 2 or later; see LICENSE.txt
  */
-    defined('_JEXEC') or die;
-    use Joomla\CMS\Language\Text;
-    use Joomla\CMS\Uri\Uri;
-    /** @var Joomla\CMS\Document\HtmlDocument $this */
-    include_once JPATH_THEMES . '/minimalista/logic.php';
-    $cssFilePath = JPATH_ROOT . '/media/templates/site/' . $templateOriginal . '/css/error.css';
-    if (file_exists($cssFilePath)) {
-    $wa->registerAndUseStyle('template-css', Uri::root(true) . 'media/templates/site/' . $templateOriginal . '/css/error.css', ['version' => filemtime($cssFilePath)]);
-    }
+
+defined('_JEXEC') or die;
+
+use Joomla\CMS\Factory;
+use Joomla\CMS\Language\Text;
+use Joomla\CMS\Uri\Uri;
+use Joomla\CMS\Router\Route;
+
+/** @var Joomla\CMS\Document\ErrorDocument $this */
+
+// Load template logic
+include_once JPATH_THEMES . '/minimalista/logic.php';
+
+// Prepare Search Route for Smart Search (com_finder)
+$searchRoute = Route::_('index.php?option=com_finder&view=search');
 
 ?>
 <!doctype html>
@@ -26,46 +32,80 @@
 </head>
 
 <body class="error-page <?php echo $bodyClasses ?>">
-    <div class="container<?php echo $containerFluid; ?>">
-        <div class="p-5 my-5 bg-warning rounded-3">
-            <div class="row">
-                <div class="col-md-12">
-                    <div class="error">
-                        <p><strong><?php echo Text::_('JERROR_LAYOUT_ERROR_HAS_OCCURRED_WHILE_PROCESSING_YOUR_REQUEST'); ?></strong>
-                        </p>
-                        <p><?php echo Text::_('JERROR_LAYOUT_NOT_ABLE_TO_VISIT'); ?></p>
-                        <ul>
-                            <li><?php echo Text::_('JERROR_LAYOUT_AN_OUT_OF_DATE_BOOKMARK_FAVOURITE'); ?></li>
-                            <li><?php echo Text::_('JERROR_LAYOUT_MIS_TYPED_ADDRESS'); ?></li>
-                            <li><?php echo Text::_('JERROR_LAYOUT_SEARCH_ENGINE_OUT_OF_DATE_LISTING'); ?></li>
-                            <li><?php echo Text::_('JERROR_LAYOUT_YOU_HAVE_NO_ACCESS_TO_THIS_PAGE'); ?></li>
-                        </ul>
-                        <p><?php echo Text::_('JERROR_LAYOUT_GO_TO_THE_HOME_PAGE'); ?></p>
-                        <p><a href="<?php echo $this->baseurl; ?>/index.php" class="btn btn-primary"><span
-                                    class="icon-home" aria-hidden="true"></span>
-                                <?php echo Text::_('JERROR_LAYOUT_HOME_PAGE'); ?></a></p>
-                        <p><?php echo Text::_('JERROR_LAYOUT_PLEASE_CONTACT_THE_SYSTEM_ADMINISTRATOR'); ?></p>
-                        <blockquote>
-                            <span class="error-tag h5"><?php echo $this->error->getCode(); ?></span>
-                            <?php echo htmlspecialchars($this->error->getMessage(), ENT_QUOTES, 'UTF-8'); ?>
-                        </blockquote>
-                        <?php if ($this->debug): ?>
-                        <div>
-                            <?php echo $this->renderBacktrace(); ?>
-                            <?php // Check if there are more Exceptions and render their data as well ?>
-                            <?php if ($this->error->getPrevious()): ?>
-                            <p><strong><?php echo Text::_('JERROR_LAYOUT_PREVIOUS_ERROR'); ?></strong></p>
-                            <p><?php echo htmlspecialchars($this->error->getPrevious()->getMessage(), ENT_QUOTES, 'UTF-8'); ?>
-                            </p>
-                            <?php echo $this->renderBacktrace($this->error->getPrevious()); ?>
-                            <?php endif; ?>
+    <a class="skip-link" href="#main-content"><?php echo Text::_('TPL_MINIMALISTA_SKIP_TO_CONTENT'); ?></a>
+
+    <?php 
+    // Reusing the header from index.php
+    ?>
+    <header class="header" id="header">
+        <div class="container<?php echo $containerFluid; ?>">
+            <nav class="navbar navbar-expand-lg">
+                <div class="container-fluid p-0">
+                    <?php if ($logo): ?>
+                    <a class="navbar-brand" href="<?php echo $this->baseurl; ?>">
+                        <img src="<?php echo $logo; ?>" alt="<?php echo $logo_alt; ?>" class="logo img-fluid" loading="lazy" />
+                    </a>
+                    <?php else: ?>
+                    <a class="navbar-brand" href="<?php echo $this->baseurl; ?>">
+                        <?php echo $sitename; ?>
+                    </a>
+                    <?php endif;?>
+                </div>
+            </nav>
+        </div>
+    </header>
+
+    <main class="main" id="main-content">
+        <div class="container<?php echo $containerFluid; ?>">
+            <div class="row justify-content-center">
+                <div class="col-md-8 text-center py-5">
+                    <div class="error-container animate__animated animate__fadeIn">
+                        <h1 class="display-1 fw-bold text-primary"><?php echo $this->error->getCode(); ?></h1>
+                        <h2 class="mb-4"><?php echo Text::_('TPL_MINIMALISTA_ERROR_TITLE'); ?></h2>
+                        <p class="lead mb-5"><?php echo htmlspecialchars($this->error->getMessage(), ENT_QUOTES, 'UTF-8'); ?></p>
+                        
+                        <div class="search-box mb-5">
+                            <p><?php echo Text::_('TPL_MINIMALISTA_ERROR_SEARCH_PROMPT'); ?></p>
+                            <form action="<?php echo $searchRoute; ?>" method="get" class="d-flex justify-content-center">
+                                <div class="input-group">
+                                    <input type="text" name="q" class="form-control form-control-lg" placeholder="<?php echo Text::_('TPL_MINIMALISTA_SEARCH_PLACEHOLDER'); ?>" required>
+                                    <button class="btn btn-primary btn-lg" type="submit">
+                                        <i class="fas fa-search"></i>
+                                    </button>
+                                </div>
+                                <input type="hidden" name="option" value="com_finder">
+                                <input type="hidden" name="view" value="search">
+                            </form>
                         </div>
-                        <?php endif; ?>
+
+                        <div class="actions">
+                            <a href="<?php echo $this->baseurl; ?>/index.php" class="btn btn-outline-primary btn-lg px-5">
+                                <i class="fas fa-home me-2"></i> <?php echo Text::_('TPL_MINIMALISTA_BACK_TO_HOME'); ?>
+                            </a>
+                        </div>
                     </div>
                 </div>
             </div>
         </div>
-    </div>
+    </main>
+
+    <?php if ($this->countModules('footer')): ?>
+    <footer class="footer py-5" id="footer">
+        <div class="container<?php echo $containerFluid; ?>">
+            <div class="row">
+                <jdoc:include type="modules" name="footer" style="<?php echo $templateOriginal . '-default'; ?>" />
+            </div>
+        </div>
+    </footer>
+    <?php endif;?>
+
+    <?php if ($backtotop): ?>
+    <button href="#top" id="back-top" class="btn back-to-top-link" aria-label="<?php echo Text::_('TPL_MINIMALISTA_BACKTOTOP'); ?>">
+        <i class="fas fa-arrow-up" aria-hidden="true"></i>
+    </button>
+    <?php endif; ?>
+
+    <?php echo $endBodyCode; ?>
 </body>
 
 </html>

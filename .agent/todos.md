@@ -2,7 +2,8 @@
 
 Este documento contém uma análise técnica da aplicação e sugestões de melhorias para elevar a qualidade do template para um nível "Premium" e garantir compatibilidade total com Joomla 5/6.
 
-## ✅ Concluído na Versão Atual (v2.12.26)
+## ✅ Concluído na Versão Atual (v2.12.27)
+- **Redesign de Páginas de Sistema**: Erro 404 e Offline totalmente redesenhadas com Bootstrap 5 e sem estilos embutidos.
 - **Acessibilidade (A11y)**: Adicionado link 'Skip to Content', ARIA labels e estilos de foco visíveis.
 - **Remoção de jQuery**: O template agora é 100% independente de jQuery no seu núcleo (Vanilla JS).
 - **Sistema de Animações**: Integração com Animate.css e gatilho de scroll inteligente (`animate__on-scroll`).
@@ -19,9 +20,8 @@ Este documento contém uma análise técnica da aplicação e sugestões de melh
 ### 1. SEO e Metadados Avançados
 - [ ] **Theme Color**: Suporte à tag meta `theme-color` baseada nos parâmetros do template.
 
-### 3. Experiência do Usuário (UX)
+### 2. Experiência do Usuário (UX)
 - [ ] **Overrides de Conteúdo**: Criar layouts minimalistas para `com_content` (Artigo e Categoria).
-- [ ] **Redesign de Páginas de Sistema**: Novos designs para `error.php` e `offline.php`.
 
 ---
 
