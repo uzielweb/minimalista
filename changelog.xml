@@ -3,6 +3,18 @@
     <changelog>
         <element>minimalista</element>
         <type>template</type>
+        <version>2.12.24</version>
+        <note>
+            <item>Performance: Refactored all template scripts to Vanilla JS (no more jQuery dependency)</item>
+            <item>Performance: jQuery loading is now optional and disabled by default</item>
+            <item>Features: Integrated Animate.css with new animate__on-scroll trigger for scroll-based animations</item>
+            <item>Workflow: Removed failed GitHub Actions and established manual release protocol via gh CLI</item>
+        </note>
+    </changelog>
+
+    <changelog>
+        <element>minimalista</element>
+        <type>template</type>
         <version>2.12.23</version>
         <note>
             <item>Dependencies: Maintenance release for Font Awesome 7 assets</item>

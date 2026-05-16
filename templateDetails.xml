@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <extension type="template" client="site" version="5.0" method="upgrade">
     <name>minimalista</name>
-    <version>2.12.23</version>
+    <version>2.12.24</version>
     <creationDate>2025-11</creationDate>
     <author>Uziel - Via Ponto Mega</author>
     <authorEmail>contato@pontomega.com.br</authorEmail>
@@ -118,7 +118,7 @@
                     <option value="0">JNONE</option>
                 </field>
                 <!-- load_jquery -->
-                <field name="load_jquery_from_template" type="radio" label="TPL_MINIMALISTA_LOAD_JQUERY_FROM_TEMPLATE" description="TPL_MINIMALISTA_LOAD_JQUERY_FROM_TEMPLATE_DESC" default="1" class="btn-group btn-group-yesno">
+                <field name="load_jquery_from_template" type="radio" label="TPL_MINIMALISTA_LOAD_JQUERY_FROM_TEMPLATE" description="TPL_MINIMALISTA_LOAD_JQUERY_FROM_TEMPLATE_DESC" default="0" class="btn-group btn-group-yesno">
                     <option value="1">JYES</option>
                     <option value="0">JNO</option>
                 </field>

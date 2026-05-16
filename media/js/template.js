@@ -1,53 +1,97 @@
-// jQuery function to add a class to the 'header' element when the page is scrolled
-jQuery(document).ready(function ($) {
-    $(window).scroll(function () {
-        // Check if the user has scrolled more than 1 pixel from the top
-        if ($(this).scrollTop() > 1) {
-            $('header').addClass("sticky"); // Add the "sticky" class to the 'header' element
-        }
-        else {
-            $('header').removeClass("sticky"); // Remove the "sticky" class from the 'header' element
-        }
-    });
-
-    // Code for adding an icon to a deeper parent (comment missing)
-
-    // Code to activate dropdown menu on hover for elements with class 'deeper.parent'
-    $('.deeper.parent').hover(function () {
-        // Show the dropdown menu with a delay and animation
-        $(this).children('.dropdown-menu').stop(true, true).delay(200).fadeIn(200);
-    }, function () {
-        // Hide the dropdown menu with a delay and animation
-        $(this).children('.dropdown-menu').stop(true, true).delay(200).fadeOut(200);
-    });
-
-    // jQuery code that back to top 
-    // Hide the button initially
-    $("#back-top").hide();
-
-    // Show/hide the button on scroll
-    $(window).scroll(function () {
-        if ($(this).scrollTop() > 300) {
-            $("#back-top").fadeIn();
+// Sticky Header logic using Vanilla JS
+window.addEventListener('scroll', function () {
+    const header = document.querySelector('header');
+    if (header) {
+        if (window.scrollY > 1) {
+            header.classList.add("sticky");
         } else {
-            $("#back-top").fadeOut();
+            header.classList.remove("sticky");
+        }
+    }
+});
+
+// Dropdown Menu hover logic using Vanilla JS
+document.querySelectorAll('.deeper.parent').forEach(function (element) {
+    element.addEventListener('mouseenter', function () {
+        const dropdown = this.querySelector('.dropdown-menu');
+        if (dropdown) {
+            dropdown.style.display = 'block';
+            dropdown.style.opacity = '0';
+            dropdown.style.transition = 'opacity 0.2s ease-in-out';
+            setTimeout(() => dropdown.style.opacity = '1', 10);
         }
     });
 
-    // Scroll to top when the button is clicked
-    $("#back-top").click(function () {
-        $("html, body").animate(
-            {
-                scrollTop: 0
-            },
-            500 // Scroll duration in milliseconds
-        );
-        return false;
+    element.addEventListener('mouseleave', function () {
+        const dropdown = this.querySelector('.dropdown-menu');
+        if (dropdown) {
+            dropdown.style.opacity = '0';
+            setTimeout(() => dropdown.style.display = 'none', 200);
+        }
     });
 });
 
+// Back to Top Logic
+const backToTop = document.getElementById('back-top');
+if (backToTop) {
+    // Hide initially
+    backToTop.style.display = 'none';
+    backToTop.style.transition = 'opacity 0.3s ease-in-out';
+
+    window.addEventListener('scroll', function () {
+        if (window.scrollY > 300) {
+            if (backToTop.style.display === 'none') {
+                backToTop.style.display = 'block';
+                setTimeout(() => backToTop.style.opacity = '1', 10);
+            }
+        } else {
+            backToTop.style.opacity = '0';
+            setTimeout(() => {
+                if (window.scrollY <= 300) backToTop.style.display = 'none';
+            }, 300);
+        }
+    });
+
+    backToTop.addEventListener('click', function (e) {
+        e.preventDefault();
+        window.scrollTo({
+            top: 0,
+            behavior: 'smooth'
+        });
+    });
+}
+
+// Check for empty divs
 document.querySelectorAll('div').forEach(function(div) {
     if (div.innerHTML.trim() === '') {
         div.classList.add('is-empty');
     }
+});
+
+// Animate on Scroll using Intersection Observer
+document.addEventListener('DOMContentLoaded', function () {
+    const observerOptions = {
+        root: null,
+        rootMargin: '0px',
+        threshold: 0.1
+    };
+
+    const observer = new IntersectionObserver((entries, observer) => {
+        entries.forEach(entry => {
+            if (entry.isIntersecting) {
+                const element = entry.target;
+                element.classList.add('animate__animated');
+                element.style.visibility = 'visible';
+                element.style.opacity = '1';
+                observer.unobserve(element);
+            }
+        });
+    }, observerOptions);
+
+    const animatedElements = document.querySelectorAll('.animate__on-scroll');
+    animatedElements.forEach(el => {
+        el.style.visibility = 'hidden';
+        el.style.opacity = '0';
+        observer.observe(el);
+    });
 });

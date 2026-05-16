@@ -139,6 +139,9 @@
     }
     // Load Joomla 4 system icons
     $wa->registerAndUseStyle('icons', 'media/system/css/joomla-fontawesome.min.css', ['version' => 'auto']);
+    // Load Animate.css
+    $wa->registerAndUseStyle('animate_css', 'media/templates/site/' . $templateOriginal . '/css/animate.min.css', ['version' => '4.1.1']);
+
     $cssFilePath = JPATH_ROOT . '/media/templates/site/' . $templateOriginal . '/css/template.css';
     if (file_exists($cssFilePath)) {
     $wa->registerAndUseStyle('template-css', 'media/templates/site/' . $templateOriginal . '/css/template.css', ['version' => filemtime($cssFilePath)]);
