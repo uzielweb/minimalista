@@ -20,8 +20,6 @@ Este documento contém uma análise técnica da aplicação e sugestões de melh
 ### 1. SEO e Metadados Avançados
 - [ ] **Theme Color**: Suporte à tag meta `theme-color` baseada nos parâmetros do template.
 
-### 2. Experiência do Usuário (UX)
-- [ ] **Overrides de Conteúdo**: Criar layouts minimalistas para `com_content` (Artigo e Categoria).
 
 ---
 
