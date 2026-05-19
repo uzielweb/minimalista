@@ -60,7 +60,7 @@
     $tpath              = 'templates/' . $templateOriginal;
     $templateParams     = $activeStyle->params;
     $offcanvasDirection = $templateParams->get('offcanvas_direction', 'start');
-    $enableDarkMode = $templateParams->get('enable_dark_mode', 1);
+    $enableDarkMode = $templateParams->get('enable_dark_mode', 0);
     $customFonts = $templateParams->get('custom_fonts', '');
     $logo               = $templateParams->get('logo', '');
     $logo_alt           = $templateParams->get('logo_alt', '') ? $templateParams->get('logo_alt') : $sitename;

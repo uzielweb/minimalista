@@ -3,6 +3,16 @@
     <changelog>
         <element>minimalista</element>
         <type>template</type>
+        <version>2.12.28</version>
+        <note>
+            <item>Fix: Solved character encoding corruption in Portuguese and English translation ini files and stylesheets</item>
+            <item>Fix: Set default parameter for theme toggle (dark mode option) to disabled by default</item>
+            <item>System: Synchronized and fully validated translation files</item>
+        </note>
+    </changelog>
+    <changelog>
+        <element>minimalista</element>
+        <type>template</type>
         <version>2.12.27</version>
         <note>
             <item>System: Redesigned Error 404 and Offline pages using Bootstrap 5 utility classes</item>
