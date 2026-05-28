@@ -3,6 +3,15 @@
     <changelog>
         <element>minimalista</element>
         <type>template</type>
+        <version>2.4.0</version>
+        <note>
+            <item>System: Added Independent Layout Control for Global Site and Component Area</item>
+            <item>System: Implemented Page Class Suffix Overrides (fluid-page, container-page, fluid-component, container-component)</item>
+        </note>
+    </changelog>
+    <changelog>
+        <element>minimalista</element>
+        <type>template</type>
         <version>2.3.0</version>
         <note>
             <item>System: Synchronized English and Portuguese translation ini files</item>
