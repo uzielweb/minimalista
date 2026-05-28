@@ -141,7 +141,7 @@ if ($sectionsBeforeComponent) {
 }
 ?>
         <section id="section-component" class="section-component">
-            <div class="container<?php echo $containerFluid; ?>">
+            <div class="container<?php echo $componentContainerFluid; ?>">
                 <div class="inner">
                     <?php if ($this->countModules('breadcrumbs')): ?>
                     <div class="component-breadcrumbs">

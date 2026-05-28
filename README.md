@@ -50,7 +50,8 @@ This is a **Joomla! 4**, **Joomla! 5** and **Joomla! 6** template that emphasize
 - [x] 33. **Smart Search Integration**: 404 page features a search bar pointing directly to Joomla's Smart Search (`com_finder`).
 - [x] 34. **Maintenance Countdown**: Offline page includes a dynamic countdown timer configurable via template settings.
 - [x] 35. **Accessibility (A11y) Plus**: Enhanced keyboard navigation, ARIA support, and "Skip to Content" functionality.
-
+- [x] 36. ```New feature:``` **Independent Layout Control**: Choose fluid or contained widths independently for the global site and the component area.
+- [x] 37. ```New feature:``` **Page Class Suffix Overrides**: Force specific layouts per page using menu class suffixes (`fluid-page`, `container-page`, `fluid-component`, `container-component`).
 By default, the theme includes its own Bootstrap and Font Awesome but allows switching to Joomla's native versions or disabling them entirely.
 
 ---
@@ -107,5 +108,6 @@ Este é um template para **Joomla! 4**, **Joomla! 5** e **Joomla! 6** que preza 
 - [x] 33. **Busca Inteligente (Smart Search)**: Página 404 com barra de busca integrada ao `com_finder` do Joomla.
 - [x] 34. **Contagem Regressiva de Manutenção**: Página offline com timer dinâmico configurável pelo painel.
 - [x] 35. **Acessibilidade (A11y) Plus**: Navegação por teclado aprimorada, suporte ARIA e link "Pular para o Conteúdo".
-
+- [x] 36. ```Novo recurso:``` **Controle Independente de Layout**: Escolha larguras fluidas ou contidas de forma independente para o site global e a área do componente.
+- [x] 37. ```Novo recurso:``` **Overrides via Classe de Página (Page Class Suffix)**: Force layouts específicos por página usando classes no menu (`fluid-page`, `container-page`, `fluid-component`, `container-component`).
 Por padrão, o tema inclui Bootstrap e Font Awesome próprios, mas permite alternar para as versões nativas do Joomla ou desativá-los completamente.

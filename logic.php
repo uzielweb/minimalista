@@ -103,7 +103,24 @@
     foreach ($userGroupNames as $groupName) {
     $bodyClasses .= ' user-group-' . strtolower($groupName);
     }
-    $containerFluid         = $templateParams->get('container-fluid', '0') == '1' ? '-fluid' : '';
+    // 1. Controle do Container Global da Página
+    $containerFluid = $templateParams->get('container-fluid', '0') == '1' ? '-fluid' : '';
+    
+    if (strpos($pageclass, 'fluid-page') !== false) {
+        $containerFluid = '-fluid';
+    } elseif (strpos($pageclass, 'container-page') !== false) {
+        $containerFluid = '';
+    }
+
+    // 2. Controle do Container Específico do Componente
+    $compParam = $templateParams->get('component_container_fluid', 'default');
+    $componentContainerFluid = $compParam === 'container-fluid' ? '-fluid' : ($compParam === 'container' ? '' : $containerFluid);
+
+    if (strpos($pageclass, 'fluid-component') !== false) {
+        $componentContainerFluid = '-fluid';
+    } elseif (strpos($pageclass, 'container-component') !== false) {
+        $componentContainerFluid = '';
+    }
     $defaultBoostrapDesktop = '-' . $templateParams->get('default-bootstrap-desktop', 'lg');
     $sidebarWidth           = $defaultBoostrapDesktop . '-' . $templateParams->get('sidebar-width', '3');
     if ($this->countModules('sidebar-left') && $this->countModules('sidebar-right')) {
