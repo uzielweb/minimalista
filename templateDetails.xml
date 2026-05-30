@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <extension type="template" client="site" version="5.0" method="upgrade">
     <name>minimalista</name>
-    <version>2.5.2</version>
+    <version>2.5.3</version>
     <downloads>
         <downloadurl type="full" format="zip">https://github.com/uzielweb/minimalista/archive/refs/tags/minimalista-joomla-template-v2.5.0.zip</downloadurl>
     </downloads>
@@ -337,5 +337,6 @@
         <server type="extension" priority="1" name="minimalista">https://raw.githubusercontent.com/uzielweb/minimalista/main/updates.xml</server>
     </updateservers>
 </extension>
+
 
 

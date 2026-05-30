@@ -3,6 +3,15 @@
     <changelog>
         <element>minimalista</element>
         <type>template</type>
+        <version>2.5.3</version>
+        <note>
+            <item>Fix: Fixed language files encoding to UTF-8 without BOM to resolve translation parsing errors</item>
+            <item>Fix: Removed checksum validation from updates.xml to prevent Joomla updater mismatch errors</item>
+        </note>
+    </changelog>
+    <changelog>
+        <element>minimalista</element>
+        <type>template</type>
         <version>2.5.2</version>
         <note>
             <item>Feature: Moved custom code fields to their own dedicated tab to improve admin UI organization</item>
@@ -62,5 +71,6 @@
         </note>
     </changelog>
 </changelogs>
+
 
 
