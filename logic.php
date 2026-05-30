@@ -382,44 +382,46 @@
  * Helper function to clean text for metadata.
  * Handles cleaning, double decoding, and word/sentence-safe truncation.
  */
-    function cleanMetaText($txt, $len = 0)
-    {
-    if (empty($txt)) {
-        return '';
-    }
+    if (!function_exists('cleanMetaText')) {
+        function cleanMetaText($txt, $len = 0)
+        {
+        if (empty($txt)) {
+            return '';
+        }
 
-    // Decode twice to handle double encoding (e.g. &amp;amp;)
-    $txt = html_entity_decode(html_entity_decode($txt, ENT_QUOTES, 'UTF-8'), ENT_QUOTES, 'UTF-8');
-    // Remove Joomla plugin placeholders
-    $txt = preg_replace('/\{[a-zA-Z0-9\s\-_]+\}/', '', $txt);
-    // Strip tags
-    $txt = strip_tags($txt);
-    // Normalise spaces
-    $txt = trim(preg_replace('/\s+/', ' ', $txt));
+        // Decode twice to handle double encoding (e.g. &amp;amp;)
+        $txt = html_entity_decode(html_entity_decode($txt, ENT_QUOTES, 'UTF-8'), ENT_QUOTES, 'UTF-8');
+        // Remove Joomla plugin placeholders
+        $txt = preg_replace('/\{[a-zA-Z0-9\s\-_]+\}/', '', $txt);
+        // Strip tags
+        $txt = strip_tags($txt);
+        // Normalise spaces
+        $txt = trim(preg_replace('/\s+/', ' ', $txt));
 
-    // Truncate if needed
-    if ($len > 0 && mb_strlen($txt) > $len) {
-        $txt = mb_substr($txt, 0, $len);
+        // Truncate if needed
+        if ($len > 0 && mb_strlen($txt) > $len) {
+            $txt = mb_substr($txt, 0, $len);
 
-        // Try to find the last sentence end (., !, ?) within the limit
-        $lastDot   = mb_strrpos($txt, '.');
-        $lastExcl  = mb_strrpos($txt, '!');
-        $lastQuest = mb_strrpos($txt, '?');
+            // Try to find the last sentence end (., !, ?) within the limit
+            $lastDot   = mb_strrpos($txt, '.');
+            $lastExcl  = mb_strrpos($txt, '!');
+            $lastQuest = mb_strrpos($txt, '?');
 
-        $lastSentenceEnd = max($lastDot, $lastExcl, $lastQuest);
+            $lastSentenceEnd = max($lastDot, $lastExcl, $lastQuest);
 
-        if ($lastSentenceEnd !== false && $lastSentenceEnd > ($len * 0.5)) {
-            $txt = mb_substr($txt, 0, $lastSentenceEnd + 1);
-        } else {
-            // Fallback: Word-safe truncation
-            $lastSpace = mb_strrpos($txt, ' ');
-            if ($lastSpace !== false) {
-                $txt = mb_substr($txt, 0, $lastSpace);
+            if ($lastSentenceEnd !== false && $lastSentenceEnd > ($len * 0.5)) {
+                $txt = mb_substr($txt, 0, $lastSentenceEnd + 1);
+            } else {
+                // Fallback: Word-safe truncation
+                $lastSpace = mb_strrpos($txt, ' ');
+                if ($lastSpace !== false) {
+                    $txt = mb_substr($txt, 0, $lastSpace);
+                }
             }
         }
-    }
 
-    return $txt;
+        return $txt;
+        }
     }
 
     // load social meta tags OpenGraph for Faceboook, Twitter Cards and Schema.org
