@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
 <extension type="template" client="site" version="5.0" method="upgrade">
     <name>minimalista</name>
-    <version>2.4.1</version>
+    <version>2.5.0</version>
     <downloads>
-        <downloadurl type="full" format="zip">https://github.com/uzielweb/minimalista/archive/refs/tags/minimalista-joomla-template-v2.4.1.zip</downloadurl>
+        <downloadurl type="full" format="zip">https://github.com/uzielweb/minimalista/archive/refs/tags/minimalista-joomla-template-v2.5.0.zip</downloadurl>
     </downloads>
     <creationDate>2025-11</creationDate>
     <author>Uziel - Via Ponto Mega</author>
@@ -56,6 +56,9 @@
                 <field name="logo" type="media" label="TPL_MINIMALISTA_LOGO" description="TPL_MINIMALISTA_LOGO_DESC" />
                 <!-- logo alt -->
                 <field name="logo_alt" type="text" label="TPL_MINIMALISTA_LOGO_ALT" description="TPL_MINIMALISTA_LOGO_ALT_DESC" />
+                <!-- colors -->
+                <field name="color_primary" type="color" label="TPL_MINIMALISTA_COLOR_PRIMARY" description="TPL_MINIMALISTA_COLOR_PRIMARY_DESC" default="" />
+                <field name="color_secondary" type="color" label="TPL_MINIMALISTA_COLOR_SECONDARY" description="TPL_MINIMALISTA_COLOR_SECONDARY_DESC" default="" />
                 <!-- logo position -->
                 <field name="logo_position" type="list" label="TPL_MINIMALISTA_LOGO_POSITION" description="TPL_MINIMALISTA_LOGO_POSITION_DESC" default="header-navbar">
                     <option value="header-navbar">TPL_MINIMALISTA_LOGO_POSITION_HEADER_NAVBAR</option>
@@ -118,11 +121,12 @@
                     <option value="1">JYES</option>
                     <option value="0">JNO</option>
                 </field>
-                <!-- load_fontawesome_js_from_template -->
+                <!-- load_fontawesome -->
                 <field name="load_fontawesome" type="radio" label="TPL_MINIMALISTA_LOAD_FONTAWESOME" description="TPL_MINIMALISTA_LOAD_FONTAWESOME_DESC" default="css_from_template" class="btn-group btn-group-yesno">
                     <option value="js_from_template">TPL_MINIMALISTA_LOAD_FONTAWESOME_JS_FROM_TEMPLATE</option>
                     <option value="css_from_template">TPL_MINIMALISTA_LOAD_FONTAWESOME_CSS_FROM_TEMPLATE</option>
                     <option value="css_from_joomla">TPL_MINIMALISTA_LOAD_FONTAWESOME_CSS_FROM_JOOMLA</option>
+                    <option value="svg_from_template">TPL_MINIMALISTA_LOAD_FONTAWESOME_SVG_FROM_TEMPLATE</option>
                     <option value="0">JNONE</option>
                 </field>
                 <!-- load_jquery -->
@@ -145,6 +149,18 @@
                 <field name="custom_script_startbody" type="editor" editor="codemirror" label="TPL_MINIMALISTA_CUSTOM_SCRIPT_TO_STARTBODY" description="TPL_MINIMALISTA_CUSTOM_SCRIPT_TO_STARTBODY_DESC" rows="5" filter="raw" />
                 <!-- custom script to endbody -->
                 <field name="custom_script_endbody" type="editor" editor="codemirror" label="TPL_MINIMALISTA_CUSTOM_SCRIPT_TO_ENDBODY" description="TPL_MINIMALISTA_CUSTOM_SCRIPT_TO_ENDBODY_DESC" rows="5" filter="raw" />
+                <!-- smart_header -->
+                <field name="smart_header" type="radio" label="TPL_MINIMALISTA_SMART_HEADER" description="TPL_MINIMALISTA_SMART_HEADER_DESC" default="0" class="btn-group btn-group-yesno">
+                    <option value="1">JYES</option>
+                    <option value="0">JNO</option>
+                </field>
+                <!-- reading_progress_bar -->
+                <field name="reading_progress_bar" type="radio" label="TPL_MINIMALISTA_READING_PROGRESS_BAR" description="TPL_MINIMALISTA_READING_PROGRESS_BAR_DESC" default="0" class="btn-group btn-group-yesno">
+                    <option value="1">JYES</option>
+                    <option value="0">JNO</option>
+                </field>
+                <!-- google_fonts_url -->
+                <field name="google_fonts_url" type="url" label="TPL_MINIMALISTA_GOOGLE_FONTS_URL" description="TPL_MINIMALISTA_GOOGLE_FONTS_URL_DESC" default="" />
                 <!-- enable_dark_mode -->
                 <field name="enable_dark_mode" type="radio" label="TPL_MINIMALISTA_ENABLE_DARK_MODE" description="TPL_MINIMALISTA_ENABLE_DARK_MODE_DESC" default="0" class="btn-group btn-group-yesno">
                     <option value="1">JYES</option>

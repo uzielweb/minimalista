@@ -74,19 +74,129 @@
     $endBodyCode        = $templateParams->get('custom_script_endbody', '');
     $custom_head_code   = $templateParams->get('custom_head_code', '');
     $backtotop          = $templateParams->get('backtotop', '1');
+    $colorPrimary       = $templateParams->get('color_primary', '');
+    $colorSecondary     = $templateParams->get('color_secondary', '');
+
+    // CSP Nonce Injection
+    $nonce = method_exists($doc, 'getNonce') ? $doc->getNonce() : '';
+    $nonceAttr = $nonce ? ' nonce="' . $nonce . '"' : '';
+
+    if ($startBodyCode && $nonceAttr) {
+        $startBodyCode = str_ireplace('<script', '<script' . $nonceAttr, $startBodyCode);
+    }
+    if ($endBodyCode && $nonceAttr) {
+        $endBodyCode = str_ireplace('<script', '<script' . $nonceAttr, $endBodyCode);
+    }
+    if ($custom_head_code && $nonceAttr) {
+        $custom_head_code = str_ireplace('<script', '<script' . $nonceAttr, $custom_head_code);
+    }
+
+    // CSS Variables Injection
+    if ($colorPrimary || $colorSecondary) {
+        $cssVars = ":root {\n";
+        if ($colorPrimary) $cssVars .= "    --bs-primary: {$colorPrimary};\n";
+        if ($colorSecondary) $cssVars .= "    --bs-secondary: {$colorSecondary};\n";
+        $cssVars .= "}";
+        $wa->addInlineStyle($cssVars);
+    }
+
+    // Preload Logo for Core Web Vitals (LCP)
+    if ($logo) {
+        $logoPath = strpos($logo, '/') === 0 ? $logo : '/' . $logo;
+        $doc->addHeadLink(Uri::root(true) . $logoPath, 'preload', 'rel', ['as' => 'image']);
+    }
+
     // custom_css_head custom_script_head
     if ($custom_css_head) {
-    $wa->addInlineStyle($custom_css_head);
+        $wa->addInlineStyle($custom_css_head);
     }
     if ($custom_script_head) {
-    $wa->addInlineScript($custom_script_head);
+        $wa->addInlineScript($custom_script_head);
     }
     if ($custom_head_code) {
-    $doc->addCustomTag($custom_head_code);
+        $doc->addCustomTag($custom_head_code);
     }
     if ($customFonts) {
-    $doc->addCustomTag($customFonts);
+        $doc->addCustomTag($customFonts);
     }
+
+    // Dark Mode FOUC Prevention
+    if ($enableDarkMode) {
+        $foucScript = "
+            (function() {
+                var theme = localStorage.getItem('theme') || 'light';
+                document.documentElement.setAttribute('data-bs-theme', theme);
+            })();
+        ";
+        $wa->addInlineScript($foucScript);
+    }
+
+    // Google Fonts Preload
+    $googleFontsUrl = $templateParams->get('google_fonts_url', '');
+    if ($googleFontsUrl) {
+        $doc->addCustomTag('<link rel="preconnect" href="https://fonts.googleapis.com">');
+        $doc->addCustomTag('<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>');
+        $doc->addCustomTag('<link href="' . htmlspecialchars($googleFontsUrl) . '" rel="stylesheet">');
+    }
+
+    // Smart Header
+    if ($templateParams->get('smart_header', 0) == 1) {
+        $smartHeaderScript = "
+        document.addEventListener('DOMContentLoaded', function() {
+            var lastScrollTop = 0;
+            var header = document.getElementById('header');
+            if(!header) return;
+            header.style.position = 'sticky';
+            header.style.top = '0';
+            header.style.zIndex = '1030';
+            header.style.transition = 'top 0.3s ease-in-out';
+            window.addEventListener('scroll', function() {
+                var scrollTop = window.pageYOffset || document.documentElement.scrollTop;
+                if (scrollTop > lastScrollTop && scrollTop > header.offsetHeight) {
+                    header.style.top = '-' + header.offsetHeight + 'px';
+                } else {
+                    header.style.top = '0';
+                }
+                lastScrollTop = scrollTop;
+            });
+        });
+        ";
+        $wa->addInlineScript($smartHeaderScript);
+    }
+
+    // Reading Progress Bar
+    if ($templateParams->get('reading_progress_bar', 0) == 1 && $view == 'article') {
+        $progressBarScript = "
+        document.addEventListener('DOMContentLoaded', function() {
+            var progressBarContainer = document.createElement('div');
+            progressBarContainer.style.position = 'fixed';
+            progressBarContainer.style.top = '0';
+            progressBarContainer.style.left = '0';
+            progressBarContainer.style.width = '100%';
+            progressBarContainer.style.height = '4px';
+            progressBarContainer.style.zIndex = '9999';
+            progressBarContainer.style.backgroundColor = 'transparent';
+            
+            var progressBar = document.createElement('div');
+            progressBar.style.height = '100%';
+            progressBar.style.backgroundColor = 'var(--bs-primary, #0d6efd)';
+            progressBar.style.width = '0%';
+            progressBar.style.transition = 'width 0.2s';
+            
+            progressBarContainer.appendChild(progressBar);
+            document.body.appendChild(progressBarContainer);
+            
+            window.addEventListener('scroll', function() {
+                var winScroll = document.body.scrollTop || document.documentElement.scrollTop;
+                var height = document.documentElement.scrollHeight - document.documentElement.clientHeight;
+                var scrolled = (winScroll / height) * 100;
+                progressBar.style.width = scrolled + '%';
+            });
+        });
+        ";
+        $wa->addInlineScript($progressBarScript);
+    }
+
     // Generate CSS classes for the <body> element
     $bodyClasses = ($option ? 'option-' . str_replace('com_', '', $option) : 'no-option')
     . ' ' . ($view ? 'view-' . $view : 'no-view')
@@ -132,47 +242,46 @@
     }
     // Load jQuery based on template or Joomla configuration
     if ($templateParams->get('load_jquery_from_template', 1) == 1) {
-    $wa->registerAndUseScript('jquery_from_template', 'media/templates/site/' . $templateOriginal . '/js/jquery-4.0.0.min.js', ['version' => 'auto']);
-    $wa->registerAndUseScript('jquery-noconflict', 'media/templates/site/' . $templateOriginal . '/js/jquery-noconflict.js', ['version' => 'auto']);
-    $wa->registerAndUseScript('jquery_migrate_from_template', 'media/templates/site/' . $templateOriginal . '/js/jquery-migrate-3.6.0.min.js', ['version' => 'auto']);
+        $wa->useScript('template.minimalista.jquery-noconflict');
     } else {
-    // Load jQuery from Joomla
-    HTMLHelper::_('jquery.framework', true, true);
+        // Load jQuery from Joomla
+        HTMLHelper::_('jquery.framework', true, true);
     }
     // Load Bootstrap CSS and JavaScript based on template or Joomla configuration
     if ($templateParams->get('bootstrap_from_template', 1) == 1) {
-    $wa->registerAndUseStyle('bootstrap_css', 'media/templates/site/' . $templateOriginal . '/css/bootstrap.min.css', ['version' => 'auto']);
-    $wa->registerAndUseScript('bootstrapbundle_js', 'media/templates/site/' . $templateOriginal . '/js/bootstrap.bundle.min.js', ['version' => 'auto'], ['defer' => true]);
+        $wa->useStyle('template.minimalista.bootstrap');
+        $wa->useScript('template.minimalista.bootstrap');
     } else {
-    // Load Bootstrap CSS and JavaScript from Joomla
-    HTMLHelper::_('bootstrap.loadCss', true, $this->direction);
-    HTMLHelper::_('bootstrap.framework');
+        // Load Bootstrap CSS and JavaScript from Joomla
+        HTMLHelper::_('bootstrap.loadCss', true, $this->direction);
+        HTMLHelper::_('bootstrap.framework');
     }
     // Load FontAwesome based on template or Joomla configuration
     $loadFontAwesome = $templateParams->get('load_fontawesome', 'css_from_template');
     if ($loadFontAwesome == 'css_from_template') {
-    $wa->registerAndUseStyle('fontawesome_css', 'media/templates/site/' . $templateOriginal . '/css/all.min.css', ['version' => 'auto']);
+        $wa->useStyle('template.minimalista.fontawesome');
     } elseif ($loadFontAwesome == 'js_from_template') {
-    $wa->registerAndUseScript('fontawesome_js', 'media/templates/site/' . $templateOriginal . '/js/all.min.js', ['version' => 'auto'], ['defer' => true]);
+        $wa->useScript('template.minimalista.fontawesome');
+    } elseif ($loadFontAwesome == 'svg_from_template') {
+        // Use FontAwesome SVG Core (JS) with auto-replace configured for SVG
+        $wa->useScript('template.minimalista.fontawesome');
     } elseif ($loadFontAwesome == 'css_from_joomla') {
-    // Load FontAwesome from Joomla
-    $wa->registerAndUseStyle('fontawesome', 'media/vendor/fontawesome-free/css/all.min.css', ['version' => 'auto']);
+        // Load FontAwesome from Joomla
+        $wa->useStyle('fontawesome');
     } else {
-    // Do nothing for FontAwesome
+        // Do nothing for FontAwesome
     }
     // Load Joomla 4 system icons
-    $wa->registerAndUseStyle('icons', 'media/system/css/joomla-fontawesome.min.css', ['version' => 'auto']);
-    // Load Animate.css
-    $wa->registerAndUseStyle('animate_css', 'media/templates/site/' . $templateOriginal . '/css/animate.min.css', ['version' => '4.1.1']);
+    $wa->useStyle('joomla-fontawesome');
+    // Load Animate.css, Template CSS and Template JS
+    $wa->useStyle('template.minimalista.animate');
+    $wa->useStyle('template.minimalista.main');
+    $wa->useScript('template.minimalista.main');
 
-    $cssFilePath = JPATH_ROOT . '/media/templates/site/' . $templateOriginal . '/css/template.css';
-    if (file_exists($cssFilePath)) {
-    $wa->registerAndUseStyle('template-css', 'media/templates/site/' . $templateOriginal . '/css/template.css', ['version' => filemtime($cssFilePath)]);
+    if ($this->template !== $templateOriginal) {
+        $wa->registerAndUseStyle($this->template . 'template-css', 'media/templates/site/' . $this->template . '/css/template.css', ['version' => 'auto']);
+        $wa->registerAndUseScript($this->template . 'template-js', 'media/templates/site/' . $this->template . '/js/template.js', ['version' => 'auto'], ['defer' => true]);
     }
-    // Load template-specific JavaScript after jQuery and Bootstrap
-    $wa->registerAndUseScript('template-js', 'media/templates/site/' . $templateOriginal . '/js/template.js', ['version' => 'auto'], ['defer' => true]);
-    $wa->registerAndUseStyle($this->template . 'template-css', 'media/templates/site/' . $this->template . '/css/template.css', ['version' => 'auto']);
-    $wa->registerAndUseScript($this->template . 'template-js', 'media/templates/site/' . $this->template . '/js/template.js', ['version' => 'auto'], ['defer' => true]);
     // Assuming $this is an instance of Document
     // media/templates/site/minimalista/css/adtitional/
     $additionalcssDirectory = JPATH_ROOT . '/media/templates/site/' . $this->template . '/css/additional';
@@ -264,10 +373,7 @@
     // Handle the case where the directory does not exist
     // You can log an error or take appropriate action here
     }
-    $responsiveCssPath = JPATH_ROOT . '/media/templates/site/' . $this->template . '/css/responsive.css';
-    if (file_exists($responsiveCssPath)) {
-    $wa->registerAndUseStyle($this->template . 'responsive-css', 'media/templates/site/' . $this->template . '/css/responsive.css', ['version' => filemtime($responsiveCssPath)]);
-    }
+    $wa->useStyle('template.minimalista.responsive');
 
     /**
  * Helper function to clean text for metadata.
@@ -344,8 +450,13 @@
         setMetadata($doc, $title, $description, $image, $image_alt, $arrobasite, $arrobacreator, $type, $locale);
         // Additional metadata for specific conditions and is not homepage
         if ($option == 'com_content' && $view == 'article' && Factory::getApplication()->input->getInt('id') && $active && $active->home != 1) {
-            $content = Table::getInstance('content');
-            $content->load(Factory::getApplication()->input->getInt('id'));
+            $articleId = Factory::getApplication()->input->getInt('id');
+            $db = Factory::getContainer()->get('DatabaseDriver');
+            $query = $db->getQuery(true)->select('*')->from($db->quoteName('#__content'))->where($db->quoteName('id') . ' = :id')->bind(':id', $articleId, \PDO::PARAM_INT);
+            $content = $db->setQuery($query)->loadObject();
+            if (!$content) {
+                $content = (object) ['images' => '', 'introtext' => '', 'fulltext' => '', 'catid' => 0, 'title' => '', 'publish_up' => '', 'modified' => '', 'created_by_alias' => '', 'created_by' => 0];
+            }
             $articleImage    = '';
             $articleImageAlt = '';
             $images          = null;
@@ -364,8 +475,11 @@
                 $articleImage = $matches['src'];
             }
             // Load Category of the Article
-            $articleCategory = Table::getInstance('category');
-            $articleCategory->load($content->catid);
+            $queryCat = $db->getQuery(true)->select('*')->from($db->quoteName('#__categories'))->where($db->quoteName('id') . ' = :catid')->bind(':catid', $content->catid, \PDO::PARAM_INT);
+            $articleCategory = $db->setQuery($queryCat)->loadObject();
+            if (!$articleCategory) {
+                $articleCategory = (object) ['title' => '', 'lft' => 0, 'rgt' => 0, 'params' => ''];
+            }
             $categoryTitle = cleanMetaText($articleCategory->title);
 
             // Check if "Category as Author" is enabled and if this category is under the target parent
@@ -375,8 +489,11 @@
 
             if ($enableCategoryAuthor && $targetParentId) {
                 // Load the target parent category to get its lft/rgt values
-                $parentCat = Table::getInstance('category');
-                $parentCat->load($targetParentId);
+                $queryParentCat = $db->getQuery(true)->select('*')->from($db->quoteName('#__categories'))->where($db->quoteName('id') . ' = :pid')->bind(':pid', $targetParentId, \PDO::PARAM_INT);
+                $parentCat = $db->setQuery($queryParentCat)->loadObject();
+                if (!$parentCat) {
+                    $parentCat = (object) ['lft' => 0, 'rgt' => 0];
+                }
 
                 // Check if current article category is the target or a descendant (using Nested Set Model)
                 if ($articleCategory->lft >= $parentCat->lft && $articleCategory->rgt <= $parentCat->rgt) {
@@ -427,8 +544,13 @@
             $doc->setMetaData('article:section', $categoryTitle, 'property');
         }
         if ($option == 'com_content' && $view == 'category' && Factory::getApplication()->input->getInt('id') && $active && $active->home != 1) {
-            $category = Table::getInstance('category');
-            $category->load(Factory::getApplication()->input->getInt('id'));
+            $catId = Factory::getApplication()->input->getInt('id');
+            $db = Factory::getContainer()->get('DatabaseDriver');
+            $queryCat = $db->getQuery(true)->select('*')->from($db->quoteName('#__categories'))->where($db->quoteName('id') . ' = :id')->bind(':id', $catId, \PDO::PARAM_INT);
+            $category = $db->setQuery($queryCat)->loadObject();
+            if (!$category) {
+                $category = (object) ['description' => '', 'image' => '', 'image_alt' => ''];
+            }
             $textlimit = $templateParams->get('textlimit', 300);
 
             // Description Fallback: Category Desc > Document Desc > Site Config MetaDesc > Site Name

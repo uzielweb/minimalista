@@ -3,6 +3,19 @@
     <changelog>
         <element>minimalista</element>
         <type>template</type>
+        <version>2.5.0</version>
+        <note>
+            <item>Feature: Added Smart Header (auto-hide on scroll) option</item>
+            <item>Feature: Added Reading Progress Bar for articles</item>
+            <item>Feature: Added Google Fonts Preload option for better LCP</item>
+            <item>Feature: Added FontAwesome SVG Core support</item>
+            <item>System: Full migration to Joomla Web Asset Manager (joomla.asset.json)</item>
+            <item>System: Added Bootstrap 5 grid overrides for com_content category blog</item>
+        </note>
+    </changelog>
+    <changelog>
+        <element>minimalista</element>
+        <type>template</type>
         <version>2.4.1</version>
         <note>
             <item>Fix: Corrected WebAuthn (Passkey) icon size distortion in Joomla Login Module</item>
