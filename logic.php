@@ -387,8 +387,10 @@
     // Handle the case where the directory does not exist
     // You can log an error or take appropriate action here
     }
-    $wa->useStyle('template.minimalista.responsive');
-
+    $responsiveCssPath = JPATH_ROOT . '/media/templates/site/' . $this->template . '/css/responsive.css';
+    if (file_exists($responsiveCssPath)) {
+        $wa->registerAndUseStyle($this->template . 'responsive-css', 'media/templates/site/' . $this->template . '/css/responsive.css', ['version' => filemtime($responsiveCssPath)]);
+    }
     /**
  * Helper function to clean text for metadata.
  * Handles cleaning, double decoding, and word/sentence-safe truncation.
