@@ -143,13 +143,13 @@
                     <option value="bottom">TPL_MINIMALISTA_OFFCANVAS_DIRECTION_BOTTOM</option>
                 </field>
                 <!-- custom CSS to head -->
-                <field name="custom_css_head" type="editor" editor="codemirror" label="TPL_MINIMALISTA_CUSTOM_CSS_TO_HEAD" description="TPL_MINIMALISTA_CUSTOM_CSS_TO_HEAD_DESC" rows="5" filter="raw" />
+                <field name="custom_css_head" type="textarea" class="monospaced" label="TPL_MINIMALISTA_CUSTOM_CSS_TO_HEAD" description="TPL_MINIMALISTA_CUSTOM_CSS_TO_HEAD_DESC" rows="5" filter="raw" />
                 <!-- custom script to head -->
-                <field name="custom_script_head" type="editor" editor="codemirror" label="TPL_MINIMALISTA_CUSTOM_SCRIPT_TO_HEAD" description="TPL_MINIMALISTA_CUSTOM_SCRIPT_TO_HEAD_DESC" rows="5" filter="raw" />
+                <field name="custom_script_head" type="textarea" class="monospaced" label="TPL_MINIMALISTA_CUSTOM_SCRIPT_TO_HEAD" description="TPL_MINIMALISTA_CUSTOM_SCRIPT_TO_HEAD_DESC" rows="5" filter="raw" />
                 <!-- custom script to startbody -->
-                <field name="custom_script_startbody" type="editor" editor="codemirror" label="TPL_MINIMALISTA_CUSTOM_SCRIPT_TO_STARTBODY" description="TPL_MINIMALISTA_CUSTOM_SCRIPT_TO_STARTBODY_DESC" rows="5" filter="raw" />
+                <field name="custom_script_startbody" type="textarea" class="monospaced" label="TPL_MINIMALISTA_CUSTOM_SCRIPT_TO_STARTBODY" description="TPL_MINIMALISTA_CUSTOM_SCRIPT_TO_STARTBODY_DESC" rows="5" filter="raw" />
                 <!-- custom script to endbody -->
-                <field name="custom_script_endbody" type="editor" editor="codemirror" label="TPL_MINIMALISTA_CUSTOM_SCRIPT_TO_ENDBODY" description="TPL_MINIMALISTA_CUSTOM_SCRIPT_TO_ENDBODY_DESC" rows="5" filter="raw" />
+                <field name="custom_script_endbody" type="textarea" class="monospaced" label="TPL_MINIMALISTA_CUSTOM_SCRIPT_TO_ENDBODY" description="TPL_MINIMALISTA_CUSTOM_SCRIPT_TO_ENDBODY_DESC" rows="5" filter="raw" />
                 <!-- smart_header -->
                 <field name="smart_header" type="radio" label="TPL_MINIMALISTA_SMART_HEADER" description="TPL_MINIMALISTA_SMART_HEADER_DESC" default="0" class="btn-group btn-group-yesno">
                     <option value="1">JYES</option>
@@ -170,7 +170,7 @@
                 <!-- custom_fonts -->
                 <field name="custom_fonts" type="textarea" label="TPL_MINIMALISTA_CUSTOM_FONTS" description="TPL_MINIMALISTA_CUSTOM_FONTS_DESC" default="" rows="3" filter="raw" />
                 <!-- custom head code -->
-                <field name="custom_head_code" type="editor" editor="codemirror" label="TPL_MINIMALISTA_CUSTOM_HEAD_CODE" description="TPL_MINIMALISTA_CUSTOM_HEAD_CODE_DESC" rows="5" filter="raw" />
+                <field name="custom_head_code" type="textarea" class="monospaced" label="TPL_MINIMALISTA_CUSTOM_HEAD_CODE" description="TPL_MINIMALISTA_CUSTOM_HEAD_CODE_DESC" rows="5" filter="raw" />
             </fieldset>
 
             <fieldset name="offline" label="TPL_MINIMALISTA_OFFLINE_SETTINGS">
