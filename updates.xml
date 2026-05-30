@@ -11,7 +11,6 @@
     <tags>
         <tag>minimalista</tag>
     </tags>
-    <sha256>b64af90340087fb2f9b39d0ca2d0dd5aa377206494dece2bb8814b10c8523f53</sha256>
     <changelogurl>https://raw.githubusercontent.com/uzielweb/minimalista/main/changelog.xml</changelogurl>
     <type>template</type>
     <maintainer>Uziel via Ponto Mega</maintainer>
@@ -21,5 +20,6 @@
     <client>site</client>
   </update>
 </updates>
+
 
 
