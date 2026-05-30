@@ -23,7 +23,7 @@
 
     // Template-related settings and parameters - Joomla 4/5/6 native way
     $activeStyle      = $app->getTemplate(true);
-    $templateOriginal = $activeStyle->parent ?: $activeStyle->template;
+    $templateOriginal = isset($activeStyle->parent) && $activeStyle->parent ? $activeStyle->parent : (isset($activeStyle->template) && $activeStyle->template ? $activeStyle->template : (isset($this->template) ? $this->template : 'minimalista'));
     // Get the current user object and group titles using the native Joomla helper (no manual SQL)
     $user           = $app->getIdentity();
     $userGroupIds   = $user->getAuthorisedGroups();
@@ -252,15 +252,25 @@
     }
     // Load jQuery based on template or Joomla configuration
     if ($templateParams->get('load_jquery_from_template', 1) == 1) {
-        $wa->useScript('template.minimalista.jquery-noconflict');
+        if ($wa->getRegistry()->exists('script', 'template.minimalista.jquery-noconflict')) {
+            $wa->useScript('template.minimalista.jquery-noconflict');
+        }
     } else {
         // Load jQuery from Joomla
         HTMLHelper::_('jquery.framework', true, true);
     }
     // Load Bootstrap CSS and JavaScript based on template or Joomla configuration
     if ($templateParams->get('bootstrap_from_template', 1) == 1) {
-        $wa->useStyle('template.minimalista.bootstrap');
-        $wa->useScript('template.minimalista.bootstrap');
+        if ($wa->getRegistry()->exists('style', 'template.minimalista.bootstrap')) {
+            $wa->useStyle('template.minimalista.bootstrap');
+        }
+        if ($wa->getRegistry()->exists('script', 'template.minimalista.bootstrap')) {
+            $wa->useScript('template.minimalista.bootstrap');
+        } else {
+            // Graceful fallback to avoid fatal error
+            HTMLHelper::_('bootstrap.loadCss', true, $this->direction);
+            HTMLHelper::_('bootstrap.framework');
+        }
     } else {
         // Load Bootstrap CSS and JavaScript from Joomla
         HTMLHelper::_('bootstrap.loadCss', true, $this->direction);
@@ -269,12 +279,18 @@
     // Load FontAwesome based on template or Joomla configuration
     $loadFontAwesome = $templateParams->get('load_fontawesome', 'css_from_template');
     if ($loadFontAwesome == 'css_from_template') {
-        $wa->useStyle('template.minimalista.fontawesome');
+        if ($wa->getRegistry()->exists('style', 'template.minimalista.fontawesome')) {
+            $wa->useStyle('template.minimalista.fontawesome');
+        }
     } elseif ($loadFontAwesome == 'js_from_template') {
-        $wa->useScript('template.minimalista.fontawesome');
+        if ($wa->getRegistry()->exists('script', 'template.minimalista.fontawesome')) {
+            $wa->useScript('template.minimalista.fontawesome');
+        }
     } elseif ($loadFontAwesome == 'svg_from_template') {
         // Use FontAwesome SVG Core (JS) with auto-replace configured for SVG
-        $wa->useScript('template.minimalista.fontawesome');
+        if ($wa->getRegistry()->exists('script', 'template.minimalista.fontawesome')) {
+            $wa->useScript('template.minimalista.fontawesome');
+        }
     } elseif ($loadFontAwesome == 'css_from_joomla') {
         // Load FontAwesome from Joomla
         $wa->useStyle('fontawesome');
@@ -284,9 +300,33 @@
     // Load Joomla 4 system icons
     $wa->useStyle('joomla-fontawesome');
     // Load Animate.css, Template CSS and Template JS
-    $wa->useStyle('template.minimalista.animate');
-    $wa->useStyle('template.minimalista.main');
-    $wa->useScript('template.minimalista.main');
+    if ($templateParams->get('load_animate_css', 1) == 1) {
+        if ($wa->getRegistry()->exists('style', 'template.minimalista.animate')) {
+            $wa->useStyle('template.minimalista.animate');
+        }
+    }
+    // Template CSS and JS
+    if ($wa->getRegistry()->exists('style', 'template.minimalista.main')) {
+        $wa->useStyle('template.minimalista.main');
+    } else {
+        // Fallback for missing registry (e.g. ErrorDocument fatal error)
+        $doc->addStyleSheet('templates/' . $templateOriginal . '/css/template.css', ['version' => 'auto']);
+    }
+    
+    if ($wa->getRegistry()->exists('script', 'template.minimalista.main')) {
+        $wa->useScript('template.minimalista.main');
+    } else {
+        // Fallback
+        $doc->addScript('templates/' . $templateOriginal . '/js/template.js', ['version' => 'auto'], ['defer' => true]);
+    }
+    
+    if ($templateParams->get('load_responsive_css', 1) == 1) {
+        if ($wa->getRegistry()->exists('style', 'template.minimalista.responsive')) {
+            $wa->useStyle('template.minimalista.responsive');
+        } else {
+            $doc->addStyleSheet('templates/' . $templateOriginal . '/css/responsive.css', ['version' => 'auto']);
+        }
+    }
 
     if ($this->template !== $templateOriginal) {
         $wa->registerAndUseStyle($this->template . 'template-css', 'media/templates/site/' . $this->template . '/css/template.css', ['version' => 'auto']);
