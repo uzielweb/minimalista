@@ -586,6 +586,7 @@
     }
     }
     // Function to set common metadata
+    if (!function_exists('setMetadata')) {
     function setMetadata($doc, $title, $description, $image, $image_alt, $arrobasite = '', $arrobacreator = '', $type = 'website', $locale = 'pt_BR', $author = '')
     {
     $cleanTitle = cleanMetaText($title);
@@ -644,7 +645,9 @@
 
 
     }
+    }
     // functions.php
+    if (!function_exists('cleanSectionName')) {
     function cleanSectionName($sectionName)
     {
     $sectionName = str_replace(' ', '-', $sectionName);
@@ -653,6 +656,8 @@
     $sectionName = preg_replace('/[^a-zA-Z0-9\-]/', '', $sectionName);
     return $sectionName;
     }
+    }
+    if (!function_exists('hasModules')) {
     function hasModules($positions, $template)
     {
     foreach ($positions as $position) {
@@ -662,6 +667,8 @@
     }
     return false;
     }
+    }
+    if (!function_exists('renderSection')) {
     function renderSection($section, $defaultBoostrapDesktop, $template, $templateOriginal)
     {
     $sectionName = cleanSectionName($section->section);
@@ -689,5 +696,6 @@
     </div>
 </section>
 <?php
+}
 }
 }
