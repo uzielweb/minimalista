@@ -27,6 +27,7 @@
         <folder>js</folder>
         <folder>svgs</folder>
         <folder>webfonts</folder>
+        <filename>joomla.asset.json</filename>
     </media>
     <positions>
         <position>header-top</position>
