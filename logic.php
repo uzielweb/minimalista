@@ -36,17 +36,6 @@
     }
     }
     $wa  = $doc->getWebAssetManager();
-    $war = $wa->getRegistry();
-    if ($doc instanceof \Joomla\CMS\Document\ErrorDocument) {
-        $assetFile = JPATH_ROOT . '/media/templates/site/' . $templateOriginal . '/joomla.asset.json';
-        $devAssetFile = JPATH_THEMES . '/' . $templateOriginal . '/media/joomla.asset.json';
-        
-        if (is_file($assetFile)) {
-            $war->addRegistryFile($assetFile);
-        } elseif (is_file($devAssetFile)) {
-            $war->addRegistryFile($devAssetFile);
-        }
-    }
     $doc->setHtml5(true);
     $doc->setGenerator('');
     // Get input parameters
@@ -252,25 +241,16 @@
     }
     // Load jQuery based on template or Joomla configuration
     if ($templateParams->get('load_jquery_from_template', 1) == 1) {
-        if ($wa->getRegistry()->exists('script', 'template.minimalista.jquery-noconflict')) {
-            $wa->useScript('template.minimalista.jquery-noconflict');
-        }
+        $wa->registerAndUseScript('jquery_from_template', 'media/templates/site/' . $templateOriginal . '/js/jquery-4.0.0.min.js', ['version' => 'auto']);
+        $wa->registerAndUseScript('jquery-noconflict', 'media/templates/site/' . $templateOriginal . '/js/jquery-noconflict.js', ['version' => 'auto']);
     } else {
         // Load jQuery from Joomla
         HTMLHelper::_('jquery.framework', true, true);
     }
     // Load Bootstrap CSS and JavaScript based on template or Joomla configuration
     if ($templateParams->get('bootstrap_from_template', 1) == 1) {
-        if ($wa->getRegistry()->exists('style', 'template.minimalista.bootstrap')) {
-            $wa->useStyle('template.minimalista.bootstrap');
-        }
-        if ($wa->getRegistry()->exists('script', 'template.minimalista.bootstrap')) {
-            $wa->useScript('template.minimalista.bootstrap');
-        } else {
-            // Graceful fallback to avoid fatal error
-            HTMLHelper::_('bootstrap.loadCss', true, $this->direction);
-            HTMLHelper::_('bootstrap.framework');
-        }
+        $wa->registerAndUseStyle('bootstrap_css', 'media/templates/site/' . $templateOriginal . '/css/bootstrap.min.css', ['version' => 'auto']);
+        $wa->registerAndUseScript('bootstrapbundle_js', 'media/templates/site/' . $templateOriginal . '/js/bootstrap.bundle.min.js', ['version' => 'auto'], ['defer' => true]);
     } else {
         // Load Bootstrap CSS and JavaScript from Joomla
         HTMLHelper::_('bootstrap.loadCss', true, $this->direction);
@@ -279,52 +259,36 @@
     // Load FontAwesome based on template or Joomla configuration
     $loadFontAwesome = $templateParams->get('load_fontawesome', 'css_from_template');
     if ($loadFontAwesome == 'css_from_template') {
-        if ($wa->getRegistry()->exists('style', 'template.minimalista.fontawesome')) {
-            $wa->useStyle('template.minimalista.fontawesome');
-        }
+        $wa->registerAndUseStyle('fontawesome_css', 'media/templates/site/' . $templateOriginal . '/css/all.min.css', ['version' => 'auto']);
     } elseif ($loadFontAwesome == 'js_from_template') {
-        if ($wa->getRegistry()->exists('script', 'template.minimalista.fontawesome')) {
-            $wa->useScript('template.minimalista.fontawesome');
-        }
+        $wa->registerAndUseScript('fontawesome_js', 'media/templates/site/' . $templateOriginal . '/js/all.min.js', ['version' => 'auto'], ['defer' => true]);
     } elseif ($loadFontAwesome == 'svg_from_template') {
-        // Use FontAwesome SVG Core (JS) with auto-replace configured for SVG
-        if ($wa->getRegistry()->exists('script', 'template.minimalista.fontawesome')) {
-            $wa->useScript('template.minimalista.fontawesome');
-        }
+        $wa->registerAndUseScript('fontawesome_js', 'media/templates/site/' . $templateOriginal . '/js/all.min.js', ['version' => 'auto'], ['defer' => true]);
     } elseif ($loadFontAwesome == 'css_from_joomla') {
-        // Load FontAwesome from Joomla
-        $wa->useStyle('fontawesome');
-    } else {
-        // Do nothing for FontAwesome
+        $wa->registerAndUseStyle('fontawesome', 'media/vendor/fontawesome-free/css/all.min.css', ['version' => 'auto']);
     }
     // Load Joomla 4 system icons
-    $wa->useStyle('joomla-fontawesome');
+    $wa->registerAndUseStyle('icons', 'media/system/css/joomla-fontawesome.min.css', ['version' => 'auto']);
     // Load Animate.css, Template CSS and Template JS
     if ($templateParams->get('load_animate_css', 1) == 1) {
-        if ($wa->getRegistry()->exists('style', 'template.minimalista.animate')) {
-            $wa->useStyle('template.minimalista.animate');
-        }
-    }
-    // Template CSS and JS
-    if ($wa->getRegistry()->exists('style', 'template.minimalista.main')) {
-        $wa->useStyle('template.minimalista.main');
-    } else {
-        // Fallback for missing registry (e.g. ErrorDocument fatal error)
-        $doc->addStyleSheet('templates/' . $templateOriginal . '/css/template.css', ['version' => 'auto']);
+        $wa->registerAndUseStyle('animate_css', 'media/templates/site/' . $templateOriginal . '/css/animate.min.css', ['version' => '4.1.1']);
     }
     
-    if ($wa->getRegistry()->exists('script', 'template.minimalista.main')) {
-        $wa->useScript('template.minimalista.main');
+    $cssFilePath = JPATH_ROOT . '/media/templates/site/' . $templateOriginal . '/css/template.css';
+    if (file_exists($cssFilePath)) {
+        $wa->registerAndUseStyle('template-css', 'media/templates/site/' . $templateOriginal . '/css/template.css', ['version' => filemtime($cssFilePath)]);
     } else {
-        // Fallback
-        $doc->addScript('templates/' . $templateOriginal . '/js/template.js', ['version' => 'auto'], ['defer' => true]);
+        $wa->registerAndUseStyle('template-css', 'media/templates/site/' . $templateOriginal . '/css/template.css', ['version' => 'auto']);
     }
+    
+    $wa->registerAndUseScript('template-js', 'media/templates/site/' . $templateOriginal . '/js/template.js', ['version' => 'auto'], ['defer' => true]);
     
     if ($templateParams->get('load_responsive_css', 1) == 1) {
-        if ($wa->getRegistry()->exists('style', 'template.minimalista.responsive')) {
-            $wa->useStyle('template.minimalista.responsive');
+        $responsiveCssPath = JPATH_ROOT . '/media/templates/site/' . $templateOriginal . '/css/responsive.css';
+        if (file_exists($responsiveCssPath)) {
+            $wa->registerAndUseStyle('responsive-css', 'media/templates/site/' . $templateOriginal . '/css/responsive.css', ['version' => filemtime($responsiveCssPath)]);
         } else {
-            $doc->addStyleSheet('templates/' . $templateOriginal . '/css/responsive.css', ['version' => 'auto']);
+            $wa->registerAndUseStyle('responsive-css', 'media/templates/site/' . $templateOriginal . '/css/responsive.css', ['version' => 'auto']);
         }
     }
 
