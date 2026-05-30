@@ -38,7 +38,14 @@
     $wa  = $doc->getWebAssetManager();
     $war = $wa->getRegistry();
     if ($doc instanceof \Joomla\CMS\Document\ErrorDocument) {
-        $war->addRegistryFile('media/templates/site/' . $templateOriginal . '/joomla.asset.json');
+        $assetFile = JPATH_ROOT . '/media/templates/site/' . $templateOriginal . '/joomla.asset.json';
+        $devAssetFile = JPATH_THEMES . '/' . $templateOriginal . '/media/joomla.asset.json';
+        
+        if (is_file($assetFile)) {
+            $war->addRegistryFile($assetFile);
+        } elseif (is_file($devAssetFile)) {
+            $war->addRegistryFile($devAssetFile);
+        }
     }
     $doc->setHtml5(true);
     $doc->setGenerator('');
