@@ -52,6 +52,11 @@ This is a **Joomla! 4**, **Joomla! 5** and **Joomla! 6** template that emphasize
 - [x] 35. **Accessibility (A11y) Plus**: Enhanced keyboard navigation, ARIA support, and "Skip to Content" functionality.
 - [x] 36. ```New feature:``` **Independent Layout Control**: Choose fluid or contained widths independently for the global site and the component area.
 - [x] 37. ```New feature:``` **Page Class Suffix Overrides**: Force specific layouts per page using menu class suffixes (`fluid-page`, `container-page`, `fluid-component`, `container-component`).
+- [x] 38. ```New feature:``` **Smart Header**: Auto-hiding header on scroll (scroll down to hide, scroll up to show).
+- [x] 39. ```New feature:``` **Reading Progress Bar**: Dynamic progress bar for articles to improve UX.
+- [x] 40. ```New feature:``` **Google Fonts Preload**: Option to inject preload tags for Google Fonts to improve LCP metrics.
+- [x] 41. ```New feature:``` **FontAwesome SVG Core**: Native support for FontAwesome SVG with JS (in addition to Webfonts/CSS).
+- [x] 42. ```New feature:``` **Admin UI Refactoring**: Cleaner backend interface with dedicated tabs for Custom Code and separated options.
 By default, the theme includes its own Bootstrap and Font Awesome but allows switching to Joomla's native versions or disabling them entirely.
 
 ---
@@ -110,4 +115,9 @@ Este é um template para **Joomla! 4**, **Joomla! 5** e **Joomla! 6** que preza 
 - [x] 35. **Acessibilidade (A11y) Plus**: Navegação por teclado aprimorada, suporte ARIA e link "Pular para o Conteúdo".
 - [x] 36. ```Novo recurso:``` **Controle Independente de Layout**: Escolha larguras fluidas ou contidas de forma independente para o site global e a área do componente.
 - [x] 37. ```Novo recurso:``` **Overrides via Classe de Página (Page Class Suffix)**: Force layouts específicos por página usando classes no menu (`fluid-page`, `container-page`, `fluid-component`, `container-component`).
+- [x] 38. ```Novo recurso:``` **Cabeçalho Inteligente (Smart Header)**: Oculta automaticamente ao rolar para baixo e revela ao rolar para cima.
+- [x] 39. ```Novo recurso:``` **Barra de Progresso de Leitura**: Indicador visual dinâmico em artigos longos para melhor UX.
+- [x] 40. ```Novo recurso:``` **Preload de Google Fonts**: Opção para injetar tags de pré-carregamento para melhorar a métrica LCP.
+- [x] 41. ```Novo recurso:``` **FontAwesome SVG Core**: Suporte nativo para carregar ícones via SVG com JS (além do tradicional Webfonts/CSS).
+- [x] 42. ```Novo recurso:``` **Refatoração da Interface Admin**: Painel mais limpo com abas dedicadas para Códigos Customizados.
 Por padrão, o tema inclui Bootstrap e Font Awesome próprios, mas permite alternar para as versões nativas do Joomla ou desativá-los completamente.
