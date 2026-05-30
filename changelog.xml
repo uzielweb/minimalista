@@ -3,6 +3,14 @@
     <changelog>
         <element>minimalista</element>
         <type>template</type>
+        <version>2.4.1</version>
+        <note>
+            <item>Fix: Corrected WebAuthn (Passkey) icon size distortion in Joomla Login Module</item>
+        </note>
+    </changelog>
+    <changelog>
+        <element>minimalista</element>
+        <type>template</type>
         <version>2.4.0</version>
         <note>
             <item>System: Added Independent Layout Control for Global Site and Component Area</item>
