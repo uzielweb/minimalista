@@ -3,6 +3,16 @@
     <changelog>
         <element>minimalista</element>
         <type>template</type>
+        <version>2.5.1</version>
+        <note>
+            <item>Fix: Reverted WebAssetManager to legacy CSS/JS loading due to fatal error in ErrorDocument</item>
+            <item>Fix: Moved template functions to top of logic.php to prevent undefined function errors</item>
+            <item>Fix: Fixed CodeMirror editor collapse issue in custom code fields by enforcing height and removing default buttons</item>
+        </note>
+    </changelog>
+    <changelog>
+        <element>minimalista</element>
+        <type>template</type>
         <version>2.5.0</version>
         <note>
             <item>Feature: Added Smart Header (auto-hide on scroll) option</item>
@@ -44,3 +54,4 @@
         </note>
     </changelog>
 </changelogs>
+
