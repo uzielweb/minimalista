@@ -17,7 +17,7 @@ use Joomla\CMS\Router\Route;
 /** @var Joomla\CMS\Document\ErrorDocument $this */
 
 // Load template logic
-include_once JPATH_THEMES . '/minimalista/logic.php';
+include JPATH_THEMES . '/minimalista/logic.php';
 
 // Prepare Search Route for Smart Search (com_finder)
 $searchRoute = Route::_('index.php?option=com_finder&view=search');

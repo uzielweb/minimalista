@@ -37,6 +37,9 @@
     }
     $wa  = $doc->getWebAssetManager();
     $war = $wa->getRegistry();
+    if ($doc instanceof \Joomla\CMS\Document\ErrorDocument) {
+        $war->addRegistryFile('media/templates/site/' . $templateOriginal . '/joomla.asset.json');
+    }
     $doc->setHtml5(true);
     $doc->setGenerator('');
     // Get input parameters
