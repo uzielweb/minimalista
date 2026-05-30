@@ -437,7 +437,120 @@
         }
     }
 
-    // load social meta tags OpenGraph for Faceboook, Twitter Cards and Schema.org
+    // Function to set common metadata
+    if (!function_exists('setMetadata')) {
+    function setMetadata($doc, $title, $description, $image, $image_alt, $arrobasite = '', $arrobacreator = '', $type = 'website', $locale = 'pt_BR', $author = '')
+    {
+    $cleanTitle = cleanMetaText($title);
+    $cleanDesc  = cleanMetaText($description);
+
+    // Remove redundant title from the start of the description
+    if (! empty($cleanTitle) && ! empty($cleanDesc)) {
+        if (mb_strpos($cleanDesc, $cleanTitle) === 0) {
+            $cleanDesc = trim(mb_substr($cleanDesc, mb_strlen($cleanTitle)));
+        }
+    }
+
+    // Apply truncation to description (limit 300)
+    $description = cleanMetaText($cleanDesc, 300);
+    $title       = $cleanTitle;
+    $author      = cleanMetaText($author);
+
+    // Final fallback: if description is still empty, use the title
+    if (empty($description)) {
+        $description = $title;
+    }
+
+    // Set standard HTML meta description (essential for SEO)
+    $doc->setDescription($description);
+
+    $doc->setMetaData('og:title', $title, 'property');
+    $doc->setMetaData('og:description', $description, 'property');
+    // Clean image URL - remove #joomlaImage: and everything after it
+    $image = preg_replace('/#joomlaImage:.*$/', '', $image);
+    // Check if image URL is already absolute
+    $imageUrl = (strpos($image, 'http://') === 0 || strpos($image, 'https://') === 0) ? $image : Uri::root() . $image;
+    $doc->setMetaData('og:image', $imageUrl, 'property');
+    // fb:app_id
+    $fb_app_id = Factory::getApplication()->getTemplate(true)->params->get('fb_app_id', '');
+    if ($fb_app_id) {
+        $doc->setMetaData('fb:app_id', $fb_app_id, 'property');
+    }
+    $doc->setMetaData('og:image:alt', $image_alt, 'property');
+    $doc->setMetaData('og:image:width', '1200', 'property');
+    $doc->setMetaData('og:image:height', '630', 'property');
+    $doc->setMetaData('og:type', $type, 'property');
+    $doc->setMetaData('og:locale', $locale, 'property');
+    if (! empty($author)) {
+        $doc->setMetaData('author', $author);
+    }
+    $doc->setMetaData('og:url', Uri::getInstance()->toString(), 'property');
+    $doc->setMetaData('og:site_name', Factory::getApplication()->get('sitename'), 'property');
+    $doc->setMetaData('twitter:card', 'summary_large_image');
+    $doc->setMetaData('twitter:title', $title);
+    $doc->setMetaData('twitter:description', $description);
+    $doc->setMetaData('twitter:image', $imageUrl);
+    $doc->setMetaData('twitter:image:alt', $image_alt);
+    $doc->setMetaData('twitter:site', $arrobasite);
+    $doc->setMetaData('twitter:creator', $arrobacreator);
+    $doc->setMetaData('twitter:url', Uri::getInstance()->toString());
+
+
+    }
+    }
+    // functions.php
+    if (!function_exists('cleanSectionName')) {
+    function cleanSectionName($sectionName)
+    {
+    $sectionName = str_replace(' ', '-', $sectionName);
+    $sectionName = strtolower($sectionName);
+    $sectionName = iconv('UTF-8', 'ASCII//TRANSLIT', $sectionName);
+    $sectionName = preg_replace('/[^a-zA-Z0-9\-]/', '', $sectionName);
+    return $sectionName;
+    }
+    }
+    if (!function_exists('hasModules')) {
+    function hasModules($positions, $template)
+    {
+    foreach ($positions as $position) {
+        if ($template->countModules($position->position) > 0) {
+            return true;
+        }
+    }
+    return false;
+    }
+    }
+    if (!function_exists('renderSection')) {
+    function renderSection($section, $defaultBoostrapDesktop, $template, $templateOriginal)
+    {
+    $sectionName = cleanSectionName($section->section);
+    $hasModules  = hasModules($section->positions, $template);
+    if ($hasModules) {
+        ?>
+<section id="<?php echo $sectionName; ?>"
+    class="<?php echo 'section-' . $sectionName . ($section->section_class ? ' ' . $section->section_class : ''); ?>">
+    <div class="<?php echo $section->containerwidth; ?>">
+        <div class="row">
+            <?php foreach ($section->positions as $position): ?>
+            <?php
+                if ($template->countModules($position->position) == 0) {
+                            continue;
+                        }
+                    ?>
+            <div
+                class="<?php echo 'position-' . strtolower($position->position); ?> col<?php echo $defaultBoostrapDesktop . ($position->width ? '-' . $position->width : ''); ?><?php echo $position->customclass ? ' ' . $position->customclass : ''; ?>">
+                <div class="row">
+                    <jdoc:include type="modules" name="<?php echo $position->position; ?>" style="<?php echo $templateOriginal . '-default'; ?>" />
+                </div>
+            </div>
+            <?php endforeach; ?>
+        </div>
+    </div>
+</section>
+<?php
+}
+}
+}    // load social meta tags OpenGraph for Faceboook, Twitter Cards and Schema.org
     if ($templateParams->get('enable_social_meta_tags', 1)) {
     $disable_in = $templateParams->get('disable_in', '');
     if (! is_array($disable_in)) {
@@ -598,117 +711,3 @@
         }
     }
     }
-    // Function to set common metadata
-    if (!function_exists('setMetadata')) {
-    function setMetadata($doc, $title, $description, $image, $image_alt, $arrobasite = '', $arrobacreator = '', $type = 'website', $locale = 'pt_BR', $author = '')
-    {
-    $cleanTitle = cleanMetaText($title);
-    $cleanDesc  = cleanMetaText($description);
-
-    // Remove redundant title from the start of the description
-    if (! empty($cleanTitle) && ! empty($cleanDesc)) {
-        if (mb_strpos($cleanDesc, $cleanTitle) === 0) {
-            $cleanDesc = trim(mb_substr($cleanDesc, mb_strlen($cleanTitle)));
-        }
-    }
-
-    // Apply truncation to description (limit 300)
-    $description = cleanMetaText($cleanDesc, 300);
-    $title       = $cleanTitle;
-    $author      = cleanMetaText($author);
-
-    // Final fallback: if description is still empty, use the title
-    if (empty($description)) {
-        $description = $title;
-    }
-
-    // Set standard HTML meta description (essential for SEO)
-    $doc->setDescription($description);
-
-    $doc->setMetaData('og:title', $title, 'property');
-    $doc->setMetaData('og:description', $description, 'property');
-    // Clean image URL - remove #joomlaImage: and everything after it
-    $image = preg_replace('/#joomlaImage:.*$/', '', $image);
-    // Check if image URL is already absolute
-    $imageUrl = (strpos($image, 'http://') === 0 || strpos($image, 'https://') === 0) ? $image : Uri::root() . $image;
-    $doc->setMetaData('og:image', $imageUrl, 'property');
-    // fb:app_id
-    $fb_app_id = Factory::getApplication()->getTemplate(true)->params->get('fb_app_id', '');
-    if ($fb_app_id) {
-        $doc->setMetaData('fb:app_id', $fb_app_id, 'property');
-    }
-    $doc->setMetaData('og:image:alt', $image_alt, 'property');
-    $doc->setMetaData('og:image:width', '1200', 'property');
-    $doc->setMetaData('og:image:height', '630', 'property');
-    $doc->setMetaData('og:type', $type, 'property');
-    $doc->setMetaData('og:locale', $locale, 'property');
-    if (! empty($author)) {
-        $doc->setMetaData('author', $author);
-    }
-    $doc->setMetaData('og:url', Uri::getInstance()->toString(), 'property');
-    $doc->setMetaData('og:site_name', Factory::getApplication()->get('sitename'), 'property');
-    $doc->setMetaData('twitter:card', 'summary_large_image');
-    $doc->setMetaData('twitter:title', $title);
-    $doc->setMetaData('twitter:description', $description);
-    $doc->setMetaData('twitter:image', $imageUrl);
-    $doc->setMetaData('twitter:image:alt', $image_alt);
-    $doc->setMetaData('twitter:site', $arrobasite);
-    $doc->setMetaData('twitter:creator', $arrobacreator);
-    $doc->setMetaData('twitter:url', Uri::getInstance()->toString());
-
-
-    }
-    }
-    // functions.php
-    if (!function_exists('cleanSectionName')) {
-    function cleanSectionName($sectionName)
-    {
-    $sectionName = str_replace(' ', '-', $sectionName);
-    $sectionName = strtolower($sectionName);
-    $sectionName = iconv('UTF-8', 'ASCII//TRANSLIT', $sectionName);
-    $sectionName = preg_replace('/[^a-zA-Z0-9\-]/', '', $sectionName);
-    return $sectionName;
-    }
-    }
-    if (!function_exists('hasModules')) {
-    function hasModules($positions, $template)
-    {
-    foreach ($positions as $position) {
-        if ($template->countModules($position->position) > 0) {
-            return true;
-        }
-    }
-    return false;
-    }
-    }
-    if (!function_exists('renderSection')) {
-    function renderSection($section, $defaultBoostrapDesktop, $template, $templateOriginal)
-    {
-    $sectionName = cleanSectionName($section->section);
-    $hasModules  = hasModules($section->positions, $template);
-    if ($hasModules) {
-        ?>
-<section id="<?php echo $sectionName; ?>"
-    class="<?php echo 'section-' . $sectionName . ($section->section_class ? ' ' . $section->section_class : ''); ?>">
-    <div class="<?php echo $section->containerwidth; ?>">
-        <div class="row">
-            <?php foreach ($section->positions as $position): ?>
-            <?php
-                if ($template->countModules($position->position) == 0) {
-                            continue;
-                        }
-                    ?>
-            <div
-                class="<?php echo 'position-' . strtolower($position->position); ?> col<?php echo $defaultBoostrapDesktop . ($position->width ? '-' . $position->width : ''); ?><?php echo $position->customclass ? ' ' . $position->customclass : ''; ?>">
-                <div class="row">
-                    <jdoc:include type="modules" name="<?php echo $position->position; ?>" style="<?php echo $templateOriginal . '-default'; ?>" />
-                </div>
-            </div>
-            <?php endforeach; ?>
-        </div>
-    </div>
-</section>
-<?php
-}
-}
-}
