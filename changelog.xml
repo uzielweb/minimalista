@@ -3,6 +3,14 @@
     <changelog>
         <element>minimalista</element>
         <type>template</type>
+        <version>2.5.2</version>
+        <note>
+            <item>Feature: Moved custom code fields to their own dedicated tab to improve admin UI organization</item>
+        </note>
+    </changelog>
+    <changelog>
+        <element>minimalista</element>
+        <type>template</type>
         <version>2.5.1</version>
         <note>
             <item>Fix: Reverted WebAssetManager to legacy CSS/JS loading due to fatal error in ErrorDocument</item>
@@ -54,4 +62,5 @@
         </note>
     </changelog>
 </changelogs>
+
 
