@@ -3,6 +3,15 @@
     <changelog>
         <element>minimalista</element>
         <type>template</type>
+        <version>2.6.1</version>
+        <note>
+            <item>Fix: Melhoradas as descrições dos campos de Códigos Personalizados no painel administrativo</item>
+            <item>Fix: Reordenados os campos de Códigos Personalizados no XML para seguir a hierarquia cronológica do DOM</item>
+        </note>
+    </changelog>
+    <changelog>
+        <element>minimalista</element>
+        <type>template</type>
         <version>2.6.0</version>
         <note>
             <item>Feature: Added custom_script_starthead option to insert scripts right after opening head tag</item>
