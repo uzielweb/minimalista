@@ -3,6 +3,16 @@
     <changelog>
         <element>minimalista</element>
         <type>template</type>
+        <version>2.6.0</version>
+        <note>
+            <item>Feature: Added custom_script_starthead option to insert scripts right after opening head tag</item>
+            
+          
+        </note>
+    </changelog>
+    <changelog>
+        <element>minimalista</element>
+        <type>template</type>
         <version>2.5.3</version>
         <note>
             <item>Fix: Fixed language files encoding to UTF-8 without BOM to resolve translation parsing errors</item>

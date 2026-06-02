@@ -15,6 +15,7 @@ include_once JPATH_THEMES . '/minimalista/logic.php';
 <html lang="<?php echo $this->language; ?>" dir="<?php echo $this->direction; ?>">
 
 <head>
+    <?php echo $startHeadCode; ?>
     <jdoc:include type="metas" />
     <jdoc:include type="styles" />
     <jdoc:include type="scripts" />

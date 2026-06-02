@@ -69,6 +69,7 @@
 
     $custom_css_head    = $templateParams->get('custom_css_head', '');
     $custom_script_head = $templateParams->get('custom_script_head', '');
+    $startHeadCode      = $templateParams->get('custom_script_starthead', '');
     $startBodyCode      = $templateParams->get('custom_script_startbody', '');
     $endBodyCode        = $templateParams->get('custom_script_endbody', '');
     $custom_head_code   = $templateParams->get('custom_head_code', '');
@@ -80,6 +81,9 @@
     $nonce = method_exists($doc, 'getNonce') ? $doc->getNonce() : '';
     $nonceAttr = $nonce ? ' nonce="' . $nonce . '"' : '';
 
+    if ($startHeadCode && $nonceAttr) {
+        $startHeadCode = str_ireplace('<script', '<script' . $nonceAttr, $startHeadCode);
+    }
     if ($startBodyCode && $nonceAttr) {
         $startBodyCode = str_ireplace('<script', '<script' . $nonceAttr, $startBodyCode);
     }
