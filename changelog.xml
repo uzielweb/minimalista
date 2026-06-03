@@ -3,77 +3,21 @@
     <changelog>
         <element>minimalista</element>
         <type>template</type>
-        <version>2.6.1</version>
-        <note>
-            <item>Fix: Melhoradas as descrições dos campos de Códigos Personalizados no painel administrativo</item>
-            <item>Fix: Reordenados os campos de Códigos Personalizados no XML para seguir a hierarquia cronológica do DOM</item>
-        </note>
-    </changelog>
-    <changelog>
-        <element>minimalista</element>
-        <type>template</type>
-        <version>2.6.0</version>
-        <note>
-            <item>Feature: Added custom_script_starthead option to insert scripts right after opening head tag</item>
-            
-          
-        </note>
-    </changelog>
-    <changelog>
-        <element>minimalista</element>
-        <type>template</type>
-        <version>2.5.3</version>
-        <note>
-            <item>Fix: Fixed language files encoding to UTF-8 without BOM to resolve translation parsing errors</item>
-            <item>Fix: Removed checksum validation from updates.xml to prevent Joomla updater mismatch errors</item>
-        </note>
-    </changelog>
-    <changelog>
-        <element>minimalista</element>
-        <type>template</type>
-        <version>2.5.2</version>
-        <note>
-            <item>Feature: Moved custom code fields to their own dedicated tab to improve admin UI organization</item>
-        </note>
-    </changelog>
-    <changelog>
-        <element>minimalista</element>
-        <type>template</type>
-        <version>2.5.1</version>
-        <note>
-            <item>Fix: Reverted WebAssetManager to legacy CSS/JS loading due to fatal error in ErrorDocument</item>
-            <item>Fix: Moved template functions to top of logic.php to prevent undefined function errors</item>
-            <item>Fix: Fixed CodeMirror editor collapse issue in custom code fields by enforcing height and removing default buttons</item>
-        </note>
-    </changelog>
-    <changelog>
-        <element>minimalista</element>
-        <type>template</type>
-        <version>2.5.0</version>
+        <version>2.7.0</version>
         <note>
             <item>Feature: Added Smart Header (auto-hide on scroll) option</item>
             <item>Feature: Added Reading Progress Bar for articles</item>
             <item>Feature: Added Google Fonts Preload option for better LCP</item>
             <item>Feature: Added FontAwesome SVG Core support</item>
-            <item>System: Full migration to Joomla Web Asset Manager (joomla.asset.json)</item>
-            <item>System: Added Bootstrap 5 grid overrides for com_content category blog</item>
-        </note>
-    </changelog>
-    <changelog>
-        <element>minimalista</element>
-        <type>template</type>
-        <version>2.4.1</version>
-        <note>
-            <item>Fix: Corrected WebAuthn (Passkey) icon size distortion in Joomla Login Module</item>
-        </note>
-    </changelog>
-    <changelog>
-        <element>minimalista</element>
-        <type>template</type>
-        <version>2.4.0</version>
-        <note>
+            <item>Feature: Added custom_script_starthead option to insert scripts right after opening head tag</item>
+            <item>Feature: Moved custom code fields to their own dedicated tab to improve admin UI organization</item>            
+            <item>System: Added Bootstrap grid overrides for com_content category blog</item>
             <item>System: Added Independent Layout Control for Global Site and Component Area</item>
             <item>System: Implemented Page Class Suffix Overrides (fluid-page, container-page, fluid-component, container-component)</item>
+          <item>Fix: Improved descriptions and ordering of Custom Codes fields</item> 
+<item>Fix: Fixed language files encoding to UTF-8 without BOM to resolve translation parsing errors</item> 
+<item>Fix: Removed checksum validation from updates.xml to prevent Joomla updater mismatch errors</item> 
+<item>Fix: Corrected WebAuthn (Passkey) icon size distortion in Joomla Login Module</item>
         </note>
     </changelog>
     <changelog>
@@ -90,6 +34,3 @@
         </note>
     </changelog>
 </changelogs>
-
-
-
