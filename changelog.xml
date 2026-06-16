@@ -3,6 +3,14 @@
     <changelog>
         <element>minimalista</element>
         <type>template</type>
+        <version>2.7.2</version>
+        <note>
+            <item>Fix: Fixed all remaining PDO parameter binding errors in logic.php</item>
+        </note>
+    </changelog>
+    <changelog>
+        <element>minimalista</element>
+        <type>template</type>
         <version>2.7.1</version>
         <note>
             <item>Fix: Fixed PDO parameter binding error in article query in logic.php</item>

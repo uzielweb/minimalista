@@ -610,7 +610,7 @@
                 $articleImage = $matches['src'];
             }
             // Load Category of the Article
-            $queryCat = $db->getQuery(true)->select('*')->from($db->quoteName('#__categories'))->where($db->quoteName('id') . ' = :catid')->bind(':catid', $content->catid, \PDO::PARAM_INT);
+            $queryCat = $db->getQuery(true)->select('*')->from($db->quoteName('#__categories'))->where($db->quoteName('id') . ' = :catid')->bind(':catid', $content->catid);
             $articleCategory = $db->setQuery($queryCat)->loadObject();
             if (!$articleCategory) {
                 $articleCategory = (object) ['title' => '', 'lft' => 0, 'rgt' => 0, 'params' => ''];
@@ -624,7 +624,7 @@
 
             if ($enableCategoryAuthor && $targetParentId) {
                 // Load the target parent category to get its lft/rgt values
-                $queryParentCat = $db->getQuery(true)->select('*')->from($db->quoteName('#__categories'))->where($db->quoteName('id') . ' = :pid')->bind(':pid', $targetParentId, \PDO::PARAM_INT);
+                $queryParentCat = $db->getQuery(true)->select('*')->from($db->quoteName('#__categories'))->where($db->quoteName('id') . ' = :pid')->bind(':pid', $targetParentId);
                 $parentCat = $db->setQuery($queryParentCat)->loadObject();
                 if (!$parentCat) {
                     $parentCat = (object) ['lft' => 0, 'rgt' => 0];
@@ -681,7 +681,7 @@
         if ($option == 'com_content' && $view == 'category' && Factory::getApplication()->input->getInt('id') && $active && $active->home != 1) {
             $catId = Factory::getApplication()->input->getInt('id');
             $db = Factory::getContainer()->get('DatabaseDriver');
-            $queryCat = $db->getQuery(true)->select('*')->from($db->quoteName('#__categories'))->where($db->quoteName('id') . ' = :id')->bind(':id', $catId, \PDO::PARAM_INT);
+            $queryCat = $db->getQuery(true)->select('*')->from($db->quoteName('#__categories'))->where($db->quoteName('id') . ' = :id')->bind(':id', $catId);
             $category = $db->setQuery($queryCat)->loadObject();
             if (!$category) {
                 $category = (object) ['description' => '', 'image' => '', 'image_alt' => ''];
