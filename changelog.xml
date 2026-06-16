@@ -3,6 +3,14 @@
     <changelog>
         <element>minimalista</element>
         <type>template</type>
+        <version>2.7.1</version>
+        <note>
+            <item>Fix: Fixed PDO parameter binding error in article query in logic.php</item>
+        </note>
+    </changelog>
+    <changelog>
+        <element>minimalista</element>
+        <type>template</type>
         <version>2.7.0</version>
         <note>
             <item>Feature: Added Smart Header (auto-hide on scroll) option</item>
