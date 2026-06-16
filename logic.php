@@ -587,7 +587,7 @@
         if ($option == 'com_content' && $view == 'article' && Factory::getApplication()->input->getInt('id') && $active && $active->home != 1) {
             $articleId = Factory::getApplication()->input->getInt('id');
             $db = Factory::getContainer()->get('DatabaseDriver');
-            $query = $db->getQuery(true)->select('*')->from($db->quoteName('#__content'))->where($db->quoteName('id') . ' = :id')->bind(':id', $articleId, \PDO::PARAM_INT);
+            $query = $db->getQuery(true)->select('*')->from($db->quoteName('#__content'))->where($db->quoteName('id') . ' = :id')->bind(':id', $articleId);
             $content = $db->setQuery($query)->loadObject();
             if (!$content) {
                 $content = (object) ['images' => '', 'introtext' => '', 'fulltext' => '', 'catid' => 0, 'title' => '', 'publish_up' => '', 'modified' => '', 'created_by_alias' => '', 'created_by' => 0];
