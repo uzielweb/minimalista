@@ -3,6 +3,17 @@
     <changelog>
         <element>minimalista</element>
         <type>template</type>
+        <version>2.8.0</version>
+        <note>
+            <item>Update: Updated Font Awesome Free to v7.3.1 (CSS, JS, SVGs, and WOFF2 webfonts)</item>
+            <item>Update: Updated Bootstrap to v5.3.8 (CSS and JS bundle with Popper)</item>
+            <item>Update: Updated Animate.css to v4.1.1</item>
+            <item>Update: Updated jQuery to v4.0.0 and jQuery Migrate to v3.6.0</item>
+        </note>
+    </changelog>
+    <changelog>
+        <element>minimalista</element>
+        <type>template</type>
         <version>2.7.2</version>
         <note>
             <item>Fix: Fixed all remaining PDO parameter binding errors in logic.php</item>
