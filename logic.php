@@ -599,8 +599,8 @@
                 $images = json_decode($content->images);
             }
             if ($images) {
-                $articleImage    = $images->image_intro ? $images->image_intro : $images->image_fulltext;
-                $articleImageAlt = $images->image_intro_alt ? $images->image_intro_alt : $images->image_fulltext_alt;
+                $articleImage    = !empty($images->image_intro) ? $images->image_intro : (!empty($images->image_fulltext) ? $images->image_fulltext : '');
+                $articleImageAlt = !empty($images->image_intro_alt) ? $images->image_intro_alt : (!empty($images->image_fulltext_alt) ? $images->image_fulltext_alt : '');
             }
             $textlimit          = $templateParams->get('textlimit', 300);
             $text               = $content->introtext . $content->fulltext;
