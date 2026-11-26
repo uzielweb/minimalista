@@ -64,7 +64,20 @@
     $logo               = $templateParams->get('logo', '');
     $logo_alt           = $templateParams->get('logo_alt', '') ? $templateParams->get('logo_alt') : $sitename;
     $logo_position      = $templateParams->get('logo_position', 'header-navbar');
-    $doc->addFavicon(Uri::root(true) . '/' . $templateParams->get('favicon', ''));
+    $faviconRaw = $templateParams->get('favicon', '');
+    if ($faviconRaw) {
+        $faviconClean = explode('#', $faviconRaw)[0];
+        $faviconPath  = strpos($faviconClean, '/') === 0 ? $faviconClean : '/' . $faviconClean;
+        $ext = strtolower(pathinfo($faviconClean, PATHINFO_EXTENSION));
+        $mime = match ($ext) {
+            'png' => 'image/png',
+            'svg' => 'image/svg+xml',
+            'gif' => 'image/gif',
+            'webp' => 'image/webp',
+            default => 'image/vnd.microsoft.icon',
+        };
+        $doc->addFavicon(Uri::root(true) . $faviconPath, $mime);
+    }
     $doc->setMetaData('viewport', 'width=device-width, initial-scale=1.0');
 
     $custom_css_head    = $templateParams->get('custom_css_head', '');
@@ -101,12 +114,6 @@
         if ($colorSecondary) $cssVars .= "    --bs-secondary: {$colorSecondary};\n";
         $cssVars .= "}";
         $wa->addInlineStyle($cssVars);
-    }
-
-    // Preload Logo for Core Web Vitals (LCP)
-    if ($logo) {
-        $logoPath = strpos($logo, '/') === 0 ? $logo : '/' . $logo;
-        $doc->addHeadLink(Uri::root(true) . $logoPath, 'preload', 'rel', ['as' => 'image']);
     }
 
     // custom_css_head custom_script_head

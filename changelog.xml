@@ -3,6 +3,14 @@
     <changelog>
         <element>minimalista</element>
         <type>template</type>
+        <version>2.8.2</version>
+        <note>
+            <item>Fix: Correção na renderização do favicon com suporte a MIME type, sanitização de fragmentos do Joomla (#) e remoção de preload conflitante do logo no logic.php</item>
+        </note>
+    </changelog>
+    <changelog>
+        <element>minimalista</element>
+        <type>template</type>
         <version>2.8.1</version>
         <note>
             <item>Fix: Previne aviso de propriedade indefinida em $images para artigos sem imagem cadastrada no PHP 8.2+ em logic.php</item>
